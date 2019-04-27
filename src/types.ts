@@ -46,8 +46,8 @@ export type TransformFunction = (value: any) => any
 export interface StyleOptions {
   prop: string
   alias?: string
-  themeKey?: string
   cssProperty?: string
+  themeKey?: string
   transform?: TransformFunction
 }
 

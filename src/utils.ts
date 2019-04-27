@@ -47,9 +47,9 @@ export const mediaQuery = (x: Unit) =>
 export const style = <P extends ThemeProps>({
   prop,
   alias,
+  cssProperty,
   themeKey,
-  transform,
-  cssProperty
+  transform
 }: StyleOptions): StyleFunction<P> => (props: P) => {
   let value = (alias && props[alias]) || props[prop]
   if (props.theme && isString(themeKey)) {
