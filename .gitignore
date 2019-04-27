@@ -1,0 +1,14 @@
+# folders
+node_modules
+coverage
+lib
+tmp
+
+# files
+todo.*
+
+# logs
+*.log
+
+# system
+.DS_Store
