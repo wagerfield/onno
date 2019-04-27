@@ -1,0 +1,70 @@
+{
+  "name": "themed-system",
+  "description": "Suite of CSS in JS utility functions",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Matthew Wagerfield <matthew@wagerfield.com>",
+  "homepage": "https://github.com/wagerfield/themed-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wagerfield/themed-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wagerfield/themed-system/issues"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf coverage lib",
+    "build": "tsc --noEmitOnError",
+    "dev": "tsc --watch --skipLibCheck",
+    "test": "jest --coverage",
+    "test-watch": "jest --watch",
+    "lint": "tslint --fix --format codeFrame '{src,test}/**/*.ts'",
+    "format": "prettier --write '*.{json,js,md}' '{lib,src,test}/**/*.{js,ts}'",
+    "prepublishOnly": "yarn lint && yarn test && yarn clean && yarn build && yarn format"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --write",
+      "tslint --fix",
+      "jest --findRelatedTests",
+      "git add"
+    ],
+    "**/*.{json,js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "snapshotResolver": "<rootDir>/snapshots"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
+    "@types/jest": "24.0.11",
+    "husky": "2.1.0",
+    "jest": "24.7.1",
+    "lint-staged": "8.1.5",
+    "prettier": "1.17.0",
+    "rimraf": "2.6.3",
+    "ts-jest": "24.0.2",
+    "tslint": "5.16.0",
+    "typescript": "3.4.5"
+  }
+}
