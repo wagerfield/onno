@@ -1,12 +1,13 @@
 # Themed System
 
-Suite of CSS in JS utility functions inspired by [Styled System][styled-system].
+Suite of CSS in JS utility functions inspired by [Styled System][styled-system] and [Ramda][ramda].
 
 ## Features
 
 - Framework agnostic
-- Zero dependencies
 - First class theming support
+- Zero dependencies
+- Less than 2kb gzipped
 - Written in TypeScript
 - 100% test coverage
 
@@ -20,3 +21,4 @@ Suite of CSS in JS utility functions inspired by [Styled System][styled-system].
 
 [github]: https://github.com/wagerfield
 [styled-system]: https://styled-system.com
+[ramda]: https://ramdajs.com
