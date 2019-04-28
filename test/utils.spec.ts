@@ -17,6 +17,14 @@ test("eq", () => {
   expect(_.eq(1)(2)).toBe(false)
 })
 
+test("has", () => {
+  const foo = { foo: "foo", bar: "bar" }
+  expect(_.has("foo")(foo)).toBe(true)
+  expect(_.has("bar")(foo)).toBe(true)
+  expect(_.has("toString")(foo)).toBe(false)
+  expect(_.has("hasOwnProperty")(foo)).toBe(false)
+})
+
 test("not", () => {
   const isTrue = _.eq(true)
   const isNotTrue = _.not(isTrue)
@@ -119,6 +127,19 @@ test("isNotZero", () => {
   expect(_.isNotZero(0)).toBe(false)
 })
 
+test("isAlias", () => {
+  expect(_.isAlias({ alias: "foo", value: "bar" })).toBe(true)
+  expect(_.isAlias({ alias: "foo", value: "bar", extra: "baz" })).toBe(true)
+  expect(_.isAlias({ alias: "foo" })).toBe(false)
+  expect(_.isAlias({ value: "foo" })).toBe(false)
+})
+
+test("isUnitless", () => {
+  expect(_.isUnitless(1)).toBe(true)
+  expect(_.isUnitless(0)).toBe(false)
+  expect(_.isUnitless("1")).toBe(false)
+})
+
 test("isUnit", () => {
   expect(_.isUnit(0)).toBe(true)
   expect(_.isUnit(1)).toBe(true)
@@ -127,12 +148,6 @@ test("isUnit", () => {
   expect(_.isUnit({})).toBe(false)
   expect(_.isUnit(NaN)).toBe(false)
   expect(_.isUnit(null)).toBe(false)
-})
-
-test("isUnitless", () => {
-  expect(_.isUnitless(1)).toBe(true)
-  expect(_.isUnitless(0)).toBe(false)
-  expect(_.isUnitless("1")).toBe(false)
 })
 
 test("addUnit", () => {

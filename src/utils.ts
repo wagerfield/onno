@@ -1,10 +1,20 @@
-import { Path, Unit, Predicate, TypeGuard, TransformFunction } from "./types"
+import {
+  Unit,
+  Path,
+  Alias,
+  Predicate,
+  TypeGuard,
+  TransformFunction
+} from "./types"
 
 export const gt = (a: any) => (b: any) => b > a
 
 export const lt = (a: any) => (b: any) => b < a
 
 export const eq = (a: any) => (b: any) => a === b
+
+export const has = (key: string) => (x: any) =>
+  Object.prototype.hasOwnProperty.call(x, key)
 
 export const not = (fn: Predicate) => (x: any) => !fn(x)
 
@@ -38,9 +48,11 @@ export const isZero = eq(0) as TypeGuard<number>
 
 export const isNotZero = not(isZero)
 
-export const isUnit = either(isNumber, isString) as TypeGuard<Unit>
+export const isAlias = both(has("alias"), has("value")) as TypeGuard<Alias>
 
 export const isUnitless = both(isNumber, isNotZero) as TypeGuard<number>
+
+export const isUnit = either(isNumber, isString) as TypeGuard<Unit>
 
 export const addUnit = (unit: string) => (x: Unit): string =>
   isUnitless(x) ? x + unit : x

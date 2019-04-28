@@ -8,6 +8,11 @@ export type Predicate = (value: any) => boolean
 
 export type TypeGuard<T> = (x: any) => x is T
 
+export interface Alias {
+  alias: string
+  value: Unit
+}
+
 export interface Theme {
   [key: string]: any
 }
