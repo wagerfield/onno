@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`style returns style object 1`] = `
+Object {
+  "x": "foo",
+  "y": "foo",
+  "z": "foo",
+}
+`;
+
+exports[`style uses fallback lookup 1`] = `
+Object {
+  "x": "4px",
+  "y": "4px",
+  "z": "4px",
+}
+`;
+
+exports[`style uses prop aliases 1`] = `
+Object {
+  "x": "4px",
+  "y": "4px",
+  "z": "4px",
+}
+`;
+
+exports[`style uses prop aliases 2`] = `
+Object {
+  "x": "8px",
+  "y": "8px",
+  "z": "8px",
+}
+`;
+
+exports[`style uses prop aliases 3`] = `
+Object {
+  "x": "3px",
+  "y": "3px",
+  "z": "3px",
+}
+`;
+
+exports[`style uses prop aliases 4`] = `null`;
+
+exports[`style uses transform function 1`] = `
+Object {
+  "x": "100%",
+  "y": "100%",
+  "z": "100%",
+}
+`;
+
+exports[`style uses transform function 2`] = `
+Object {
+  "x": "100px",
+  "y": "100px",
+  "z": "100px",
+}
+`;
+
+exports[`style uses transform function 3`] = `
+Object {
+  "x": 0,
+  "y": 0,
+  "z": 0,
+}
+`;

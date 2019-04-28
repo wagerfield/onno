@@ -1,38 +1,38 @@
-import { theme } from "../src/defaults"
-import { style } from "../src/utils"
+import { style } from "../src/style"
+import { addPx } from "../src/utils"
 
 describe("style", () => {
+  const foo = style({
+    propsKeys: ["a", "b", "c"],
+    styleKeys: ["x", "y", "z"],
+    themeKey: "foo",
+    fallback: [0, 4, 8],
+    transform: addPx
+  })
+
   test("returns style function", () => {
-    const foo = style({ prop: "foo" })
     expect(foo).toEqual(expect.any(Function))
-    expect(foo.length).toBe(1)
+    expect(foo).toHaveLength(1)
   })
 
   test("returns style object", () => {
-    const foo = style({ prop: "foo" })
-    expect(foo({ foo: "bar" })).toEqual({ foo: "bar" })
+    expect(foo({ a: "foo" })).toMatchSnapshot()
   })
 
-  test("uses alias when defined", () => {
-    const foo = style({ prop: "foo", alias: "bar" })
-    expect(foo({ foo: "foo" })).toEqual({ foo: "foo" })
-    expect(foo({ foo: "foo", bar: "bar" })).toEqual({ foo: "bar" })
+  test("uses transform function", () => {
+    expect(foo({ a: "100%" })).toMatchSnapshot()
+    expect(foo({ a: 100 })).toMatchSnapshot()
+    expect(foo({ a: 0 })).toMatchSnapshot()
   })
 
-  test("uses cssProperty when defined", () => {
-    const foo = style({ prop: "foo", cssProperty: "bar" })
-    expect(foo({ foo: "foo" })).toEqual({ bar: "foo" })
+  test("uses fallback lookup", () => {
+    expect(foo({ a: 1 })).toMatchSnapshot()
   })
 
-  test("uses transform when defined", () => {
-    const toUpper = (value: string) => value.toUpperCase()
-    const foo = style({ prop: "foo", transform: toUpper })
-    expect(foo({ foo: "foo" })).toEqual({ foo: "FOO" })
-  })
-
-  test("uses themeKey when defined", () => {
-    const padding = style({ prop: "padding", themeKey: "space" })
-    const styles = padding({ padding: 2, theme })
-    expect(styles).toEqual({ padding: theme.space[2] })
+  test("uses prop aliases", () => {
+    expect(foo({ a: 1, b: 2, c: 3, d: 4 })).toMatchSnapshot()
+    expect(foo({ b: 2, c: 3, d: 4 })).toMatchSnapshot()
+    expect(foo({ c: 3, d: 4 })).toMatchSnapshot()
+    expect(foo({ d: 4 })).toMatchSnapshot()
   })
 })

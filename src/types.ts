@@ -1,39 +1,15 @@
-export type Pred = (value: any) => boolean
-
 export type Unit = number | string
 
-export interface ThemeListObject {
-  alias: string
-  value: Unit
-}
+export type PathKey = number | string | void
 
-export type ThemeListValue = ThemeListObject | Unit
+export type Path = PathKey[]
 
-export type ThemeList = ThemeListValue[]
+export type Predicate = (value: any) => boolean
 
-export type ThemeMapValue = ThemeMap | ThemeList | Unit
-
-export interface ThemeMap {
-  [key: string]: ThemeMapValue
-  [key: number]: ThemeMapValue
-}
-
-export type ThemeValue = ThemeMap | ThemeList
+export type TypeGuard<T> = (x: any) => x is T
 
 export interface Theme {
-  [key: string]: ThemeValue
-  breakpoints: ThemeValue
-  lineHeights: ThemeValue
-  fontFamilies: ThemeValue
-  fontWeights: ThemeValue
-  fontSizes: ThemeValue
-  borders: ThemeValue
-  palette: ThemeValue
-  shadows: ThemeValue
-  sizes: ThemeValue
-  space: ThemeValue
-  radii: ThemeValue
-  base: ThemeValue
+  [key: string]: any
 }
 
 export interface ThemeProps {
@@ -44,10 +20,10 @@ export interface ThemeProps {
 export type TransformFunction = (value: any) => any
 
 export interface StyleOptions {
-  prop: string
-  alias?: string
-  cssProperty?: string
+  propsKeys: string[]
+  styleKeys: string[]
   themeKey?: string
+  fallback?: any
   transform?: TransformFunction
 }
 
@@ -55,4 +31,4 @@ export interface StyleObject {
   [key: string]: StyleObject | Unit
 }
 
-export type StyleFunction<P extends ThemeProps> = (props: P) => StyleObject
+export type StyleFunction = <P>(props: P) => null | StyleObject | StyleObject[]
