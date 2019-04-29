@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`createStyle returns style object 1`] = `
+Object {
+  "x": "foo",
+  "y": "foo",
+  "z": "foo",
+}
+`;
+
 exports[`style returns style object 1`] = `
 Object {
   "x": "foo",
@@ -10,33 +18,57 @@ Object {
 
 exports[`style uses fallback lookup 1`] = `
 Object {
-  "x": "4px",
-  "y": "4px",
-  "z": "4px",
+  "x": 1,
+  "y": 1,
+  "z": 1,
+}
+`;
+
+exports[`style uses fallback lookup 2`] = `
+Object {
+  "x": 4,
+  "y": 4,
+  "z": 4,
+}
+`;
+
+exports[`style uses fallback lookup 3`] = `
+Object {
+  "x": 2,
+  "y": 2,
+  "z": 2,
+}
+`;
+
+exports[`style uses fallback lookup 4`] = `
+Object {
+  "x": 8,
+  "y": 8,
+  "z": 8,
 }
 `;
 
 exports[`style uses prop aliases 1`] = `
 Object {
-  "x": "4px",
-  "y": "4px",
-  "z": "4px",
+  "x": 1,
+  "y": 1,
+  "z": 1,
 }
 `;
 
 exports[`style uses prop aliases 2`] = `
 Object {
-  "x": "8px",
-  "y": "8px",
-  "z": "8px",
+  "x": 2,
+  "y": 2,
+  "z": 2,
 }
 `;
 
 exports[`style uses prop aliases 3`] = `
 Object {
-  "x": "3px",
-  "y": "3px",
-  "z": "3px",
+  "x": 3,
+  "y": 3,
+  "z": 3,
 }
 `;
 
@@ -44,13 +76,37 @@ exports[`style uses prop aliases 4`] = `null`;
 
 exports[`style uses transform function 1`] = `
 Object {
-  "x": "100%",
-  "y": "100%",
-  "z": "100%",
+  "x": "50%",
+  "y": "50%",
+  "z": "50%",
 }
 `;
 
 exports[`style uses transform function 2`] = `
+Object {
+  "x": "50%",
+  "y": "50%",
+  "z": "50%",
+}
+`;
+
+exports[`style uses transform function 3`] = `
+Object {
+  "x": "50%",
+  "y": "50%",
+  "z": "50%",
+}
+`;
+
+exports[`style uses transform function 4`] = `
+Object {
+  "x": 100,
+  "y": 100,
+  "z": 100,
+}
+`;
+
+exports[`style uses transform function 5`] = `
 Object {
   "x": "100px",
   "y": "100px",
@@ -58,7 +114,31 @@ Object {
 }
 `;
 
-exports[`style uses transform function 3`] = `
+exports[`style uses transform function 6`] = `
+Object {
+  "x": "100em",
+  "y": "100em",
+  "z": "100em",
+}
+`;
+
+exports[`style uses transform function 7`] = `
+Object {
+  "x": 0,
+  "y": 0,
+  "z": 0,
+}
+`;
+
+exports[`style uses transform function 8`] = `
+Object {
+  "x": 0,
+  "y": 0,
+  "z": 0,
+}
+`;
+
+exports[`style uses transform function 9`] = `
 Object {
   "x": 0,
   "y": 0,

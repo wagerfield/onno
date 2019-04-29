@@ -1,46 +1,68 @@
 import {
-  Unit,
+  Keys,
+  Props,
   TypeGuard,
-  ThemeProps,
   StyleObject,
   StyleOptions,
   StyleFunction,
   TransformFunction
 } from "./types"
-import { isFunction, isNil, toPath, pathOr } from "./utils"
+import {
+  isNil,
+  isArray,
+  isFunction,
+  isObject,
+  pathOr,
+  reduce,
+  toPath
+} from "./utils"
 
 const isTransform = isFunction as TypeGuard<TransformFunction>
+
+export const resolveKey = <P extends Props>(
+  props: P,
+  keys?: Keys
+): string | null => {
+  const resolve = reduce<any>((v, k) => (v || isNil(props[k]) ? v : k))(null)
+  return isArray(keys) && isObject(props) ? resolve(keys) : null
+}
+
+export const resolveValue = <P extends Props>(props: P, keys?: Keys) => {
+  const key = resolveKey(props, keys)
+  return key && props[key]
+}
+
+export const createStyle = (styleValue?: any, styleKeys?: Keys) => {
+  if (isNil(styleValue) || !isArray(styleKeys)) return null
+  const styleObject: StyleObject = {}
+  return styleKeys.reduce((v, k) => {
+    v[k] = styleValue
+    return v
+  }, styleObject)
+}
 
 export const style = ({
   propsKeys,
   styleKeys,
-  themeKey,
-  fallback,
-  transform
+  themeKeys,
+  transform,
+  fallback
 }: StyleOptions): StyleFunction => {
-  // Resolve lookup from themeKey
-  const getLookup = pathOr(fallback)(["theme", themeKey])
-
-  // Create StyleObject from styleKeys
-  const createStyle = (styleValue: Unit) => {
-    const styleObject: StyleObject = {}
-    return styleKeys.reduce((v, k) => {
-      v[k] = styleValue
-      return v
-    }, styleObject)
-  }
-
-  // Return StyleFunction
-  return <P extends ThemeProps>(props: P) => {
+  return <P extends Props>(props: P) => {
     // Get first props value from propsKeys
-    let value: any = propsKeys.reduce((v, k) => (isNil(v) ? props[k] : v), null)
+    let value = resolveValue(props, propsKeys)
 
     // Return null when value is undefined
     if (isNil(value)) return null
 
-    // Resolve path and lookup
+    // Resolve themeKey from themeKeys
+    const themeKey = resolveKey(props, themeKeys)
+
+    // // Resolve lookup from themeKey
+    const lookup = pathOr(fallback)(["theme", themeKey])(props)
+
+    // Convert value to path
     const path = toPath(value)
-    const lookup = getLookup(props)
 
     // Resolve value from lookup
     value = pathOr(value)(path)(lookup)
@@ -49,6 +71,6 @@ export const style = ({
     if (isTransform(transform)) value = transform(value)
 
     // Return style object
-    return createStyle(value)
+    return createStyle(value, styleKeys)
   }
 }
