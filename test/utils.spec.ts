@@ -1,76 +1,76 @@
-import * as _ from "../src/utils"
+import * as U from "../src/utils"
 
 test("gt", () => {
-  expect(_.gt(1)(2)).toBe(true)
-  expect(_.gt(1)(1)).toBe(false)
-  expect(_.gt(2)(1)).toBe(false)
+  expect(U.gt(1)(2)).toBe(true)
+  expect(U.gt(1)(1)).toBe(false)
+  expect(U.gt(2)(1)).toBe(false)
 })
 
 test("lt", () => {
-  expect(_.lt(2)(1)).toBe(true)
-  expect(_.lt(1)(1)).toBe(false)
-  expect(_.lt(1)(2)).toBe(false)
+  expect(U.lt(2)(1)).toBe(true)
+  expect(U.lt(1)(1)).toBe(false)
+  expect(U.lt(1)(2)).toBe(false)
 })
 
 test("eq", () => {
-  expect(_.eq(1)(1)).toBe(true)
-  expect(_.eq(1)(2)).toBe(false)
+  expect(U.eq(1)(1)).toBe(true)
+  expect(U.eq(1)(2)).toBe(false)
 })
 
 test("has", () => {
   const foo = { foo: "foo", bar: "bar" }
-  expect(_.has("foo")(foo)).toBe(true)
-  expect(_.has("bar")(foo)).toBe(true)
-  expect(_.has("toString")(foo)).toBe(false)
-  expect(_.has("hasOwnProperty")(foo)).toBe(false)
+  expect(U.has("foo")(foo)).toBe(true)
+  expect(U.has("bar")(foo)).toBe(true)
+  expect(U.has("toString")(foo)).toBe(false)
+  expect(U.has("hasOwnProperty")(foo)).toBe(false)
 })
 
 test("not", () => {
-  const isTrue = _.eq(true)
-  const isNotTrue = _.not(isTrue)
+  const isTrue = U.eq(true)
+  const isNotTrue = U.not(isTrue)
   expect(isTrue(true)).toBe(true)
   expect(isNotTrue(false)).toBe(true)
 })
 
 test("both", () => {
-  const isFoo = _.eq("foo")
-  const isBar = _.eq("bar")
-  const isNotBar = _.not(isBar)
-  expect(_.both(isFoo, isBar)("foo")).toBe(false)
-  expect(_.both(isFoo, isNotBar)("foo")).toBe(true)
+  const isFoo = U.eq("foo")
+  const isBar = U.eq("bar")
+  const isNotBar = U.not(isBar)
+  expect(U.both(isFoo, isBar)("foo")).toBe(false)
+  expect(U.both(isFoo, isNotBar)("foo")).toBe(true)
 })
 
 test("either", () => {
-  const isFoo = _.eq("foo")
-  const isBar = _.eq("bar")
-  const isFooBar = _.either(isFoo, isBar)
+  const isFoo = U.eq("foo")
+  const isBar = U.eq("bar")
+  const isFooBar = U.either(isFoo, isBar)
   expect(isFooBar("foo")).toBe(true)
   expect(isFooBar("bar")).toBe(true)
   expect(isFooBar("baz")).toBe(false)
 })
 
 test("isType", () => {
-  expect(_.isType("string")("foo")).toBe(true)
-  expect(_.isType("number")(123)).toBe(true)
-  expect(_.isType("object")({})).toBe(true)
+  expect(U.isType("string")("foo")).toBe(true)
+  expect(U.isType("number")(123)).toBe(true)
+  expect(U.isType("object")({})).toBe(true)
 })
 
 test("isNil", () => {
-  expect(_.isNil(undefined)).toBe(true)
-  expect(_.isNil(null)).toBe(true)
-  expect(_.isNil(0)).toBe(false)
+  expect(U.isNil(undefined)).toBe(true)
+  expect(U.isNil(null)).toBe(true)
+  expect(U.isNil(0)).toBe(false)
 })
 
 test("isNotNil", () => {
-  expect(_.isNotNil(undefined)).toBe(false)
-  expect(_.isNotNil(null)).toBe(false)
-  expect(_.isNotNil(0)).toBe(true)
+  expect(U.isNotNil(undefined)).toBe(false)
+  expect(U.isNotNil(null)).toBe(false)
+  expect(U.isNotNil(0)).toBe(true)
 })
 
 test("isNotNaN", () => {
-  expect(_.isNotNaN(0)).toBe(true)
-  expect(_.isNotNaN(null)).toBe(true)
-  expect(_.isNotNaN(NaN)).toBe(false)
+  expect(U.isNotNaN(0)).toBe(true)
+  expect(U.isNotNaN(null)).toBe(true)
+  expect(U.isNotNaN(NaN)).toBe(false)
 })
 
 test("isFunction", () => {
@@ -78,117 +78,123 @@ test("isFunction", () => {
   function bar() {
     return "bar"
   }
-  expect(_.isFunction(foo)).toBe(true)
-  expect(_.isFunction(bar)).toBe(true)
-  expect(_.isFunction("1")).toBe(false)
-  expect(_.isFunction(null)).toBe(false)
+  expect(U.isFunction(foo)).toBe(true)
+  expect(U.isFunction(bar)).toBe(true)
+  expect(U.isFunction("1")).toBe(false)
+  expect(U.isFunction(null)).toBe(false)
 })
 
 test("isObject", () => {
-  expect(_.isObject({})).toBe(true)
-  expect(_.isObject(null)).toBe(false)
-  expect(_.isObject(1234)).toBe(false)
+  expect(U.isObject({})).toBe(true)
+  expect(U.isObject(null)).toBe(false)
+  expect(U.isObject(1234)).toBe(false)
 })
 
 test("isNumber", () => {
-  expect(_.isNumber(0)).toBe(true)
-  expect(_.isNumber(NaN)).toBe(false)
-  expect(_.isNumber("0")).toBe(false)
+  expect(U.isNumber(0)).toBe(true)
+  expect(U.isNumber(NaN)).toBe(false)
+  expect(U.isNumber("0")).toBe(false)
 })
 
 test("isString", () => {
-  expect(_.isString("1")).toBe(true)
-  expect(_.isString({})).toBe(false)
-  expect(_.isString(1)).toBe(false)
+  expect(U.isString("1")).toBe(true)
+  expect(U.isString({})).toBe(false)
+  expect(U.isString(1)).toBe(false)
 })
 
 test("isNegative", () => {
-  expect(_.isNegative(-1)).toBe(true)
-  expect(_.isNegative(0)).toBe(false)
-  expect(_.isNegative(1)).toBe(false)
+  expect(U.isNegative(-1)).toBe(true)
+  expect(U.isNegative(0)).toBe(false)
+  expect(U.isNegative(1)).toBe(false)
 })
 
 test("isPositive", () => {
-  expect(_.isPositive(1)).toBe(true)
-  expect(_.isPositive(0)).toBe(false)
-  expect(_.isPositive(-1)).toBe(false)
+  expect(U.isPositive(1)).toBe(true)
+  expect(U.isPositive(0)).toBe(false)
+  expect(U.isPositive(-1)).toBe(false)
 })
 
 test("isZero", () => {
-  expect(_.isZero(0)).toBe(true)
-  expect(_.isZero(1)).toBe(false)
-  expect(_.isZero("1")).toBe(false)
+  expect(U.isZero(0)).toBe(true)
+  expect(U.isZero(1)).toBe(false)
+  expect(U.isZero("1")).toBe(false)
 })
 
 test("isNotZero", () => {
-  expect(_.isNotZero(1)).toBe(true)
-  expect(_.isNotZero(-1)).toBe(true)
-  expect(_.isNotZero("1")).toBe(true)
-  expect(_.isNotZero(0)).toBe(false)
+  expect(U.isNotZero(1)).toBe(true)
+  expect(U.isNotZero(-1)).toBe(true)
+  expect(U.isNotZero("1")).toBe(true)
+  expect(U.isNotZero(0)).toBe(false)
 })
 
 test("isAlias", () => {
-  expect(_.isAlias({ alias: "foo", value: "bar" })).toBe(true)
-  expect(_.isAlias({ alias: "foo", value: "bar", extra: "baz" })).toBe(true)
-  expect(_.isAlias({ alias: "foo" })).toBe(false)
-  expect(_.isAlias({ value: "foo" })).toBe(false)
+  expect(U.isAlias({ alias: "foo", value: "bar" })).toBe(true)
+  expect(U.isAlias({ alias: "foo", value: "bar", extra: "baz" })).toBe(true)
+  expect(U.isAlias({ alias: "foo" })).toBe(false)
+  expect(U.isAlias({ value: "foo" })).toBe(false)
 })
 
 test("isUnitless", () => {
-  expect(_.isUnitless(1)).toBe(true)
-  expect(_.isUnitless(0)).toBe(false)
-  expect(_.isUnitless("1")).toBe(false)
+  expect(U.isUnitless(1)).toBe(true)
+  expect(U.isUnitless(0)).toBe(false)
+  expect(U.isUnitless("1")).toBe(false)
 })
 
 test("isUnit", () => {
-  expect(_.isUnit(0)).toBe(true)
-  expect(_.isUnit(1)).toBe(true)
-  expect(_.isUnit(-1)).toBe(true)
-  expect(_.isUnit("a")).toBe(true)
-  expect(_.isUnit({})).toBe(false)
-  expect(_.isUnit(NaN)).toBe(false)
-  expect(_.isUnit(null)).toBe(false)
+  expect(U.isUnit(0)).toBe(true)
+  expect(U.isUnit(1)).toBe(true)
+  expect(U.isUnit(-1)).toBe(true)
+  expect(U.isUnit("a")).toBe(true)
+  expect(U.isUnit({})).toBe(false)
+  expect(U.isUnit(NaN)).toBe(false)
+  expect(U.isUnit(null)).toBe(false)
 })
 
 test("addUnit", () => {
-  const addFoo = _.addUnit("foo")
+  const addFoo = U.addUnit("foo")
   expect(addFoo(1)).toBe("1foo")
   expect(addFoo("1")).toBe("1")
   expect(addFoo(0)).toBe(0)
 })
 
 test("addEm", () => {
-  expect(_.addEm(1)).toBe("1em")
+  expect(U.addEm(1)).toBe("1em")
 })
 
 test("addPx", () => {
-  expect(_.addPx(1)).toBe("1px")
+  expect(U.addPx(1)).toBe("1px")
 })
 
 test("addPct", () => {
-  expect(_.addPct(1)).toBe("1%")
+  expect(U.addPct(1)).toBe("1%")
 })
 
 test("addRem", () => {
-  expect(_.addRem(1)).toBe("1rem")
+  expect(U.addRem(1)).toBe("1rem")
 })
 
 test("mediaQuery", () => {
-  expect(_.mediaQuery(320)).toMatchSnapshot()
-  expect(_.mediaQuery("20rem")).toMatchSnapshot()
+  expect(U.mediaQuery(320)).toMatchSnapshot()
+  expect(U.mediaQuery("20rem")).toMatchSnapshot()
+})
+
+test("reduce", () => {
+  const add = U.reduce<number>((acc, val) => acc + val)
+  expect(add(0)([1, 2, 3])).toBe(6)
+  expect(add(2)([1, 2, 3])).toBe(8)
 })
 
 test("toPath", () => {
-  expect(_.toPath(0)).toEqual([0])
-  expect(_.toPath(1)).toEqual([1])
-  expect(_.toPath("a")).toEqual(["a"])
-  expect(_.toPath("a.b")).toEqual(["a", "b"])
-  expect(_.toPath("a.1")).toEqual(["a", "1"])
+  expect(U.toPath(0)).toEqual([0])
+  expect(U.toPath(1)).toEqual([1])
+  expect(U.toPath("a")).toEqual(["a"])
+  expect(U.toPath("a.b")).toEqual(["a", "b"])
+  expect(U.toPath("a.1")).toEqual(["a", "1"])
 })
 
 test("pathOr", () => {
   const fallback = "N/A"
-  const na = _.pathOr(fallback)
+  const na = U.pathOr(fallback)
   expect(na([])({})).toBe(fallback)
   expect(na(["a"])({})).toBe(fallback)
   expect(na(["a"])({ a: 1 })).toBe(1)

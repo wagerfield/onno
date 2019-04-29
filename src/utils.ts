@@ -2,6 +2,7 @@ import {
   Unit,
   Path,
   Alias,
+  Reducer,
   Predicate,
   TypeGuard,
   TransformFunction
@@ -68,12 +69,18 @@ export const addRem = addUnit("rem")
 export const mediaQuery = (x: Unit, fn: TransformFunction = addPx) =>
   `@media screen and (min-width: ${fn(x)})`
 
+export const reduce = <T>(iterator: Reducer<T>) => (initial: T) => (
+  list: T[]
+) => list.reduce(iterator, initial)
+
 export const toPath = (x: any) => (isString(x) ? x.split(".") : [x])
 
 export const pathOr = (fallback: any) => (path: Path) => (x: any) => {
   if (!path || !path.length || !x) return fallback
   const isFallback = eq(fallback)
   return path.reduce((v, k) => {
-    return isFallback(v) ? v : (k && v[k]) || fallback
+    if (isFallback(v)) return v
+    const value = k && v[k]
+    return value || fallback
   }, x)
 }
