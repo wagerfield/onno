@@ -4,7 +4,7 @@ export type PathKey = number | string | null
 
 export type Path = PathKey[]
 
-export type Predicate = (value: any) => boolean
+export type Predicate = (...args: any[]) => boolean
 
 export type Reducer<T> = (acc: T, val: T) => T
 
