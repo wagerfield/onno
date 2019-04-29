@@ -39,10 +39,10 @@ export type Breakpoints = BreakpointsArray | BreakpointsObject | void
 
 export interface Theme {
   [key: string]: ThemeValue
-  // Global
-  global?: ThemeValue
   // Breakpoints
   breakpoints?: Breakpoints
+  // Global
+  global?: ThemeValue
   // Typography
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
