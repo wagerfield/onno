@@ -29,10 +29,20 @@ export interface ThemeObject {
 
 export type ThemeValue = ThemeArray | ThemeObject | void
 
+export type BreakpointsArray = ThemeArray
+
+export interface BreakpointsObject {
+  [key: string]: Unit
+}
+
+export type Breakpoints = BreakpointsArray | BreakpointsObject | void
+
 export interface Theme {
   [key: string]: ThemeValue
+  // Global
+  global?: ThemeValue
   // Breakpoints
-  breakpoints?: ThemeValue
+  breakpoints?: Breakpoints
   // Typography
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
@@ -43,8 +53,8 @@ export interface Theme {
   palette?: ThemeValue
   colors?: ThemeValue
   // Layout
-  space?: ThemeValue
   sizes?: ThemeValue
+  spaces?: ThemeValue
   widths?: ThemeValue
   maxWidths?: ThemeValue
   minWidths?: ThemeValue
