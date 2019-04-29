@@ -88,31 +88,61 @@ describe("style", () => {
   })
 
   test("uses transform function", () => {
-    const s1 = style()
-    const s2 = style({ transform: U.addPx })
-    const s3 = style({ transform: U.addEm })
+    const plain = style()
+    const addPx = style({ transform: U.addPx })
+    const addEm = style({ transform: U.addEm })
 
-    expect(s1({ a: "50%" })).toMatchSnapshot()
-    expect(s2({ a: "50%" })).toMatchSnapshot()
-    expect(s3({ a: "50%" })).toMatchSnapshot()
+    expect(plain({ a: "50%" })).toMatchSnapshot("plain")
+    expect(addPx({ a: "50%" })).toMatchSnapshot("addPx")
+    expect(addEm({ a: "50%" })).toMatchSnapshot("addEm")
 
-    expect(s1({ a: 100 })).toMatchSnapshot()
-    expect(s2({ a: 100 })).toMatchSnapshot()
-    expect(s3({ a: 100 })).toMatchSnapshot()
+    expect(plain({ a: 100 })).toMatchSnapshot("plain")
+    expect(addPx({ a: 100 })).toMatchSnapshot("addPx")
+    expect(addEm({ a: 100 })).toMatchSnapshot("addEm")
 
-    expect(s1({ a: 0 })).toMatchSnapshot()
-    expect(s2({ a: 0 })).toMatchSnapshot()
-    expect(s3({ a: 0 })).toMatchSnapshot()
+    expect(plain({ a: 0 })).toMatchSnapshot("plain")
+    expect(addPx({ a: 0 })).toMatchSnapshot("addPx")
+    expect(addEm({ a: 0 })).toMatchSnapshot("addEm")
   })
 
   test("uses fallback lookup", () => {
-    const s1 = style()
-    const s2 = style({ fallback: [0, 4, 8] })
+    const withoutFallback = style()
+    const withFallback = style({ fallback: [0, 4, 8] })
 
-    expect(s1({ a: 1 })).toMatchSnapshot()
-    expect(s2({ a: 1 })).toMatchSnapshot()
+    expect(withoutFallback({ a: 1 })).toMatchSnapshot("without fallback")
+    expect(withoutFallback({ a: 2 })).toMatchSnapshot("without fallback")
 
-    expect(s1({ a: 2 })).toMatchSnapshot()
-    expect(s2({ a: 2 })).toMatchSnapshot()
+    expect(withFallback({ a: 1 })).toMatchSnapshot("with fallback")
+    expect(withFallback({ a: 2 })).toMatchSnapshot("with fallback")
+  })
+
+  test("resolves nested values", () => {
+    const s = style({
+      fallback: {
+        m: {
+          n: [
+            {
+              alias: "o",
+              value: 100
+            },
+            200,
+            {
+              alias: "o",
+              value: 300
+            }
+          ]
+        }
+      }
+    })
+
+    const testValue = (a: string) => expect(s({ a })).toMatchSnapshot(a)
+
+    testValue("a")
+    testValue("m.a")
+    testValue("m.n.0")
+    testValue("m.n.1")
+    testValue("m.n.2")
+    testValue("m.n.3")
+    testValue("m.n.o")
   })
 })

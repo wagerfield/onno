@@ -1,6 +1,7 @@
 import {
   Unit,
   Path,
+  PathKey,
   Alias,
   Reducer,
   Predicate,
@@ -8,20 +9,18 @@ import {
   TransformFunction
 } from "./types"
 
-export const gt = (a: any) => (b: any) => b > a
-
-export const lt = (a: any) => (b: any) => b < a
-
 export const eq = (a: any) => (b: any) => a === b
 
 export const has = (key: string) => (x: any) =>
   Object.prototype.hasOwnProperty.call(x, key)
 
-export const not = (fn: Predicate) => (x: any) => !fn(x)
+export const not = (fn: Predicate) => (...x: any[]) => !fn(...x)
 
-export const both = (a: Predicate, b: Predicate) => (x: any) => a(x) && b(x)
+export const both = (a: Predicate, b: Predicate) => (...x: any[]) =>
+  a(...x) && b(...x)
 
-export const either = (a: Predicate, b: Predicate) => (x: any) => a(x) || b(x)
+export const either = (a: Predicate, b: Predicate) => (...x: any[]) =>
+  a(...x) || b(...x)
 
 export const isType = (type: string) => (x: any) => typeof x === type
 
@@ -41,19 +40,14 @@ export const isNumber = both(isType("number"), isNotNaN) as TypeGuard<number>
 
 export const isString = isType("string") as TypeGuard<string>
 
-export const isNegative = both(isNumber, lt(0)) as TypeGuard<number>
-
-export const isPositive = both(isNumber, gt(0)) as TypeGuard<number>
-
 export const isZero = eq(0) as TypeGuard<number>
 
 export const isNotZero = not(isZero)
 
-export const isAlias = both(has("alias"), has("value")) as TypeGuard<Alias>
+const hasAliasKeys = both(has("alias"), has("value"))
+export const isAlias = both(isObject, hasAliasKeys) as TypeGuard<Alias>
 
 export const isUnitless = both(isNumber, isNotZero) as TypeGuard<number>
-
-export const isUnit = either(isNumber, isString) as TypeGuard<Unit>
 
 export const addUnit = (unit: string) => (x: Unit): string =>
   isUnitless(x) ? x + unit : x
@@ -73,6 +67,17 @@ export const reduce = <T>(iterator: Reducer<T>) => (initial: T) => (
   list: T[]
 ) => list.reduce(iterator, initial)
 
+export const propEq = (key: string) => (val: any) => (x: any) => x[key] === val
+
+export const indexEq = (key: any) => (val: any, idx: number) => +key === idx
+
+export const aliasEq = propEq("alias")
+
+export const resolveAlias = (key: PathKey, arr: any[]) => {
+  const alias = arr.find(either(indexEq(key), aliasEq(key)))
+  return isAlias(alias) ? alias.value : alias
+}
+
 export const toPath = (x: any) => (isString(x) ? x.split(".") : [x])
 
 export const pathOr = (fallback: any) => (path: Path) => (x: any) => {
@@ -80,7 +85,7 @@ export const pathOr = (fallback: any) => (path: Path) => (x: any) => {
   const isFallback = eq(fallback)
   return path.reduce((v, k) => {
     if (isFallback(v)) return v
-    const value = k && v[k]
-    return value || fallback
+    const alias = isArray(v) && resolveAlias(k, v)
+    return alias || (k && v[k]) || fallback
   }, x)
 }

@@ -8,6 +8,62 @@ Object {
 }
 `;
 
+exports[`style resolves nested values: a 1`] = `
+Object {
+  "x": "a",
+  "y": "a",
+  "z": "a",
+}
+`;
+
+exports[`style resolves nested values: m.a 1`] = `
+Object {
+  "x": "m.a",
+  "y": "m.a",
+  "z": "m.a",
+}
+`;
+
+exports[`style resolves nested values: m.n.0 1`] = `
+Object {
+  "x": 100,
+  "y": 100,
+  "z": 100,
+}
+`;
+
+exports[`style resolves nested values: m.n.1 1`] = `
+Object {
+  "x": 200,
+  "y": 200,
+  "z": 200,
+}
+`;
+
+exports[`style resolves nested values: m.n.2 1`] = `
+Object {
+  "x": 300,
+  "y": 300,
+  "z": 300,
+}
+`;
+
+exports[`style resolves nested values: m.n.3 1`] = `
+Object {
+  "x": "m.n.3",
+  "y": "m.n.3",
+  "z": "m.n.3",
+}
+`;
+
+exports[`style resolves nested values: m.n.o 1`] = `
+Object {
+  "x": 100,
+  "y": 100,
+  "z": 100,
+}
+`;
+
 exports[`style returns style object 1`] = `
 Object {
   "x": "foo",
@@ -16,15 +72,7 @@ Object {
 }
 `;
 
-exports[`style uses fallback lookup 1`] = `
-Object {
-  "x": 1,
-  "y": 1,
-  "z": 1,
-}
-`;
-
-exports[`style uses fallback lookup 2`] = `
+exports[`style uses fallback lookup: with fallback 1`] = `
 Object {
   "x": 4,
   "y": 4,
@@ -32,19 +80,27 @@ Object {
 }
 `;
 
-exports[`style uses fallback lookup 3`] = `
-Object {
-  "x": 2,
-  "y": 2,
-  "z": 2,
-}
-`;
-
-exports[`style uses fallback lookup 4`] = `
+exports[`style uses fallback lookup: with fallback 2`] = `
 Object {
   "x": 8,
   "y": 8,
   "z": 8,
+}
+`;
+
+exports[`style uses fallback lookup: without fallback 1`] = `
+Object {
+  "x": 1,
+  "y": 1,
+  "z": 1,
+}
+`;
+
+exports[`style uses fallback lookup: without fallback 2`] = `
+Object {
+  "x": 2,
+  "y": 2,
+  "z": 2,
 }
 `;
 
@@ -74,7 +130,7 @@ Object {
 
 exports[`style uses prop aliases 4`] = `null`;
 
-exports[`style uses transform function 1`] = `
+exports[`style uses transform function: addEm 1`] = `
 Object {
   "x": "50%",
   "y": "50%",
@@ -82,39 +138,7 @@ Object {
 }
 `;
 
-exports[`style uses transform function 2`] = `
-Object {
-  "x": "50%",
-  "y": "50%",
-  "z": "50%",
-}
-`;
-
-exports[`style uses transform function 3`] = `
-Object {
-  "x": "50%",
-  "y": "50%",
-  "z": "50%",
-}
-`;
-
-exports[`style uses transform function 4`] = `
-Object {
-  "x": 100,
-  "y": 100,
-  "z": 100,
-}
-`;
-
-exports[`style uses transform function 5`] = `
-Object {
-  "x": "100px",
-  "y": "100px",
-  "z": "100px",
-}
-`;
-
-exports[`style uses transform function 6`] = `
+exports[`style uses transform function: addEm 2`] = `
 Object {
   "x": "100em",
   "y": "100em",
@@ -122,7 +146,7 @@ Object {
 }
 `;
 
-exports[`style uses transform function 7`] = `
+exports[`style uses transform function: addEm 3`] = `
 Object {
   "x": 0,
   "y": 0,
@@ -130,7 +154,23 @@ Object {
 }
 `;
 
-exports[`style uses transform function 8`] = `
+exports[`style uses transform function: addPx 1`] = `
+Object {
+  "x": "50%",
+  "y": "50%",
+  "z": "50%",
+}
+`;
+
+exports[`style uses transform function: addPx 2`] = `
+Object {
+  "x": "100px",
+  "y": "100px",
+  "z": "100px",
+}
+`;
+
+exports[`style uses transform function: addPx 3`] = `
 Object {
   "x": 0,
   "y": 0,
@@ -138,7 +178,23 @@ Object {
 }
 `;
 
-exports[`style uses transform function 9`] = `
+exports[`style uses transform function: plain 1`] = `
+Object {
+  "x": "50%",
+  "y": "50%",
+  "z": "50%",
+}
+`;
+
+exports[`style uses transform function: plain 2`] = `
+Object {
+  "x": 100,
+  "y": 100,
+  "z": 100,
+}
+`;
+
+exports[`style uses transform function: plain 3`] = `
 Object {
   "x": 0,
   "y": 0,
