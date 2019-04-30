@@ -1,4 +1,4 @@
-import { StyleOptions } from "../lib/types"
+import { PartialStyleOptions } from "../lib/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
 
@@ -55,7 +55,7 @@ describe("createStyle", () => {
 })
 
 describe("style", () => {
-  const style = (options?: Partial<StyleOptions>) =>
+  const style = (options?: PartialStyleOptions) =>
     S.style({
       propsKeys: ["a", "b", "c"],
       styleKeys: ["x", "y", "z"],
