@@ -2,7 +2,7 @@ import { StyleProp, ThemeProps } from "./types"
 import { extend } from "./style"
 
 const style = extend({
-  themeKeys: ["palette", "colors"],
+  themeKeys: ["colors", "palette"],
   fallback: {
     gray: ["#EEE", "#AAA", "#666"],
     text: "#222",
@@ -14,12 +14,19 @@ const style = extend({
 export interface BackgroundColorProps extends ThemeProps {
   backgroundColor?: StyleProp
   bgc?: StyleProp
-  bg?: StyleProp
 }
 
 export const backgroundColor = style<BackgroundColorProps>({
-  propsKeys: ["backgroundColor", "bgc", "bg"],
-  styleKeys: ["backgroundColor"]
+  propsKeys: ["backgroundColor", "bgc"]
+})
+
+export interface BorderColorProps extends ThemeProps {
+  borderColor?: StyleProp
+  bc?: StyleProp
+}
+
+export const borderColor = style<BorderColorProps>({
+  propsKeys: ["borderColor", "bc"]
 })
 
 export interface TextColorProps extends ThemeProps {
@@ -28,8 +35,9 @@ export interface TextColorProps extends ThemeProps {
 }
 
 export const textColor = style<TextColorProps>({
-  propsKeys: ["color", "tc"],
-  styleKeys: ["color"]
+  propsKeys: ["color", "tc"]
 })
 
-export type ColorProps = BackgroundColorProps & TextColorProps
+export type ColorProps = BackgroundColorProps &
+  BorderColorProps &
+  TextColorProps
