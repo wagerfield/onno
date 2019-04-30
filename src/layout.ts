@@ -4,7 +4,7 @@ import { style, extend } from "./style"
 
 const layout = extend({
   transform: addPx,
-  fallback: [0, 8, 16, 32, 64, 128, 256, 512]
+  fallback: [0, 4, 8, 16, 32, 64, 128, 256, 512]
 })
 
 // Display
