@@ -2,6 +2,7 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
   "rules": {
+    "array-type": [true, "array"],
     "curly": [true, "ignore-same-line"],
     "interface-name": [true, "never-prefix"],
     "object-literal-sort-keys": false,
