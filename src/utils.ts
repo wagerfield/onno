@@ -23,7 +23,7 @@ export const either = (a: Predicate, b: Predicate) => (...x: any[]) =>
 
 export const values = (x: any) => Object.keys(x).map((k) => x[k])
 
-export const isType = (type: string) => (x: any) => typeof x === type
+export const isType = (type: string) => <T>(x: any): x is T => typeof x === type
 
 export const isNil = (x: any): x is void => x == null
 
