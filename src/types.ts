@@ -81,9 +81,10 @@ export interface Theme {
   borders?: ThemeValue
   borderStyles?: ThemeValue
   borderWidths?: ThemeValue
-  // Decoration
+  // Misc
   radii?: ThemeValue
   shadows?: ThemeValue
+  zIndices?: ThemeValue
   // Variants
   buttons?: ThemeValue
   textStyles?: ThemeValue
@@ -98,7 +99,7 @@ export type TransformFunction = (value: any) => any
 
 export interface StyleOptions {
   propsKeys: Keys
-  styleKeys: Keys
+  styleKeys?: Keys
   themeKeys?: Keys
   transform?: TransformFunction
   fallback?: ThemeValue
