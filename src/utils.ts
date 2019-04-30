@@ -3,7 +3,6 @@ import {
   Path,
   PathKey,
   Alias,
-  Reducer,
   Predicate,
   TypeGuard,
   TransformFunction
@@ -21,6 +20,8 @@ export const both = (a: Predicate, b: Predicate) => (...x: any[]) =>
 
 export const either = (a: Predicate, b: Predicate) => (...x: any[]) =>
   a(...x) || b(...x)
+
+export const values = (x: any) => Object.keys(x).map((k) => x[k])
 
 export const isType = (type: string) => (x: any) => typeof x === type
 
@@ -52,20 +53,15 @@ export const isUnitless = both(isNumber, isNotZero) as TypeGuard<number>
 export const addUnit = (unit: string) => (x: Unit): string =>
   isUnitless(x) ? x + unit : x
 
-export const addEm = addUnit("em")
-
 export const addPx = addUnit("px")
 
-export const addPct = addUnit("%")
+export const addPc = addUnit("%")
 
-export const addRem = addUnit("rem")
+export const addPcOrPx = (x: Unit) =>
+  x > 0 && x < 1 ? addPc(+x * 100) : addPx(x)
 
-export const mediaQuery = (x: Unit, fn: TransformFunction = addPx) =>
+export const mq = (x: Unit, fn: TransformFunction = addPx) =>
   `@media screen and (min-width: ${fn(x)})`
-
-export const reduce = <T>(iterator: Reducer<T>) => (initial: T) => (
-  list: T[]
-) => list.reduce(iterator, initial)
 
 export const propEq = (key: string) => (val: any) => (x: any) => x[key] === val
 
@@ -73,7 +69,7 @@ export const indexEq = (key: any) => (val: any, idx: number) => +key === idx
 
 export const aliasEq = propEq("alias")
 
-export const resolveAlias = (key: PathKey, arr: any[]) => {
+export const getAlias = (key: PathKey, arr: any[]) => {
   const alias = arr.find(either(indexEq(key), aliasEq(key)))
   return isAlias(alias) ? alias.value : alias
 }
@@ -85,7 +81,7 @@ export const pathOr = (fallback: any) => (path: Path) => (x: any) => {
   const isFallback = eq(fallback)
   return path.reduce((v, k) => {
     if (isFallback(v)) return v
-    const alias = isArray(v) && resolveAlias(k, v)
+    const alias = isArray(v) && getAlias(k, v)
     return alias || (k && v[k]) || fallback
   }, x)
 }

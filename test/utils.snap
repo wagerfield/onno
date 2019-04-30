@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mediaQuery 1`] = `"@media screen and (min-width: 320px)"`;
+exports[`mq 1`] = `"@media screen and (min-width: 320px)"`;
 
-exports[`mediaQuery 2`] = `"@media screen and (min-width: 20rem)"`;
+exports[`mq 2`] = `"@media screen and (min-width: 20rem)"`;

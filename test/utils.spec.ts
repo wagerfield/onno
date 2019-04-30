@@ -37,6 +37,16 @@ test("either", () => {
   expect(isFooBar("baz")).toBe(false)
 })
 
+test("values", () => {
+  expect(U.values({})).toEqual([])
+  expect(U.values({ a: "A" })).toEqual(["A"])
+  expect(U.values({ a: "A", b: "B" })).toEqual(["A", "B"])
+  expect(() => U.values(undefined)).toThrow()
+  expect(() => U.values(null)).toThrow()
+  expect(U.values("a")).toEqual(["a"])
+  expect(U.values(1)).toEqual([])
+})
+
 test("isType", () => {
   expect(U.isType("string")("foo")).toBe(true)
   expect(U.isType("number")(123)).toBe(true)
@@ -125,42 +135,40 @@ test("addUnit", () => {
   expect(addFoo(0)).toBe(0)
 })
 
-test("addEm", () => {
-  expect(U.addEm(1)).toBe("1em")
-})
-
 test("addPx", () => {
   expect(U.addPx(1)).toBe("1px")
 })
 
-test("addPct", () => {
-  expect(U.addPct(1)).toBe("1%")
+test("addPc", () => {
+  expect(U.addPc(1)).toBe("1%")
 })
 
-test("addRem", () => {
-  expect(U.addRem(1)).toBe("1rem")
+test("addPcOrPx", () => {
+  expect(U.addPcOrPx(0)).toBe(0)
+
+  expect(U.addPcOrPx(0.1)).toBe("10%")
+  expect(U.addPcOrPx(0.5)).toBe("50%")
+  expect(U.addPcOrPx(3 / 4)).toBe("75%")
+
+  expect(U.addPcOrPx(1)).toBe("1px")
+  expect(U.addPcOrPx(2)).toBe("2px")
+
+  expect(U.addPcOrPx(-1)).toBe("-1px")
+  expect(U.addPcOrPx(-2)).toBe("-2px")
+
+  expect(U.addPcOrPx("1em")).toBe("1em")
+  expect(U.addPcOrPx("2vw")).toBe("2vw")
 })
 
-test("mediaQuery", () => {
-  expect(U.mediaQuery(320)).toMatchSnapshot()
-  expect(U.mediaQuery("20rem")).toMatchSnapshot()
-})
-
-test("reduce", () => {
-  const add = U.reduce<number>((acc, val) => acc + val)
-  expect(add(0)([1, 2, 3])).toBe(6)
-  expect(add(2)([1, 2, 3])).toBe(8)
+test("mq", () => {
+  expect(U.mq(320)).toMatchSnapshot()
+  expect(U.mq("20rem")).toMatchSnapshot()
 })
 
 test("propEq", () => {
   const fooEq = U.propEq("foo")
   expect(fooEq("foo")({ foo: "foo" })).toBe(true)
   expect(fooEq("foo")({ foo: "bar" })).toBe(false)
-})
-
-test("aliasEq", () => {
-  expect(U.aliasEq("foo")({ alias: "foo" })).toBe(true)
-  expect(U.aliasEq("foo")({ alias: "bar" })).toBe(false)
 })
 
 test("indexEq", () => {
@@ -172,7 +180,12 @@ test("indexEq", () => {
   expect(U.indexEq("1")(null, 2)).toBe(false)
 })
 
-test("resolveAlias", () => {
+test("aliasEq", () => {
+  expect(U.aliasEq("foo")({ alias: "foo" })).toBe(true)
+  expect(U.aliasEq("foo")({ alias: "bar" })).toBe(false)
+})
+
+test("getAlias", () => {
   const list = [
     100,
     {
@@ -192,21 +205,21 @@ test("resolveAlias", () => {
     700
   ]
 
-  expect(U.resolveAlias(0, list)).toBe(100)
-  expect(U.resolveAlias("0", list)).toBe(100)
+  expect(U.getAlias(0, list)).toBe(100)
+  expect(U.getAlias("0", list)).toBe(100)
 
-  expect(U.resolveAlias(1, list)).toBe(200)
-  expect(U.resolveAlias("1", list)).toBe(200)
-  expect(U.resolveAlias("one", list)).toBe(200)
+  expect(U.getAlias(1, list)).toBe(200)
+  expect(U.getAlias("1", list)).toBe(200)
+  expect(U.getAlias("one", list)).toBe(200)
 
-  expect(U.resolveAlias(2, list)).toBe(300)
-  expect(U.resolveAlias("2", list)).toBe(300)
+  expect(U.getAlias(2, list)).toBe(300)
+  expect(U.getAlias("2", list)).toBe(300)
 
-  expect(U.resolveAlias(3, list)).toBe(400)
-  expect(U.resolveAlias("3", list)).toBe(400)
-  expect(U.resolveAlias("two", list)).toBe(400)
+  expect(U.getAlias(3, list)).toBe(400)
+  expect(U.getAlias("3", list)).toBe(400)
+  expect(U.getAlias("two", list)).toBe(400)
 
-  expect(U.resolveAlias("foo", list)).toBeUndefined()
+  expect(U.getAlias("foo", list)).toBeUndefined()
 })
 
 test("toPath", () => {
