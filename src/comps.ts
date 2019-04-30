@@ -12,3 +12,7 @@ export const layout = c<LayoutProps>(v(L))
 import { SpaceProps } from "./space"
 import * as S from "./space"
 export const space = c<SpaceProps>(v(S))
+
+import { TextProps } from "./text"
+import * as T from "./text"
+export const text = c<TextProps>(v(T))
