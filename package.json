@@ -12,6 +12,12 @@
   "bugs": {
     "url": "https://github.com/wagerfield/themed-system/issues"
   },
+  "keywords": [
+    "css-in-js",
+    "styled-components",
+    "styled-system",
+    "emotion"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
