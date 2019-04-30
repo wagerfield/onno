@@ -9,7 +9,6 @@ export interface FontFamilyProps extends ThemeProps {
 
 export const fontFamily = style<FontFamilyProps>({
   propsKeys: ["fontFamily", "ff"],
-  styleKeys: ["fontFamily"],
   themeKeys: ["fontFamilies", "fonts"],
   fallback: {
     text: "system-ui, sans-serif",
@@ -24,7 +23,6 @@ export interface FontSizeProps extends ThemeProps {
 
 export const fontSize = style({
   propsKeys: ["fontSize", "fs"],
-  styleKeys: ["fontSize"],
   themeKeys: ["fontSizes"],
   transform: addPx,
   fallback: [12, 14, 16, 20, 24, 32, 48, 64]
@@ -37,7 +35,6 @@ export interface FontWeightProps extends ThemeProps {
 
 export const fontWeight = style({
   propsKeys: ["fontWeight", "fw"],
-  styleKeys: ["fontWeight"],
   themeKeys: ["fontWeights"],
   fallback: {
     normal: 400,
@@ -51,8 +48,7 @@ export interface FontStyleProps extends ThemeProps {
 }
 
 export const fontStyle = style({
-  propsKeys: ["fontStyle", "ft"],
-  styleKeys: ["fontStyle"]
+  propsKeys: ["fontStyle", "ft"]
 })
 
 export interface LineHeightProps extends ThemeProps {
@@ -62,7 +58,6 @@ export interface LineHeightProps extends ThemeProps {
 
 export const lineHeight = style({
   propsKeys: ["lineHeight", "lh"],
-  styleKeys: ["lineHeight"],
   themeKeys: ["lineHeights"],
   fallback: {
     normal: 1.5,
@@ -78,7 +73,7 @@ export interface LetterSpacingProps extends ThemeProps {
 
 export const letterSpacing = style({
   propsKeys: ["letterSpacing", "ls"],
-  styleKeys: ["letterSpacings"],
+  themeKeys: ["letterSpacings"],
   transform: addPx
 })
 
@@ -88,8 +83,7 @@ export interface TextAlignProps extends ThemeProps {
 }
 
 export const textAlign = style({
-  propsKeys: ["textAlign", "ta"],
-  styleKeys: ["textAlign"]
+  propsKeys: ["textAlign", "ta"]
 })
 
 export type TextProps = FontFamilyProps &

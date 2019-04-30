@@ -26,8 +26,7 @@ export interface MarginTopProps extends ThemeProps {
 }
 
 export const marginTop = style<MarginTopProps>({
-  propsKeys: [MT, "mt"],
-  styleKeys: [MT]
+  propsKeys: [MT, "mt"]
 })
 
 export interface MarginRightProps extends ThemeProps {
@@ -36,8 +35,7 @@ export interface MarginRightProps extends ThemeProps {
 }
 
 export const marginRight = style<MarginRightProps>({
-  propsKeys: [MR, "mr"],
-  styleKeys: [MR]
+  propsKeys: [MR, "mr"]
 })
 
 export interface MarginBottomProps extends ThemeProps {
@@ -46,8 +44,7 @@ export interface MarginBottomProps extends ThemeProps {
 }
 
 export const marginBottom = style<MarginBottomProps>({
-  propsKeys: [MB, "mb"],
-  styleKeys: [MB]
+  propsKeys: [MB, "mb"]
 })
 
 export interface MarginLeftProps extends ThemeProps {
@@ -56,8 +53,7 @@ export interface MarginLeftProps extends ThemeProps {
 }
 
 export const marginLeft = style<MarginLeftProps>({
-  propsKeys: [ML, "ml"],
-  styleKeys: [ML]
+  propsKeys: [ML, "ml"]
 })
 
 export interface MarginXProps extends ThemeProps {
@@ -98,8 +94,7 @@ export interface PaddingTopProps extends ThemeProps {
 }
 
 export const paddingTop = style<PaddingTopProps>({
-  propsKeys: [PT, "pt"],
-  styleKeys: [PT]
+  propsKeys: [PT, "pt"]
 })
 
 export interface PaddingRightProps extends ThemeProps {
@@ -108,8 +103,7 @@ export interface PaddingRightProps extends ThemeProps {
 }
 
 export const paddingRight = style<PaddingRightProps>({
-  propsKeys: [PR, "pr"],
-  styleKeys: [PR]
+  propsKeys: [PR, "pr"]
 })
 
 export interface PaddingBottomProps extends ThemeProps {
@@ -118,8 +112,7 @@ export interface PaddingBottomProps extends ThemeProps {
 }
 
 export const paddingBottom = style<PaddingBottomProps>({
-  propsKeys: [PB, "pb"],
-  styleKeys: [PB]
+  propsKeys: [PB, "pb"]
 })
 
 export interface PaddingLeftProps extends ThemeProps {
@@ -128,8 +121,7 @@ export interface PaddingLeftProps extends ThemeProps {
 }
 
 export const paddingLeft = style<PaddingLeftProps>({
-  propsKeys: [PL, "pl"],
-  styleKeys: [PL]
+  propsKeys: [PL, "pl"]
 })
 
 export interface PaddingXProps extends ThemeProps {
