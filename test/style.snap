@@ -130,23 +130,23 @@ Object {
 
 exports[`style uses prop aliases 4`] = `null`;
 
-exports[`style uses transform function: addEm 1`] = `
+exports[`style uses transform function: addPc 1`] = `
 Object {
-  "x": "50%",
-  "y": "50%",
-  "z": "50%",
+  "x": "2em",
+  "y": "2em",
+  "z": "2em",
 }
 `;
 
-exports[`style uses transform function: addEm 2`] = `
+exports[`style uses transform function: addPc 2`] = `
 Object {
-  "x": "100em",
-  "y": "100em",
-  "z": "100em",
+  "x": "100%",
+  "y": "100%",
+  "z": "100%",
 }
 `;
 
-exports[`style uses transform function: addEm 3`] = `
+exports[`style uses transform function: addPc 3`] = `
 Object {
   "x": 0,
   "y": 0,
@@ -156,9 +156,9 @@ Object {
 
 exports[`style uses transform function: addPx 1`] = `
 Object {
-  "x": "50%",
-  "y": "50%",
-  "z": "50%",
+  "x": "2em",
+  "y": "2em",
+  "z": "2em",
 }
 `;
 
@@ -178,15 +178,15 @@ Object {
 }
 `;
 
-exports[`style uses transform function: plain 1`] = `
+exports[`style uses transform function: none 1`] = `
 Object {
-  "x": "50%",
-  "y": "50%",
-  "z": "50%",
+  "x": "2em",
+  "y": "2em",
+  "z": "2em",
 }
 `;
 
-exports[`style uses transform function: plain 2`] = `
+exports[`style uses transform function: none 2`] = `
 Object {
   "x": 100,
   "y": 100,
@@ -194,7 +194,7 @@ Object {
 }
 `;
 
-exports[`style uses transform function: plain 3`] = `
+exports[`style uses transform function: none 3`] = `
 Object {
   "x": 0,
   "y": 0,

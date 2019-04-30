@@ -1,70 +1,58 @@
 import {
+  Nil,
   Keys,
   Props,
   TypeGuard,
   StyleObject,
   StyleOptions,
   StyleFunction,
-  TransformFunction
+  TransformFunction,
+  PartialStyleOptions
 } from "./types"
-import {
-  isNil,
-  isArray,
-  isFunction,
-  isObject,
-  pathOr,
-  reduce,
-  toPath
-} from "./utils"
+import { isNil, isArray, isFunction, pathOr, toPath } from "./utils"
 
 const isTransform = isFunction as TypeGuard<TransformFunction>
 
-export const resolveKey = <P extends Props>(
-  props: P,
-  keys?: Keys
-): string | null => {
-  const resolve = reduce<any>((v, k) => (v || isNil(props[k]) ? v : k))(null)
-  return isArray(keys) && isObject(props) ? resolve(keys) : null
-}
+export const getKey = <P extends Props>(props: P, keys?: Keys): string | Nil =>
+  keys && keys.find((k) => props[k] != null)
 
-export const resolveValue = <P extends Props>(props: P, keys?: Keys) => {
-  const key = resolveKey(props, keys)
-  return key && props[key]
+export const getValue = <P extends Props>(props: P, keys?: Keys) => {
+  const k = getKey(props, keys)
+  return k && props[k]
 }
 
 export const createStyle = (styleValue?: any, styleKeys?: Keys) => {
   if (isNil(styleValue) || !isArray(styleKeys)) return null
-  const styleObject: StyleObject = {}
-  return styleKeys.reduce((v, k) => {
-    v[k] = styleValue
-    return v
-  }, styleObject)
+  return styleKeys.reduce(
+    (s, k) => {
+      s[k] = styleValue
+      return s
+    },
+    {} as StyleObject
+  )
 }
 
-export const style = ({
+export const style = <P extends Props>({
   propsKeys,
   styleKeys,
   themeKeys,
   transform,
   fallback
-}: StyleOptions): StyleFunction => <P extends Props>(props: P) => {
+}: StyleOptions): StyleFunction<P> => (props: P) => {
   // Get first props value from propsKeys
-  let value = resolveValue(props, propsKeys)
+  let value = getValue(props, propsKeys)
 
   // Return null when value is undefined
   if (isNil(value)) return null
 
   // Resolve themeKey from themeKeys
-  const themeKey = resolveKey(props, themeKeys)
+  const themeKey = getKey(props, themeKeys)
 
   // // Resolve lookup from themeKey
   const lookup = pathOr(fallback)(["theme", themeKey])(props)
 
-  // Convert value to path
-  const path = toPath(value)
-
-  // Resolve value from lookup
-  value = pathOr(value)(path)(lookup)
+  // Resolve value from lookup path
+  value = pathOr(value)(toPath(value))(lookup)
 
   // Transform value
   if (isTransform(transform)) value = transform(value)
@@ -72,3 +60,8 @@ export const style = ({
   // Return style object
   return createStyle(value, styleKeys)
 }
+
+export const compose = <P>(fns: StyleFunction<P>[]): StyleFunction<P> => fns[0]
+
+export const extend = (a: PartialStyleOptions) => <P>(b: StyleOptions) =>
+  style<P>({ ...a, ...b })

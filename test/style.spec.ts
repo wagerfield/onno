@@ -2,41 +2,41 @@ import { StyleOptions } from "../lib/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
 
-describe("resolveKey", () => {
+describe("getKey", () => {
   const props = { foo: "FOO", bar: "BAR" }
 
-  test("returns null for undefined keys", () => {
-    expect(S.resolveKey(props)).toBeNull()
+  test("returns undefined for undefined keys", () => {
+    expect(S.getKey(props)).toBeUndefined()
   })
 
-  test("returns null for unresolved keys", () => {
-    expect(S.resolveKey(props, ["baz"])).toBeNull()
+  test("returns undefined for unresolved keys", () => {
+    expect(S.getKey(props, ["baz"])).toBeUndefined()
   })
 
   test("returns resolved keys", () => {
-    expect(S.resolveKey(props, ["foo"])).toBe("foo")
-    expect(S.resolveKey(props, ["bar"])).toBe("bar")
-    expect(S.resolveKey(props, ["foo", "bar"])).toBe("foo")
-    expect(S.resolveKey(props, ["bar", "foo"])).toBe("bar")
+    expect(S.getKey(props, ["foo"])).toBe("foo")
+    expect(S.getKey(props, ["bar"])).toBe("bar")
+    expect(S.getKey(props, ["foo", "bar"])).toBe("foo")
+    expect(S.getKey(props, ["bar", "foo"])).toBe("bar")
   })
 })
 
-describe("resolveValue", () => {
+describe("getValue", () => {
   const props = { foo: "FOO", bar: "BAR" }
 
-  test("returns null for undefined keys", () => {
-    expect(S.resolveValue(props)).toBeNull()
+  test("returns undefined for undefined keys", () => {
+    expect(S.getValue(props)).toBeUndefined()
   })
 
-  test("returns null for unresolved keys", () => {
-    expect(S.resolveValue(props, ["baz"])).toBeNull()
+  test("returns undefined for unresolved keys", () => {
+    expect(S.getValue(props, ["baz"])).toBeUndefined()
   })
 
   test("returns resolved keys", () => {
-    expect(S.resolveValue(props, ["foo"])).toBe("FOO")
-    expect(S.resolveValue(props, ["bar"])).toBe("BAR")
-    expect(S.resolveValue(props, ["foo", "bar"])).toBe("FOO")
-    expect(S.resolveValue(props, ["bar", "foo"])).toBe("BAR")
+    expect(S.getValue(props, ["foo"])).toBe("FOO")
+    expect(S.getValue(props, ["bar"])).toBe("BAR")
+    expect(S.getValue(props, ["foo", "bar"])).toBe("FOO")
+    expect(S.getValue(props, ["bar", "foo"])).toBe("BAR")
   })
 })
 
@@ -88,21 +88,21 @@ describe("style", () => {
   })
 
   test("uses transform function", () => {
-    const plain = style()
+    const none = style()
     const addPx = style({ transform: U.addPx })
-    const addEm = style({ transform: U.addEm })
+    const addPc = style({ transform: U.addPc })
 
-    expect(plain({ a: "50%" })).toMatchSnapshot("plain")
-    expect(addPx({ a: "50%" })).toMatchSnapshot("addPx")
-    expect(addEm({ a: "50%" })).toMatchSnapshot("addEm")
+    expect(none({ a: "2em" })).toMatchSnapshot("none")
+    expect(addPx({ a: "2em" })).toMatchSnapshot("addPx")
+    expect(addPc({ a: "2em" })).toMatchSnapshot("addPc")
 
-    expect(plain({ a: 100 })).toMatchSnapshot("plain")
+    expect(none({ a: 100 })).toMatchSnapshot("none")
     expect(addPx({ a: 100 })).toMatchSnapshot("addPx")
-    expect(addEm({ a: 100 })).toMatchSnapshot("addEm")
+    expect(addPc({ a: 100 })).toMatchSnapshot("addPc")
 
-    expect(plain({ a: 0 })).toMatchSnapshot("plain")
+    expect(none({ a: 0 })).toMatchSnapshot("none")
     expect(addPx({ a: 0 })).toMatchSnapshot("addPx")
-    expect(addEm({ a: 0 })).toMatchSnapshot("addEm")
+    expect(addPc({ a: 0 })).toMatchSnapshot("addPc")
   })
 
   test("uses fallback lookup", () => {
