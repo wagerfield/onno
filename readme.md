@@ -7,9 +7,8 @@ Suite of CSS in JS utility functions inspired by [Styled System][styled-system] 
 - Framework agnostic
 - First class theming support
 - Zero dependencies
-- Less than 2kb gzipped
-- Written in TypeScript
 - 100% test coverage
+- Written in TypeScript
 
 ## Author
 
