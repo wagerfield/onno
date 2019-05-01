@@ -1,12 +1,4 @@
-import {
-  Unit,
-  Path,
-  PathKey,
-  Alias,
-  Predicate,
-  TypeGuard,
-  TransformFunction
-} from "./types"
+import { Unit, Path, PathKey, Alias, Predicate, TypeGuard } from "./types"
 
 export const eq = (a: any) => (b: any) => a === b
 
@@ -20,8 +12,6 @@ export const both = (a: Predicate, b: Predicate) => (...x: any[]) =>
 
 export const either = (a: Predicate, b: Predicate) => (...x: any[]) =>
   a(...x) || b(...x)
-
-export const values = (x: any) => Object.keys(x).map((k) => x[k])
 
 export const isType = (type: string) => <T>(x: any): x is T => typeof x === type
 
@@ -60,8 +50,7 @@ export const addPc = addUnit("%")
 export const addPcOrPx = (x: Unit) =>
   x > 0 && x < 1 ? addPc(+x * 100) : addPx(x)
 
-export const mq = (x: Unit, fn: TransformFunction = addPx) =>
-  `@media screen and (min-width: ${fn(x)})`
+export const mq = (x: Unit) => `@media screen and (min-width: ${addPx(x)})`
 
 export const propEq = (key: string) => (val: any) => (x: any) => x[key] === val
 

@@ -37,16 +37,6 @@ test("either", () => {
   expect(isFooBar("baz")).toBe(false)
 })
 
-test("values", () => {
-  expect(U.values({})).toEqual([])
-  expect(U.values({ a: "A" })).toEqual(["A"])
-  expect(U.values({ a: "A", b: "B" })).toEqual(["A", "B"])
-  expect(() => U.values(undefined)).toThrow()
-  expect(() => U.values(null)).toThrow()
-  expect(U.values("a")).toEqual(["a"])
-  expect(U.values(1)).toEqual([])
-})
-
 test("isType", () => {
   expect(U.isType("string")("foo")).toBe(true)
   expect(U.isType("number")(123)).toBe(true)
@@ -132,7 +122,9 @@ test("addUnit", () => {
   const addFoo = U.addUnit("foo")
   expect(addFoo(1)).toBe("1foo")
   expect(addFoo("1")).toBe("1")
+  expect(addFoo("5%")).toBe("5%")
   expect(addFoo(0)).toBe(0)
+  expect(addFoo(-1)).toBe("-1foo")
 })
 
 test("addPx", () => {
