@@ -1,3 +1,5 @@
+export type Length = number
+
 export type Nil = null | undefined
 
 export type Unit = number | string
@@ -14,15 +16,15 @@ export type Predicate = (...args: any[]) => boolean
 
 export type TypeGuard<T> = (x: any) => x is T
 
-export type ResponsivePropArray = Unit[]
+export type ResponsivePropArray<P> = P[]
 
-export interface ResponsivePropObject {
-  [key: string]: Unit
+export interface ResponsivePropObject<P> {
+  [key: string]: P
 }
 
-export type ResponsiveProp = Nil | ResponsivePropArray | ResponsivePropObject
+export type ResponsiveProp<P> = ResponsivePropArray<P> | ResponsivePropObject<P>
 
-export type StyleProp = Unit | ResponsiveProp
+export type Prop<P = Unit> = P | ResponsiveProp<P> | Nil
 
 export interface Props {
   [key: string]: any
@@ -95,7 +97,7 @@ export interface ThemeProps extends Props {
   theme?: Theme
 }
 
-export type TransformFunction = (value: any) => any
+export type TransformFunction = (value: Unit) => Unit
 
 export interface StyleOptions {
   propsKeys: Keys
@@ -105,10 +107,20 @@ export interface StyleOptions {
   fallback?: ThemeValue
 }
 
-export type PartialStyleOptions = Partial<StyleOptions>
+export type StyleValue = Unit | string[] // string[] for fallback values
 
-export interface StyleObject {
-  [key: string]: StyleObject | Unit
+export interface Style {
+  [key: string]: StyleValue
 }
 
-export type StyleFunction<P> = (props: P) => Nil | StyleObject | StyleObject[]
+export interface NestedStyle<S extends Style> {
+  [key: string]: S
+}
+
+export type StyleArrayValue<S extends Style> = S | NestedStyle<S>
+
+export type StyleArray<S extends Style> = StyleArrayValue<S>[]
+
+export type StyleFunction<P extends Props, S extends Style> = (
+  props: P
+) => StyleArray<S> | null
