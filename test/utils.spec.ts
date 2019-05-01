@@ -1,42 +1,5 @@
 import * as U from "../src/utils"
 
-test("eq", () => {
-  expect(U.eq(1)(1)).toBe(true)
-  expect(U.eq(1)(2)).toBe(false)
-})
-
-test("has", () => {
-  const foo = { foo: "foo", bar: "bar" }
-  expect(U.has("foo")(foo)).toBe(true)
-  expect(U.has("bar")(foo)).toBe(true)
-  expect(U.has("toString")(foo)).toBe(false)
-  expect(U.has("hasOwnProperty")(foo)).toBe(false)
-})
-
-test("not", () => {
-  const isTrue = U.eq(true)
-  const isNotTrue = U.not(isTrue)
-  expect(isTrue(true)).toBe(true)
-  expect(isNotTrue(false)).toBe(true)
-})
-
-test("both", () => {
-  const isFoo = U.eq("foo")
-  const isBar = U.eq("bar")
-  const isNotBar = U.not(isBar)
-  expect(U.both(isFoo, isBar)("foo")).toBe(false)
-  expect(U.both(isFoo, isNotBar)("foo")).toBe(true)
-})
-
-test("either", () => {
-  const isFoo = U.eq("foo")
-  const isBar = U.eq("bar")
-  const isFooBar = U.either(isFoo, isBar)
-  expect(isFooBar("foo")).toBe(true)
-  expect(isFooBar("bar")).toBe(true)
-  expect(isFooBar("baz")).toBe(false)
-})
-
 test("isType", () => {
   expect(U.isType("string")("foo")).toBe(true)
   expect(U.isType("number")(123)).toBe(true)
@@ -47,18 +10,6 @@ test("isNil", () => {
   expect(U.isNil(undefined)).toBe(true)
   expect(U.isNil(null)).toBe(true)
   expect(U.isNil(0)).toBe(false)
-})
-
-test("isNotNil", () => {
-  expect(U.isNotNil(undefined)).toBe(false)
-  expect(U.isNotNil(null)).toBe(false)
-  expect(U.isNotNil(0)).toBe(true)
-})
-
-test("isNotNaN", () => {
-  expect(U.isNotNaN(0)).toBe(true)
-  expect(U.isNotNaN(null)).toBe(true)
-  expect(U.isNotNaN(NaN)).toBe(false)
 })
 
 test("isFunction", () => {
@@ -72,15 +23,10 @@ test("isFunction", () => {
   expect(U.isFunction(null)).toBe(false)
 })
 
-test("isObject", () => {
-  expect(U.isObject({})).toBe(true)
-  expect(U.isObject(null)).toBe(false)
-  expect(U.isObject(1234)).toBe(false)
-})
-
 test("isNumber", () => {
   expect(U.isNumber(0)).toBe(true)
-  expect(U.isNumber(NaN)).toBe(false)
+  expect(U.isNumber(1)).toBe(true)
+  expect(U.isNumber({})).toBe(false)
   expect(U.isNumber("0")).toBe(false)
 })
 
@@ -88,34 +34,6 @@ test("isString", () => {
   expect(U.isString("1")).toBe(true)
   expect(U.isString({})).toBe(false)
   expect(U.isString(1)).toBe(false)
-})
-
-test("isZero", () => {
-  expect(U.isZero(0)).toBe(true)
-  expect(U.isZero(1)).toBe(false)
-  expect(U.isZero("1")).toBe(false)
-})
-
-test("isNotZero", () => {
-  expect(U.isNotZero(1)).toBe(true)
-  expect(U.isNotZero(-1)).toBe(true)
-  expect(U.isNotZero("1")).toBe(true)
-  expect(U.isNotZero(0)).toBe(false)
-})
-
-test("isAlias", () => {
-  expect(U.isAlias({ alias: "foo", value: "bar", extra: "baz" })).toBe(true)
-  expect(U.isAlias({ alias: "foo", value: "bar" })).toBe(true)
-  expect(U.isAlias({ alias: "foo" })).toBe(false)
-  expect(U.isAlias({ value: "foo" })).toBe(false)
-  expect(U.isAlias(null)).toBe(false)
-  expect(U.isAlias(1)).toBe(false)
-})
-
-test("isUnitless", () => {
-  expect(U.isUnitless(1)).toBe(true)
-  expect(U.isUnitless(0)).toBe(false)
-  expect(U.isUnitless("1")).toBe(false)
 })
 
 test("addUnit", () => {
@@ -157,63 +75,6 @@ test("mq", () => {
   expect(U.mq("20rem")).toMatchSnapshot()
 })
 
-test("propEq", () => {
-  const fooEq = U.propEq("foo")
-  expect(fooEq("foo")({ foo: "foo" })).toBe(true)
-  expect(fooEq("foo")({ foo: "bar" })).toBe(false)
-})
-
-test("indexEq", () => {
-  expect(U.indexEq(0)(null, 0)).toBe(true)
-  expect(U.indexEq(1)(null, 1)).toBe(true)
-  expect(U.indexEq(1)(null, 2)).toBe(false)
-  expect(U.indexEq("0")(null, 0)).toBe(true)
-  expect(U.indexEq("1")(null, 1)).toBe(true)
-  expect(U.indexEq("1")(null, 2)).toBe(false)
-})
-
-test("aliasEq", () => {
-  expect(U.aliasEq("foo")({ alias: "foo" })).toBe(true)
-  expect(U.aliasEq("foo")({ alias: "bar" })).toBe(false)
-})
-
-test("getAlias", () => {
-  const list = [
-    100,
-    {
-      alias: "one",
-      value: 200
-    },
-    300,
-    {
-      alias: "two",
-      value: 400
-    },
-    500,
-    {
-      alias: "one", // duplicate
-      value: 600
-    },
-    700
-  ]
-
-  expect(U.getAlias(0, list)).toBe(100)
-  expect(U.getAlias("0", list)).toBe(100)
-
-  expect(U.getAlias(1, list)).toBe(200)
-  expect(U.getAlias("1", list)).toBe(200)
-  expect(U.getAlias("one", list)).toBe(200)
-
-  expect(U.getAlias(2, list)).toBe(300)
-  expect(U.getAlias("2", list)).toBe(300)
-
-  expect(U.getAlias(3, list)).toBe(400)
-  expect(U.getAlias("3", list)).toBe(400)
-  expect(U.getAlias("two", list)).toBe(400)
-
-  expect(U.getAlias("foo", list)).toBeUndefined()
-})
-
 test("toPath", () => {
   expect(U.toPath(0)).toEqual([0])
   expect(U.toPath(1)).toEqual([1])
@@ -222,25 +83,33 @@ test("toPath", () => {
   expect(U.toPath("a.1")).toEqual(["a", "1"])
 })
 
+test("hasPath", () => {
+  const foo = { a: { b: [1, 2, 3] } }
+  expect(U.hasPath(["a"])(foo)).toBe(true)
+  expect(U.hasPath(["a", "b"])(foo)).toBe(true)
+  expect(U.hasPath(["a", "b", "0"])(foo)).toBe(true)
+  expect(U.hasPath(["a", "b", "1"])(foo)).toBe(true)
+  expect(U.hasPath(["a", "b", "2"])(foo)).toBe(true)
+  expect(U.hasPath(["a", "b", "3"])(foo)).toBe(false)
+  expect(U.hasPath(["x"])(foo)).toBe(false)
+  expect(U.hasPath([])(foo)).toBe(false)
+})
+
+test("path", () => {
+  const foo = { a: { b: [1, 2, 3] } }
+  expect(U.path([])(foo)).toBe(foo)
+  expect(U.path(["a"])(foo)).toBe(foo.a)
+  expect(U.path(["a", "b"])(foo)).toBe(foo.a.b)
+  expect(U.path(["a", "b", "0"])(foo)).toBe(foo.a.b[0])
+  expect(U.path(["a", "b", "1"])(foo)).toBe(foo.a.b[1])
+  expect(U.path(["a", "b", "2"])(foo)).toBe(foo.a.b[2])
+  expect(U.path(["a", "b", "3"])(foo)).toBeUndefined()
+  expect(U.path(["a", "c"])(foo)).toBeUndefined()
+  expect(U.path(["x"])(foo)).toBeUndefined()
+})
+
 test("pathOr", () => {
   const fallback = "N/A"
-  const lookup = {
-    a: {
-      b: [
-        100,
-        {
-          alias: "c",
-          value: 200
-        },
-        300,
-        {
-          alias: "c",
-          value: 400
-        }
-      ]
-    }
-  }
-
   const na = U.pathOr(fallback)
 
   expect(na([])({})).toBe(fallback)
@@ -251,16 +120,53 @@ test("pathOr", () => {
   expect(na(["a", "b"])({ a: 1 })).toBe(fallback)
   expect(na(["a", "b"])({ a: { b: 2 } })).toBe(2)
 
-  expect(na(["a", 1])({ a: [1] })).toBe(fallback)
-  expect(na(["a", 1])({ a: [1, 2] })).toBe(2)
-
   expect(na(["a", "1"])({ a: [1] })).toBe(fallback)
   expect(na(["a", "1"])({ a: [1, 2] })).toBe(2)
 
-  expect(na(["a", "b", "c"])(lookup)).toBe(200)
-  expect(na(["a", "b", "0"])(lookup)).toBe(100)
-  expect(na(["a", "b", "1"])(lookup)).toBe(200)
-  expect(na(["a", "b", "2"])(lookup)).toBe(300)
-  expect(na(["a", "b", "3"])(lookup)).toBe(400)
-  expect(na(["a", "b", "4"])(lookup)).toBe(fallback)
+  expect(na(["a", 1])({ a: [1] })).toBe(fallback)
+  expect(na(["a", 1])({ a: [1, 2] })).toBe(2)
+})
+
+test("getKey", () => {
+  const obj = {
+    foo: "FOO",
+    bar: {
+      a: "A",
+      b: [11, 22, 33]
+    }
+  }
+
+  expect(U.getKey(obj)).toBeUndefined()
+  expect(U.getKey(obj, ["baz"])).toBeUndefined()
+  expect(U.getKey(obj, ["foo"])).toBe("foo")
+  expect(U.getKey(obj, ["bar"])).toBe("bar")
+  expect(U.getKey(obj, ["foo", "bar"])).toBe("foo")
+  expect(U.getKey(obj, ["bar", "foo"])).toBe("bar")
+  expect(U.getKey(obj, ["bar.a", "foo"])).toBe("bar.a")
+  expect(U.getKey(obj, ["bar.b", "foo"])).toBe("bar.b")
+  expect(U.getKey(obj, ["bar.b.0", "foo"])).toBe("bar.b.0")
+  expect(U.getKey(obj, ["bar.b.2", "foo"])).toBe("bar.b.2")
+  expect(U.getKey(obj, ["bar.b.3", "foo"])).toBe("foo")
+})
+
+test("getValue", () => {
+  const obj = {
+    foo: "FOO",
+    bar: {
+      a: "A",
+      b: [11, 22, 33]
+    }
+  }
+
+  expect(U.getValue(obj)).toBeUndefined()
+  expect(U.getValue(obj, ["baz"])).toBeUndefined()
+  expect(U.getValue(obj, ["foo"])).toBe(obj.foo)
+  expect(U.getValue(obj, ["bar"])).toBe(obj.bar)
+  expect(U.getValue(obj, ["foo", "bar"])).toBe(obj.foo)
+  expect(U.getValue(obj, ["bar", "foo"])).toBe(obj.bar)
+  expect(U.getValue(obj, ["bar.a", "foo"])).toBe(obj.bar.a)
+  expect(U.getValue(obj, ["bar.b", "foo"])).toBe(obj.bar.b)
+  expect(U.getValue(obj, ["bar.b.0", "foo"])).toBe(obj.bar.b[0])
+  expect(U.getValue(obj, ["bar.b.2", "foo"])).toBe(obj.bar.b[2])
+  expect(U.getValue(obj, ["bar.b.3", "foo"])).toBe(obj.foo)
 })

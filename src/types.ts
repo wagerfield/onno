@@ -4,15 +4,9 @@ export type Nil = null | undefined
 
 export type Unit = number | string
 
-export type PathKey = number | string | Nil
-
-export type Path = PathKey[]
-
 export type Key = string
 
 export type Keys = Key[]
-
-export type Predicate = (...args: any[]) => boolean
 
 export type TypeGuard<T> = (x: any) => x is T
 

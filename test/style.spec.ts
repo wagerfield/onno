@@ -2,44 +2,6 @@ import { StyleOptions } from "../lib/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
 
-describe("getKey", () => {
-  const props = { foo: "FOO", bar: "BAR" }
-
-  test("returns undefined for undefined keys", () => {
-    expect(S.getKey(props)).toBeUndefined()
-  })
-
-  test("returns undefined for unresolved keys", () => {
-    expect(S.getKey(props, ["baz"])).toBeUndefined()
-  })
-
-  test("returns resolved keys", () => {
-    expect(S.getKey(props, ["foo"])).toBe("foo")
-    expect(S.getKey(props, ["bar"])).toBe("bar")
-    expect(S.getKey(props, ["foo", "bar"])).toBe("foo")
-    expect(S.getKey(props, ["bar", "foo"])).toBe("bar")
-  })
-})
-
-describe("getValue", () => {
-  const props = { foo: "FOO", bar: "BAR" }
-
-  test("returns undefined for undefined keys", () => {
-    expect(S.getValue(props)).toBeUndefined()
-  })
-
-  test("returns undefined for unresolved keys", () => {
-    expect(S.getValue(props, ["baz"])).toBeUndefined()
-  })
-
-  test("returns resolved keys", () => {
-    expect(S.getValue(props, ["foo"])).toBe("FOO")
-    expect(S.getValue(props, ["bar"])).toBe("BAR")
-    expect(S.getValue(props, ["foo", "bar"])).toBe("FOO")
-    expect(S.getValue(props, ["bar", "foo"])).toBe("BAR")
-  })
-})
-
 describe("createStyle", () => {
   test("returns null for undefined value", () => {
     expect(S.createStyle()).toBeNull()
@@ -106,14 +68,14 @@ describe("style", () => {
   })
 
   test("uses fallback lookup", () => {
-    const withoutFallback = style()
-    const withFallback = style({ fallback: [0, 4, 8] })
+    const none = style()
+    const fall = style({ fallback: [0, 4, 8] })
 
-    expect(withoutFallback({ a: 1 })).toMatchSnapshot("without fallback")
-    expect(withoutFallback({ a: 2 })).toMatchSnapshot("without fallback")
+    expect(none({ a: 1 })).toMatchSnapshot("[ ] fallback")
+    expect(none({ a: 2 })).toMatchSnapshot("[ ] fallback")
 
-    expect(withFallback({ a: 1 })).toMatchSnapshot("with fallback")
-    expect(withFallback({ a: 2 })).toMatchSnapshot("with fallback")
+    expect(fall({ a: 1 })).toMatchSnapshot("[x] fallback")
+    expect(fall({ a: 2 })).toMatchSnapshot("[x] fallback")
   })
 
   test("resolves nested values", () => {
@@ -144,5 +106,66 @@ describe("style", () => {
     testValue("m.n.2")
     testValue("m.n.3")
     testValue("m.n.foo")
+  })
+
+  test("uses theme prop", () => {
+    const fallback = [11, 22, 33]
+    const theme1 = {
+      t: ["0T", "1T", "2T"],
+      u: ["0U", "1U", "2U"]
+    }
+    const theme2 = {
+      u: ["0U", "1U", "2U"],
+      v: ["0V", "1V", "2V"]
+    }
+    const theme3 = {
+      t: {
+        u: {
+          v: ["0V", "1V", "2V"]
+        }
+      }
+    }
+
+    const none = style()
+    const fall = style({ fallback })
+    const nest = style({ themeKeys: ["n.m.o", "t.u.v"] })
+
+    // No theme
+    expect(none({ a: 1 })).toMatchSnapshot("[ ] fallback [ ] theme")
+    expect(fall({ a: 1 })).toMatchSnapshot("[x] fallback [ ] theme")
+    expect(nest({ a: 1 })).toMatchSnapshot("[ ] fallback [ ] theme")
+
+    // With theme1
+    expect(none({ a: 1, theme: theme1 })).toMatchSnapshot(
+      "[ ] fallback [x] theme1"
+    )
+    expect(fall({ a: 1, theme: theme1 })).toMatchSnapshot(
+      "[x] fallback [x] theme1"
+    )
+    expect(nest({ a: 1, theme: theme1 })).toMatchSnapshot(
+      "[ ] fallback [x] theme1"
+    )
+
+    // With theme2
+    expect(none({ a: 1, theme: theme2 })).toMatchSnapshot(
+      "[ ] fallback [x] theme2"
+    )
+    expect(fall({ a: 1, theme: theme2 })).toMatchSnapshot(
+      "[x] fallback [x] theme2"
+    )
+    expect(nest({ a: 1, theme: theme2 })).toMatchSnapshot(
+      "[ ] fallback [x] theme2"
+    )
+
+    // With theme3
+    expect(none({ a: 1, theme: theme3 })).toMatchSnapshot(
+      "[ ] fallback [x] theme3"
+    )
+    expect(fall({ a: 1, theme: theme3 })).toMatchSnapshot(
+      "[x] fallback [x] theme3"
+    )
+    expect(nest({ a: 1, theme: theme3 })).toMatchSnapshot(
+      "[ ] fallback [x] theme3"
+    )
   })
 })

@@ -31,9 +31,18 @@ Array [
 exports[`style resolves nested values: m.n.0 1`] = `
 Array [
   Object {
-    "x": 100,
-    "y": 100,
-    "z": 100,
+    "x": Object {
+      "alias": "foo",
+      "value": 100,
+    },
+    "y": Object {
+      "alias": "foo",
+      "value": 100,
+    },
+    "z": Object {
+      "alias": "foo",
+      "value": 100,
+    },
   },
 ]
 `;
@@ -51,9 +60,18 @@ Array [
 exports[`style resolves nested values: m.n.2 1`] = `
 Array [
   Object {
-    "x": 300,
-    "y": 300,
-    "z": 300,
+    "x": Object {
+      "alias": "foo",
+      "value": 300,
+    },
+    "y": Object {
+      "alias": "foo",
+      "value": 300,
+    },
+    "z": Object {
+      "alias": "foo",
+      "value": 300,
+    },
   },
 ]
 `;
@@ -71,9 +89,9 @@ Array [
 exports[`style resolves nested values: m.n.foo 1`] = `
 Array [
   Object {
-    "x": 100,
-    "y": 100,
-    "z": 100,
+    "x": "m.n.foo",
+    "y": "m.n.foo",
+    "z": "m.n.foo",
   },
 ]
 `;
@@ -88,27 +106,7 @@ Array [
 ]
 `;
 
-exports[`style uses fallback lookup: with fallback 1`] = `
-Array [
-  Object {
-    "x": 4,
-    "y": 4,
-    "z": 4,
-  },
-]
-`;
-
-exports[`style uses fallback lookup: with fallback 2`] = `
-Array [
-  Object {
-    "x": 8,
-    "y": 8,
-    "z": 8,
-  },
-]
-`;
-
-exports[`style uses fallback lookup: without fallback 1`] = `
+exports[`style uses fallback lookup: [ ] fallback 1`] = `
 Array [
   Object {
     "x": 1,
@@ -118,12 +116,32 @@ Array [
 ]
 `;
 
-exports[`style uses fallback lookup: without fallback 2`] = `
+exports[`style uses fallback lookup: [ ] fallback 2`] = `
 Array [
   Object {
     "x": 2,
     "y": 2,
     "z": 2,
+  },
+]
+`;
+
+exports[`style uses fallback lookup: [x] fallback 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style uses fallback lookup: [x] fallback 2`] = `
+Array [
+  Object {
+    "x": 8,
+    "y": 8,
+    "z": 8,
   },
 ]
 `;
@@ -159,6 +177,126 @@ Array [
 `;
 
 exports[`style uses prop aliases 4`] = `null`;
+
+exports[`style uses theme prop: [ ] fallback [ ] theme 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [ ] theme 2`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme1 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme1 2`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme2 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme2 2`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme3 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [ ] fallback [x] theme3 2`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style uses theme prop: [x] fallback [ ] theme 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`style uses theme prop: [x] fallback [x] theme1 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`style uses theme prop: [x] fallback [x] theme2 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`style uses theme prop: [x] fallback [x] theme3 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
 
 exports[`style uses transform function: addPc 1`] = `
 Array [

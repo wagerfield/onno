@@ -1,16 +1,8 @@
-import { Nil, Keys, Props, Style, StyleOptions, StyleFunction } from "./types"
-import { pathOr, toPath, isNil, isArray, isFunction } from "./utils"
-
-export const getKey = <P extends Props>(props: P, keys?: Keys): string | Nil =>
-  keys && keys.find((k) => props[k] != null)
-
-export const getValue = <P extends Props>(props: P, keys?: Keys) => {
-  const k = getKey(props, keys)
-  return k && props[k]
-}
+import { Keys, Props, Style, StyleOptions, StyleFunction } from "./types"
+import * as U from "./utils"
 
 export const createStyle = <S extends Style>(value?: any, keys?: Keys) => {
-  if (isNil(value) || !isArray(keys)) return null
+  if (U.isNil(value) || !U.isArray(keys)) return null
   return keys.reduce(
     (s, k) => {
       s[k] = value
@@ -28,25 +20,22 @@ export const style = <P extends Props, S extends Style>({
   fallback
 }: StyleOptions): StyleFunction<P, S> => (props: P) => {
   // Get first props value from propsKeys
-  let value = getValue(props, propsKeys)
+  let value = U.getValue(props, propsKeys)
 
   // Return null when value is undefined
-  if (isNil(value)) return null
-
-  // Resolve themePath from themeKeys
-  const themePath = toPath(getKey(props, themeKeys))
+  if (U.isNil(value)) return null
 
   // // Resolve lookup from themeKey
-  const lookup = pathOr(fallback)(["theme", ...themePath])(props)
+  const lookup = U.pathOr(fallback)(["theme", "todo"])(props)
 
   // Resolve style keys
-  const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+  const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
   // Resolve value from lookup path
-  value = pathOr(value)(toPath(value))(lookup)
+  value = U.pathOr(value)(U.toPath(value))(lookup)
 
   // Transform value
-  if (isFunction(transform)) value = transform(value)
+  if (U.isFunction(transform)) value = transform(value)
 
   // Create style from value and keys
   const result = createStyle<S>(value, keys)
