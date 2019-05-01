@@ -1,5 +1,6 @@
-import { StyleProp, ThemeProps } from "./types"
-import { extend } from "./style"
+import * as CSS from "csstype"
+import { Prop, Style, ThemeProps, Unit } from "./types"
+import { extend, compose } from "./style"
 
 const style = extend({
   themeKeys: ["colors", "palette"],
@@ -11,33 +12,78 @@ const style = extend({
   }
 })
 
+// Background Color
+
+export type BackgroundColorValue = CSS.BackgroundColorProperty
+
+export type BackgroundColorProp = Prop<BackgroundColorValue | Unit>
+
 export interface BackgroundColorProps extends ThemeProps {
-  backgroundColor?: StyleProp
-  bgc?: StyleProp
+  backgroundColor?: BackgroundColorProp
+  bgc?: BackgroundColorProp
 }
 
-export const backgroundColor = style<BackgroundColorProps>({
+export interface BackgroundColorStyle extends Style {
+  backgroundColor: BackgroundColorValue
+}
+
+export const backgroundColor = style<
+  BackgroundColorProps,
+  BackgroundColorStyle
+>({
   propsKeys: ["backgroundColor", "bgc"]
 })
 
+// Border Color
+
+export type BorderColorValue = CSS.BorderColorProperty
+
+export type BorderColorProp = Prop<BorderColorValue | Unit>
+
 export interface BorderColorProps extends ThemeProps {
-  borderColor?: StyleProp
-  bc?: StyleProp
+  borderColor?: BorderColorProp
+  bc?: BorderColorProp
 }
 
-export const borderColor = style<BorderColorProps>({
+export interface BorderColorStyle extends Style {
+  borderColor: BorderColorValue
+}
+
+export const borderColor = style<BorderColorProps, BorderColorStyle>({
   propsKeys: ["borderColor", "bc"]
 })
 
+// Text Color
+
+export type TextColorValue = CSS.ColorProperty
+
+export type TextColorProp = Prop<TextColorValue | Unit>
+
 export interface TextColorProps extends ThemeProps {
-  color?: StyleProp
-  tc?: StyleProp
+  color?: TextColorProp
+  tc?: TextColorProp
 }
 
-export const textColor = style<TextColorProps>({
+export interface TextColorStyle extends Style {
+  color: TextColorValue
+}
+
+export const textColor = style<TextColorProps, TextColorStyle>({
   propsKeys: ["color", "tc"]
 })
+
+// Color
 
 export type ColorProps = BackgroundColorProps &
   BorderColorProps &
   TextColorProps
+
+export type ColorStyle = BackgroundColorStyle &
+  BorderColorStyle &
+  TextColorStyle
+
+export const color = compose<ColorProps, ColorStyle>([
+  backgroundColor,
+  borderColor,
+  textColor
+])

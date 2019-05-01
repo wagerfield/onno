@@ -1,108 +1,190 @@
-import { StyleProp, ThemeProps } from "./types"
-import { extend, style } from "./style"
+import * as CSS from "csstype"
+import { Length, Prop, Style, ThemeProps } from "./types"
+import { compose, extend, style } from "./style"
 import { addPcOrPx } from "./utils"
 
-const layout = extend({
+const base = extend({
   transform: addPcOrPx,
-  fallback: [0, 4, 8, 16, 32, 64, 128, 256, 512]
+  fallback: [0, "100%", 4, 8, 16, 32, 64, 128, 256, 512]
 })
 
 // Display
 
+export type DisplayValue = CSS.DisplayProperty
+
+export type DisplayProp = Prop<DisplayValue>
+
 export interface DisplayProps extends ThemeProps {
-  display?: StyleProp
-  d?: StyleProp
+  display?: DisplayProp
+  d?: DisplayProp
 }
 
-export const display = style<DisplayProps>({
+export interface DisplayStyle extends Style {
+  display: DisplayValue
+}
+
+export const display = style<DisplayProps, DisplayStyle>({
   propsKeys: ["display", "d"]
 })
 
 // Width
 
+export type WidthValue = CSS.WidthProperty<Length>
+
+export type WidthProp = Prop<WidthValue>
+
 export interface WidthProps extends ThemeProps {
-  width?: StyleProp
-  w?: StyleProp
+  width?: WidthProp
+  w?: WidthProp
 }
 
-export const width = layout<WidthProps>({
+export interface WidthStyle extends Style {
+  width: WidthValue
+}
+
+export const width = base<WidthProps, WidthStyle>({
   propsKeys: ["width", "w"],
   themeKeys: ["widths"]
 })
 
+// Min Width
+
+export type MinWidthValue = CSS.MinWidthProperty<Length>
+
+export type MinWidthProp = Prop<MinWidthValue>
+
 export interface MinWidthProps extends ThemeProps {
-  minWidth?: StyleProp
-  minw?: StyleProp
+  minWidth?: MinWidthProp
+  minw?: MinWidthProp
 }
 
-export const minWidth = layout<MinWidthProps>({
+export interface MinWidthStyle extends Style {
+  minWidth: MinWidthValue
+}
+
+export const minWidth = base<MinWidthProps, MinWidthStyle>({
   propsKeys: ["minWidth", "minw"],
   themeKeys: ["minWidths"]
 })
 
+// Max Width
+
+export type MaxWidthValue = CSS.MaxWidthProperty<Length>
+
+export type MaxWidthProp = Prop<MaxWidthValue>
+
 export interface MaxWidthProps extends ThemeProps {
-  maxWidth?: StyleProp
-  maxw?: StyleProp
+  maxWidth?: Prop
+  maxw?: Prop
 }
 
-export const maxWidth = layout<MaxWidthProps>({
+export interface MaxWidthStyle extends Style {
+  maxWidth: MaxWidthValue
+}
+
+export const maxWidth = base<MaxWidthProps, MaxWidthStyle>({
   propsKeys: ["maxWidth", "maxw"],
   themeKeys: ["maxWidths"]
 })
 
 // Height
 
+export type HeightValue = CSS.HeightProperty<Length>
+
+export type HeightProp = Prop<HeightValue>
+
 export interface HeightProps extends ThemeProps {
-  height?: StyleProp
-  h?: StyleProp
+  height?: HeightProp
+  h?: HeightProp
 }
 
-export const height = layout<HeightProps>({
+export interface HeightStyle extends Style {
+  height: HeightValue
+}
+
+export const height = base<HeightProps, HeightStyle>({
   propsKeys: ["height", "h"],
   themeKeys: ["heights"]
 })
 
+// Min Height
+
+export type MinHeightValue = CSS.MinHeightProperty<Length>
+
+export type MinHeightProp = Prop<MinHeightValue>
+
 export interface MinHeightProps extends ThemeProps {
-  minHeight?: StyleProp
-  minh?: StyleProp
+  minHeight?: MinHeightProp
+  minh?: MinHeightProp
 }
 
-export const minHeight = layout<MinHeightProps>({
+export interface MinHeightStyle extends Style {
+  minHeight: MinHeightValue
+}
+
+export const minHeight = base<MinHeightProps, MinHeightStyle>({
   propsKeys: ["minHeight", "minh"],
   themeKeys: ["minHeights"]
 })
 
+// Max Height
+
+export type MaxHeightValue = CSS.MaxHeightProperty<Length>
+
+export type MaxHeightProp = Prop<MaxHeightValue>
+
 export interface MaxHeightProps extends ThemeProps {
-  maxHeight?: StyleProp
-  maxh?: StyleProp
+  maxHeight?: MaxHeightProp
+  maxh?: MaxHeightProp
 }
 
-export const maxHeight = layout<MaxHeightProps>({
+export interface MaxHeightStyle extends Style {
+  maxHeight: MaxHeightValue
+}
+
+export const maxHeight = base<MaxHeightProps, MaxHeightStyle>({
   propsKeys: ["maxHeight", "maxh"],
   themeKeys: ["maxHeights"]
 })
 
 // Size
 
+export type SizeValue = WidthValue & HeightValue
+
+export type SizeProp = WidthProp & HeightProp
+
 export interface SizeProps extends ThemeProps {
-  size?: StyleProp
-  s?: StyleProp
+  size?: SizeProp
+  s?: SizeProp
 }
 
-export const size = layout<SizeProps>({
+export interface SizeStyle extends Style {
+  width: SizeValue
+  height: SizeValue
+}
+
+export const size = base<SizeProps, SizeStyle>({
   propsKeys: ["size", "s"],
   styleKeys: ["width", "height"],
   themeKeys: ["sizes"]
 })
 
-// Alignment
+// Vertical Align
+
+export type VerticalAlignValue = CSS.VerticalAlignProperty<Length>
+
+export type VerticalAlignProp = Prop<VerticalAlignValue>
 
 export interface VerticalAlignProps extends ThemeProps {
-  verticalAlign?: StyleProp
-  va?: StyleProp
+  verticalAlign?: VerticalAlignProp
+  va?: VerticalAlignProp
 }
 
-export const verticalAlign = style<VerticalAlignProps>({
+export interface VerticalAlignStyle extends Style {
+  verticalAlign: VerticalAlignValue
+}
+
+export const verticalAlign = style<VerticalAlignProps, VerticalAlignStyle>({
   propsKeys: ["verticalAlign", "va"]
 })
 
@@ -117,3 +199,25 @@ export type LayoutProps = DisplayProps &
   MaxHeightProps &
   SizeProps &
   VerticalAlignProps
+
+export type LayoutStyle = DisplayStyle &
+  WidthStyle &
+  MinWidthStyle &
+  MaxWidthStyle &
+  HeightStyle &
+  MinHeightStyle &
+  MaxHeightStyle &
+  SizeStyle &
+  VerticalAlignStyle
+
+export const layout = compose<LayoutProps, LayoutStyle>([
+  display,
+  size,
+  width,
+  minWidth,
+  maxWidth,
+  height,
+  minHeight,
+  maxHeight,
+  verticalAlign
+])

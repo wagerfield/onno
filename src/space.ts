@@ -1,5 +1,6 @@
-import { StyleProp, ThemeProps } from "./types"
-import { extend } from "./style"
+import * as CSS from "csstype"
+import { Length, Prop, Style, ThemeProps } from "./types"
+import { compose, extend } from "./style"
 import { addPx } from "./utils"
 
 const MT = "marginTop"
@@ -18,138 +19,240 @@ const style = extend({
   fallback: [0, 4, 8, 16, 32, 64, 128, 256, 512]
 })
 
-// Margin
+// Margin Types
+
+export type MarginValue = CSS.MarginProperty<Length>
+
+export type MarginProp = Prop<MarginValue>
+
+// Margin Top
 
 export interface MarginTopProps extends ThemeProps {
-  marginTop?: StyleProp
-  mt?: StyleProp
+  marginTop?: MarginProp
+  mt?: MarginProp
 }
 
-export const marginTop = style<MarginTopProps>({
+export interface MarginTopStyle extends Style {
+  marginTop: MarginValue
+}
+
+export const marginTop = style<MarginTopProps, MarginTopStyle>({
   propsKeys: [MT, "mt"]
 })
 
+// Margin Right
+
 export interface MarginRightProps extends ThemeProps {
-  marginRight?: StyleProp
-  mr?: StyleProp
+  marginRight?: MarginProp
+  mr?: MarginProp
 }
 
-export const marginRight = style<MarginRightProps>({
+export interface MarginRightStyle extends Style {
+  marginRight: MarginValue
+}
+
+export const marginRight = style<MarginRightProps, MarginRightStyle>({
   propsKeys: [MR, "mr"]
 })
 
+// Margin Bottom
+
 export interface MarginBottomProps extends ThemeProps {
-  marginBottom?: StyleProp
-  mb?: StyleProp
+  marginBottom?: MarginProp
+  mb?: MarginProp
 }
 
-export const marginBottom = style<MarginBottomProps>({
+export interface MarginBottomStyle extends Style {
+  marginBottom: MarginValue
+}
+
+export const marginBottom = style<MarginBottomProps, MarginBottomStyle>({
   propsKeys: [MB, "mb"]
 })
 
+// Margin Left
+
 export interface MarginLeftProps extends ThemeProps {
-  marginLeft?: StyleProp
-  ml?: StyleProp
+  marginLeft?: MarginProp
+  ml?: MarginProp
 }
 
-export const marginLeft = style<MarginLeftProps>({
+export interface MarginLeftStyle extends Style {
+  marginLeft: MarginValue
+}
+
+export const marginLeft = style<MarginLeftProps, MarginLeftStyle>({
   propsKeys: [ML, "ml"]
 })
 
+// Margin X
+
 export interface MarginXProps extends ThemeProps {
-  marginX?: StyleProp
-  mx?: StyleProp
+  marginX?: MarginProp
+  mx?: MarginProp
 }
 
-export const marginX = style<MarginXProps>({
+export interface MarginXStyle extends Style {
+  marginLeft: MarginValue
+  marginRight: MarginValue
+}
+
+export const marginX = style<MarginXProps, MarginXStyle>({
   propsKeys: ["marginX", "mx"],
   styleKeys: [ML, MR]
 })
 
+// Margin Y
+
 export interface MarginYProps extends ThemeProps {
-  marginY?: StyleProp
-  my?: StyleProp
+  marginY?: MarginProp
+  my?: MarginProp
 }
 
-export const marginY = style<MarginYProps>({
+export interface MarginYStyle extends Style {
+  marginTop: MarginValue
+  marginBottom: MarginValue
+}
+
+export const marginY = style<MarginYProps, MarginYStyle>({
   propsKeys: ["marginY", "my"],
   styleKeys: [MT, MB]
 })
 
+// Margin
+
 export interface MarginProps extends ThemeProps {
-  margin?: StyleProp
-  m?: StyleProp
+  margin?: MarginProp
+  m?: MarginProp
 }
 
-export const margin = style<MarginProps>({
+export interface MarginStyle extends Style {
+  marginTop: MarginValue
+  marginRight: MarginValue
+  marginBottom: MarginValue
+  marginLeft: MarginValue
+}
+
+export const margin = style<MarginProps, MarginStyle>({
   propsKeys: ["margin", "m"],
   styleKeys: [MT, MR, MB, ML]
 })
 
-// Padding
+// Padding Types
+
+export type PaddingValue = CSS.PaddingProperty<Length>
+
+export type PaddingProp = Prop<PaddingValue>
+
+// Padding Top
 
 export interface PaddingTopProps extends ThemeProps {
-  paddingTop?: StyleProp
-  pt?: StyleProp
+  paddingTop?: PaddingProp
+  pt?: PaddingProp
 }
 
-export const paddingTop = style<PaddingTopProps>({
+export interface PaddingTopStyle extends Style {
+  paddingTop: PaddingValue
+}
+
+export const paddingTop = style<PaddingTopProps, PaddingTopStyle>({
   propsKeys: [PT, "pt"]
 })
 
+// Padding Right
+
 export interface PaddingRightProps extends ThemeProps {
-  paddingRight?: StyleProp
-  pr?: StyleProp
+  paddingRight?: PaddingProp
+  pr?: PaddingProp
 }
 
-export const paddingRight = style<PaddingRightProps>({
+export interface PaddingRightStyle extends Style {
+  paddingRight: PaddingValue
+}
+
+export const paddingRight = style<PaddingRightProps, PaddingRightStyle>({
   propsKeys: [PR, "pr"]
 })
 
+// Padding Bottom
+
 export interface PaddingBottomProps extends ThemeProps {
-  paddingBottom?: StyleProp
-  pb?: StyleProp
+  paddingBottom?: PaddingProp
+  pb?: PaddingProp
 }
 
-export const paddingBottom = style<PaddingBottomProps>({
+export interface PaddingBottomStyle extends Style {
+  paddingBottom: PaddingValue
+}
+
+export const paddingBottom = style<PaddingBottomProps, PaddingBottomStyle>({
   propsKeys: [PB, "pb"]
 })
 
+// Padding Left
+
 export interface PaddingLeftProps extends ThemeProps {
-  paddingLeft?: StyleProp
-  pl?: StyleProp
+  paddingLeft?: PaddingProp
+  pl?: PaddingProp
 }
 
-export const paddingLeft = style<PaddingLeftProps>({
+export interface PaddingLeftStyle extends Style {
+  paddingLeft: PaddingValue
+}
+
+export const paddingLeft = style<PaddingLeftProps, PaddingLeftStyle>({
   propsKeys: [PL, "pl"]
 })
 
+// Padding X
+
 export interface PaddingXProps extends ThemeProps {
-  paddingX?: StyleProp
-  px?: StyleProp
+  paddingX?: PaddingProp
+  px?: PaddingProp
 }
 
-export const paddingX = style<PaddingXProps>({
+export interface PaddingXStyle extends Style {
+  paddingLeft: PaddingValue
+  paddingRight: PaddingValue
+}
+
+export const paddingX = style<PaddingXProps, PaddingXStyle>({
   propsKeys: ["paddingX", "px"],
   styleKeys: [PL, PR]
 })
 
+// Padding Y
+
 export interface PaddingYProps extends ThemeProps {
-  paddingY?: StyleProp
-  py?: StyleProp
+  paddingY?: PaddingProp
+  py?: PaddingProp
 }
 
-export const paddingY = style<PaddingYProps>({
+export interface PaddingYStyle extends Style {
+  paddingTop: PaddingValue
+  paddingBottom: PaddingValue
+}
+
+export const paddingY = style<PaddingYProps, PaddingYStyle>({
   propsKeys: ["paddingY", "py"],
   styleKeys: [PT, PB]
 })
 
+// Padding
+
 export interface PaddingProps extends ThemeProps {
-  padding?: StyleProp
-  p?: StyleProp
+  padding?: PaddingProp
+  p?: PaddingProp
 }
 
-export const padding = style<PaddingProps>({
+export interface PaddingStyle extends Style {
+  paddingTop: PaddingValue
+  paddingRight: PaddingValue
+  paddingBottom: PaddingValue
+  paddingLeft: PaddingValue
+}
+
+export const padding = style<PaddingProps, PaddingStyle>({
   propsKeys: ["padding", "p"],
   styleKeys: [PT, PR, PB, PL]
 })
@@ -170,3 +273,35 @@ export type SpaceProps = MarginTopProps &
   PaddingXProps &
   PaddingYProps &
   PaddingProps
+
+export type SpaceStyle = MarginTopStyle &
+  MarginRightStyle &
+  MarginBottomStyle &
+  MarginLeftStyle &
+  MarginXStyle &
+  MarginYStyle &
+  MarginStyle &
+  PaddingTopStyle &
+  PaddingRightStyle &
+  PaddingBottomStyle &
+  PaddingLeftStyle &
+  PaddingXStyle &
+  PaddingYStyle &
+  PaddingStyle
+
+export const space = compose<SpaceProps, SpaceStyle>([
+  margin,
+  marginX,
+  marginY,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft,
+  padding,
+  paddingX,
+  paddingY,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft
+])
