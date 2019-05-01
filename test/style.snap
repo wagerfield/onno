@@ -9,195 +9,243 @@ Object {
 `;
 
 exports[`style resolves nested values: a 1`] = `
-Object {
-  "x": "a",
-  "y": "a",
-  "z": "a",
-}
+Array [
+  Object {
+    "x": "a",
+    "y": "a",
+    "z": "a",
+  },
+]
 `;
 
 exports[`style resolves nested values: m.a 1`] = `
-Object {
-  "x": "m.a",
-  "y": "m.a",
-  "z": "m.a",
-}
+Array [
+  Object {
+    "x": "m.a",
+    "y": "m.a",
+    "z": "m.a",
+  },
+]
 `;
 
 exports[`style resolves nested values: m.n.0 1`] = `
-Object {
-  "x": 100,
-  "y": 100,
-  "z": 100,
-}
+Array [
+  Object {
+    "x": 100,
+    "y": 100,
+    "z": 100,
+  },
+]
 `;
 
 exports[`style resolves nested values: m.n.1 1`] = `
-Object {
-  "x": 200,
-  "y": 200,
-  "z": 200,
-}
+Array [
+  Object {
+    "x": 200,
+    "y": 200,
+    "z": 200,
+  },
+]
 `;
 
 exports[`style resolves nested values: m.n.2 1`] = `
-Object {
-  "x": 300,
-  "y": 300,
-  "z": 300,
-}
+Array [
+  Object {
+    "x": 300,
+    "y": 300,
+    "z": 300,
+  },
+]
 `;
 
 exports[`style resolves nested values: m.n.3 1`] = `
-Object {
-  "x": "m.n.3",
-  "y": "m.n.3",
-  "z": "m.n.3",
-}
+Array [
+  Object {
+    "x": "m.n.3",
+    "y": "m.n.3",
+    "z": "m.n.3",
+  },
+]
 `;
 
-exports[`style resolves nested values: m.n.o 1`] = `
-Object {
-  "x": 100,
-  "y": 100,
-  "z": 100,
-}
+exports[`style resolves nested values: m.n.foo 1`] = `
+Array [
+  Object {
+    "x": 100,
+    "y": 100,
+    "z": 100,
+  },
+]
 `;
 
-exports[`style returns style object 1`] = `
-Object {
-  "x": "foo",
-  "y": "foo",
-  "z": "foo",
-}
+exports[`style returns style object array 1`] = `
+Array [
+  Object {
+    "x": "foo",
+    "y": "foo",
+    "z": "foo",
+  },
+]
 `;
 
 exports[`style uses fallback lookup: with fallback 1`] = `
-Object {
-  "x": 4,
-  "y": 4,
-  "z": 4,
-}
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
 `;
 
 exports[`style uses fallback lookup: with fallback 2`] = `
-Object {
-  "x": 8,
-  "y": 8,
-  "z": 8,
-}
+Array [
+  Object {
+    "x": 8,
+    "y": 8,
+    "z": 8,
+  },
+]
 `;
 
 exports[`style uses fallback lookup: without fallback 1`] = `
-Object {
-  "x": 1,
-  "y": 1,
-  "z": 1,
-}
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
 `;
 
 exports[`style uses fallback lookup: without fallback 2`] = `
-Object {
-  "x": 2,
-  "y": 2,
-  "z": 2,
-}
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
+  },
+]
 `;
 
 exports[`style uses prop aliases 1`] = `
-Object {
-  "x": 1,
-  "y": 1,
-  "z": 1,
-}
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
 `;
 
 exports[`style uses prop aliases 2`] = `
-Object {
-  "x": 2,
-  "y": 2,
-  "z": 2,
-}
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
+  },
+]
 `;
 
 exports[`style uses prop aliases 3`] = `
-Object {
-  "x": 3,
-  "y": 3,
-  "z": 3,
-}
+Array [
+  Object {
+    "x": 3,
+    "y": 3,
+    "z": 3,
+  },
+]
 `;
 
 exports[`style uses prop aliases 4`] = `null`;
 
 exports[`style uses transform function: addPc 1`] = `
-Object {
-  "x": "2em",
-  "y": "2em",
-  "z": "2em",
-}
+Array [
+  Object {
+    "x": "2em",
+    "y": "2em",
+    "z": "2em",
+  },
+]
 `;
 
 exports[`style uses transform function: addPc 2`] = `
-Object {
-  "x": "100%",
-  "y": "100%",
-  "z": "100%",
-}
+Array [
+  Object {
+    "x": "100%",
+    "y": "100%",
+    "z": "100%",
+  },
+]
 `;
 
 exports[`style uses transform function: addPc 3`] = `
-Object {
-  "x": 0,
-  "y": 0,
-  "z": 0,
-}
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
 `;
 
 exports[`style uses transform function: addPx 1`] = `
-Object {
-  "x": "2em",
-  "y": "2em",
-  "z": "2em",
-}
+Array [
+  Object {
+    "x": "2em",
+    "y": "2em",
+    "z": "2em",
+  },
+]
 `;
 
 exports[`style uses transform function: addPx 2`] = `
-Object {
-  "x": "100px",
-  "y": "100px",
-  "z": "100px",
-}
+Array [
+  Object {
+    "x": "100px",
+    "y": "100px",
+    "z": "100px",
+  },
+]
 `;
 
 exports[`style uses transform function: addPx 3`] = `
-Object {
-  "x": 0,
-  "y": 0,
-  "z": 0,
-}
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
 `;
 
 exports[`style uses transform function: none 1`] = `
-Object {
-  "x": "2em",
-  "y": "2em",
-  "z": "2em",
-}
+Array [
+  Object {
+    "x": "2em",
+    "y": "2em",
+    "z": "2em",
+  },
+]
 `;
 
 exports[`style uses transform function: none 2`] = `
-Object {
-  "x": 100,
-  "y": 100,
-  "z": 100,
-}
+Array [
+  Object {
+    "x": 100,
+    "y": 100,
+    "z": 100,
+  },
+]
 `;
 
 exports[`style uses transform function: none 3`] = `
-Object {
-  "x": 0,
-  "y": 0,
-  "z": 0,
-}
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
 `;

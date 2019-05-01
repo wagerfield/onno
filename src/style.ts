@@ -1,12 +1,4 @@
-import {
-  Nil,
-  Keys,
-  Props,
-  StyleObject,
-  StyleOptions,
-  StyleFunction,
-  PartialStyleOptions
-} from "./types"
+import { Nil, Keys, Props, Style, StyleOptions, StyleFunction } from "./types"
 import { pathOr, toPath, isNil, isArray, isFunction } from "./utils"
 
 export const getKey = <P extends Props>(props: P, keys?: Keys): string | Nil =>
@@ -17,35 +9,35 @@ export const getValue = <P extends Props>(props: P, keys?: Keys) => {
   return k && props[k]
 }
 
-export const createStyle = (value?: any, keys?: Keys) => {
+export const createStyle = <S extends Style>(value?: any, keys?: Keys) => {
   if (isNil(value) || !isArray(keys)) return null
   return keys.reduce(
     (s, k) => {
       s[k] = value
       return s
     },
-    {} as StyleObject
+    {} as S
   )
 }
 
-export const style = <P extends Props>({
+export const style = <P extends Props, S extends Style>({
   propsKeys,
   styleKeys,
   themeKeys,
   transform,
   fallback
-}: StyleOptions): StyleFunction<P> => (props: P) => {
+}: StyleOptions): StyleFunction<P, S> => (props: P) => {
   // Get first props value from propsKeys
   let value = getValue(props, propsKeys)
 
   // Return null when value is undefined
   if (isNil(value)) return null
 
-  // Resolve themeKey from themeKeys
-  const themeKey = getKey(props, themeKeys)
+  // Resolve themePath from themeKeys
+  const themePath = toPath(getKey(props, themeKeys))
 
   // // Resolve lookup from themeKey
-  const lookup = pathOr(fallback)(["theme", themeKey])(props)
+  const lookup = pathOr(fallback)(["theme", ...themePath])(props)
 
   // Resolve style keys
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
@@ -56,11 +48,27 @@ export const style = <P extends Props>({
   // Transform value
   if (isFunction(transform)) value = transform(value)
 
-  // Return style object
-  return createStyle(value, keys)
+  // Create style from value and keys
+  const result = createStyle<S>(value, keys)
+
+  // Return style array
+  return result && [result]
 }
 
-export const compose = <P>(fns: StyleFunction<P>[]): StyleFunction<P> => fns[0]
+export const compose = <P extends Props, S extends Style>(
+  styles: StyleFunction<any, any>[]
+): StyleFunction<P, S> => (props: P) =>
+  styles.reduce(
+    (a, f) => {
+      const s = f(props)
+      return s ? a.concat(s) : a
+    },
+    [] as S[]
+  )
 
-export const extend = (a: PartialStyleOptions) => <P>(b: StyleOptions) =>
-  style<P>({ ...a, ...b })
+export const extend = (a: Partial<StyleOptions>) => <
+  P extends Props,
+  S extends Style
+>(
+  b: StyleOptions
+) => style<P, S>({ ...a, ...b })

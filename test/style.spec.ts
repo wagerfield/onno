@@ -1,4 +1,4 @@
-import { PartialStyleOptions } from "../lib/types"
+import { StyleOptions } from "../lib/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
 
@@ -55,7 +55,7 @@ describe("createStyle", () => {
 })
 
 describe("style", () => {
-  const style = (options?: PartialStyleOptions) =>
+  const style = (options?: Partial<StyleOptions>) =>
     S.style({
       propsKeys: ["a", "b", "c"],
       styleKeys: ["x", "y", "z"],
@@ -74,7 +74,7 @@ describe("style", () => {
     expect(s({ z: "foo" })).toBeNull()
   })
 
-  test("returns style object", () => {
+  test("returns style object array", () => {
     const s = style()
     expect(s({ a: "foo" })).toMatchSnapshot()
   })
@@ -122,12 +122,12 @@ describe("style", () => {
         m: {
           n: [
             {
-              alias: "o",
+              alias: "foo", // find this...
               value: 100
             },
             200,
             {
-              alias: "o",
+              alias: "foo", // ...before this
               value: 300
             }
           ]
@@ -143,6 +143,6 @@ describe("style", () => {
     testValue("m.n.1")
     testValue("m.n.2")
     testValue("m.n.3")
-    testValue("m.n.o")
+    testValue("m.n.foo")
   })
 })
