@@ -16,7 +16,7 @@ const PL = "paddingLeft"
 const style = extend({
   transform: addPx,
   themeKeys: ["space", "spaces"],
-  fallback: [0, 4, 8, 16, 32, 64, 128, 256, 512]
+  fallback: [0, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 })
 
 // Margin Types
