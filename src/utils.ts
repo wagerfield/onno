@@ -8,8 +8,7 @@ export const isUnitless = (x: any) => typeof x === "number" && !!x
 
 export const isFraction = (x: any) => isUnitless(x) && x > 0 && x < 1
 
-export const when = (p: T.Predicate) => (f: T.TransformFunction) => (x: any) =>
-  p(x) ? f(x) : x
+export const when = (p: T.Pred) => (f: T.Func) => (x: any) => (p(x) ? f(x) : x)
 
 export const addPx = when(isUnitless)((x) => x + "px")
 
