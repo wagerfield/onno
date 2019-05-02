@@ -1,6 +1,7 @@
 import * as T from "../src/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
+import * as H from "./helpers"
 
 describe("createStyle", () => {
   test("returns null for undefined keys", () => {
@@ -17,27 +18,19 @@ describe("createStyle", () => {
 })
 
 describe("style", () => {
-  const style = (options?: Partial<T.StyleOptions>) =>
-    S.style({
-      propsKeys: ["a", "b", "c"],
-      styleKeys: ["x", "y", "z"],
-      themeKeys: ["t", "u", "v"],
-      ...options
-    })
-
   test("returns style function", () => {
-    const s = style()
+    const s = H.style()
     expect(s).toEqual(expect.any(Function))
     expect(s).toHaveLength(1)
   })
 
   test("returns null for unresolved keys", () => {
-    const s = style()
+    const s = H.style()
     expect(s({ z: "foo" })).toBeNull()
   })
 
   test("returns style object array", () => {
-    const s = style()
+    const s = H.style()
     expect(s({ a: "foo" })).toMatchSnapshot("a: foo")
   })
 
@@ -48,7 +41,7 @@ describe("style", () => {
   })
 
   test("supports prop aliases", () => {
-    const s = style()
+    const s = H.style()
     expect(s({ a: 1, b: 2, c: 3, d: 4 })).toMatchSnapshot("a:1, b:2, c:3, d:4")
     expect(s({ b: 2, c: 3, d: 4 })).toMatchSnapshot("b:2, c:3, d:4")
     expect(s({ c: 3, d: 4 })).toMatchSnapshot("c:3, d:4")
@@ -57,14 +50,14 @@ describe("style", () => {
 
   test("supports nested props", () => {
     const p = { a: { b: { c: 3 } } }
-    const s = style({ propsKeys: ["a.b.c"] })
+    const s = H.style({ propsKeys: ["a.b.c"] })
     expect(s(p)).toMatchSnapshot(JSON.stringify(p))
   })
 
   test("supports transform functions", () => {
-    const none = style()
-    const addPx = style({ transform: U.addPx })
-    const addPc = style({ transform: U.addPc })
+    const none = H.style()
+    const addPx = H.style({ transform: U.addPx })
+    const addPc = H.style({ transform: U.addPc })
 
     const testProps = (props: T.Props) => {
       const stringifiedProps = JSON.stringify(props)
@@ -80,8 +73,8 @@ describe("style", () => {
   })
 
   test("supports fallbacks", () => {
-    const none = style()
-    const fall = style({ fallback: [0, 4, 8] })
+    const none = H.style()
+    const fall = H.style({ fallback: [0, 4, 8] })
 
     const testProps = (props: T.Props) => {
       const stringifiedProps = JSON.stringify(props)
@@ -94,7 +87,7 @@ describe("style", () => {
   })
 
   test("supports nested fallbacks", () => {
-    const s = style({
+    const s = H.style({
       fallback: {
         k: {
           l: {
@@ -115,48 +108,5 @@ describe("style", () => {
     testProps({ a: "k.l.m" })
     testProps({ a: "k.l.n" })
     testProps({ a: "k.l.o.1" })
-  })
-
-  test("supports themes", () => {
-    const themeKeys = ["n.m.o", "t.u.v"]
-    const fallback = ["F0", "F1", "F2", "F3"]
-    const theme1 = {
-      t: ["T0"],
-      u: ["U0", "U1"],
-      v: ["V0", "V1", "V2"]
-    }
-    const theme2 = {
-      t: {
-        u: {
-          v: ["0V", "1V", "2V"]
-        }
-      }
-    }
-
-    const none = style()
-    const fall = style({ fallback })
-    const nest = style({ themeKeys })
-    const fbns = style({ themeKeys, fallback })
-
-    const testProps = (label: string, theme: any, props: T.Props) => {
-      const stringProps = JSON.stringify(props)
-      const snapshotName = (name: string) => `${name}[${label}]: ${stringProps}`
-      expect(none({ ...props, theme })).toMatchSnapshot(snapshotName("none"))
-      expect(fall({ ...props, theme })).toMatchSnapshot(snapshotName("fall"))
-      expect(nest({ ...props, theme })).toMatchSnapshot(snapshotName("nest"))
-      expect(fbns({ ...props, theme })).toMatchSnapshot(snapshotName("fbns"))
-    }
-
-    testProps("T1", theme1, { a: 0 })
-    testProps("T1", theme1, { a: 1 })
-    testProps("T1", theme1, { a: 2 })
-    testProps("T1", theme1, { a: 3 })
-    testProps("T1", theme1, { a: 4 })
-
-    testProps("T2", theme2, { a: 0 })
-    testProps("T2", theme2, { a: 1 })
-    testProps("T2", theme2, { a: 2 })
-    testProps("T2", theme2, { a: 3 })
-    testProps("T2", theme2, { a: 4 })
   })
 })
