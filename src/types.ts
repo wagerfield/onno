@@ -117,6 +117,6 @@ export type StyleArrayValue<S extends Style> = S | NestedStyle<S>
 
 export type StyleArray<S extends Style> = StyleArrayValue<S>[]
 
-export type StyleFunction<P extends Props, S extends Style> = (
+export type StyleFunction<P extends ThemeProps, S extends Style> = (
   props: P
 ) => StyleArray<S> | null

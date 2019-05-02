@@ -12,7 +12,7 @@ export const createStyle = <S extends T.Style>(keys?: T.Keys, value?: any) => {
   )
 }
 
-export const style = <P extends T.Props, S extends T.Style>({
+export const style = <P extends T.ThemeProps, S extends T.Style>({
   propsKeys,
   styleKeys,
   themeKeys,
@@ -25,11 +25,11 @@ export const style = <P extends T.Props, S extends T.Style>({
   // Return null when value is undefined
   if (U.isNil(value)) return null
 
-  // Create themed flag
+  // Set themed flag
   let themed = false
 
   // Resolve theme value
-  if (U.isArray(themeKeys)) {
+  if (props.theme && U.isArray(themeKeys)) {
     const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
     const themeValue = U.get(mappedKeys, props.theme)
     themed = !U.isNil(themeValue)
@@ -37,16 +37,16 @@ export const style = <P extends T.Props, S extends T.Style>({
   }
 
   // Resolve fallback value
-  if (!themed && !U.isNil(fallback)) {
+  if (fallback && !themed) {
     const fallbackValue = U.get([value], fallback)
     if (!U.isNil(fallbackValue)) value = fallbackValue
   }
 
-  // Resolve style keys
-  const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-
   // Transform value
   if (typeof transform === "function") value = transform(value)
+
+  // Resolve style keys
+  const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
   // Create style from value and keys
   const result = createStyle<S>(keys, value)
@@ -55,7 +55,7 @@ export const style = <P extends T.Props, S extends T.Style>({
   return result && [result]
 }
 
-export const compose = <P extends T.Props, S extends T.Style>(
+export const compose = <P extends T.ThemeProps, S extends T.Style>(
   styles: T.StyleFunction<any, any>[]
 ): T.StyleFunction<P, S> => (props: P) =>
   styles.reduce(
@@ -67,7 +67,7 @@ export const compose = <P extends T.Props, S extends T.Style>(
   )
 
 export const extend = (a: Partial<T.StyleOptions>) => <
-  P extends T.Props,
+  P extends T.ThemeProps,
   S extends T.Style
 >(
   b: T.StyleOptions
