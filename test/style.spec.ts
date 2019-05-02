@@ -41,6 +41,12 @@ describe("style", () => {
     expect(s({ a: "foo" })).toMatchSnapshot("a: foo")
   })
 
+  test("styleKeys default to first propsKeys", () => {
+    const s = S.style({ propsKeys: ["a", "b"] })
+    expect(s({ a: "foo" })).toMatchSnapshot()
+    expect(s({ b: "bar" })).toMatchSnapshot()
+  })
+
   test("supports prop aliases", () => {
     const s = style()
     expect(s({ a: 1, b: 2, c: 3, d: 4 })).toMatchSnapshot("a:1, b:2, c:3, d:4")

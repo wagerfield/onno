@@ -18,6 +18,22 @@ Array [
 ]
 `;
 
+exports[`style styleKeys default to first propsKeys 1`] = `
+Array [
+  Object {
+    "a": "foo",
+  },
+]
+`;
+
+exports[`style styleKeys default to first propsKeys 2`] = `
+Array [
+  Object {
+    "a": "bar",
+  },
+]
+`;
+
 exports[`style supports fallbacks: fall: {"a":1} 1`] = `
 Array [
   Object {
