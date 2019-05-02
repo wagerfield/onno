@@ -1,24 +1,24 @@
-import * as CSS from "csstype"
-import { Length, Prop, Style, ThemeProps, Unit } from "./types"
-import { compose, style } from "./style"
-import { addPx } from "./utils"
+import * as C from "csstype"
+import * as T from "./types"
+import * as S from "./style"
+import * as U from "./utils"
 
 // Font Family
 
-export type FontFamilyValue = CSS.FontFamilyProperty
+export type FontFamilyValue = C.FontFamilyProperty
 
-export type FontFamilyProp = Prop<FontFamilyValue | Unit>
+export type FontFamilyProp = T.Prop<FontFamilyValue | T.Unit>
 
-export interface FontFamilyProps extends ThemeProps {
+export interface FontFamilyProps extends T.ThemeProps {
   fontFamily?: FontFamilyProp
   ff?: FontFamilyProp
 }
 
-export interface FontFamilyStyle extends Style {
+export interface FontFamilyStyle extends T.Style {
   fontFamily: FontFamilyValue
 }
 
-export const fontFamily = style<FontFamilyProps, FontFamilyStyle>({
+export const fontFamily = S.style<FontFamilyProps, FontFamilyStyle>({
   propsKeys: ["fontFamily", "ff"],
   themeKeys: ["fontFamilies", "fonts"],
   fallback: {
@@ -29,61 +29,61 @@ export const fontFamily = style<FontFamilyProps, FontFamilyStyle>({
 
 // Font Size
 
-export type FontSizeValue = CSS.FontSizeProperty<Length>
+export type FontSizeValue = C.FontSizeProperty<T.Length>
 
-export type FontSizeProp = Prop<FontSizeValue>
+export type FontSizeProp = T.Prop<FontSizeValue>
 
-export interface FontSizeProps extends ThemeProps {
+export interface FontSizeProps extends T.ThemeProps {
   fontSize?: FontSizeProp
   fs?: FontSizeProp
 }
 
-export interface FontSizeStyle extends Style {
+export interface FontSizeStyle extends T.Style {
   fontSize: FontSizeValue
 }
 
-export const fontSize = style<FontSizeProps, FontSizeStyle>({
+export const fontSize = S.style<FontSizeProps, FontSizeStyle>({
   propsKeys: ["fontSize", "fs"],
   themeKeys: ["fontSizes"],
-  transform: addPx,
+  transform: U.addPx,
   fallback: [12, 14, 16, 20, 24, 32, 48, 64]
 })
 
 // Font Style
 
-export type FontStyleValue = CSS.FontStyleProperty
+export type FontStyleValue = C.FontStyleProperty
 
-export type FontStyleProp = Prop<FontStyleValue>
+export type FontStyleProp = T.Prop<FontStyleValue>
 
-export interface FontStyleProps extends ThemeProps {
+export interface FontStyleProps extends T.ThemeProps {
   fontStyle?: FontStyleProp
-  ft?: FontStyleProp
+  fst?: FontStyleProp
 }
 
-export interface FontStyleStyle extends Style {
+export interface FontStyleStyle extends T.Style {
   fontStyle: FontStyleValue
 }
 
-export const fontStyle = style<FontStyleProps, FontStyleStyle>({
-  propsKeys: ["fontStyle", "ft"]
+export const fontStyle = S.style<FontStyleProps, FontStyleStyle>({
+  propsKeys: ["fontStyle", "fst"]
 })
 
 // Font Weight
 
-export type FontWeightValue = CSS.FontWeightProperty
+export type FontWeightValue = C.FontWeightProperty
 
-export type FontWeightProp = Prop<FontWeightValue>
+export type FontWeightProp = T.Prop<FontWeightValue>
 
-export interface FontWeightProps extends ThemeProps {
+export interface FontWeightProps extends T.ThemeProps {
   fontWeight?: FontWeightProp
   fw?: FontWeightProp
 }
 
-export interface FontWeightStyle extends Style {
+export interface FontWeightStyle extends T.Style {
   fontWeight: FontWeightValue
 }
 
-export const fontWeight = style<FontWeightProps, FontWeightStyle>({
+export const fontWeight = S.style<FontWeightProps, FontWeightStyle>({
   propsKeys: ["fontWeight", "fw"],
   themeKeys: ["fontWeights"],
   fallback: {
@@ -94,20 +94,20 @@ export const fontWeight = style<FontWeightProps, FontWeightStyle>({
 
 // Line Height
 
-export type LineHeightValue = CSS.LineHeightProperty<Length>
+export type LineHeightValue = C.LineHeightProperty<T.Length>
 
-export type LineHeightProp = Prop<LineHeightValue>
+export type LineHeightProp = T.Prop<LineHeightValue>
 
-export interface LineHeightProps extends ThemeProps {
+export interface LineHeightProps extends T.ThemeProps {
   lineHeight?: LineHeightProp
   lh?: LineHeightProp
 }
 
-export interface LineHeightStyle extends Style {
+export interface LineHeightStyle extends T.Style {
   lineHeight: LineHeightValue
 }
 
-export const lineHeight = style<LineHeightProps, LineHeightStyle>({
+export const lineHeight = S.style<LineHeightProps, LineHeightStyle>({
   propsKeys: ["lineHeight", "lh"],
   themeKeys: ["lineHeights"],
   fallback: {
@@ -119,41 +119,41 @@ export const lineHeight = style<LineHeightProps, LineHeightStyle>({
 
 // Letter Spacing
 
-export type LetterSpacingValue = CSS.LetterSpacingProperty<Length>
+export type LetterSpacingValue = C.LetterSpacingProperty<T.Length>
 
-export type LetterSpacingProp = Prop<LetterSpacingValue>
+export type LetterSpacingProp = T.Prop<LetterSpacingValue>
 
-export interface LetterSpacingProps extends ThemeProps {
+export interface LetterSpacingProps extends T.ThemeProps {
   letterSpacing?: LetterSpacingProp
   ls?: LetterSpacingProp
 }
 
-export interface LetterSpacingStyle extends Style {
+export interface LetterSpacingStyle extends T.Style {
   letterSpacing: LetterSpacingValue
 }
 
-export const letterSpacing = style<LetterSpacingProps, LetterSpacingStyle>({
+export const letterSpacing = S.style<LetterSpacingProps, LetterSpacingStyle>({
   propsKeys: ["letterSpacing", "ls"],
   themeKeys: ["letterSpacings"],
-  transform: addPx
+  transform: U.addPx
 })
 
 // Text Align
 
-export type TextAlignValue = CSS.TextAlignProperty
+export type TextAlignValue = C.TextAlignProperty
 
-export type TextAlignProp = Prop<TextAlignValue>
+export type TextAlignProp = T.Prop<TextAlignValue>
 
-export interface TextAlignProps extends ThemeProps {
+export interface TextAlignProps extends T.ThemeProps {
   textAlign?: TextAlignProp
   ta?: TextAlignProp
 }
 
-export interface TextAlignStyle extends Style {
+export interface TextAlignStyle extends T.Style {
   textAlign: TextAlignValue
 }
 
-export const textAlign = style<TextAlignProps, TextAlignStyle>({
+export const textAlign = S.style<TextAlignProps, TextAlignStyle>({
   propsKeys: ["textAlign", "ta"]
 })
 
@@ -175,7 +175,7 @@ export type TextStyle = FontFamilyStyle &
   LetterSpacingStyle &
   TextAlignStyle
 
-export const text = compose<TextProps, TextStyle>([
+export const text = S.compose<TextProps, TextStyle>([
   fontFamily,
   fontSize,
   fontStyle,

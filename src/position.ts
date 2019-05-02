@@ -1,119 +1,119 @@
-import * as CSS from "csstype"
-import { Length, Prop, Style, ThemeProps } from "./types"
-import { compose, style } from "./style"
+import * as C from "csstype"
+import * as T from "./types"
+import * as S from "./style"
 
 // Position
 
-export type PositionValue = CSS.PositionProperty
+export type PositionValue = C.PositionProperty
 
-export type PositionProp = Prop<PositionValue>
+export type PositionProp = T.Prop<PositionValue>
 
-export interface PositionProps extends ThemeProps {
+export interface PositionProps extends T.ThemeProps {
   position?: PositionProp
   pos?: PositionProp
 }
 
-export interface PositionStyle extends Style {
+export interface PositionStyle extends T.Style {
   position: PositionValue
 }
 
-export const position = style<PositionProps, PositionStyle>({
+export const position = S.style<PositionProps, PositionStyle>({
   propsKeys: ["position", "pos"]
 })
 
 // Z Index
 
-export type ZIndexValue = CSS.ZIndexProperty
+export type ZIndexValue = C.ZIndexProperty
 
-export type ZIndexProp = Prop<ZIndexValue>
+export type ZIndexProp = T.Prop<ZIndexValue>
 
-export interface ZIndexProps extends ThemeProps {
+export interface ZIndexProps extends T.ThemeProps {
   zIndex?: ZIndexProp
   zi?: ZIndexProp
 }
 
-export interface ZIndexStyle extends Style {
+export interface ZIndexStyle extends T.Style {
   zIndex: ZIndexValue
 }
 
-export const zIndex = style<ZIndexProps, ZIndexStyle>({
+export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
   propsKeys: ["zIndex", "zi"],
   themeKeys: ["zIndices"]
 })
 
 // Top
 
-export type TopValue = CSS.TopProperty<Length>
+export type TopValue = C.TopProperty<T.Length>
 
-export type TopProp = Prop<TopValue>
+export type TopProp = T.Prop<TopValue>
 
-export interface TopProps extends ThemeProps {
+export interface TopProps extends T.ThemeProps {
   top?: TopProp
   t?: TopProp
 }
 
-export interface TopStyle extends Style {
+export interface TopStyle extends T.Style {
   top: TopValue
 }
 
-export const top = style<TopProps, TopStyle>({
+export const top = S.style<TopProps, TopStyle>({
   propsKeys: ["top", "t"]
 })
 
 // Right
 
-export type RightValue = CSS.RightProperty<Length>
+export type RightValue = C.RightProperty<T.Length>
 
-export type RightProp = Prop<RightValue>
+export type RightProp = T.Prop<RightValue>
 
-export interface RightProps extends ThemeProps {
+export interface RightProps extends T.ThemeProps {
   right?: RightProp
   r?: RightProp
 }
 
-export interface RightStyle extends Style {
+export interface RightStyle extends T.Style {
   right: RightValue
 }
 
-export const right = style<RightProps, RightStyle>({
+export const right = S.style<RightProps, RightStyle>({
   propsKeys: ["right", "r"]
 })
 
 // Bottom
 
-export type BottomValue = CSS.BottomProperty<Length>
+export type BottomValue = C.BottomProperty<T.Length>
 
-export type BottomProp = Prop<BottomValue>
+export type BottomProp = T.Prop<BottomValue>
 
-export interface BottomProps extends ThemeProps {
+export interface BottomProps extends T.ThemeProps {
   bottom?: BottomProp
   b?: BottomProp
 }
 
-export interface BottomStyle extends Style {
+export interface BottomStyle extends T.Style {
   bottom: BottomValue
 }
 
-export const bottom = style<BottomProps, BottomStyle>({
+export const bottom = S.style<BottomProps, BottomStyle>({
   propsKeys: ["bottom", "b"]
 })
 
 // Left
 
-export type LeftValue = CSS.LeftProperty<Length>
+export type LeftValue = C.LeftProperty<T.Length>
 
-export type LeftProp = Prop<LeftValue>
+export type LeftProp = T.Prop<LeftValue>
 
-export interface LeftProps extends ThemeProps {
+export interface LeftProps extends T.ThemeProps {
   left?: LeftProp
   l?: LeftProp
 }
 
-export interface LeftStyle extends Style {
+export interface LeftStyle extends T.Style {
   left: LeftValue
 }
 
-export const left = style<LeftProps, LeftStyle>({
+export const left = S.style<LeftProps, LeftStyle>({
   propsKeys: ["left", "l"]
 })
 
@@ -123,4 +123,4 @@ export type EdgeProps = TopProps & RightProps & BottomProps & LeftProps
 
 export type EdgeStyle = TopStyle & RightStyle & BottomStyle & LeftStyle
 
-export const edge = compose<EdgeProps, EdgeStyle>([top, right, bottom, left])
+export const edge = S.compose<EdgeProps, EdgeStyle>([top, right, bottom, left])

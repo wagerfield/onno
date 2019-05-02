@@ -1,8 +1,8 @@
-import * as CSS from "csstype"
-import { Prop, Style, ThemeProps, Unit } from "./types"
-import { extend, compose } from "./style"
+import * as C from "csstype"
+import * as T from "./types"
+import * as S from "./style"
 
-const style = extend({
+const ex = S.extend({
   themeKeys: ["colors", "palette"],
   fallback: {
     gray: ["#EEE", "#AAA", "#666"],
@@ -14,61 +14,58 @@ const style = extend({
 
 // Background Color
 
-export type BackgroundColorValue = CSS.BackgroundColorProperty
+export type BackgroundColorValue = C.BackgroundColorProperty
 
-export type BackgroundColorProp = Prop<BackgroundColorValue | Unit>
+export type BackgroundColorProp = T.Prop<BackgroundColorValue | T.Unit>
 
-export interface BackgroundColorProps extends ThemeProps {
+export interface BackgroundColorProps extends T.ThemeProps {
   backgroundColor?: BackgroundColorProp
   bgc?: BackgroundColorProp
 }
 
-export interface BackgroundColorStyle extends Style {
+export interface BackgroundColorStyle extends T.Style {
   backgroundColor: BackgroundColorValue
 }
 
-export const backgroundColor = style<
-  BackgroundColorProps,
-  BackgroundColorStyle
->({
+export const backgroundColor = ex<BackgroundColorProps, BackgroundColorStyle>({
   propsKeys: ["backgroundColor", "bgc"]
 })
 
 // Border Color
 
-export type BorderColorValue = CSS.BorderColorProperty
+export type BorderColorValue = C.BorderColorProperty
 
-export type BorderColorProp = Prop<BorderColorValue | Unit>
+export type BorderColorProp = T.Prop<BorderColorValue | T.Unit>
 
-export interface BorderColorProps extends ThemeProps {
+export interface BorderColorProps extends T.ThemeProps {
   borderColor?: BorderColorProp
   bc?: BorderColorProp
 }
 
-export interface BorderColorStyle extends Style {
+export interface BorderColorStyle extends T.Style {
   borderColor: BorderColorValue
 }
 
-export const borderColor = style<BorderColorProps, BorderColorStyle>({
+export const borderColor = ex<BorderColorProps, BorderColorStyle>({
   propsKeys: ["borderColor", "bc"]
 })
 
 // Text Color
 
-export type TextColorValue = CSS.ColorProperty
+export type TextColorValue = C.ColorProperty
 
-export type TextColorProp = Prop<TextColorValue | Unit>
+export type TextColorProp = T.Prop<TextColorValue | T.Unit>
 
-export interface TextColorProps extends ThemeProps {
+export interface TextColorProps extends T.ThemeProps {
   color?: TextColorProp
   tc?: TextColorProp
 }
 
-export interface TextColorStyle extends Style {
+export interface TextColorStyle extends T.Style {
   color: TextColorValue
 }
 
-export const textColor = style<TextColorProps, TextColorStyle>({
+export const textColor = ex<TextColorProps, TextColorStyle>({
   propsKeys: ["color", "tc"]
 })
 
@@ -82,7 +79,7 @@ export type ColorStyle = BackgroundColorStyle &
   BorderColorStyle &
   TextColorStyle
 
-export const color = compose<ColorProps, ColorStyle>([
+export const color = S.compose<ColorProps, ColorStyle>([
   backgroundColor,
   borderColor,
   textColor
