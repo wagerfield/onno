@@ -8,6 +8,8 @@ export type Key = string
 
 export type Keys = Key[]
 
+export type Predicate = (...args: any[]) => boolean
+
 export type ResponsivePropArray<P> = P[]
 
 export interface ResponsivePropObject<P> {
