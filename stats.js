@@ -7,5 +7,5 @@ const getStats = (pattern) => {
   }, 0)
 }
 
-console.log("themed-system:", getStats("lib/*.js"))
-console.log("styled-system:", getStats("tmp/styled-system.js"))
+console.log("lib:", getStats("lib/*.js"))
+console.log("tmp:", getStats("tmp/*.js"))
