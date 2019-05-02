@@ -55,6 +55,13 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
   return result && [result]
 }
 
+export const extend = (a: Partial<T.StyleOptions>) => <
+  P extends T.ThemeProps,
+  S extends T.Style
+>(
+  b: T.StyleOptions
+) => style<P, S>({ ...a, ...b })
+
 export const compose = <P extends T.ThemeProps, S extends T.Style>(
   styles: T.StyleFunction<any, any>[]
 ): T.StyleFunction<P, S> => (props: P) =>
@@ -65,10 +72,3 @@ export const compose = <P extends T.ThemeProps, S extends T.Style>(
     },
     [] as S[]
   )
-
-export const extend = (a: Partial<T.StyleOptions>) => <
-  P extends T.ThemeProps,
-  S extends T.Style
->(
-  b: T.StyleOptions
-) => style<P, S>({ ...a, ...b })
