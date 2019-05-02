@@ -1,5 +1,5 @@
 import * as T from "../src/types"
-import * as H from "./helpers"
+import * as H from "./test-utils"
 
 test("style supports themes", () => {
   const themeKeys = ["n.m.o", "t.u.v"]

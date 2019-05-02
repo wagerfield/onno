@@ -1,7 +1,7 @@
 import * as T from "../src/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
-import * as H from "./helpers"
+import * as H from "./test-utils"
 
 describe("createStyle", () => {
   test("returns null for undefined keys", () => {
@@ -108,5 +108,25 @@ describe("style", () => {
     testProps({ a: "k.l.m" })
     testProps({ a: "k.l.n" })
     testProps({ a: "k.l.o.1" })
+  })
+
+  test("supports responsive props", () => {
+    expect(true).toBe(true)
+  })
+})
+
+describe("compose", () => {
+  test("returns style function", () => {
+    const s = S.compose([])
+    expect(s).toEqual(expect.any(Function))
+    expect(s).toHaveLength(1)
+  })
+})
+
+describe("extend", () => {
+  test("returns style factory", () => {
+    const s = S.extend({})
+    expect(s).toEqual(expect.any(Function))
+    expect(s).toHaveLength(1)
   })
 })
