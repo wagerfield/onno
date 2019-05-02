@@ -109,6 +109,7 @@ describe("style", () => {
     }
 
     testProps({ a: "j.k" })
+    testProps({ a: "k.l.z" })
     testProps({ a: "k.l.m" })
     testProps({ a: "k.l.n" })
     testProps({ a: "k.l.o.1" })
