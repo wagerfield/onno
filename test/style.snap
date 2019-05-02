@@ -8,95 +8,7 @@ Object {
 }
 `;
 
-exports[`style resolves nested values: a 1`] = `
-Array [
-  Object {
-    "x": "a",
-    "y": "a",
-    "z": "a",
-  },
-]
-`;
-
-exports[`style resolves nested values: m.a 1`] = `
-Array [
-  Object {
-    "x": "m.a",
-    "y": "m.a",
-    "z": "m.a",
-  },
-]
-`;
-
-exports[`style resolves nested values: m.n.0 1`] = `
-Array [
-  Object {
-    "x": Object {
-      "alias": "foo",
-      "value": 100,
-    },
-    "y": Object {
-      "alias": "foo",
-      "value": 100,
-    },
-    "z": Object {
-      "alias": "foo",
-      "value": 100,
-    },
-  },
-]
-`;
-
-exports[`style resolves nested values: m.n.1 1`] = `
-Array [
-  Object {
-    "x": 200,
-    "y": 200,
-    "z": 200,
-  },
-]
-`;
-
-exports[`style resolves nested values: m.n.2 1`] = `
-Array [
-  Object {
-    "x": Object {
-      "alias": "foo",
-      "value": 300,
-    },
-    "y": Object {
-      "alias": "foo",
-      "value": 300,
-    },
-    "z": Object {
-      "alias": "foo",
-      "value": 300,
-    },
-  },
-]
-`;
-
-exports[`style resolves nested values: m.n.3 1`] = `
-Array [
-  Object {
-    "x": "m.n.3",
-    "y": "m.n.3",
-    "z": "m.n.3",
-  },
-]
-`;
-
-exports[`style resolves nested values: m.n.foo 1`] = `
-Array [
-  Object {
-    "x": "m.n.foo",
-    "y": "m.n.foo",
-    "z": "m.n.foo",
-  },
-]
-`;
-
-exports[`style returns style object array 1`] = `
+exports[`style returns style object array: a: foo 1`] = `
 Array [
   Object {
     "x": "foo",
@@ -106,27 +18,7 @@ Array [
 ]
 `;
 
-exports[`style uses fallback lookup: [ ] fallback 1`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style uses fallback lookup: [ ] fallback 2`] = `
-Array [
-  Object {
-    "x": 2,
-    "y": 2,
-    "z": 2,
-  },
-]
-`;
-
-exports[`style uses fallback lookup: [x] fallback 1`] = `
+exports[`style supports fallbacks: fall: {"a":1} 1`] = `
 Array [
   Object {
     "x": 4,
@@ -136,7 +28,7 @@ Array [
 ]
 `;
 
-exports[`style uses fallback lookup: [x] fallback 2`] = `
+exports[`style supports fallbacks: fall: {"a":2} 1`] = `
 Array [
   Object {
     "x": 8,
@@ -146,7 +38,7 @@ Array [
 ]
 `;
 
-exports[`style uses prop aliases 1`] = `
+exports[`style supports fallbacks: none: {"a":1} 1`] = `
 Array [
   Object {
     "x": 1,
@@ -156,7 +48,7 @@ Array [
 ]
 `;
 
-exports[`style uses prop aliases 2`] = `
+exports[`style supports fallbacks: none: {"a":2} 1`] = `
 Array [
   Object {
     "x": 2,
@@ -166,7 +58,47 @@ Array [
 ]
 `;
 
-exports[`style uses prop aliases 3`] = `
+exports[`style supports nested fallbacks: {"a":"j.k"} 1`] = `
+Array [
+  Object {
+    "x": "j.k",
+    "y": "j.k",
+    "z": "j.k",
+  },
+]
+`;
+
+exports[`style supports nested fallbacks: {"a":"k.l.m"} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`style supports nested fallbacks: {"a":"k.l.n"} 1`] = `
+Array [
+  Object {
+    "x": "foo",
+    "y": "foo",
+    "z": "foo",
+  },
+]
+`;
+
+exports[`style supports nested fallbacks: {"a":"k.l.o.1"} 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`style supports nested props: {"a":{"b":{"c":3}}} 1`] = `
 Array [
   Object {
     "x": 3,
@@ -176,9 +108,7 @@ Array [
 ]
 `;
 
-exports[`style uses prop aliases 4`] = `null`;
-
-exports[`style uses theme prop: [ ] fallback [ ] theme 1`] = `
+exports[`style supports prop aliases: a:1, b:2, c:3, d:4 1`] = `
 Array [
   Object {
     "x": 1,
@@ -188,117 +118,29 @@ Array [
 ]
 `;
 
-exports[`style uses theme prop: [ ] fallback [ ] theme 2`] = `
+exports[`style supports prop aliases: b:2, c:3, d:4 1`] = `
 Array [
   Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
+    "x": 2,
+    "y": 2,
+    "z": 2,
   },
 ]
 `;
 
-exports[`style uses theme prop: [ ] fallback [x] theme1 1`] = `
+exports[`style supports prop aliases: c:3, d:4 1`] = `
 Array [
   Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
+    "x": 3,
+    "y": 3,
+    "z": 3,
   },
 ]
 `;
 
-exports[`style uses theme prop: [ ] fallback [x] theme1 2`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
+exports[`style supports prop aliases: d:4 1`] = `null`;
 
-exports[`style uses theme prop: [ ] fallback [x] theme2 1`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style uses theme prop: [ ] fallback [x] theme2 2`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style uses theme prop: [ ] fallback [x] theme3 1`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style uses theme prop: [ ] fallback [x] theme3 2`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style uses theme prop: [x] fallback [ ] theme 1`] = `
-Array [
-  Object {
-    "x": 22,
-    "y": 22,
-    "z": 22,
-  },
-]
-`;
-
-exports[`style uses theme prop: [x] fallback [x] theme1 1`] = `
-Array [
-  Object {
-    "x": 22,
-    "y": 22,
-    "z": 22,
-  },
-]
-`;
-
-exports[`style uses theme prop: [x] fallback [x] theme2 1`] = `
-Array [
-  Object {
-    "x": 22,
-    "y": 22,
-    "z": 22,
-  },
-]
-`;
-
-exports[`style uses theme prop: [x] fallback [x] theme3 1`] = `
-Array [
-  Object {
-    "x": 22,
-    "y": 22,
-    "z": 22,
-  },
-]
-`;
-
-exports[`style uses transform function: addPc 1`] = `
+exports[`style supports transform functions: addPc: {"a":"2em"} 1`] = `
 Array [
   Object {
     "x": "2em",
@@ -308,17 +150,17 @@ Array [
 ]
 `;
 
-exports[`style uses transform function: addPc 2`] = `
+exports[`style supports transform functions: addPc: {"a":0.5} 1`] = `
 Array [
   Object {
-    "x": "100%",
-    "y": "100%",
-    "z": "100%",
+    "x": "50%",
+    "y": "50%",
+    "z": "50%",
   },
 ]
 `;
 
-exports[`style uses transform function: addPc 3`] = `
+exports[`style supports transform functions: addPc: {"a":0} 1`] = `
 Array [
   Object {
     "x": 0,
@@ -328,47 +170,7 @@ Array [
 ]
 `;
 
-exports[`style uses transform function: addPx 1`] = `
-Array [
-  Object {
-    "x": "2em",
-    "y": "2em",
-    "z": "2em",
-  },
-]
-`;
-
-exports[`style uses transform function: addPx 2`] = `
-Array [
-  Object {
-    "x": "100px",
-    "y": "100px",
-    "z": "100px",
-  },
-]
-`;
-
-exports[`style uses transform function: addPx 3`] = `
-Array [
-  Object {
-    "x": 0,
-    "y": 0,
-    "z": 0,
-  },
-]
-`;
-
-exports[`style uses transform function: none 1`] = `
-Array [
-  Object {
-    "x": "2em",
-    "y": "2em",
-    "z": "2em",
-  },
-]
-`;
-
-exports[`style uses transform function: none 2`] = `
+exports[`style supports transform functions: addPc: {"a":100} 1`] = `
 Array [
   Object {
     "x": 100,
@@ -378,12 +180,82 @@ Array [
 ]
 `;
 
-exports[`style uses transform function: none 3`] = `
+exports[`style supports transform functions: addPx: {"a":"2em"} 1`] = `
+Array [
+  Object {
+    "x": "2em",
+    "y": "2em",
+    "z": "2em",
+  },
+]
+`;
+
+exports[`style supports transform functions: addPx: {"a":0.5} 1`] = `
+Array [
+  Object {
+    "x": "0.5px",
+    "y": "0.5px",
+    "z": "0.5px",
+  },
+]
+`;
+
+exports[`style supports transform functions: addPx: {"a":0} 1`] = `
 Array [
   Object {
     "x": 0,
     "y": 0,
     "z": 0,
+  },
+]
+`;
+
+exports[`style supports transform functions: addPx: {"a":100} 1`] = `
+Array [
+  Object {
+    "x": "100px",
+    "y": "100px",
+    "z": "100px",
+  },
+]
+`;
+
+exports[`style supports transform functions: none: {"a":"2em"} 1`] = `
+Array [
+  Object {
+    "x": "2em",
+    "y": "2em",
+    "z": "2em",
+  },
+]
+`;
+
+exports[`style supports transform functions: none: {"a":0.5} 1`] = `
+Array [
+  Object {
+    "x": 0.5,
+    "y": 0.5,
+    "z": 0.5,
+  },
+]
+`;
+
+exports[`style supports transform functions: none: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`style supports transform functions: none: {"a":100} 1`] = `
+Array [
+  Object {
+    "x": 100,
+    "y": 100,
+    "z": 100,
   },
 ]
 `;

@@ -20,19 +20,17 @@ export const style = <P extends T.Props, S extends T.Style>({
   fallback
 }: T.StyleOptions): T.StyleFunction<P, S> => (props: P) => {
   // Get first props value from propsKeys
-  let value = U.getValue(props, propsKeys)
+  let value = U.get(propsKeys)(props)
 
   // Return null when value is undefined
   if (U.isNil(value)) return null
 
-  // // Resolve lookup from themeKey
-  const lookup = U.pathOr(fallback)(["theme", "todo"])(props)
+  // Resolve fallback value
+  const fallbackValue = U.get([value])(fallback)
+  value = U.isNil(fallbackValue) ? value : fallbackValue
 
   // Resolve style keys
   const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-
-  // Resolve value from lookup path
-  value = U.pathOr(value)(U.toPath(value))(lookup)
 
   // Transform value
   if (typeof transform === "function") value = transform(value)

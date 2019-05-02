@@ -1,4 +1,4 @@
-import { StyleOptions } from "../lib/types"
+import * as T from "../src/types"
 import * as S from "../src/style"
 import * as U from "../src/utils"
 
@@ -17,7 +17,7 @@ describe("createStyle", () => {
 })
 
 describe("style", () => {
-  const style = (options?: Partial<StyleOptions>) =>
+  const style = (options?: Partial<T.StyleOptions>) =>
     S.style({
       propsKeys: ["a", "b", "c"],
       styleKeys: ["x", "y", "z"],
@@ -38,134 +38,73 @@ describe("style", () => {
 
   test("returns style object array", () => {
     const s = style()
-    expect(s({ a: "foo" })).toMatchSnapshot()
+    expect(s({ a: "foo" })).toMatchSnapshot("a: foo")
   })
 
-  test("uses prop aliases", () => {
+  test("supports prop aliases", () => {
     const s = style()
-    expect(s({ a: 1, b: 2, c: 3, d: 4 })).toMatchSnapshot()
-    expect(s({ b: 2, c: 3, d: 4 })).toMatchSnapshot()
-    expect(s({ c: 3, d: 4 })).toMatchSnapshot()
-    expect(s({ d: 4 })).toMatchSnapshot()
+    expect(s({ a: 1, b: 2, c: 3, d: 4 })).toMatchSnapshot("a:1, b:2, c:3, d:4")
+    expect(s({ b: 2, c: 3, d: 4 })).toMatchSnapshot("b:2, c:3, d:4")
+    expect(s({ c: 3, d: 4 })).toMatchSnapshot("c:3, d:4")
+    expect(s({ d: 4 })).toMatchSnapshot("d:4")
   })
 
-  test("uses transform function", () => {
+  test("supports nested props", () => {
+    const p = { a: { b: { c: 3 } } }
+    const s = style({ propsKeys: ["a.b.c"] })
+    expect(s(p)).toMatchSnapshot(JSON.stringify(p))
+  })
+
+  test("supports transform functions", () => {
     const none = style()
     const addPx = style({ transform: U.addPx })
     const addPc = style({ transform: U.addPc })
 
-    expect(none({ a: "2em" })).toMatchSnapshot("none")
-    expect(addPx({ a: "2em" })).toMatchSnapshot("addPx")
-    expect(addPc({ a: "2em" })).toMatchSnapshot("addPc")
+    const testProps = (props: T.Props) => {
+      expect(none(props)).toMatchSnapshot(`none: ${JSON.stringify(props)}`)
+      expect(addPx(props)).toMatchSnapshot(`addPx: ${JSON.stringify(props)}`)
+      expect(addPc(props)).toMatchSnapshot(`addPc: ${JSON.stringify(props)}`)
+    }
 
-    expect(none({ a: 100 })).toMatchSnapshot("none")
-    expect(addPx({ a: 100 })).toMatchSnapshot("addPx")
-    expect(addPc({ a: 100 })).toMatchSnapshot("addPc")
-
-    expect(none({ a: 0 })).toMatchSnapshot("none")
-    expect(addPx({ a: 0 })).toMatchSnapshot("addPx")
-    expect(addPc({ a: 0 })).toMatchSnapshot("addPc")
+    testProps({ a: "2em" })
+    testProps({ a: 100 })
+    testProps({ a: 0.5 })
+    testProps({ a: 0 })
   })
 
-  test("uses fallback lookup", () => {
+  test("supports fallbacks", () => {
     const none = style()
     const fall = style({ fallback: [0, 4, 8] })
 
-    expect(none({ a: 1 })).toMatchSnapshot("[ ] fallback")
-    expect(none({ a: 2 })).toMatchSnapshot("[ ] fallback")
+    const testProps = (props: T.Props) => {
+      expect(none(props)).toMatchSnapshot(`none: ${JSON.stringify(props)}`)
+      expect(fall(props)).toMatchSnapshot(`fall: ${JSON.stringify(props)}`)
+    }
 
-    expect(fall({ a: 1 })).toMatchSnapshot("[x] fallback")
-    expect(fall({ a: 2 })).toMatchSnapshot("[x] fallback")
+    testProps({ a: 1 })
+    testProps({ a: 2 })
   })
 
-  test("resolves nested values", () => {
+  test("supports nested fallbacks", () => {
     const s = style({
       fallback: {
-        m: {
-          n: [
-            {
-              alias: "foo", // find this...
-              value: 100
-            },
-            200,
-            {
-              alias: "foo", // ...before this
-              value: 300
-            }
-          ]
+        k: {
+          l: {
+            m: 0,
+            n: "foo",
+            o: [11, 22, 33]
+          }
         }
       }
     })
 
-    const testValue = (a: string) => expect(s({ a })).toMatchSnapshot(a)
-
-    testValue("a")
-    testValue("m.a")
-    testValue("m.n.0")
-    testValue("m.n.1")
-    testValue("m.n.2")
-    testValue("m.n.3")
-    testValue("m.n.foo")
-  })
-
-  test("uses theme prop", () => {
-    const fallback = [11, 22, 33]
-    const theme1 = {
-      t: ["0T", "1T", "2T"],
-      u: ["0U", "1U", "2U"]
-    }
-    const theme2 = {
-      u: ["0U", "1U", "2U"],
-      v: ["0V", "1V", "2V"]
-    }
-    const theme3 = {
-      t: {
-        u: {
-          v: ["0V", "1V", "2V"]
-        }
-      }
+    const testProps = (props: T.Props) => {
+      expect(s(props)).toMatchSnapshot(JSON.stringify(props))
     }
 
-    const none = style()
-    const fall = style({ fallback })
-    const nest = style({ themeKeys: ["n.m.o", "t.u.v"] })
-
-    // No theme
-    expect(none({ a: 1 })).toMatchSnapshot("[ ] fallback [ ] theme")
-    expect(fall({ a: 1 })).toMatchSnapshot("[x] fallback [ ] theme")
-    expect(nest({ a: 1 })).toMatchSnapshot("[ ] fallback [ ] theme")
-
-    // With theme1
-    expect(none({ a: 1, theme: theme1 })).toMatchSnapshot(
-      "[ ] fallback [x] theme1"
-    )
-    expect(fall({ a: 1, theme: theme1 })).toMatchSnapshot(
-      "[x] fallback [x] theme1"
-    )
-    expect(nest({ a: 1, theme: theme1 })).toMatchSnapshot(
-      "[ ] fallback [x] theme1"
-    )
-
-    // With theme2
-    expect(none({ a: 1, theme: theme2 })).toMatchSnapshot(
-      "[ ] fallback [x] theme2"
-    )
-    expect(fall({ a: 1, theme: theme2 })).toMatchSnapshot(
-      "[x] fallback [x] theme2"
-    )
-    expect(nest({ a: 1, theme: theme2 })).toMatchSnapshot(
-      "[ ] fallback [x] theme2"
-    )
-
-    // With theme3
-    expect(none({ a: 1, theme: theme3 })).toMatchSnapshot(
-      "[ ] fallback [x] theme3"
-    )
-    expect(fall({ a: 1, theme: theme3 })).toMatchSnapshot(
-      "[x] fallback [x] theme3"
-    )
-    expect(nest({ a: 1, theme: theme3 })).toMatchSnapshot(
-      "[ ] fallback [x] theme3"
-    )
+    testProps({ a: "j.k" })
+    testProps({ a: "k.l.m" })
+    testProps({ a: "k.l.n" })
+    testProps({ a: "k.l.o.1" })
   })
 })
