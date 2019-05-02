@@ -1,39 +1,9 @@
 import * as U from "../src/utils"
 
-test("isType", () => {
-  expect(U.isType("string")("foo")).toBe(true)
-  expect(U.isType("number")(123)).toBe(true)
-  expect(U.isType("object")({})).toBe(true)
-})
-
 test("isNil", () => {
   expect(U.isNil(undefined)).toBe(true)
   expect(U.isNil(null)).toBe(true)
   expect(U.isNil(0)).toBe(false)
-})
-
-test("isFunction", () => {
-  const foo = () => "foo"
-  function bar() {
-    return "bar"
-  }
-  expect(U.isFunction(foo)).toBe(true)
-  expect(U.isFunction(bar)).toBe(true)
-  expect(U.isFunction("1")).toBe(false)
-  expect(U.isFunction(null)).toBe(false)
-})
-
-test("isNumber", () => {
-  expect(U.isNumber(0)).toBe(true)
-  expect(U.isNumber(1)).toBe(true)
-  expect(U.isNumber({})).toBe(false)
-  expect(U.isNumber("0")).toBe(false)
-})
-
-test("isString", () => {
-  expect(U.isString("1")).toBe(true)
-  expect(U.isString({})).toBe(false)
-  expect(U.isString(1)).toBe(false)
 })
 
 test("addUnit", () => {

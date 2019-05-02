@@ -8,8 +8,6 @@ export type Key = string
 
 export type Keys = Key[]
 
-export type TypeGuard<T> = (x: any) => x is T
-
 export type ResponsivePropArray<P> = P[]
 
 export interface ResponsivePropObject<P> {
@@ -91,7 +89,7 @@ export interface ThemeProps extends Props {
   theme?: Theme
 }
 
-export type TransformFunction = (value: Unit) => Unit
+export type TransformFunction = (value: any) => any
 
 export interface StyleOptions {
   propsKeys: Keys

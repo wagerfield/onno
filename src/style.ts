@@ -1,7 +1,7 @@
-import { Keys, Props, Style, StyleOptions, StyleFunction } from "./types"
+import * as T from "./types"
 import * as U from "./utils"
 
-export const createStyle = <S extends Style>(value?: any, keys?: Keys) => {
+export const createStyle = <S extends T.Style>(value?: any, keys?: T.Keys) => {
   if (U.isNil(value) || !U.isArray(keys)) return null
   return keys.reduce(
     (s, k) => {
@@ -12,13 +12,13 @@ export const createStyle = <S extends Style>(value?: any, keys?: Keys) => {
   )
 }
 
-export const style = <P extends Props, S extends Style>({
+export const style = <P extends T.Props, S extends T.Style>({
   propsKeys,
   styleKeys,
   themeKeys,
   transform,
   fallback
-}: StyleOptions): StyleFunction<P, S> => (props: P) => {
+}: T.StyleOptions): T.StyleFunction<P, S> => (props: P) => {
   // Get first props value from propsKeys
   let value = U.getValue(props, propsKeys)
 
@@ -35,7 +35,7 @@ export const style = <P extends Props, S extends Style>({
   value = U.pathOr(value)(U.toPath(value))(lookup)
 
   // Transform value
-  if (U.isFunction(transform)) value = transform(value)
+  if (typeof transform === "function") value = transform(value)
 
   // Create style from value and keys
   const result = createStyle<S>(value, keys)
@@ -44,9 +44,9 @@ export const style = <P extends Props, S extends Style>({
   return result && [result]
 }
 
-export const compose = <P extends Props, S extends Style>(
-  styles: StyleFunction<any, any>[]
-): StyleFunction<P, S> => (props: P) =>
+export const compose = <P extends T.Props, S extends T.Style>(
+  styles: T.StyleFunction<any, any>[]
+): T.StyleFunction<P, S> => (props: P) =>
   styles.reduce(
     (a, f) => {
       const s = f(props)
@@ -55,9 +55,9 @@ export const compose = <P extends Props, S extends Style>(
     [] as S[]
   )
 
-export const extend = (a: Partial<StyleOptions>) => <
-  P extends Props,
-  S extends Style
+export const extend = (a: Partial<T.StyleOptions>) => <
+  P extends T.Props,
+  S extends T.Style
 >(
-  b: StyleOptions
+  b: T.StyleOptions
 ) => style<P, S>({ ...a, ...b })
