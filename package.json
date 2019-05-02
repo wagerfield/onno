@@ -59,7 +59,10 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "snapshotResolver": "<rootDir>/snaps"
+    "snapshotResolver": "<rootDir>/snaps",
+    "coveragePathIgnorePatterns": [
+      "test-utils"
+    ]
   },
   "dependencies": {
     "csstype": "2.6.4"
