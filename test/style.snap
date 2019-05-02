@@ -166,6 +166,406 @@ Array [
 
 exports[`style supports prop aliases: d:4 1`] = `null`;
 
+exports[`style supports themes: fall[T1]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "T0",
+    "y": "T0",
+    "z": "T0",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T1]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "U1",
+    "y": "U1",
+    "z": "U1",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T1]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "V2",
+    "y": "V2",
+    "z": "V2",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T1]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": "F3",
+    "y": "F3",
+    "z": "F3",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T1]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: fall[T2]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "F0",
+    "y": "F0",
+    "z": "F0",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T2]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "F1",
+    "y": "F1",
+    "z": "F1",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T2]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "F2",
+    "y": "F2",
+    "z": "F2",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T2]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": "F3",
+    "y": "F3",
+    "z": "F3",
+  },
+]
+`;
+
+exports[`style supports themes: fall[T2]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T1]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "F0",
+    "y": "F0",
+    "z": "F0",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T1]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "F1",
+    "y": "F1",
+    "z": "F1",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T1]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "F2",
+    "y": "F2",
+    "z": "F2",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T1]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": "F3",
+    "y": "F3",
+    "z": "F3",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T1]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T2]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "0V",
+    "y": "0V",
+    "z": "0V",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T2]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "1V",
+    "y": "1V",
+    "z": "1V",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T2]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "2V",
+    "y": "2V",
+    "z": "2V",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T2]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": "F3",
+    "y": "F3",
+    "z": "F3",
+  },
+]
+`;
+
+exports[`style supports themes: fbns[T2]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T1]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T1]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T1]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T1]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": 3,
+    "y": 3,
+    "z": 3,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T1]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T2]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "0V",
+    "y": "0V",
+    "z": "0V",
+  },
+]
+`;
+
+exports[`style supports themes: nest[T2]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "1V",
+    "y": "1V",
+    "z": "1V",
+  },
+]
+`;
+
+exports[`style supports themes: nest[T2]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "2V",
+    "y": "2V",
+    "z": "2V",
+  },
+]
+`;
+
+exports[`style supports themes: nest[T2]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": 3,
+    "y": 3,
+    "z": 3,
+  },
+]
+`;
+
+exports[`style supports themes: nest[T2]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: none[T1]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": "T0",
+    "y": "T0",
+    "z": "T0",
+  },
+]
+`;
+
+exports[`style supports themes: none[T1]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": "U1",
+    "y": "U1",
+    "z": "U1",
+  },
+]
+`;
+
+exports[`style supports themes: none[T1]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": "V2",
+    "y": "V2",
+    "z": "V2",
+  },
+]
+`;
+
+exports[`style supports themes: none[T1]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": 3,
+    "y": 3,
+    "z": 3,
+  },
+]
+`;
+
+exports[`style supports themes: none[T1]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
+exports[`style supports themes: none[T2]: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`style supports themes: none[T2]: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
+exports[`style supports themes: none[T2]: {"a":2} 1`] = `
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
+  },
+]
+`;
+
+exports[`style supports themes: none[T2]: {"a":3} 1`] = `
+Array [
+  Object {
+    "x": 3,
+    "y": 3,
+    "z": 3,
+  },
+]
+`;
+
+exports[`style supports themes: none[T2]: {"a":4} 1`] = `
+Array [
+  Object {
+    "x": 4,
+    "y": 4,
+    "z": 4,
+  },
+]
+`;
+
 exports[`style supports transform functions: addPc: {"a":"2em"} 1`] = `
 Array [
   Object {

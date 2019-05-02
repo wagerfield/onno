@@ -67,9 +67,10 @@ describe("style", () => {
     const addPc = style({ transform: U.addPc })
 
     const testProps = (props: T.Props) => {
-      expect(none(props)).toMatchSnapshot(`none: ${JSON.stringify(props)}`)
-      expect(addPx(props)).toMatchSnapshot(`addPx: ${JSON.stringify(props)}`)
-      expect(addPc(props)).toMatchSnapshot(`addPc: ${JSON.stringify(props)}`)
+      const stringifiedProps = JSON.stringify(props)
+      expect(none(props)).toMatchSnapshot(`none: ${stringifiedProps}`)
+      expect(addPx(props)).toMatchSnapshot(`addPx: ${stringifiedProps}`)
+      expect(addPc(props)).toMatchSnapshot(`addPc: ${stringifiedProps}`)
     }
 
     testProps({ a: "2em" })
@@ -83,8 +84,9 @@ describe("style", () => {
     const fall = style({ fallback: [0, 4, 8] })
 
     const testProps = (props: T.Props) => {
-      expect(none(props)).toMatchSnapshot(`none: ${JSON.stringify(props)}`)
-      expect(fall(props)).toMatchSnapshot(`fall: ${JSON.stringify(props)}`)
+      const stringifiedProps = JSON.stringify(props)
+      expect(none(props)).toMatchSnapshot(`none: ${stringifiedProps}`)
+      expect(fall(props)).toMatchSnapshot(`fall: ${stringifiedProps}`)
     }
 
     testProps({ a: 1 })
@@ -113,5 +115,48 @@ describe("style", () => {
     testProps({ a: "k.l.m" })
     testProps({ a: "k.l.n" })
     testProps({ a: "k.l.o.1" })
+  })
+
+  test("supports themes", () => {
+    const themeKeys = ["n.m.o", "t.u.v"]
+    const fallback = ["F0", "F1", "F2", "F3"]
+    const theme1 = {
+      t: ["T0"],
+      u: ["U0", "U1"],
+      v: ["V0", "V1", "V2"]
+    }
+    const theme2 = {
+      t: {
+        u: {
+          v: ["0V", "1V", "2V"]
+        }
+      }
+    }
+
+    const none = style()
+    const fall = style({ fallback })
+    const nest = style({ themeKeys })
+    const fbns = style({ themeKeys, fallback })
+
+    const testProps = (label: string, theme: any, props: T.Props) => {
+      const stringProps = JSON.stringify(props)
+      const snapshotName = (name: string) => `${name}[${label}]: ${stringProps}`
+      expect(none({ ...props, theme })).toMatchSnapshot(snapshotName("none"))
+      expect(fall({ ...props, theme })).toMatchSnapshot(snapshotName("fall"))
+      expect(nest({ ...props, theme })).toMatchSnapshot(snapshotName("nest"))
+      expect(fbns({ ...props, theme })).toMatchSnapshot(snapshotName("fbns"))
+    }
+
+    testProps("T1", theme1, { a: 0 })
+    testProps("T1", theme1, { a: 1 })
+    testProps("T1", theme1, { a: 2 })
+    testProps("T1", theme1, { a: 3 })
+    testProps("T1", theme1, { a: 4 })
+
+    testProps("T2", theme2, { a: 0 })
+    testProps("T2", theme2, { a: 1 })
+    testProps("T2", theme2, { a: 2 })
+    testProps("T2", theme2, { a: 3 })
+    testProps("T2", theme2, { a: 4 })
   })
 })

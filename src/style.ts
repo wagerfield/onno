@@ -25,9 +25,22 @@ export const style = <P extends T.Props, S extends T.Style>({
   // Return null when value is undefined
   if (U.isNil(value)) return null
 
+  // Create themed flag
+  let themed = false
+
+  // Resolve theme value
+  if (U.isArray(themeKeys)) {
+    const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
+    const themeValue = U.get(mappedKeys, props.theme)
+    themed = !U.isNil(themeValue)
+    if (themed) value = themeValue
+  }
+
   // Resolve fallback value
-  const fallbackValue = U.get([value], fallback)
-  value = U.isNil(fallbackValue) ? value : fallbackValue
+  if (!themed && !U.isNil(fallback)) {
+    const fallbackValue = U.get([value], fallback)
+    if (!U.isNil(fallbackValue)) value = fallbackValue
+  }
 
   // Resolve style keys
   const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
