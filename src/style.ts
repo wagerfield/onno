@@ -1,7 +1,7 @@
 import * as T from "./types"
 import * as U from "./utils"
 
-export const createStyle = <S extends T.Style>(value?: any, keys?: T.Keys) => {
+export const createStyle = <S extends T.Style>(keys?: T.Keys, value?: any) => {
   if (U.isNil(value) || !U.isArray(keys)) return null
   return keys.reduce(
     (s, k) => {
@@ -20,13 +20,13 @@ export const style = <P extends T.Props, S extends T.Style>({
   fallback
 }: T.StyleOptions): T.StyleFunction<P, S> => (props: P) => {
   // Get first props value from propsKeys
-  let value = U.get(propsKeys)(props)
+  let value = U.get(propsKeys, props)
 
   // Return null when value is undefined
   if (U.isNil(value)) return null
 
   // Resolve fallback value
-  const fallbackValue = U.get([value])(fallback)
+  const fallbackValue = U.get([value], fallback)
   value = U.isNil(fallbackValue) ? value : fallbackValue
 
   // Resolve style keys
@@ -36,7 +36,7 @@ export const style = <P extends T.Props, S extends T.Style>({
   if (typeof transform === "function") value = transform(value)
 
   // Create style from value and keys
-  const result = createStyle<S>(value, keys)
+  const result = createStyle<S>(keys, value)
 
   // Return style array
   return result && [result]

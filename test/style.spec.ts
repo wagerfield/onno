@@ -3,16 +3,16 @@ import * as S from "../src/style"
 import * as U from "../src/utils"
 
 describe("createStyle", () => {
-  test("returns null for undefined value", () => {
+  test("returns null for undefined keys", () => {
     expect(S.createStyle()).toBeNull()
   })
 
-  test("returns null for undefined keys", () => {
-    expect(S.createStyle("foo")).toBeNull()
+  test("returns null for undefined value", () => {
+    expect(S.createStyle(["foo"])).toBeNull()
   })
 
   test("returns style object", () => {
-    expect(S.createStyle("foo", ["x", "y", "z"])).toMatchSnapshot()
+    expect(S.createStyle(["x", "y", "z"], "foo")).toMatchSnapshot()
   })
 })
 

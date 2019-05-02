@@ -96,23 +96,22 @@ test("get", () => {
     }
   }
 
-  expect(U.get()()).toBeUndefined()
-  expect(U.get([])()).toBeUndefined()
-  expect(U.get()(obj)).toBeUndefined()
-  expect(U.get([])(obj)).toBeUndefined()
-  expect(U.get(["baz"])(obj)).toBeUndefined()
-  expect(U.get(["foo.a"])(obj)).toBeUndefined()
+  expect(U.get()).toBeUndefined()
+  expect(U.get([])).toBeUndefined()
+  expect(U.get([], obj)).toBeUndefined()
+  expect(U.get(["baz"], obj)).toBeUndefined()
+  expect(U.get(["foo.a"], obj)).toBeUndefined()
 
-  expect(U.get(["foo"])(obj)).toBe(obj.foo)
-  expect(U.get(["bar"])(obj)).toBe(obj.bar)
-  expect(U.get(["bar.a"])(obj)).toBe(obj.bar.a)
-  expect(U.get(["bar.b"])(obj)).toBe(obj.bar.b)
-  expect(U.get(["bar.c"])(obj)).toBe(obj.bar.c)
-  expect(U.get(["bar.d"])(obj)).toBe(obj.bar.d)
-  expect(U.get(["bar.d.1"])(obj)).toBe(obj.bar.d[1])
+  expect(U.get(["foo"], obj)).toBe(obj.foo)
+  expect(U.get(["bar"], obj)).toBe(obj.bar)
+  expect(U.get(["bar.a"], obj)).toBe(obj.bar.a)
+  expect(U.get(["bar.b"], obj)).toBe(obj.bar.b)
+  expect(U.get(["bar.c"], obj)).toBe(obj.bar.c)
+  expect(U.get(["bar.d"], obj)).toBe(obj.bar.d)
+  expect(U.get(["bar.d.1"], obj)).toBe(obj.bar.d[1])
 
-  expect(U.get(["foo", "bar"])(obj)).toBe(obj.foo)
-  expect(U.get(["bar", "foo"])(obj)).toBe(obj.bar)
+  expect(U.get(["foo", "bar"], obj)).toBe(obj.foo)
+  expect(U.get(["bar", "foo"], obj)).toBe(obj.bar)
 
-  expect(U.get(["foo.a", "bar.a"])(obj)).toBe(obj.bar.a)
+  expect(U.get(["foo.a", "bar.a"], obj)).toBe(obj.bar.a)
 })
