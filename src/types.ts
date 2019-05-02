@@ -59,22 +59,21 @@ export interface Theme {
   colors?: ThemeValue
   palette?: ThemeValue
   // Space
-  space?: ThemeValue
   spaces?: ThemeValue
   // Layout
+  sizes?: ThemeValue
   widths?: ThemeValue
   minWidths?: ThemeValue
   maxWidths?: ThemeValue
   heights?: ThemeValue
   minHeights?: ThemeValue
   maxHeights?: ThemeValue
-  sizes?: ThemeValue
   // Typography
+  fontFamilies?: ThemeValue
+  fontSizes?: ThemeValue
+  fontWeights?: ThemeValue
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
-  fontFamilies?: ThemeValue
-  fontWeights?: ThemeValue
-  fontSizes?: ThemeValue
   // Border
   borders?: ThemeValue
   borderStyles?: ThemeValue

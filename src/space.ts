@@ -15,7 +15,7 @@ const PL = "paddingLeft"
 
 const ex = S.extend({
   transform: U.addPx,
-  themeKeys: ["spaces", "space"],
+  themeKeys: ["spaces"],
   fallback: [0, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 })
 

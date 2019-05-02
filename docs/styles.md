@@ -10,22 +10,22 @@
 
 ## Space
 
-| Function Name | Props Keys        | Style Keys                                           | Theme Keys    |
-| :------------ | :---------------- | :--------------------------------------------------- | :------------ |
-| marginTop     | marginTop, mt     | marginTop                                            | spaces, space |
-| marginRight   | marginRight, mr   | marginRight                                          | spaces, space |
-| marginBottom  | marginBottom, mr  | marginBottom                                         | spaces, space |
-| marginLeft    | marginLeft, mr    | marginLeft                                           | spaces, space |
-| marginX       | marginX, mx       | marginLeft, marginRight                              | spaces, space |
-| marginY       | marginY, my       | marginTop, marginBottom                              | spaces, space |
-| margin        | margin, m         | marginTop, marginRight, marginBottom, marginLeft     | spaces, space |
-| paddingTop    | paddingTop, pt    | paddingTop                                           | spaces, space |
-| paddingRight  | paddingRight, pr  | paddingRight                                         | spaces, space |
-| paddingBottom | paddingBottom, pr | paddingBottom                                        | spaces, space |
-| paddingLeft   | paddingLeft, pr   | paddingLeft                                          | spaces, space |
-| paddingX      | paddingX, px      | paddingLeft, paddingRight                            | spaces, space |
-| paddingY      | paddingY, py      | paddingTop, paddingBottom                            | spaces, space |
-| padding       | padding, p        | paddingTop, paddingRight, paddingBottom, paddingLeft | spaces, space |
+| Function Name | Props Keys        | Style Keys                                           | Theme Keys |
+| :------------ | :---------------- | :--------------------------------------------------- | :--------- |
+| marginTop     | marginTop, mt     | marginTop                                            | spaces     |
+| marginRight   | marginRight, mr   | marginRight                                          | spaces     |
+| marginBottom  | marginBottom, mr  | marginBottom                                         | spaces     |
+| marginLeft    | marginLeft, mr    | marginLeft                                           | spaces     |
+| marginX       | marginX, mx       | marginLeft, marginRight                              | spaces     |
+| marginY       | marginY, my       | marginTop, marginBottom                              | spaces     |
+| margin        | margin, m         | marginTop, marginRight, marginBottom, marginLeft     | spaces     |
+| paddingTop    | paddingTop, pt    | paddingTop                                           | spaces     |
+| paddingRight  | paddingRight, pr  | paddingRight                                         | spaces     |
+| paddingBottom | paddingBottom, pr | paddingBottom                                        | spaces     |
+| paddingLeft   | paddingLeft, pr   | paddingLeft                                          | spaces     |
+| paddingX      | paddingX, px      | paddingLeft, paddingRight                            | spaces     |
+| paddingY      | paddingY, py      | paddingTop, paddingBottom                            | spaces     |
+| padding       | padding, p        | paddingTop, paddingRight, paddingBottom, paddingLeft | spaces     |
 
 ## Layout
 
