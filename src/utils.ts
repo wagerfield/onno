@@ -20,9 +20,10 @@ export const mq = (x: any) => `@media screen and (min-width: ${addPx(x)})`
 
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 
-export const get = (keys?: string[], x?: any) =>
-  keys &&
-  keys.reduceRight((v, k) => {
-    const r = toPath(k).reduce((a, b) => a && a[b], x)
-    return isNil(r) ? v : r
-  }, undefined)
+export const get = (keys?: any[], x?: any) =>
+  isArray(keys)
+    ? keys.reduceRight((v, k) => {
+        const r = toPath(k).reduce((a, b) => a && a[b], x)
+        return isNil(r) ? v : r
+      }, null)
+    : null

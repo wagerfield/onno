@@ -96,11 +96,11 @@ test("get", () => {
     }
   }
 
-  expect(U.get()).toBeUndefined()
-  expect(U.get([])).toBeUndefined()
-  expect(U.get([], obj)).toBeUndefined()
-  expect(U.get(["baz"], obj)).toBeUndefined()
-  expect(U.get(["foo.a"], obj)).toBeUndefined()
+  expect(U.get()).toBeNull()
+  expect(U.get([])).toBeNull()
+  expect(U.get([], obj)).toBeNull()
+  expect(U.get(["baz"], obj)).toBeNull()
+  expect(U.get(["foo.a"], obj)).toBeNull()
 
   expect(U.get(["foo"], obj)).toBe(obj.foo)
   expect(U.get(["bar"], obj)).toBe(obj.bar)
