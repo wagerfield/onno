@@ -1,42 +1,61 @@
-import * as T from "../src/types"
 import * as H from "./test-utils"
 
-test("style supports themes", () => {
-  const themeKeys = ["n.m.o", "t.u.v"]
-  const fallback = ["F0", "F1", "F2"]
-  const theme1 = {
-    t: ["T0"],
-    u: ["U0", "U1"]
-  }
-  const theme2 = {
-    t: {
-      u: {
-        v: ["0V", "1V"]
-      }
+const fallback = ["F0", "F1", "F2"]
+const themeKeys = ["t.u.v"]
+
+const theme1 = {
+  t: ["T0"],
+  u: ["U0", "U1"]
+}
+
+const theme2 = {
+  t: {
+    u: {
+      v: ["0V", "1V"]
     }
   }
+}
 
-  const none = H.style()
-  const fall = H.style({ fallback })
-  const nest = H.style({ themeKeys })
-  const fbns = H.style({ themeKeys, fallback })
+const theme3 = {
+  v: [{ alias: "foo", value: 11 }, { alias: "bar", value: 22 }]
+}
 
-  const testProps = (label: string, theme: any, props: T.Props) => {
-    const stringProps = JSON.stringify(props)
-    const snapshotName = (name: string) => `${name}[${label}]: ${stringProps}`
-    expect(none({ ...props, theme })).toMatchSnapshot(snapshotName("none"))
-    expect(fall({ ...props, theme })).toMatchSnapshot(snapshotName("fall"))
-    expect(nest({ ...props, theme })).toMatchSnapshot(snapshotName("nest"))
-    expect(fbns({ ...props, theme })).toMatchSnapshot(snapshotName("fbns"))
-  }
+test("supports theme", () => {
+  const testProps = H.snapshot(H.style())
+  testProps({ a: 0, theme: theme1 }, "0")
+  testProps({ a: 1, theme: theme1 }, "1")
+  testProps({ a: 2, theme: theme1 }, "2")
+})
 
-  testProps("T1", theme1, { a: 0 })
-  testProps("T1", theme1, { a: 1 })
-  testProps("T1", theme1, { a: 2 })
-  testProps("T1", theme1, { a: 3 })
+test("supports nested theme", () => {
+  const testProps = H.snapshot(H.style({ themeKeys }))
+  testProps({ a: 0, theme: theme2 }, "0")
+  testProps({ a: 1, theme: theme2 }, "1")
+  testProps({ a: 2, theme: theme2 }, "2")
+})
 
-  testProps("T2", theme2, { a: 0 })
-  testProps("T2", theme2, { a: 1 })
-  testProps("T2", theme2, { a: 2 })
-  testProps("T2", theme2, { a: 3 })
+test("supports theme and fallback", () => {
+  const testProps = H.snapshot(H.style({ fallback }))
+  testProps({ a: 0, theme: theme1 }, "0")
+  testProps({ a: 1, theme: theme1 }, "1")
+  testProps({ a: 2, theme: theme1 }, "2")
+  testProps({ a: 3, theme: theme1 }, "3")
+})
+
+test("supports nested theme and fallback", () => {
+  const testProps = H.snapshot(H.style({ fallback, themeKeys }))
+  testProps({ a: 0, theme: theme2 }, "0")
+  testProps({ a: 1, theme: theme2 }, "1")
+  testProps({ a: 2, theme: theme2 }, "2")
+  testProps({ a: 3, theme: theme2 }, "3")
+})
+
+test("supports theme array aliases", () => {
+  const testProps = H.snapshot(H.style())
+  testProps({ a: "foo", theme: theme3 }, "foo")
+  testProps({ a: "bar", theme: theme3 }, "bar")
+  testProps({ a: "baz", theme: theme3 }, "baz")
+  testProps({ a: 0, theme: theme3 }, "0")
+  testProps({ a: 1, theme: theme3 }, "1")
+  testProps({ a: 2, theme: theme3 }, "2")
 })

@@ -1,126 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`style supports themes: fall[T1]: {"a":0} 1`] = `
-Array [
-  Object {
-    "x": "T0",
-    "y": "T0",
-    "z": "T0",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T1]: {"a":1} 1`] = `
-Array [
-  Object {
-    "x": "U1",
-    "y": "U1",
-    "z": "U1",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T1]: {"a":2} 1`] = `
-Array [
-  Object {
-    "x": "F2",
-    "y": "F2",
-    "z": "F2",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T1]: {"a":3} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
-  },
-]
-`;
-
-exports[`style supports themes: fall[T2]: {"a":0} 1`] = `
-Array [
-  Object {
-    "x": "F0",
-    "y": "F0",
-    "z": "F0",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T2]: {"a":1} 1`] = `
-Array [
-  Object {
-    "x": "F1",
-    "y": "F1",
-    "z": "F1",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T2]: {"a":2} 1`] = `
-Array [
-  Object {
-    "x": "F2",
-    "y": "F2",
-    "z": "F2",
-  },
-]
-`;
-
-exports[`style supports themes: fall[T2]: {"a":3} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
-  },
-]
-`;
-
-exports[`style supports themes: fbns[T1]: {"a":0} 1`] = `
-Array [
-  Object {
-    "x": "F0",
-    "y": "F0",
-    "z": "F0",
-  },
-]
-`;
-
-exports[`style supports themes: fbns[T1]: {"a":1} 1`] = `
-Array [
-  Object {
-    "x": "F1",
-    "y": "F1",
-    "z": "F1",
-  },
-]
-`;
-
-exports[`style supports themes: fbns[T1]: {"a":2} 1`] = `
-Array [
-  Object {
-    "x": "F2",
-    "y": "F2",
-    "z": "F2",
-  },
-]
-`;
-
-exports[`style supports themes: fbns[T1]: {"a":3} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
-  },
-]
-`;
-
-exports[`style supports themes: fbns[T2]: {"a":0} 1`] = `
+exports[`supports nested theme and fallback: [0] {"a":0,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": "0V",
@@ -130,7 +10,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: fbns[T2]: {"a":1} 1`] = `
+exports[`supports nested theme and fallback: [1] {"a":1,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": "1V",
@@ -140,7 +20,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: fbns[T2]: {"a":2} 1`] = `
+exports[`supports nested theme and fallback: [2] {"a":2,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": "F2",
@@ -150,7 +30,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: fbns[T2]: {"a":3} 1`] = `
+exports[`supports nested theme and fallback: [3] {"a":3,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": 3,
@@ -160,47 +40,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: nest[T1]: {"a":0} 1`] = `
-Array [
-  Object {
-    "x": 0,
-    "y": 0,
-    "z": 0,
-  },
-]
-`;
-
-exports[`style supports themes: nest[T1]: {"a":1} 1`] = `
-Array [
-  Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-]
-`;
-
-exports[`style supports themes: nest[T1]: {"a":2} 1`] = `
-Array [
-  Object {
-    "x": 2,
-    "y": 2,
-    "z": 2,
-  },
-]
-`;
-
-exports[`style supports themes: nest[T1]: {"a":3} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
-  },
-]
-`;
-
-exports[`style supports themes: nest[T2]: {"a":0} 1`] = `
+exports[`supports nested theme: [0] {"a":0,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": "0V",
@@ -210,7 +50,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: nest[T2]: {"a":1} 1`] = `
+exports[`supports nested theme: [1] {"a":1,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": "1V",
@@ -220,7 +60,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: nest[T2]: {"a":2} 1`] = `
+exports[`supports nested theme: [2] {"a":2,"theme":{"t":{"u":{"v":["0V","1V"]}}}} 1`] = `
 Array [
   Object {
     "x": 2,
@@ -230,17 +70,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: nest[T2]: {"a":3} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
-  },
-]
-`;
-
-exports[`style supports themes: none[T1]: {"a":0} 1`] = `
+exports[`supports theme and fallback: [0] {"a":0,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
 Array [
   Object {
     "x": "T0",
@@ -250,7 +80,7 @@ Array [
 ]
 `;
 
-exports[`style supports themes: none[T1]: {"a":1} 1`] = `
+exports[`supports theme and fallback: [1] {"a":1,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
 Array [
   Object {
     "x": "U1",
@@ -260,17 +90,17 @@ Array [
 ]
 `;
 
-exports[`style supports themes: none[T1]: {"a":2} 1`] = `
+exports[`supports theme and fallback: [2] {"a":2,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
 Array [
   Object {
-    "x": 2,
-    "y": 2,
-    "z": 2,
+    "x": "F2",
+    "y": "F2",
+    "z": "F2",
   },
 ]
 `;
 
-exports[`style supports themes: none[T1]: {"a":3} 1`] = `
+exports[`supports theme and fallback: [3] {"a":3,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
 Array [
   Object {
     "x": 3,
@@ -280,27 +110,27 @@ Array [
 ]
 `;
 
-exports[`style supports themes: none[T2]: {"a":0} 1`] = `
+exports[`supports theme array aliases: [0] {"a":0,"theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
 Array [
   Object {
-    "x": 0,
-    "y": 0,
-    "z": 0,
+    "x": 11,
+    "y": 11,
+    "z": 11,
   },
 ]
 `;
 
-exports[`style supports themes: none[T2]: {"a":1} 1`] = `
+exports[`supports theme array aliases: [1] {"a":1,"theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
 Array [
   Object {
-    "x": 1,
-    "y": 1,
-    "z": 1,
+    "x": 22,
+    "y": 22,
+    "z": 22,
   },
 ]
 `;
 
-exports[`style supports themes: none[T2]: {"a":2} 1`] = `
+exports[`supports theme array aliases: [2] {"a":2,"theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
 Array [
   Object {
     "x": 2,
@@ -310,12 +140,62 @@ Array [
 ]
 `;
 
-exports[`style supports themes: none[T2]: {"a":3} 1`] = `
+exports[`supports theme array aliases: [bar] {"a":"bar","theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
 Array [
   Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`supports theme array aliases: [baz] {"a":"baz","theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
+Array [
+  Object {
+    "x": "baz",
+    "y": "baz",
+    "z": "baz",
+  },
+]
+`;
+
+exports[`supports theme array aliases: [foo] {"a":"foo","theme":{"v":[{"alias":"foo","value":11},{"alias":"bar","value":22}]}} 1`] = `
+Array [
+  Object {
+    "x": 11,
+    "y": 11,
+    "z": 11,
+  },
+]
+`;
+
+exports[`supports theme: [0] {"a":0,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
+Array [
+  Object {
+    "x": "T0",
+    "y": "T0",
+    "z": "T0",
+  },
+]
+`;
+
+exports[`supports theme: [1] {"a":1,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
+Array [
+  Object {
+    "x": "U1",
+    "y": "U1",
+    "z": "U1",
+  },
+]
+`;
+
+exports[`supports theme: [2] {"a":2,"theme":{"t":["T0"],"u":["U0","U1"]}} 1`] = `
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
   },
 ]
 `;
