@@ -1,6 +1,13 @@
 import * as T from "./types"
 import * as U from "./utils"
 
+export const breakpoints = [
+  { alias: "sm", value: 360 },
+  { alias: "md", value: 720 },
+  { alias: "lg", value: 1080 },
+  { alias: "xl", value: 1440 }
+]
+
 export const render = <S extends T.Style>(keys?: T.Keys, value?: any) =>
   !U.isNil(value) && U.isArray(keys) && keys.length
     ? keys.reduce(
