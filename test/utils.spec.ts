@@ -85,7 +85,7 @@ test("toPath", () => {
   expect(U.toPath("a.1")).toEqual(["a", "1"])
 })
 
-test.only("get", () => {
+test("get", () => {
   const obj = {
     foo: "FOO",
     bar: {
