@@ -85,7 +85,7 @@ test("toPath", () => {
   expect(U.toPath("a.1")).toEqual(["a", "1"])
 })
 
-test("get", () => {
+test.only("get", () => {
   const obj = {
     foo: "FOO",
     bar: {
@@ -93,15 +93,30 @@ test("get", () => {
       b: 0,
       c: false,
       d: [11, 22, 33]
-    }
+    },
+    baz: [
+      {
+        alias: "A0" // No value
+      },
+      {
+        value: "V1" // No alias
+      },
+      {
+        alias: "A2",
+        value: "V2"
+      },
+      "V3" // Normal value
+    ]
   }
 
+  // Null
   expect(U.get()).toBeNull()
   expect(U.get([])).toBeNull()
   expect(U.get([], obj)).toBeNull()
-  expect(U.get(["baz"], obj)).toBeNull()
+  expect(U.get(["zoo"], obj)).toBeNull()
   expect(U.get(["foo.a"], obj)).toBeNull()
 
+  // Resolve
   expect(U.get(["foo"], obj)).toBe(obj.foo)
   expect(U.get(["bar"], obj)).toBe(obj.bar)
   expect(U.get(["bar.a"], obj)).toBe(obj.bar.a)
@@ -110,8 +125,21 @@ test("get", () => {
   expect(U.get(["bar.d"], obj)).toBe(obj.bar.d)
   expect(U.get(["bar.d.1"], obj)).toBe(obj.bar.d[1])
 
+  // Priority
   expect(U.get(["foo", "bar"], obj)).toBe(obj.foo)
   expect(U.get(["bar", "foo"], obj)).toBe(obj.bar)
 
+  // Fallback
   expect(U.get(["foo.a", "bar.a"], obj)).toBe(obj.bar.a)
+  expect(U.get(["foo.a", "bar.e"], obj)).toBeNull()
+
+  // Aliases
+  expect(U.get(["baz.0"], obj)).toBeNull()
+  expect(U.get(["baz.A0"], obj)).toBeNull()
+  expect(U.get(["baz.1"], obj)).toBe(obj.baz[1]) // { value: "V1" }
+  expect(U.get(["baz.A1"], obj)).toBeNull()
+  expect(U.get(["baz.2"], obj)).toBe("V2")
+  expect(U.get(["baz.A2"], obj)).toBe("V2")
+  expect(U.get(["baz.3"], obj)).toBe("V3")
+  expect(U.get(["baz.A3"], obj)).toBeNull()
 })

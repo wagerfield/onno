@@ -23,7 +23,14 @@ export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 export const get = (keys?: any[], x?: any) =>
   isArray(keys)
     ? keys.reduceRight((v, k) => {
-        const r = toPath(k).reduce((a, b) => a && a[b], x)
+        const r = toPath(k).reduce((a, b) => {
+          let c = a && a[b]
+          if (isArray(a)) {
+            const d = a.find((o) => o && o.alias === b)
+            c = (d && d.value) || (c && c.alias ? c.value : c)
+          }
+          return c
+        }, x)
         return isNil(r) ? v : r
       }, null)
     : null
