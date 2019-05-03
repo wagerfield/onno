@@ -2,7 +2,7 @@ export type Length = number
 
 export type Nil = null | undefined
 
-export type Unit = number | string
+export type Unit = boolean | number | string
 
 export type Key = string
 
@@ -12,15 +12,17 @@ export type Func = (...args: any[]) => any
 
 export type Pred = (...args: any[]) => boolean
 
-export type ResponsivePropArray<P> = P[]
+export type ResponsivePropArrayValue<P> = P | Unit
+
+export type ResponsivePropArray<P> = ResponsivePropArrayValue<P>[]
 
 export interface ResponsivePropObject<P> {
-  [key: string]: P
+  [key: string]: P | Unit
 }
 
 export type ResponsiveProp<P> = ResponsivePropArray<P> | ResponsivePropObject<P>
 
-export type Prop<P = Unit> = P | ResponsiveProp<P> | Nil
+export type Prop<P> = P | ResponsiveProp<P> | Unit | Nil
 
 export interface Props {
   [key: string]: any

@@ -16,7 +16,7 @@ const ex = S.extend({
 
 export type BackgroundColorValue = C.BackgroundColorProperty
 
-export type BackgroundColorProp = T.Prop<BackgroundColorValue | T.Unit>
+export type BackgroundColorProp = T.Prop<BackgroundColorValue>
 
 export interface BackgroundColorProps extends T.ThemeProps {
   backgroundColor?: BackgroundColorProp
@@ -35,7 +35,7 @@ export const backgroundColor = ex<BackgroundColorProps, BackgroundColorStyle>({
 
 export type BorderColorValue = C.BorderColorProperty
 
-export type BorderColorProp = T.Prop<BorderColorValue | T.Unit>
+export type BorderColorProp = T.Prop<BorderColorValue>
 
 export interface BorderColorProps extends T.ThemeProps {
   borderColor?: BorderColorProp
@@ -54,7 +54,7 @@ export const borderColor = ex<BorderColorProps, BorderColorStyle>({
 
 export type TextColorValue = C.ColorProperty
 
-export type TextColorProp = T.Prop<TextColorValue | T.Unit>
+export type TextColorProp = T.Prop<TextColorValue>
 
 export interface TextColorProps extends T.ThemeProps {
   color?: TextColorProp
