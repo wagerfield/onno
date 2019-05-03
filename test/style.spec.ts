@@ -91,6 +91,28 @@ test("supports nested fallbacks", () => {
   testProps({ a: "k.l.o.1" })
 })
 
+test("supports aliased fallbacks", () => {
+  const styleFunc = H.style({
+    fallback: [
+      {
+        alias: "foo",
+        value: 11
+      },
+      {
+        alias: "bar",
+        value: 22
+      }
+    ]
+  })
+  const testProps = H.snapshot(styleFunc)
+
+  testProps({ a: 0 })
+  testProps({ b: 1 })
+
+  testProps({ a: "foo" })
+  testProps({ b: "bar" })
+})
+
 test("supports responsive props", () => {
   expect(true).toBe(true)
 })

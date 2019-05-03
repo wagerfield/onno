@@ -36,6 +36,46 @@ Array [
 ]
 `;
 
+exports[`supports aliased fallbacks: {"a":"foo"} 1`] = `
+Array [
+  Object {
+    "x": 11,
+    "y": 11,
+    "z": 11,
+  },
+]
+`;
+
+exports[`supports aliased fallbacks: {"a":0} 1`] = `
+Array [
+  Object {
+    "x": 11,
+    "y": 11,
+    "z": 11,
+  },
+]
+`;
+
+exports[`supports aliased fallbacks: {"b":"bar"} 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
+exports[`supports aliased fallbacks: {"b":1} 1`] = `
+Array [
+  Object {
+    "x": 22,
+    "y": 22,
+    "z": 22,
+  },
+]
+`;
+
 exports[`supports fallbacks: [baseline] {"a":1} 1`] = `
 Array [
   Object {
