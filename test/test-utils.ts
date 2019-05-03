@@ -8,3 +8,9 @@ export const style = (options?: Partial<T.StyleOptions>) =>
     themeKeys: ["t", "u", "v"],
     ...options
   })
+
+export const snapshot = (func: T.Func) => (props: T.Props, label?: string) => {
+  let snapshotName = JSON.stringify(props)
+  if (label) snapshotName = `[${label}] ${snapshotName}`
+  expect(func(props)).toMatchSnapshot(snapshotName)
+}

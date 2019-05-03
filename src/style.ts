@@ -1,16 +1,16 @@
 import * as T from "./types"
 import * as U from "./utils"
 
-export const createStyle = <S extends T.Style>(keys?: T.Keys, value?: any) => {
-  if (U.isNil(value) || !U.isArray(keys)) return null
-  return keys.reduce(
-    (s, k) => {
-      s[k] = value
-      return s
-    },
-    {} as S
-  )
-}
+export const render = <S extends T.Style>(keys?: T.Keys, value?: any) =>
+  !U.isNil(value) && U.isArray(keys) && keys.length
+    ? keys.reduce(
+        (s, k) => {
+          s[k] = value
+          return s
+        },
+        {} as S
+      )
+    : null
 
 export const style = <P extends T.ThemeProps, S extends T.Style>({
   propsKeys,
@@ -48,8 +48,8 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
   // Resolve style keys
   const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
-  // Create style from value and keys
-  const result = createStyle<S>(keys, value)
+  // Render style from keys and value
+  const result = render<S>(keys, value)
 
   // Return style array
   return result && [result]
@@ -67,8 +67,8 @@ export const compose = <P extends T.ThemeProps, S extends T.Style>(
 ): T.StyleFunction<P, S> => (props: P) =>
   styles.reduce(
     (a, f) => {
-      const s = f(props)
-      return s ? a.concat(s) : a
+      const r = f(props)
+      return r ? a.concat(r) : a
     },
     [] as S[]
   )

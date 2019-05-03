@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`respects order of style functions: {"a":1} 1`] = `
+Array [
+  Object {
+    "x": 1,
+  },
+  Object {
+    "y": 1,
+  },
+]
+`;
+
+exports[`respects order of style functions: {"b":2} 1`] = `
+Array [
+  Object {
+    "x": 2,
+  },
+]
+`;
+
+exports[`respects order of style functions: {"c":3} 1`] = `
+Array [
+  Object {
+    "y": 3,
+  },
+]
+`;
+
+exports[`returns style object array: {"a":1,"b":2,"c":3,"d":4} 1`] = `
+Array [
+  Object {
+    "a": 1,
+  },
+  Object {
+    "c": 3,
+  },
+]
+`;
+
+exports[`returns style object array: {"a":1} 1`] = `
+Array [
+  Object {
+    "a": 1,
+  },
+]
+`;
+
+exports[`returns style object array: {"b":2,"d":4} 1`] = `
+Array [
+  Object {
+    "a": 2,
+  },
+  Object {
+    "c": 4,
+  },
+]
+`;
+
+exports[`returns style object array: {} 1`] = `Array []`;
