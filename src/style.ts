@@ -83,7 +83,7 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     } else pushStyle(propsValue)
 
     // Return styles array when not empty
-    return styles.length ? styles.sort() : null
+    return styles.length ? styles : null
   }
 }
 
