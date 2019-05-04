@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`responsive prop arrays: {
+exports[`handles responsive prop arrays: {
   "a": [
     11,
     22,
@@ -32,40 +32,104 @@ Array [
 ]
 `;
 
-exports[`responsive prop objects: {
+exports[`handles responsive prop objects: {
   "a": {
-    "xs": "xs",
-    "md": "md",
-    "xl": "xl",
-    "na": "na"
+    "xs": "XS",
+    "md": "MD",
+    "xl": "XL",
+    "na": "NA"
   }
 } 1`] = `
 Array [
   Object {
     "@media screen and (min-width: 0)": Object {
-      "x": "xs",
-      "y": "xs",
-      "z": "xs",
+      "x": "XS",
+      "y": "XS",
+      "z": "XS",
     },
   },
   Object {
     "@media screen and (min-width: 720px)": Object {
-      "x": "md",
-      "y": "md",
-      "z": "md",
+      "x": "MD",
+      "y": "MD",
+      "z": "MD",
     },
   },
   Object {
     "@media screen and (min-width: 1440px)": Object {
-      "x": "xl",
-      "y": "xl",
-      "z": "xl",
+      "x": "XL",
+      "y": "XL",
+      "z": "XL",
     },
   },
 ]
 `;
 
-exports[`theme breakpoint aliases: {
+exports[`style array is sorted in breakpoint order: {
+  "a": [
+    1,
+    2,
+    3
+  ],
+  "theme": {
+    "breakpoints": [
+      200,
+      100
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 200px)": Object {
+      "x": 1,
+      "y": 1,
+      "z": 1,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 100px)": Object {
+      "x": 2,
+      "y": 2,
+      "z": 2,
+    },
+  },
+]
+`;
+
+exports[`style array is sorted in breakpoint order: {
+  "a": {
+    "lg": "LG",
+    "xs": "XS",
+    "md": "MD",
+    "na": "NA"
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": "XS",
+      "y": "XS",
+      "z": "XS",
+    },
+  },
+  Object {
+    "@media screen and (min-width: 720px)": Object {
+      "x": "MD",
+      "y": "MD",
+      "z": "MD",
+    },
+  },
+  Object {
+    "@media screen and (min-width: 1080px)": Object {
+      "x": "LG",
+      "y": "LG",
+      "z": "LG",
+    },
+  },
+]
+`;
+
+exports[`theme breakpoint array aliases: {
   "theme": {
     "breakpoints": [
       {
@@ -114,7 +178,7 @@ Array [
 ]
 `;
 
-exports[`theme breakpoint aliases: {
+exports[`theme breakpoint array aliases: {
   "theme": {
     "breakpoints": [
       {
@@ -198,62 +262,6 @@ Array [
       "x": 3,
       "y": 3,
       "z": 3,
-    },
-  },
-]
-`;
-
-exports[`theme breakpoint objects: {
-  "theme": {
-    "breakpoints": {
-      "a0": 0,
-      "a1": 100,
-      "a2": 200
-    }
-  },
-  "a": [
-    1,
-    2,
-    3,
-    4
-  ]
-} 1`] = `null`;
-
-exports[`theme breakpoint objects: {
-  "theme": {
-    "breakpoints": {
-      "a0": 0,
-      "a1": 100,
-      "a2": 200
-    }
-  },
-  "a": {
-    "a0": 0,
-    "a1": 1,
-    "a2": 2,
-    "a3": 3
-  }
-} 1`] = `
-Array [
-  Object {
-    "@media screen and (min-width: 0)": Object {
-      "x": 0,
-      "y": 0,
-      "z": 0,
-    },
-  },
-  Object {
-    "@media screen and (min-width: 100px)": Object {
-      "x": 1,
-      "y": 1,
-      "z": 1,
-    },
-  },
-  Object {
-    "@media screen and (min-width: 200px)": Object {
-      "x": 2,
-      "y": 2,
-      "z": 2,
     },
   },
 ]

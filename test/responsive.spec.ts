@@ -15,17 +15,34 @@ test("returns null for unresolved breakpoints", () => {
   ).toBeNull()
 })
 
-test("responsive prop arrays", () => {
+test("handles responsive prop arrays", () => {
   testBaseline({ a: [11, 22, 33] })
 })
 
-test("responsive prop objects", () => {
+test("handles responsive prop objects", () => {
   testBaseline({
     a: {
-      xs: "xs",
-      md: "md",
-      xl: "xl",
-      na: "na" // Does not exist
+      xs: "XS",
+      md: "MD",
+      xl: "XL",
+      na: "NA" // Does not exist
+    }
+  })
+})
+
+test("style array is sorted in breakpoint order", () => {
+  testBaseline({
+    a: {
+      lg: "LG",
+      xs: "XS",
+      md: "MD",
+      na: "NA" // Does not exist
+    }
+  })
+  testBaseline({
+    a: [1, 2, 3],
+    theme: {
+      breakpoints: [200, 100]
     }
   })
 })
@@ -39,19 +56,7 @@ test("theme breakpoint arrays", () => {
   })
 })
 
-test("theme breakpoint objects", () => {
-  const theme = {
-    breakpoints: {
-      a0: 0,
-      a1: 100,
-      a2: 200
-    }
-  }
-  testBaseline({ theme, a: { a0: 0, a1: 1, a2: 2, a3: 3 } })
-  testBaseline({ theme, a: [1, 2, 3, 4] }) // Should return null
-})
-
-test("theme breakpoint aliases", () => {
+test("theme breakpoint array aliases", () => {
   const theme = {
     breakpoints: [
       { alias: "a0", value: 0 },
@@ -59,6 +64,6 @@ test("theme breakpoint aliases", () => {
       { alias: "a2", value: 200 }
     ]
   }
-  testBaseline({ theme, a: { a0: 0, a1: 1, a2: 2, a3: 3 } })
   testBaseline({ theme, a: [0, 1, 2, 3] })
+  testBaseline({ theme, a: { a0: 0, a1: 1, a2: 2, a3: 3 } })
 })
