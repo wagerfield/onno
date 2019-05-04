@@ -1,71 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nested theme object: [0] {
-  "a": 0,
-  "theme": {
-    "t": {
-      "u": {
-        "v": [
-          "0V",
-          "1V"
-        ]
-      }
-    }
-  }
-} 1`] = `
-Array [
-  Object {
-    "x": "0V",
-    "y": "0V",
-    "z": "0V",
-  },
-]
-`;
-
-exports[`nested theme object: [1] {
-  "a": 1,
-  "theme": {
-    "t": {
-      "u": {
-        "v": [
-          "0V",
-          "1V"
-        ]
-      }
-    }
-  }
-} 1`] = `
-Array [
-  Object {
-    "x": "1V",
-    "y": "1V",
-    "z": "1V",
-  },
-]
-`;
-
-exports[`nested theme object: [2] {
-  "a": 2,
-  "theme": {
-    "t": {
-      "u": {
-        "v": [
-          "0V",
-          "1V"
-        ]
-      }
-    }
-  }
-} 1`] = `
-Array [
-  Object {
-    "x": 2,
-    "y": 2,
-    "z": 2,
-  },
-]
-`;
-
 exports[`supports nested theme and fallback: [0] {
   "a": 0,
   "theme": {
@@ -150,6 +84,72 @@ Array [
     "x": 3,
     "y": 3,
     "z": 3,
+  },
+]
+`;
+
+exports[`supports nested theme: [0] {
+  "a": 0,
+  "theme": {
+    "t": {
+      "u": {
+        "v": [
+          "0V",
+          "1V"
+        ]
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "x": "0V",
+    "y": "0V",
+    "z": "0V",
+  },
+]
+`;
+
+exports[`supports nested theme: [1] {
+  "a": 1,
+  "theme": {
+    "t": {
+      "u": {
+        "v": [
+          "0V",
+          "1V"
+        ]
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "x": "1V",
+    "y": "1V",
+    "z": "1V",
+  },
+]
+`;
+
+exports[`supports nested theme: [2] {
+  "a": 2,
+  "theme": {
+    "t": {
+      "u": {
+        "v": [
+          "0V",
+          "1V"
+        ]
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "x": 2,
+    "y": 2,
+    "z": 2,
   },
 ]
 `;
@@ -382,7 +382,7 @@ Array [
 ]
 `;
 
-exports[`uses theme prop: [0] {
+exports[`supports theme: [0] {
   "a": 0,
   "theme": {
     "t": [
@@ -403,7 +403,7 @@ Array [
 ]
 `;
 
-exports[`uses theme prop: [1] {
+exports[`supports theme: [1] {
   "a": 1,
   "theme": {
     "t": [
@@ -424,7 +424,7 @@ Array [
 ]
 `;
 
-exports[`uses theme prop: [2] {
+exports[`supports theme: [2] {
   "a": 2,
   "theme": {
     "t": [
