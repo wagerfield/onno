@@ -27,22 +27,21 @@ test("styleKeys default to first propsKeys", () => {
   testProps({ b: "bar" })
 })
 
-test("supports prop aliases", () => {
+test("prop aliases", () => {
   testBaseline({ a: 1, b: 2, c: 3, d: 4 })
   testBaseline({ b: 2, c: 3, d: 4 })
   testBaseline({ c: 3, d: 4 })
   testBaseline({ d: 4 })
 })
 
-test("supports nested props", () => {
+test("nested props", () => {
   const styleFunc = H.style({ propsKeys: ["a.b.c"] })
   const testProps = H.snapshot(styleFunc)
-  testProps({ a: { b: 2 } })
   testProps({ a: { b: { c: 3 } } })
-  testProps({ a: { b: { c: { d: 4 } } } })
+  testProps({ a: { b: 2 } })
 })
 
-test("supports transform functions", () => {
+test("transform functions", () => {
   const testAddPx = H.snapshot(H.style({ transform: U.addPx }))
   const testAddPc = H.snapshot(H.style({ transform: U.addPc }))
 
@@ -58,7 +57,7 @@ test("supports transform functions", () => {
   testProps({ a: 0 })
 })
 
-test("supports fallbacks", () => {
+test("fallbacks", () => {
   const testFallback = H.snapshot(H.style({ fallback: [0, 4, 8] }))
 
   const testProps = (props: T.Props) => {
@@ -70,7 +69,7 @@ test("supports fallbacks", () => {
   testProps({ a: 2 })
 })
 
-test("supports nested fallbacks", () => {
+test("nested fallbacks", () => {
   const styleFunc = H.style({
     fallback: {
       k: {
@@ -91,7 +90,7 @@ test("supports nested fallbacks", () => {
   testProps({ a: "k.l.o.1" })
 })
 
-test("supports aliased fallbacks", () => {
+test("aliased fallbacks", () => {
   const styleFunc = H.style({
     fallback: [
       {
@@ -111,8 +110,4 @@ test("supports aliased fallbacks", () => {
 
   testProps({ a: "foo" })
   testProps({ b: "bar" })
-})
-
-test("supports responsive props", () => {
-  expect(true).toBe(true)
 })

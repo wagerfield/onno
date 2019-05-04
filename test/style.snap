@@ -1,42 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`returns style object array: {"a":"bar"} 1`] = `
-Array [
-  Object {
-    "x": "bar",
-    "y": "bar",
-    "z": "bar",
-  },
-]
-`;
-
-exports[`returns style object array: {"a":"foo"} 1`] = `
-Array [
-  Object {
-    "x": "foo",
-    "y": "foo",
-    "z": "foo",
-  },
-]
-`;
-
-exports[`styleKeys default to first propsKeys: {"a":"foo"} 1`] = `
-Array [
-  Object {
-    "a": "foo",
-  },
-]
-`;
-
-exports[`styleKeys default to first propsKeys: {"b":"bar"} 1`] = `
-Array [
-  Object {
-    "a": "bar",
-  },
-]
-`;
-
-exports[`supports aliased fallbacks: {"a":"foo"} 1`] = `
+exports[`aliased fallbacks: {
+  "a": "foo"
+} 1`] = `
 Array [
   Object {
     "x": 11,
@@ -46,7 +12,9 @@ Array [
 ]
 `;
 
-exports[`supports aliased fallbacks: {"a":0} 1`] = `
+exports[`aliased fallbacks: {
+  "a": 0
+} 1`] = `
 Array [
   Object {
     "x": 11,
@@ -56,7 +24,9 @@ Array [
 ]
 `;
 
-exports[`supports aliased fallbacks: {"b":"bar"} 1`] = `
+exports[`aliased fallbacks: {
+  "b": "bar"
+} 1`] = `
 Array [
   Object {
     "x": 22,
@@ -66,7 +36,9 @@ Array [
 ]
 `;
 
-exports[`supports aliased fallbacks: {"b":1} 1`] = `
+exports[`aliased fallbacks: {
+  "b": 1
+} 1`] = `
 Array [
   Object {
     "x": 22,
@@ -76,7 +48,9 @@ Array [
 ]
 `;
 
-exports[`supports fallbacks: [baseline] {"a":1} 1`] = `
+exports[`fallbacks: [baseline] {
+  "a": 1
+} 1`] = `
 Array [
   Object {
     "x": 1,
@@ -86,7 +60,9 @@ Array [
 ]
 `;
 
-exports[`supports fallbacks: [baseline] {"a":2} 1`] = `
+exports[`fallbacks: [baseline] {
+  "a": 2
+} 1`] = `
 Array [
   Object {
     "x": 2,
@@ -96,7 +72,9 @@ Array [
 ]
 `;
 
-exports[`supports fallbacks: [fallback] {"a":1} 1`] = `
+exports[`fallbacks: [fallback] {
+  "a": 1
+} 1`] = `
 Array [
   Object {
     "x": 4,
@@ -106,7 +84,9 @@ Array [
 ]
 `;
 
-exports[`supports fallbacks: [fallback] {"a":2} 1`] = `
+exports[`fallbacks: [fallback] {
+  "a": 2
+} 1`] = `
 Array [
   Object {
     "x": 8,
@@ -116,7 +96,9 @@ Array [
 ]
 `;
 
-exports[`supports nested fallbacks: {"a":"j.k"} 1`] = `
+exports[`nested fallbacks: {
+  "a": "j.k"
+} 1`] = `
 Array [
   Object {
     "x": "j.k",
@@ -126,7 +108,9 @@ Array [
 ]
 `;
 
-exports[`supports nested fallbacks: {"a":"k.l.m"} 1`] = `
+exports[`nested fallbacks: {
+  "a": "k.l.m"
+} 1`] = `
 Array [
   Object {
     "x": 0,
@@ -136,7 +120,9 @@ Array [
 ]
 `;
 
-exports[`supports nested fallbacks: {"a":"k.l.n"} 1`] = `
+exports[`nested fallbacks: {
+  "a": "k.l.n"
+} 1`] = `
 Array [
   Object {
     "x": "foo",
@@ -146,7 +132,9 @@ Array [
 ]
 `;
 
-exports[`supports nested fallbacks: {"a":"k.l.o.1"} 1`] = `
+exports[`nested fallbacks: {
+  "a": "k.l.o.1"
+} 1`] = `
 Array [
   Object {
     "x": 22,
@@ -156,7 +144,9 @@ Array [
 ]
 `;
 
-exports[`supports nested fallbacks: {"a":"k.l.z"} 1`] = `
+exports[`nested fallbacks: {
+  "a": "k.l.z"
+} 1`] = `
 Array [
   Object {
     "x": "k.l.z",
@@ -166,23 +156,13 @@ Array [
 ]
 `;
 
-exports[`supports nested props: {"a":{"b":{"c":{"d":4}}}} 1`] = `
-Array [
-  Object {
-    "x": Object {
-      "d": 4,
-    },
-    "y": Object {
-      "d": 4,
-    },
-    "z": Object {
-      "d": 4,
-    },
-  },
-]
-`;
-
-exports[`supports nested props: {"a":{"b":{"c":3}}} 1`] = `
+exports[`nested props: {
+  "a": {
+    "b": {
+      "c": 3
+    }
+  }
+} 1`] = `
 Array [
   Object {
     "x": 3,
@@ -192,9 +172,18 @@ Array [
 ]
 `;
 
-exports[`supports nested props: {"a":{"b":2}} 1`] = `null`;
+exports[`nested props: {
+  "a": {
+    "b": 2
+  }
+} 1`] = `null`;
 
-exports[`supports prop aliases: {"a":1,"b":2,"c":3,"d":4} 1`] = `
+exports[`prop aliases: {
+  "a": 1,
+  "b": 2,
+  "c": 3,
+  "d": 4
+} 1`] = `
 Array [
   Object {
     "x": 1,
@@ -204,7 +193,11 @@ Array [
 ]
 `;
 
-exports[`supports prop aliases: {"b":2,"c":3,"d":4} 1`] = `
+exports[`prop aliases: {
+  "b": 2,
+  "c": 3,
+  "d": 4
+} 1`] = `
 Array [
   Object {
     "x": 2,
@@ -214,7 +207,10 @@ Array [
 ]
 `;
 
-exports[`supports prop aliases: {"c":3,"d":4} 1`] = `
+exports[`prop aliases: {
+  "c": 3,
+  "d": 4
+} 1`] = `
 Array [
   Object {
     "x": 3,
@@ -224,9 +220,57 @@ Array [
 ]
 `;
 
-exports[`supports prop aliases: {"d":4} 1`] = `null`;
+exports[`prop aliases: {
+  "d": 4
+} 1`] = `null`;
 
-exports[`supports transform functions: [addPc] {"a":"2em"} 1`] = `
+exports[`returns style object array: {
+  "a": "bar"
+} 1`] = `
+Array [
+  Object {
+    "x": "bar",
+    "y": "bar",
+    "z": "bar",
+  },
+]
+`;
+
+exports[`returns style object array: {
+  "a": "foo"
+} 1`] = `
+Array [
+  Object {
+    "x": "foo",
+    "y": "foo",
+    "z": "foo",
+  },
+]
+`;
+
+exports[`styleKeys default to first propsKeys: {
+  "a": "foo"
+} 1`] = `
+Array [
+  Object {
+    "a": "foo",
+  },
+]
+`;
+
+exports[`styleKeys default to first propsKeys: {
+  "b": "bar"
+} 1`] = `
+Array [
+  Object {
+    "a": "bar",
+  },
+]
+`;
+
+exports[`transform functions: [addPc] {
+  "a": "2em"
+} 1`] = `
 Array [
   Object {
     "x": "2em",
@@ -236,7 +280,21 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [addPc] {"a":0.5} 1`] = `
+exports[`transform functions: [addPc] {
+  "a": 0
+} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`transform functions: [addPc] {
+  "a": 0.5
+} 1`] = `
 Array [
   Object {
     "x": "50%",
@@ -246,17 +304,9 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [addPc] {"a":0} 1`] = `
-Array [
-  Object {
-    "x": 0,
-    "y": 0,
-    "z": 0,
-  },
-]
-`;
-
-exports[`supports transform functions: [addPc] {"a":100} 1`] = `
+exports[`transform functions: [addPc] {
+  "a": 100
+} 1`] = `
 Array [
   Object {
     "x": 100,
@@ -266,7 +316,9 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [addPx] {"a":"2em"} 1`] = `
+exports[`transform functions: [addPx] {
+  "a": "2em"
+} 1`] = `
 Array [
   Object {
     "x": "2em",
@@ -276,7 +328,21 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [addPx] {"a":0.5} 1`] = `
+exports[`transform functions: [addPx] {
+  "a": 0
+} 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+  },
+]
+`;
+
+exports[`transform functions: [addPx] {
+  "a": 0.5
+} 1`] = `
 Array [
   Object {
     "x": "0.5px",
@@ -286,17 +352,9 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [addPx] {"a":0} 1`] = `
-Array [
-  Object {
-    "x": 0,
-    "y": 0,
-    "z": 0,
-  },
-]
-`;
-
-exports[`supports transform functions: [addPx] {"a":100} 1`] = `
+exports[`transform functions: [addPx] {
+  "a": 100
+} 1`] = `
 Array [
   Object {
     "x": "100px",
@@ -306,7 +364,9 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [baseline] {"a":"2em"} 1`] = `
+exports[`transform functions: [baseline] {
+  "a": "2em"
+} 1`] = `
 Array [
   Object {
     "x": "2em",
@@ -316,17 +376,9 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [baseline] {"a":0.5} 1`] = `
-Array [
-  Object {
-    "x": 0.5,
-    "y": 0.5,
-    "z": 0.5,
-  },
-]
-`;
-
-exports[`supports transform functions: [baseline] {"a":0} 1`] = `
+exports[`transform functions: [baseline] {
+  "a": 0
+} 1`] = `
 Array [
   Object {
     "x": 0,
@@ -336,7 +388,21 @@ Array [
 ]
 `;
 
-exports[`supports transform functions: [baseline] {"a":100} 1`] = `
+exports[`transform functions: [baseline] {
+  "a": 0.5
+} 1`] = `
+Array [
+  Object {
+    "x": 0.5,
+    "y": 0.5,
+    "z": 0.5,
+  },
+]
+`;
+
+exports[`transform functions: [baseline] {
+  "a": 100
+} 1`] = `
 Array [
   Object {
     "x": 100,

@@ -2,10 +2,11 @@ import * as T from "./types"
 import * as U from "./utils"
 
 export const breakpoints = [
-  { alias: "sm", value: 360 },
-  { alias: "md", value: 720 },
-  { alias: "lg", value: 1080 },
-  { alias: "xl", value: 1440 }
+  { alias: "xs", value: 360 * 0 },
+  { alias: "sm", value: 360 * 1 },
+  { alias: "md", value: 360 * 2 },
+  { alias: "lg", value: 360 * 3 },
+  { alias: "xl", value: 360 * 4 }
 ]
 
 export const render = <S extends T.Style>(keys?: T.Keys, value?: any) =>
@@ -25,41 +26,68 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
   themeKeys,
   transform,
   fallback
-}: T.StyleOptions): T.StyleFunction<P, S> => (props: P) => {
-  // Get first props value from propsKeys
-  let value = U.get(propsKeys, props)
-
-  // Return null when value is undefined
-  if (U.isNil(value)) return null
-
-  // Set themed flag
-  let themed = false
-
-  // Resolve theme value
-  if (props.theme && U.isArray(themeKeys)) {
-    const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
-    const themeValue = U.get(mappedKeys, props.theme)
-    themed = !U.isNil(themeValue)
-    if (themed) value = themeValue
-  }
-
-  // Resolve fallback value
-  if (fallback && !themed) {
-    const fallbackValue = U.get([value], fallback)
-    if (!U.isNil(fallbackValue)) value = fallbackValue
-  }
-
-  // Transform value
-  if (typeof transform === "function") value = transform(value)
-
-  // Resolve style keys
+}: T.StyleOptions): T.StyleFunction<P, S> => {
   const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
-  // Render style from keys and value
-  const result = render<S>(keys, value)
+  // Create scoped renderValue function
+  const renderValue = (value: any, theme?: T.Theme) => {
+    // Set themed flag
+    let themed = false
 
-  // Return style array
-  return result && [result]
+    // Resolve theme value
+    if (theme && U.isArray(themeKeys)) {
+      const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
+      const themeValue = U.resolve(mappedKeys, theme)
+      themed = !U.isNil(themeValue)
+      if (themed) value = themeValue
+    }
+
+    // Resolve fallback value
+    if (fallback && !themed) {
+      const fallbackValue = U.get(value, fallback)
+      if (!U.isNil(fallbackValue)) value = fallbackValue
+    }
+
+    // Transform value
+    if (typeof transform === "function") value = transform(value)
+
+    // Render style object
+    return render<S>(keys, value)
+  }
+  // Return style function
+  return (props: P) => {
+    // Get first propsValue from propsKeys
+    const propsValue = U.resolve(propsKeys, props)
+
+    // Return null when value is undefined
+    if (U.isNil(propsValue)) return null
+
+    // Extract theme
+    const { theme } = props
+    const styles: T.StyleArray<S> = []
+
+    // Handle responsive values
+    if (typeof propsValue === "object") {
+      // Resolve breakpoints from theme
+      const breaks = (theme && theme.breakpoints) || breakpoints
+
+      // Iterate over propsValue keys
+      Object.keys(propsValue).forEach((key) => {
+        const breakpoint = U.get(key, breaks)
+
+        // Push media query style
+        if (!U.isNil(breakpoint)) {
+          const query = U.mq(breakpoint)
+          const result = renderValue(propsValue[key], theme)
+          if (result) styles.push({ [query]: result })
+        }
+      })
+    } else {
+      const result = renderValue(propsValue, theme)
+      if (result) styles.push(result)
+    }
+    return styles.length ? styles : null
+  }
 }
 
 export const extend = (a: Partial<T.StyleOptions>) => <
