@@ -87,11 +87,11 @@ test("toPath", () => {
 })
 
 test("get", () => {
-  // Undefined
-  expect(U.get()).toBeUndefined()
-  expect(U.get("foo")).toBeUndefined()
-  expect(U.get("zoo", H.fixture)).toBeUndefined()
-  expect(U.get("foo.a", H.fixture)).toBeUndefined()
+  // Null
+  expect(U.get()).toBeNull()
+  expect(U.get("foo")).toBeNull()
+  expect(U.get("zoo", H.fixture)).toBeNull()
+  expect(U.get("foo.a", H.fixture)).toBeNull()
 
   // Resolve
   expect(U.get("foo", H.fixture)).toBe(H.fixture.foo)
@@ -103,18 +103,18 @@ test("get", () => {
   expect(U.get("bar.d.1", H.fixture)).toBe(H.fixture.bar.d[1])
 
   // Aliases
-  expect(U.get("baz.0", H.fixture)).toBeUndefined()
-  expect(U.get("baz.A0", H.fixture)).toBeUndefined()
+  expect(U.get("baz.0", H.fixture)).toBeNull()
+  expect(U.get("baz.A0", H.fixture)).toBeNull()
   expect(U.get("baz.1", H.fixture)).toBe(H.fixture.baz[1]) // { value: "V1" }
-  expect(U.get("baz.A1", H.fixture)).toBeUndefined()
+  expect(U.get("baz.A1", H.fixture)).toBeNull()
   expect(U.get("baz.2", H.fixture)).toBe("V2")
   expect(U.get("baz.A2", H.fixture)).toBe("V2")
   expect(U.get("baz.3", H.fixture)).toBe(0)
   expect(U.get("baz.A3", H.fixture)).toBe(0)
   expect(U.get("baz.4", H.fixture)).toBe("V4")
-  expect(U.get("baz.A4", H.fixture)).toBeUndefined()
+  expect(U.get("baz.A4", H.fixture)).toBeNull()
   expect(U.get("baz.5", H.fixture)).toBe(0)
-  expect(U.get("baz.A5", H.fixture)).toBeUndefined()
+  expect(U.get("baz.A5", H.fixture)).toBeNull()
 })
 
 test("resolve", () => {
