@@ -1,7 +1,7 @@
 import * as T from "./types"
 import * as U from "./utils"
 
-export const breakpoints = [
+const BREAKPOINTS: T.Breakpoints = [
   { alias: "xs", value: 360 * 0 },
   { alias: "sm", value: 360 * 1 },
   { alias: "md", value: 360 * 2 },
@@ -31,7 +31,6 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
 
   // Create scoped renderValue function
   const renderValue = (value: any, theme?: T.Theme) => {
-    // Set themed flag
     let themed = false
 
     // Resolve theme value
@@ -62,31 +61,29 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     // Return null when value is undefined
     if (U.isNil(propsValue)) return null
 
-    // Extract theme
+    // Build styles array
     const { theme } = props
     const styles: T.StyleArray<S> = []
-
-    // Handle responsive values
-    if (typeof propsValue === "object") {
-      // Resolve breakpoints from theme
-      const breaks = (theme && theme.breakpoints) || breakpoints
-
-      // Iterate over propsValue keys
-      Object.keys(propsValue).forEach((key) => {
-        const breakpoint = U.get(key, breaks)
-
-        // Push media query style
-        if (!U.isNil(breakpoint)) {
-          const query = U.mq(breakpoint)
-          const result = renderValue(propsValue[key], theme)
-          if (result) styles.push({ [query]: result })
-        }
-      })
-    } else {
-      const result = renderValue(propsValue, theme)
+    const pushStyle = (value: any, query?: string) => {
+      let result: T.StyleObject<S> | null = renderValue(value, theme)
+      if (result && query) result = { [query]: result }
       if (result) styles.push(result)
     }
-    return styles.length ? styles : null
+
+    // Handle responsive prop values
+    if (typeof propsValue === "object") {
+      const breakpoints = (theme && theme.breakpoints) || BREAKPOINTS
+      if (U.isArray(breakpoints)) {
+        breakpoints.forEach((value: any, index) => {
+          const breakpoint = U.get(index, breakpoints)
+          const styleValue = U.resolve([index, value.alias], propsValue)
+          if (!U.isNil(styleValue)) pushStyle(styleValue, U.mq(breakpoint))
+        })
+      }
+    } else pushStyle(propsValue)
+
+    // Return styles array when not empty
+    return styles.length ? styles.sort() : null
   }
 }
 
