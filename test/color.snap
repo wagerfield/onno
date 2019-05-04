@@ -11,11 +11,11 @@ Array [
 `;
 
 exports[`backgroundColor: {
-  "bgc": "blue"
+  "bgc": "bg"
 } 1`] = `
 Array [
   Object {
-    "backgroundColor": "blue",
+    "backgroundColor": "#FFF",
   },
 ]
 `;
@@ -31,11 +31,11 @@ Array [
 `;
 
 exports[`borderColor: {
-  "borderColor": "red"
+  "borderColor": "gray.1"
 } 1`] = `
 Array [
   Object {
-    "borderColor": "red",
+    "borderColor": "#AAA",
   },
 ]
 `;
@@ -77,21 +77,21 @@ Array [
 `;
 
 exports[`textColor: {
-  "color": "red"
+  "color": "rgba(255,0,0,0.5)"
 } 1`] = `
 Array [
   Object {
-    "color": "red",
+    "color": "rgba(255,0,0,0.5)",
   },
 ]
 `;
 
 exports[`textColor: {
-  "tc": "blue"
+  "tc": "text"
 } 1`] = `
 Array [
   Object {
-    "color": "blue",
+    "color": "#222",
   },
 ]
 `;

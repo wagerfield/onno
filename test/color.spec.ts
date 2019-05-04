@@ -4,19 +4,19 @@ import * as U from "./test-utils"
 test("backgroundColor", () => {
   const testProps = U.snapshot(S.backgroundColor)
   testProps({ backgroundColor: "red" })
-  testProps({ bgc: "blue" })
+  testProps({ bgc: "bg" })
 })
 
 test("borderColor", () => {
   const testProps = U.snapshot(S.borderColor)
-  testProps({ borderColor: "red" })
+  testProps({ borderColor: "gray.1" })
   testProps({ bc: "blue" })
 })
 
 test("textColor", () => {
   const testProps = U.snapshot(S.textColor)
-  testProps({ color: "red" })
-  testProps({ tc: "blue" })
+  testProps({ color: "rgba(255,0,0,0.5)" })
+  testProps({ tc: "text" })
 })
 
 test("color", () => {
