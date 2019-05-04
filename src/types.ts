@@ -2,7 +2,7 @@ export type Length = number
 
 export type Nil = null | undefined
 
-export type Unit = number | string
+export type Unit = boolean | number | string
 
 export type Key = string
 
@@ -43,13 +43,7 @@ export interface ThemeObject {
 
 export type ThemeValue = ThemeArray | ThemeObject | Nil
 
-export type BreakpointsArray = ThemeArray
-
-export interface BreakpointsObject {
-  [key: string]: Unit
-}
-
-export type Breakpoints = BreakpointsArray | BreakpointsObject | Nil
+export type Breakpoints = ThemeArray | Nil
 
 export interface Theme {
   [key: string]: ThemeValue
