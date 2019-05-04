@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display: {
+  "d": "inline"
+} 1`] = `
+Array [
+  Object {
+    "display": "inline",
+  },
+]
+`;
+
+exports[`display: {
+  "display": "block"
+} 1`] = `
+Array [
+  Object {
+    "display": "block",
+  },
+]
+`;
+
+exports[`height: {
+  "h": "200%"
+} 1`] = `
+Array [
+  Object {
+    "height": "200%",
+  },
+]
+`;
+
+exports[`height: {
+  "height": 0
+} 1`] = `
+Array [
+  Object {
+    "height": 0,
+  },
+]
+`;
+
+exports[`layout: {
+  "d": "grid",
+  "w": 0.4,
+  "minw": "20em",
+  "maxw": "40ch",
+  "h": 8,
+  "minh": "50%",
+  "maxh": "100",
+  "s": 1,
+  "va": "super"
+} 1`] = `
+Array [
+  Object {
+    "display": "grid",
+  },
+  Object {
+    "height": "100%",
+    "width": "100%",
+  },
+  Object {
+    "width": "40%",
+  },
+  Object {
+    "minWidth": "20em",
+  },
+  Object {
+    "maxWidth": "40ch",
+  },
+  Object {
+    "height": "256px",
+  },
+  Object {
+    "minHeight": "50%",
+  },
+  Object {
+    "maxHeight": "100",
+  },
+  Object {
+    "verticalAlign": "super",
+  },
+]
+`;
+
+exports[`layout: {
+  "display": "flex",
+  "width": 150,
+  "minWidth": 0.5,
+  "maxWidth": 0.75,
+  "height": 2,
+  "minHeight": "100vh",
+  "maxHeight": "auto",
+  "size": 0.25,
+  "verticalAlign": "sub"
+} 1`] = `
+Array [
+  Object {
+    "display": "flex",
+  },
+  Object {
+    "height": "25%",
+    "width": "25%",
+  },
+  Object {
+    "width": "150px",
+  },
+  Object {
+    "minWidth": "50%",
+  },
+  Object {
+    "maxWidth": "75%",
+  },
+  Object {
+    "height": "4px",
+  },
+  Object {
+    "minHeight": "100vh",
+  },
+  Object {
+    "maxHeight": "auto",
+  },
+  Object {
+    "verticalAlign": "sub",
+  },
+]
+`;
+
+exports[`maxHeight: {
+  "maxHeight": 10
+} 1`] = `
+Array [
+  Object {
+    "maxHeight": "10px",
+  },
+]
+`;
+
+exports[`maxHeight: {
+  "maxh": 100
+} 1`] = `
+Array [
+  Object {
+    "maxHeight": "100px",
+  },
+]
+`;
+
+exports[`maxWidth: {
+  "maxWidth": 4
+} 1`] = `
+Array [
+  Object {
+    "maxWidth": "16px",
+  },
+]
+`;
+
+exports[`maxWidth: {
+  "maxw": -1
+} 1`] = `
+Array [
+  Object {
+    "maxWidth": "-1px",
+  },
+]
+`;
+
+exports[`minHeight: {
+  "minHeight": 8
+} 1`] = `
+Array [
+  Object {
+    "minHeight": "256px",
+  },
+]
+`;
+
+exports[`minHeight: {
+  "minh": "40em"
+} 1`] = `
+Array [
+  Object {
+    "minHeight": "40em",
+  },
+]
+`;
+
+exports[`minWidth: {
+  "minWidth": "80vw"
+} 1`] = `
+Array [
+  Object {
+    "minWidth": "80vw",
+  },
+]
+`;
+
+exports[`minWidth: {
+  "minw": 2
+} 1`] = `
+Array [
+  Object {
+    "minWidth": "4px",
+  },
+]
+`;
+
+exports[`size: {
+  "s": 1
+} 1`] = `
+Array [
+  Object {
+    "height": "100%",
+    "width": "100%",
+  },
+]
+`;
+
+exports[`size: {
+  "size": 6
+} 1`] = `
+Array [
+  Object {
+    "height": "64px",
+    "width": "64px",
+  },
+]
+`;
+
+exports[`verticalAlign: {
+  "va": "middle"
+} 1`] = `
+Array [
+  Object {
+    "verticalAlign": "middle",
+  },
+]
+`;
+
+exports[`verticalAlign: {
+  "verticalAlign": "baseline"
+} 1`] = `
+Array [
+  Object {
+    "verticalAlign": "baseline",
+  },
+]
+`;
+
+exports[`width: {
+  "w": 0.25
+} 1`] = `
+Array [
+  Object {
+    "width": "25%",
+  },
+]
+`;
+
+exports[`width: {
+  "width": 1
+} 1`] = `
+Array [
+  Object {
+    "width": "100%",
+  },
+]
+`;
