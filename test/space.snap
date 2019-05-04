@@ -1,0 +1,445 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`margin: {
+  "m": "auto"
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "auto",
+    "marginLeft": "auto",
+    "marginRight": "auto",
+    "marginTop": "auto",
+  },
+]
+`;
+
+exports[`margin: {
+  "margin": "10%"
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "10%",
+    "marginLeft": "10%",
+    "marginRight": "10%",
+    "marginTop": "10%",
+  },
+]
+`;
+
+exports[`marginBottom: {
+  "marginBottom": 4
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "16px",
+  },
+]
+`;
+
+exports[`marginBottom: {
+  "mb": 5
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "32px",
+  },
+]
+`;
+
+exports[`marginLeft: {
+  "marginLeft": 6
+} 1`] = `
+Array [
+  Object {
+    "marginLeft": "64px",
+  },
+]
+`;
+
+exports[`marginLeft: {
+  "ml": 7
+} 1`] = `
+Array [
+  Object {
+    "marginLeft": "128px",
+  },
+]
+`;
+
+exports[`marginRight: {
+  "marginRight": 2
+} 1`] = `
+Array [
+  Object {
+    "marginRight": "4px",
+  },
+]
+`;
+
+exports[`marginRight: {
+  "mr": 3
+} 1`] = `
+Array [
+  Object {
+    "marginRight": "8px",
+  },
+]
+`;
+
+exports[`marginTop: {
+  "marginTop": 0
+} 1`] = `
+Array [
+  Object {
+    "marginTop": 0,
+  },
+]
+`;
+
+exports[`marginTop: {
+  "mt": 1
+} 1`] = `
+Array [
+  Object {
+    "marginTop": "2px",
+  },
+]
+`;
+
+exports[`marginX: {
+  "marginX": 8
+} 1`] = `
+Array [
+  Object {
+    "marginLeft": "256px",
+    "marginRight": "256px",
+  },
+]
+`;
+
+exports[`marginX: {
+  "mx": 9
+} 1`] = `
+Array [
+  Object {
+    "marginLeft": "512px",
+    "marginRight": "512px",
+  },
+]
+`;
+
+exports[`marginY: {
+  "marginY": 10
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "10px",
+    "marginTop": "10px",
+  },
+]
+`;
+
+exports[`marginY: {
+  "my": "20rem"
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": "20rem",
+    "marginTop": "20rem",
+  },
+]
+`;
+
+exports[`padding: {
+  "p": "auto"
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "auto",
+    "paddingLeft": "auto",
+    "paddingRight": "auto",
+    "paddingTop": "auto",
+  },
+]
+`;
+
+exports[`padding: {
+  "padding": "10%"
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "10%",
+    "paddingLeft": "10%",
+    "paddingRight": "10%",
+    "paddingTop": "10%",
+  },
+]
+`;
+
+exports[`paddingBottom: {
+  "paddingBottom": 4
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "16px",
+  },
+]
+`;
+
+exports[`paddingBottom: {
+  "pb": 5
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "32px",
+  },
+]
+`;
+
+exports[`paddingLeft: {
+  "paddingLeft": 6
+} 1`] = `
+Array [
+  Object {
+    "paddingLeft": "64px",
+  },
+]
+`;
+
+exports[`paddingLeft: {
+  "pl": 7
+} 1`] = `
+Array [
+  Object {
+    "paddingLeft": "128px",
+  },
+]
+`;
+
+exports[`paddingRight: {
+  "paddingRight": 2
+} 1`] = `
+Array [
+  Object {
+    "paddingRight": "4px",
+  },
+]
+`;
+
+exports[`paddingRight: {
+  "pr": 3
+} 1`] = `
+Array [
+  Object {
+    "paddingRight": "8px",
+  },
+]
+`;
+
+exports[`paddingTop: {
+  "paddingTop": 0
+} 1`] = `
+Array [
+  Object {
+    "paddingTop": 0,
+  },
+]
+`;
+
+exports[`paddingTop: {
+  "pt": 1
+} 1`] = `
+Array [
+  Object {
+    "paddingTop": "2px",
+  },
+]
+`;
+
+exports[`paddingX: {
+  "paddingX": 8
+} 1`] = `
+Array [
+  Object {
+    "paddingLeft": "256px",
+    "paddingRight": "256px",
+  },
+]
+`;
+
+exports[`paddingX: {
+  "px": 9
+} 1`] = `
+Array [
+  Object {
+    "paddingLeft": "512px",
+    "paddingRight": "512px",
+  },
+]
+`;
+
+exports[`paddingY: {
+  "paddingY": 10
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "10px",
+    "paddingTop": "10px",
+  },
+]
+`;
+
+exports[`paddingY: {
+  "py": "20rem"
+} 1`] = `
+Array [
+  Object {
+    "paddingBottom": "20rem",
+    "paddingTop": "20rem",
+  },
+]
+`;
+
+exports[`space: {
+  "m": 0,
+  "mx": 1,
+  "my": 2,
+  "mt": 3,
+  "mr": 4,
+  "mb": 5,
+  "ml": 6,
+  "p": 7,
+  "px": 8,
+  "py": 9,
+  "pt": 10,
+  "pr": "10em",
+  "pb": "20%",
+  "pl": "auto"
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": 0,
+    "marginLeft": 0,
+    "marginRight": 0,
+    "marginTop": 0,
+  },
+  Object {
+    "marginLeft": "2px",
+    "marginRight": "2px",
+  },
+  Object {
+    "marginBottom": "4px",
+    "marginTop": "4px",
+  },
+  Object {
+    "marginTop": "8px",
+  },
+  Object {
+    "marginRight": "16px",
+  },
+  Object {
+    "marginBottom": "32px",
+  },
+  Object {
+    "marginLeft": "64px",
+  },
+  Object {
+    "paddingBottom": "128px",
+    "paddingLeft": "128px",
+    "paddingRight": "128px",
+    "paddingTop": "128px",
+  },
+  Object {
+    "paddingLeft": "256px",
+    "paddingRight": "256px",
+  },
+  Object {
+    "paddingBottom": "512px",
+    "paddingTop": "512px",
+  },
+  Object {
+    "paddingTop": "10px",
+  },
+  Object {
+    "paddingRight": "10em",
+  },
+  Object {
+    "paddingBottom": "20%",
+  },
+  Object {
+    "paddingLeft": "auto",
+  },
+]
+`;
+
+exports[`space: {
+  "margin": 0,
+  "marginX": 1,
+  "marginY": 2,
+  "marginTop": 3,
+  "marginRight": 4,
+  "marginBottom": 5,
+  "marginLeft": 6,
+  "padding": 7,
+  "paddingX": 8,
+  "paddingY": 9,
+  "paddingTop": 10,
+  "paddingRight": "10em",
+  "paddingBottom": "20%",
+  "paddingLeft": "auto"
+} 1`] = `
+Array [
+  Object {
+    "marginBottom": 0,
+    "marginLeft": 0,
+    "marginRight": 0,
+    "marginTop": 0,
+  },
+  Object {
+    "marginLeft": "2px",
+    "marginRight": "2px",
+  },
+  Object {
+    "marginBottom": "4px",
+    "marginTop": "4px",
+  },
+  Object {
+    "marginTop": "8px",
+  },
+  Object {
+    "marginRight": "16px",
+  },
+  Object {
+    "marginBottom": "32px",
+  },
+  Object {
+    "marginLeft": "64px",
+  },
+  Object {
+    "paddingBottom": "128px",
+    "paddingLeft": "128px",
+    "paddingRight": "128px",
+    "paddingTop": "128px",
+  },
+  Object {
+    "paddingLeft": "256px",
+    "paddingRight": "256px",
+  },
+  Object {
+    "paddingBottom": "512px",
+    "paddingTop": "512px",
+  },
+  Object {
+    "paddingTop": "10px",
+  },
+  Object {
+    "paddingRight": "10em",
+  },
+  Object {
+    "paddingBottom": "20%",
+  },
+  Object {
+    "paddingLeft": "auto",
+  },
+]
+`;
