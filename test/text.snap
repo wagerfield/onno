@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fontFamily: {
+  "ff": "mono"
+} 1`] = `
+Array [
+  Object {
+    "fontFamily": "Monaco, monospace",
+  },
+]
+`;
+
+exports[`fontFamily: {
+  "fontFamily": "text"
+} 1`] = `
+Array [
+  Object {
+    "fontFamily": "system-ui, sans-serif",
+  },
+]
+`;
+
+exports[`fontSize: {
+  "fontSize": 0
+} 1`] = `
+Array [
+  Object {
+    "fontSize": "12px",
+  },
+]
+`;
+
+exports[`fontSize: {
+  "fs": 4
+} 1`] = `
+Array [
+  Object {
+    "fontSize": "24px",
+  },
+]
+`;
+
+exports[`fontStyle: {
+  "fontStyle": "oblique"
+} 1`] = `
+Array [
+  Object {
+    "fontStyle": "oblique",
+  },
+]
+`;
+
+exports[`fontStyle: {
+  "fst": "italic"
+} 1`] = `
+Array [
+  Object {
+    "fontStyle": "italic",
+  },
+]
+`;
+
+exports[`fontWeight: {
+  "fontWeight": "normal"
+} 1`] = `
+Array [
+  Object {
+    "fontWeight": 400,
+  },
+]
+`;
+
+exports[`fontWeight: {
+  "fw": "bold"
+} 1`] = `
+Array [
+  Object {
+    "fontWeight": 700,
+  },
+]
+`;
+
+exports[`letterSpacing: {
+  "letterSpacing": 0
+} 1`] = `
+Array [
+  Object {
+    "letterSpacing": 0,
+  },
+]
+`;
+
+exports[`letterSpacing: {
+  "ls": 2
+} 1`] = `
+Array [
+  Object {
+    "letterSpacing": "2px",
+  },
+]
+`;
+
+exports[`lineHeight: {
+  "lh": "narrow"
+} 1`] = `
+Array [
+  Object {
+    "lineHeight": 1.25,
+  },
+]
+`;
+
+exports[`lineHeight: {
+  "lineHeight": "normal"
+} 1`] = `
+Array [
+  Object {
+    "lineHeight": 1.5,
+  },
+]
+`;
+
+exports[`text: {
+  "ff": "Times New Roman",
+  "fs": "100px",
+  "fst": "normal",
+  "fw": 100,
+  "lh": 2,
+  "ls": "3px",
+  "ta": "left"
+} 1`] = `
+Array [
+  Object {
+    "fontFamily": "Times New Roman",
+  },
+  Object {
+    "fontSize": "100px",
+  },
+  Object {
+    "fontStyle": "normal",
+  },
+  Object {
+    "fontWeight": 100,
+  },
+  Object {
+    "lineHeight": 2,
+  },
+  Object {
+    "letterSpacing": "3px",
+  },
+  Object {
+    "textAlign": "left",
+  },
+]
+`;
+
+exports[`text: {
+  "fontFamily": "Roboto Mono",
+  "fontSize": "3rem",
+  "fontStyle": "italic",
+  "fontWeight": 300,
+  "lineHeight": "2em",
+  "letterSpacing": "0.5em",
+  "textAlign": "right"
+} 1`] = `
+Array [
+  Object {
+    "fontFamily": "Roboto Mono",
+  },
+  Object {
+    "fontSize": "3rem",
+  },
+  Object {
+    "fontStyle": "italic",
+  },
+  Object {
+    "fontWeight": 300,
+  },
+  Object {
+    "lineHeight": "2em",
+  },
+  Object {
+    "letterSpacing": "0.5em",
+  },
+  Object {
+    "textAlign": "right",
+  },
+]
+`;
+
+exports[`textAlign: {
+  "ta": "justify"
+} 1`] = `
+Array [
+  Object {
+    "textAlign": "justify",
+  },
+]
+`;
+
+exports[`textAlign: {
+  "textAlign": "center"
+} 1`] = `
+Array [
+  Object {
+    "textAlign": "center",
+  },
+]
+`;
