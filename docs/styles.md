@@ -2,12 +2,12 @@
 
 ## Color
 
-| Function Name   | Props Keys           | Style Keys       | Theme Keys       |
-| :-------------- | :------------------- | :--------------- | :--------------- |
-| backgroundColor | backgroundColor, bgc | backgroundColor  | colors, palette  |
-| borderColor     | borderColor, bc      | borderColor      | colors, palette  |
-| textColor       | color, tc            | color            | colors, palette  |
-| color           | all of the above     | all of the above | all of the above |
+| Function Name   | Props Keys           | Style Keys      | Theme Keys      |
+| :-------------- | :------------------- | :-------------- | :-------------- |
+| backgroundColor | backgroundColor, bgc | backgroundColor | colors, palette |
+| borderColor     | borderColor, bc      | borderColor     | colors, palette |
+| textColor       | color, tc            | color           | colors, palette |
+| color           | all of the above     |
 
 ## Space
 
