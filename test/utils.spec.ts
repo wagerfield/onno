@@ -1,4 +1,5 @@
 import * as U from "../src/utils"
+import * as H from "./test-utils"
 
 test("isNil", () => {
   expect(U.isNil(undefined)).toBe(true)
@@ -86,60 +87,72 @@ test("toPath", () => {
 })
 
 test("get", () => {
-  const obj = {
-    foo: "FOO",
-    bar: {
-      a: "A",
-      b: 0,
-      c: false,
-      d: [11, 22, 33]
-    },
-    baz: [
-      {
-        alias: "A0" // No value
-      },
-      {
-        value: "V1" // No alias
-      },
-      {
-        alias: "A2",
-        value: "V2"
-      },
-      "V3" // Normal value
-    ]
-  }
-
-  // Null
-  expect(U.get()).toBeNull()
-  expect(U.get([])).toBeNull()
-  expect(U.get([], obj)).toBeNull()
-  expect(U.get(["zoo"], obj)).toBeNull()
-  expect(U.get(["foo.a"], obj)).toBeNull()
+  // Undefined
+  expect(U.get()).toBeUndefined()
+  expect(U.get("foo")).toBeUndefined()
+  expect(U.get("zoo", H.fixture)).toBeUndefined()
+  expect(U.get("foo.a", H.fixture)).toBeUndefined()
 
   // Resolve
-  expect(U.get(["foo"], obj)).toBe(obj.foo)
-  expect(U.get(["bar"], obj)).toBe(obj.bar)
-  expect(U.get(["bar.a"], obj)).toBe(obj.bar.a)
-  expect(U.get(["bar.b"], obj)).toBe(obj.bar.b)
-  expect(U.get(["bar.c"], obj)).toBe(obj.bar.c)
-  expect(U.get(["bar.d"], obj)).toBe(obj.bar.d)
-  expect(U.get(["bar.d.1"], obj)).toBe(obj.bar.d[1])
-
-  // Priority
-  expect(U.get(["foo", "bar"], obj)).toBe(obj.foo)
-  expect(U.get(["bar", "foo"], obj)).toBe(obj.bar)
-
-  // Fallback
-  expect(U.get(["foo.a", "bar.a"], obj)).toBe(obj.bar.a)
-  expect(U.get(["foo.a", "bar.e"], obj)).toBeNull()
+  expect(U.get("foo", H.fixture)).toBe(H.fixture.foo)
+  expect(U.get("bar", H.fixture)).toBe(H.fixture.bar)
+  expect(U.get("bar.a", H.fixture)).toBe(H.fixture.bar.a)
+  expect(U.get("bar.b", H.fixture)).toBe(H.fixture.bar.b)
+  expect(U.get("bar.c", H.fixture)).toBe(H.fixture.bar.c)
+  expect(U.get("bar.d", H.fixture)).toBe(H.fixture.bar.d)
+  expect(U.get("bar.d.1", H.fixture)).toBe(H.fixture.bar.d[1])
 
   // Aliases
-  expect(U.get(["baz.0"], obj)).toBeNull()
-  expect(U.get(["baz.A0"], obj)).toBeNull()
-  expect(U.get(["baz.1"], obj)).toBe(obj.baz[1]) // { value: "V1" }
-  expect(U.get(["baz.A1"], obj)).toBeNull()
-  expect(U.get(["baz.2"], obj)).toBe("V2")
-  expect(U.get(["baz.A2"], obj)).toBe("V2")
-  expect(U.get(["baz.3"], obj)).toBe("V3")
-  expect(U.get(["baz.A3"], obj)).toBeNull()
+  expect(U.get("baz.0", H.fixture)).toBeUndefined()
+  expect(U.get("baz.A0", H.fixture)).toBeUndefined()
+  expect(U.get("baz.1", H.fixture)).toBe(H.fixture.baz[1]) // { value: "V1" }
+  expect(U.get("baz.A1", H.fixture)).toBeUndefined()
+  expect(U.get("baz.2", H.fixture)).toBe("V2")
+  expect(U.get("baz.A2", H.fixture)).toBe("V2")
+  expect(U.get("baz.3", H.fixture)).toBe(0)
+  expect(U.get("baz.A3", H.fixture)).toBe(0)
+  expect(U.get("baz.4", H.fixture)).toBe("V4")
+  expect(U.get("baz.A4", H.fixture)).toBeUndefined()
+  expect(U.get("baz.5", H.fixture)).toBe(0)
+  expect(U.get("baz.A5", H.fixture)).toBeUndefined()
+})
+
+test("resolve", () => {
+  // Null
+  expect(U.resolve()).toBeNull()
+  expect(U.resolve([])).toBeNull()
+  expect(U.resolve([], H.fixture)).toBeNull()
+  expect(U.resolve(["zoo"], H.fixture)).toBeNull()
+  expect(U.resolve(["foo.a"], H.fixture)).toBeNull()
+
+  // Resolve
+  expect(U.resolve(["foo"], H.fixture)).toBe(H.fixture.foo)
+  expect(U.resolve(["bar"], H.fixture)).toBe(H.fixture.bar)
+  expect(U.resolve(["bar.a"], H.fixture)).toBe(H.fixture.bar.a)
+  expect(U.resolve(["bar.b"], H.fixture)).toBe(H.fixture.bar.b)
+  expect(U.resolve(["bar.c"], H.fixture)).toBe(H.fixture.bar.c)
+  expect(U.resolve(["bar.d"], H.fixture)).toBe(H.fixture.bar.d)
+  expect(U.resolve(["bar.d.1"], H.fixture)).toBe(H.fixture.bar.d[1])
+
+  // Priority
+  expect(U.resolve(["foo", "bar"], H.fixture)).toBe(H.fixture.foo)
+  expect(U.resolve(["bar", "foo"], H.fixture)).toBe(H.fixture.bar)
+
+  // Fallback
+  expect(U.resolve(["foo.a", "bar.a"], H.fixture)).toBe(H.fixture.bar.a)
+  expect(U.resolve(["foo.a", "bar.e"], H.fixture)).toBeNull()
+
+  // Aliases
+  expect(U.resolve(["baz.0"], H.fixture)).toBeNull()
+  expect(U.resolve(["baz.A0"], H.fixture)).toBeNull()
+  expect(U.resolve(["baz.1"], H.fixture)).toBe(H.fixture.baz[1]) // { value: "V1" }
+  expect(U.resolve(["baz.A1"], H.fixture)).toBeNull()
+  expect(U.resolve(["baz.2"], H.fixture)).toBe("V2")
+  expect(U.resolve(["baz.A2"], H.fixture)).toBe("V2")
+  expect(U.resolve(["baz.3"], H.fixture)).toBe(0)
+  expect(U.resolve(["baz.A3"], H.fixture)).toBe(0)
+  expect(U.resolve(["baz.4"], H.fixture)).toBe("V4")
+  expect(U.resolve(["baz.A4"], H.fixture)).toBeNull()
+  expect(U.resolve(["baz.5"], H.fixture)).toBe(0)
+  expect(U.resolve(["baz.A5"], H.fixture)).toBeNull()
 })
