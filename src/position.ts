@@ -41,19 +41,21 @@ export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
   themeKeys: ["zIndices"]
 })
 
+// Edge
+
+export type EdgeValue = C.Globals | "auto" | string | number
+
+export type EdgeProp = T.Prop<EdgeValue>
+
 // Top
 
-export type TopValue = C.TopProperty<T.Length>
-
-export type TopProp = T.Prop<TopValue>
-
 export interface TopProps extends T.ThemeProps {
-  top?: TopProp
-  t?: TopProp
+  top?: EdgeProp
+  t?: EdgeProp
 }
 
 export interface TopStyle extends T.Style {
-  top: TopValue
+  top: EdgeValue
 }
 
 export const top = S.style<TopProps, TopStyle>({
@@ -62,17 +64,13 @@ export const top = S.style<TopProps, TopStyle>({
 
 // Right
 
-export type RightValue = C.RightProperty<T.Length>
-
-export type RightProp = T.Prop<RightValue>
-
 export interface RightProps extends T.ThemeProps {
-  right?: RightProp
-  r?: RightProp
+  right?: EdgeProp
+  r?: EdgeProp
 }
 
 export interface RightStyle extends T.Style {
-  right: RightValue
+  right: EdgeValue
 }
 
 export const right = S.style<RightProps, RightStyle>({
@@ -81,17 +79,13 @@ export const right = S.style<RightProps, RightStyle>({
 
 // Bottom
 
-export type BottomValue = C.BottomProperty<T.Length>
-
-export type BottomProp = T.Prop<BottomValue>
-
 export interface BottomProps extends T.ThemeProps {
-  bottom?: BottomProp
-  b?: BottomProp
+  bottom?: EdgeProp
+  b?: EdgeProp
 }
 
 export interface BottomStyle extends T.Style {
-  bottom: BottomValue
+  bottom: EdgeValue
 }
 
 export const bottom = S.style<BottomProps, BottomStyle>({
@@ -100,17 +94,13 @@ export const bottom = S.style<BottomProps, BottomStyle>({
 
 // Left
 
-export type LeftValue = C.LeftProperty<T.Length>
-
-export type LeftProp = T.Prop<LeftValue>
-
 export interface LeftProps extends T.ThemeProps {
-  left?: LeftProp
-  l?: LeftProp
+  left?: EdgeProp
+  l?: EdgeProp
 }
 
 export interface LeftStyle extends T.Style {
-  left: LeftValue
+  left: EdgeValue
 }
 
 export const left = S.style<LeftProps, LeftStyle>({
