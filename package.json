@@ -14,9 +14,10 @@
   },
   "keywords": [
     "css-in-js",
-    "styled-components",
     "styled-system",
-    "emotion"
+    "styled-components",
+    "emotion",
+    "glamor"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
