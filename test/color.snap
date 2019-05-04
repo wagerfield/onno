@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`backgroundColor: {
+  "backgroundColor": "red"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "red",
+  },
+]
+`;
+
+exports[`backgroundColor: {
+  "bgc": "blue"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "blue",
+  },
+]
+`;
+
+exports[`borderColor: {
+  "bc": "blue"
+} 1`] = `
+Array [
+  Object {
+    "borderColor": "blue",
+  },
+]
+`;
+
+exports[`borderColor: {
+  "borderColor": "red"
+} 1`] = `
+Array [
+  Object {
+    "borderColor": "red",
+  },
+]
+`;
+
+exports[`color: {
+  "backgroundColor": "red",
+  "borderColor": "lime",
+  "color": "blue"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "red",
+  },
+  Object {
+    "borderColor": "lime",
+  },
+  Object {
+    "color": "blue",
+  },
+]
+`;
+
+exports[`color: {
+  "bgc": "red",
+  "bc": "lime",
+  "tc": "blue"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "red",
+  },
+  Object {
+    "borderColor": "lime",
+  },
+  Object {
+    "color": "blue",
+  },
+]
+`;
+
+exports[`textColor: {
+  "color": "red"
+} 1`] = `
+Array [
+  Object {
+    "color": "red",
+  },
+]
+`;
+
+exports[`textColor: {
+  "tc": "blue"
+} 1`] = `
+Array [
+  Object {
+    "color": "blue",
+  },
+]
+`;
