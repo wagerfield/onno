@@ -1,7 +1,6 @@
-import * as T from "../src/types"
-import * as S from "../src/style"
+import * as S from "../src"
 
-export const style = (options?: Partial<T.StyleOptions>) =>
+export const style = (options?: Partial<S.StyleOptions>) =>
   S.style({
     propsKeys: ["a", "b", "c"],
     styleKeys: ["x", "y", "z"],
@@ -9,7 +8,7 @@ export const style = (options?: Partial<T.StyleOptions>) =>
     ...options
   })
 
-export const snapshot = (func: T.Func) => (props: T.Props, label?: string) => {
+export const snapshot = (func: S.Func) => (props: S.Props, label?: string) => {
   let snapshotName = JSON.stringify(props, null, 2)
   if (label) snapshotName = `[${label}] ${snapshotName}`
   expect(func(props)).toMatchSnapshot(snapshotName)

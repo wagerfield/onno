@@ -1,7 +1,7 @@
-import * as H from "./test-utils"
+import * as U from "./test-utils"
 
-const baselineFunc = H.style()
-const testBaseline = H.snapshot(baselineFunc)
+const baselineFunc = U.style()
+const testBaseline = U.snapshot(baselineFunc)
 
 test("returns null for unresolved breakpoints", () => {
   expect(baselineFunc({ a: { foo: "foo" } })).toBeNull()

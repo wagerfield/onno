@@ -1,5 +1,5 @@
-import * as S from "../src/style"
-import * as H from "./test-utils"
+import * as S from "../src"
+import * as U from "./test-utils"
 
 test("returns style factory", () => {
   const styleFact = S.extend({})
@@ -15,7 +15,7 @@ test("returns style function", () => {
 
 test("returns style object array", () => {
   const styleFunc = S.extend({})({ propsKeys: ["a", "b"] })
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
   testProps({ a: "foo" })
   testProps({ b: "bar" })
 })
@@ -28,7 +28,7 @@ test("overrides base options", () => {
   const styleFunc = styleFact({
     propsKeys: ["c", "d"]
   })
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
   testProps({ a: "A" })
   testProps({ b: "B" })
   testProps({ c: "C" })

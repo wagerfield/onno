@@ -1,4 +1,4 @@
-import * as S from "../src/style"
+import * as S from "../src"
 
 test("returns null for undefined keys", () => {
   expect(S.render()).toBeNull()

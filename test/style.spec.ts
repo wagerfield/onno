@@ -1,10 +1,8 @@
-import * as T from "../src/types"
-import * as S from "../src/style"
-import * as U from "../src/utils"
-import * as H from "./test-utils"
+import * as S from "../src"
+import * as U from "./test-utils"
 
-const baselineFunc = H.style()
-const testBaseline = H.snapshot(baselineFunc)
+const baselineFunc = U.style()
+const testBaseline = U.snapshot(baselineFunc)
 
 test("returns style function", () => {
   expect(baselineFunc).toEqual(expect.any(Function))
@@ -22,7 +20,7 @@ test("returns style object array", () => {
 
 test("styleKeys default to first propsKeys", () => {
   const styleFunc = S.style({ propsKeys: ["a", "b"] })
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
   testProps({ a: "foo" })
   testProps({ b: "bar" })
 })
@@ -35,17 +33,17 @@ test("prop aliases", () => {
 })
 
 test("nested props", () => {
-  const styleFunc = H.style({ propsKeys: ["a.b.c"] })
-  const testProps = H.snapshot(styleFunc)
+  const styleFunc = U.style({ propsKeys: ["a.b.c"] })
+  const testProps = U.snapshot(styleFunc)
   testProps({ a: { b: { c: 3 } } })
   testProps({ a: { b: 2 } })
 })
 
 test("transform functions", () => {
-  const testAddPx = H.snapshot(H.style({ transform: U.addPx }))
-  const testAddPc = H.snapshot(H.style({ transform: U.addPc }))
+  const testAddPx = U.snapshot(U.style({ transform: S.addPx }))
+  const testAddPc = U.snapshot(U.style({ transform: S.addPc }))
 
-  const testProps = (props: T.Props) => {
+  const testProps = (props: S.Props) => {
     testBaseline(props, "baseline")
     testAddPx(props, "addPx")
     testAddPc(props, "addPc")
@@ -58,9 +56,9 @@ test("transform functions", () => {
 })
 
 test("fallbacks", () => {
-  const testFallback = H.snapshot(H.style({ fallback: [0, 4, 8] }))
+  const testFallback = U.snapshot(U.style({ fallback: [0, 4, 8] }))
 
-  const testProps = (props: T.Props) => {
+  const testProps = (props: S.Props) => {
     testBaseline(props, "baseline")
     testFallback(props, "fallback")
   }
@@ -70,7 +68,7 @@ test("fallbacks", () => {
 })
 
 test("nested fallbacks", () => {
-  const styleFunc = H.style({
+  const styleFunc = U.style({
     fallback: {
       k: {
         l: {
@@ -81,7 +79,7 @@ test("nested fallbacks", () => {
       }
     }
   })
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
 
   testProps({ a: "j.k" })
   testProps({ a: "k.l.z" })
@@ -91,7 +89,7 @@ test("nested fallbacks", () => {
 })
 
 test("aliased fallbacks", () => {
-  const styleFunc = H.style({
+  const styleFunc = U.style({
     fallback: [
       {
         alias: "foo",
@@ -103,7 +101,7 @@ test("aliased fallbacks", () => {
       }
     ]
   })
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
 
   testProps({ a: 0 })
   testProps({ b: 1 })

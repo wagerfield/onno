@@ -1,5 +1,5 @@
-import * as S from "../src/style"
-import * as H from "./test-utils"
+import * as S from "../src"
+import * as U from "./test-utils"
 
 test("returns style function", () => {
   const styleFunc = S.compose([])
@@ -17,7 +17,7 @@ test("returns style object array", () => {
     S.style({ propsKeys: ["a", "b"] }),
     S.style({ propsKeys: ["c", "d"] })
   ])
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
 
   testProps({})
   testProps({ a: 1 })
@@ -30,7 +30,7 @@ test("respects order of style functions", () => {
     S.style({ propsKeys: ["a", "b"], styleKeys: ["x"] }),
     S.style({ propsKeys: ["a", "c"], styleKeys: ["y"] })
   ])
-  const testProps = H.snapshot(styleFunc)
+  const testProps = U.snapshot(styleFunc)
 
   testProps({ a: 1 })
   testProps({ b: 2 })

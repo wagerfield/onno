@@ -1,4 +1,4 @@
-import * as H from "./test-utils"
+import * as U from "./test-utils"
 
 const fallback = ["F0", "F1", "F2"]
 const themeKeys = ["t.u.v"]
@@ -21,21 +21,21 @@ const theme3 = {
 }
 
 test("supports theme", () => {
-  const testProps = H.snapshot(H.style())
+  const testProps = U.snapshot(U.style())
   testProps({ a: 0, theme: theme1 }, "0")
   testProps({ a: 1, theme: theme1 }, "1")
   testProps({ a: 2, theme: theme1 }, "2")
 })
 
 test("supports nested theme", () => {
-  const testProps = H.snapshot(H.style({ themeKeys }))
+  const testProps = U.snapshot(U.style({ themeKeys }))
   testProps({ a: 0, theme: theme2 }, "0")
   testProps({ a: 1, theme: theme2 }, "1")
   testProps({ a: 2, theme: theme2 }, "2")
 })
 
 test("supports theme and fallback", () => {
-  const testProps = H.snapshot(H.style({ fallback }))
+  const testProps = U.snapshot(U.style({ fallback }))
   testProps({ a: 0, theme: theme1 }, "0")
   testProps({ a: 1, theme: theme1 }, "1")
   testProps({ a: 2, theme: theme1 }, "2")
@@ -43,7 +43,7 @@ test("supports theme and fallback", () => {
 })
 
 test("supports nested theme and fallback", () => {
-  const testProps = H.snapshot(H.style({ fallback, themeKeys }))
+  const testProps = U.snapshot(U.style({ fallback, themeKeys }))
   testProps({ a: 0, theme: theme2 }, "0")
   testProps({ a: 1, theme: theme2 }, "1")
   testProps({ a: 2, theme: theme2 }, "2")
@@ -51,7 +51,7 @@ test("supports nested theme and fallback", () => {
 })
 
 test("supports theme array aliases", () => {
-  const testProps = H.snapshot(H.style())
+  const testProps = U.snapshot(U.style())
   testProps({ a: "foo", theme: theme3 }, "foo")
   testProps({ a: "bar", theme: theme3 }, "bar")
   testProps({ a: "baz", theme: theme3 }, "baz")
