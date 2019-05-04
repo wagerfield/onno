@@ -17,15 +17,15 @@ Composition functions appear in **bold** at the bottom of each table.
 | :------------ | :----------------- | :--------------------------------------------------- | :--------- |
 | marginTop     | marginTop, mt      | marginTop                                            | spaces     |
 | marginRight   | marginRight, mr    | marginRight                                          | spaces     |
-| marginBottom  | marginBottom, mr   | marginBottom                                         | spaces     |
-| marginLeft    | marginLeft, mr     | marginLeft                                           | spaces     |
+| marginBottom  | marginBottom, mb   | marginBottom                                         | spaces     |
+| marginLeft    | marginLeft, ml     | marginLeft                                           | spaces     |
 | marginX       | marginX, mx        | marginLeft, marginRight                              | spaces     |
 | marginY       | marginY, my        | marginTop, marginBottom                              | spaces     |
 | margin        | margin, m          | marginTop, marginRight, marginBottom, marginLeft     | spaces     |
 | paddingTop    | paddingTop, pt     | paddingTop                                           | spaces     |
 | paddingRight  | paddingRight, pr   | paddingRight                                         | spaces     |
-| paddingBottom | paddingBottom, pr  | paddingBottom                                        | spaces     |
-| paddingLeft   | paddingLeft, pr    | paddingLeft                                          | spaces     |
+| paddingBottom | paddingBottom, pb  | paddingBottom                                        | spaces     |
+| paddingLeft   | paddingLeft, pl    | paddingLeft                                          | spaces     |
 | paddingX      | paddingX, px       | paddingLeft, paddingRight                            | spaces     |
 | paddingY      | paddingY, py       | paddingTop, paddingBottom                            | spaces     |
 | padding       | padding, p         | paddingTop, paddingRight, paddingBottom, paddingLeft | spaces     |
@@ -63,5 +63,5 @@ Composition functions appear in **bold** at the bottom of each table.
 | fontWeight    | fontWeight, fw     | fontWeight    | fontWeights         |
 | lineHeight    | lineHeight, lh     | lineHeight    | lineHeights         |
 | letterSpacing | letterSpacing, ls  | letterSpacing | letterSpacings      |
-| textAlign     | textAlign, ls      | textAlign     | none                |
+| textAlign     | textAlign, ta      | textAlign     | none                |
 | **text**      | _all of the above_ |
