@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`overrides base options: {"a":"A"} 1`] = `null`;
+exports[`overrides base options: {
+  "a": "A"
+} 1`] = `null`;
 
-exports[`overrides base options: {"b":"B"} 1`] = `null`;
+exports[`overrides base options: {
+  "b": "B"
+} 1`] = `null`;
 
-exports[`overrides base options: {"c":"C"} 1`] = `
+exports[`overrides base options: {
+  "c": "C"
+} 1`] = `
 Array [
   Object {
     "x": "C",
@@ -13,7 +19,9 @@ Array [
 ]
 `;
 
-exports[`overrides base options: {"d":"D"} 1`] = `
+exports[`overrides base options: {
+  "d": "D"
+} 1`] = `
 Array [
   Object {
     "x": "D",
@@ -22,7 +30,9 @@ Array [
 ]
 `;
 
-exports[`returns style object array: {"a":"foo"} 1`] = `
+exports[`returns style object array: {
+  "a": "foo"
+} 1`] = `
 Array [
   Object {
     "a": "foo",
@@ -30,7 +40,9 @@ Array [
 ]
 `;
 
-exports[`returns style object array: {"b":"bar"} 1`] = `
+exports[`returns style object array: {
+  "b": "bar"
+} 1`] = `
 Array [
   Object {
     "a": "bar",
