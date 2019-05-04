@@ -11,3 +11,10 @@ export const BREAKPOINTS: T.Breakpoints = [
   { alias: "lg", value: 360 * 3 },
   { alias: "xl", value: 360 * 4 }
 ]
+
+export const PALETTE: T.ThemeObject = {
+  gray: ["#EEE", "#AAA", "#666"],
+  text: "#222",
+  link: "#00F",
+  bg: "#FFF"
+}
