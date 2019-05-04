@@ -7,6 +7,36 @@ test("display", () => {
   testProps({ d: "inline" })
 })
 
+test("position", () => {
+  const testProps = U.snapshot(S.position)
+  testProps({ position: "relative" })
+  testProps({ pos: "absolute" })
+})
+
+test("top", () => {
+  const testProps = U.snapshot(S.top)
+  testProps({ top: 1 / 2 })
+  testProps({ t: 0 })
+})
+
+test("right", () => {
+  const testProps = U.snapshot(S.right)
+  testProps({ right: 8 })
+  testProps({ r: "20rem" })
+})
+
+test("bottom", () => {
+  const testProps = U.snapshot(S.bottom)
+  testProps({ bottom: -100 })
+  testProps({ b: "auto" })
+})
+
+test("left", () => {
+  const testProps = U.snapshot(S.left)
+  testProps({ left: 0.05 })
+  testProps({ l: 4 })
+})
+
 test("width", () => {
   const testProps = U.snapshot(S.width)
   testProps({ width: 1 })
@@ -55,10 +85,26 @@ test("verticalAlign", () => {
   testProps({ va: "middle" })
 })
 
+test("zIndex", () => {
+  const testProps = U.snapshot(S.zIndex)
+  testProps({ zi: 2 })
+  testProps({
+    zIndex: 2,
+    theme: {
+      zIndices: [10, 20, 30]
+    }
+  })
+})
+
 test("layout", () => {
   const testProps = U.snapshot(S.layout)
   testProps({
     display: "flex",
+    position: "fixed",
+    top: 0,
+    right: 0.2,
+    bottom: 60,
+    left: "4rem",
     width: 150,
     minWidth: 1 / 2,
     maxWidth: 3 / 4,
@@ -66,10 +112,16 @@ test("layout", () => {
     minHeight: "100vh",
     maxHeight: "auto",
     size: 0.25,
-    verticalAlign: "sub"
+    verticalAlign: "sub",
+    zIndex: 2
   })
   testProps({
     d: "grid",
+    pos: "sticky",
+    t: 1,
+    r: 0.8,
+    b: "auto",
+    l: "5em",
     w: 0.4,
     minw: "20em",
     maxw: "40ch",
@@ -77,6 +129,7 @@ test("layout", () => {
     minh: "50%",
     maxh: "100",
     s: 1,
-    va: "super"
+    va: "super",
+    zi: 10
   })
 })

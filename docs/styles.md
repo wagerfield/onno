@@ -36,14 +36,21 @@ Composition functions appear in **bold** at the bottom of each table.
 | Function Name | Props Keys         | Style Keys    | Theme Keys        |
 | :------------ | :----------------- | :------------ | :---------------- |
 | display       | display, d         | display       | none              |
+| position      | position, pos      | position      | none              |
+| top           | top, t             | top           | sizes             |
+| right         | right, r           | right         | sizes             |
+| bottom        | bottom, b          | bottom        | sizes             |
+| left          | left, l            | left          | sizes             |
+| size          | size, s            | width, height | sizes             |
 | width         | width, w           | width         | widths, sizes     |
 | minWidth      | minWidth, minw     | minWidth      | minWidths, sizes  |
 | maxWidth      | maxWidth, maxw     | maxWidth      | maxWidths, sizes  |
 | height        | height, h          | height        | heights, sizes    |
 | minHeight     | minHeight, minh    | minHeight     | minHeights, sizes |
 | maxHeight     | maxHeight, maxh    | maxHeight     | maxHeights, sizes |
-| size          | size, s            | width, height | sizes             |
 | verticalAlign | verticalAlign, va  | verticalAlign | none              |
+| zIndex        | zIndex, zi         | zIndex        | zIndices          |
+| **edge**      | _all edge keys_    |
 | **layout**    | _all of the above_ |
 
 ## Text
@@ -58,16 +65,3 @@ Composition functions appear in **bold** at the bottom of each table.
 | letterSpacing | letterSpacing, ls  | letterSpacing | letterSpacings      |
 | textAlign     | textAlign, ls      | textAlign     | none                |
 | **text**      | _all of the above_ |
-
-## Position
-
-| Function Name | Props Keys         | Style Keys | Theme Keys |
-| :------------ | :----------------- | :--------- | :--------- |
-| position      | position, pos      | position   | none       |
-| zIndex        | zIndex, zi         | zIndex     | zIndices   |
-| top           | top, t             | top        | none       |
-| right         | right, r           | right      | none       |
-| bottom        | bottom, b          | bottom     | none       |
-| left          | left, l            | left       | none       |
-| **edge**      | all edge keys      |
-| **move**      | _all of the above_ |

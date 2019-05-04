@@ -6,6 +6,5 @@ export * from "./style"
 // Styles
 export * from "./color"
 export * from "./layout"
-export * from "./position"
 export * from "./space"
 export * from "./text"

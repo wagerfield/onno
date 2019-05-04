@@ -2,12 +2,14 @@ import * as C from "csstype"
 import * as T from "./types"
 import * as S from "./style"
 import * as U from "./utils"
+import * as F from "./fallback"
 
 const SK = "sizes"
 
 const ex = S.extend({
+  themeKeys: [SK],
   transform: U.addPcOrPx,
-  fallback: [0, "100%", 4, 8, 16, 32, 64, 128, 256, 512]
+  fallback: F.PC_SCALE
 })
 
 // Display
@@ -27,6 +29,91 @@ export interface DisplayStyle extends T.Style {
 
 export const display = S.style<DisplayProps, DisplayStyle>({
   propsKeys: ["display", "d"]
+})
+
+// Position
+
+export type PositionValue = C.PositionProperty
+
+export type PositionProp = T.Prop<PositionValue>
+
+export interface PositionProps extends T.ThemeProps {
+  position?: PositionProp
+  pos?: PositionProp
+}
+
+export interface PositionStyle extends T.Style {
+  position: PositionValue
+}
+
+export const position = S.style<PositionProps, PositionStyle>({
+  propsKeys: ["position", "pos"]
+})
+
+// Edge
+
+export type EdgeValue = C.Globals | "auto" | string | number
+
+export type EdgeProp = T.Prop<EdgeValue>
+
+// Top
+
+export interface TopProps extends T.ThemeProps {
+  top?: EdgeProp
+  t?: EdgeProp
+}
+
+export interface TopStyle extends T.Style {
+  top: EdgeValue
+}
+
+export const top = ex<TopProps, TopStyle>({
+  propsKeys: ["top", "t"]
+})
+
+// Right
+
+export interface RightProps extends T.ThemeProps {
+  right?: EdgeProp
+  r?: EdgeProp
+}
+
+export interface RightStyle extends T.Style {
+  right: EdgeValue
+}
+
+export const right = ex<RightProps, RightStyle>({
+  propsKeys: ["right", "r"]
+})
+
+// Bottom
+
+export interface BottomProps extends T.ThemeProps {
+  bottom?: EdgeProp
+  b?: EdgeProp
+}
+
+export interface BottomStyle extends T.Style {
+  bottom: EdgeValue
+}
+
+export const bottom = ex<BottomProps, BottomStyle>({
+  propsKeys: ["bottom", "b"]
+})
+
+// Left
+
+export interface LeftProps extends T.ThemeProps {
+  left?: EdgeProp
+  l?: EdgeProp
+}
+
+export interface LeftStyle extends T.Style {
+  left: EdgeValue
+}
+
+export const left = ex<LeftProps, LeftStyle>({
+  propsKeys: ["left", "l"]
 })
 
 // Width
@@ -167,8 +254,7 @@ export interface SizeStyle extends T.Style {
 
 export const size = ex<SizeProps, SizeStyle>({
   propsKeys: ["size", "s"],
-  styleKeys: ["width", "height"],
-  themeKeys: [SK]
+  styleKeys: ["width", "height"]
 })
 
 // Vertical Align
@@ -190,9 +276,39 @@ export const verticalAlign = S.style<VerticalAlignProps, VerticalAlignStyle>({
   propsKeys: ["verticalAlign", "va"]
 })
 
+// Z Index
+
+export type ZIndexValue = C.ZIndexProperty
+
+export type ZIndexProp = T.Prop<ZIndexValue>
+
+export interface ZIndexProps extends T.ThemeProps {
+  zIndex?: ZIndexProp
+  zi?: ZIndexProp
+}
+
+export interface ZIndexStyle extends T.Style {
+  zIndex: ZIndexValue
+}
+
+export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
+  propsKeys: ["zIndex", "zi"],
+  themeKeys: ["zIndices"]
+})
+
+// Edge
+
+export type EdgeProps = TopProps & RightProps & BottomProps & LeftProps
+
+export type EdgeStyle = TopStyle & RightStyle & BottomStyle & LeftStyle
+
+export const edge = S.compose<EdgeProps, EdgeStyle>([top, right, bottom, left])
+
 // Layout
 
 export type LayoutProps = DisplayProps &
+  PositionProps &
+  EdgeProps &
   SizeProps &
   WidthProps &
   MinWidthProps &
@@ -200,9 +316,12 @@ export type LayoutProps = DisplayProps &
   HeightProps &
   MinHeightProps &
   MaxHeightProps &
-  VerticalAlignProps
+  VerticalAlignProps &
+  ZIndexProps
 
 export type LayoutStyle = DisplayStyle &
+  PositionStyle &
+  EdgeStyle &
   SizeStyle &
   WidthStyle &
   MinWidthStyle &
@@ -210,10 +329,13 @@ export type LayoutStyle = DisplayStyle &
   HeightStyle &
   MinHeightStyle &
   MaxHeightStyle &
-  VerticalAlignStyle
+  VerticalAlignStyle &
+  ZIndexStyle
 
 export const layout = S.compose<LayoutProps, LayoutStyle>([
   display,
+  position,
+  edge,
   size,
   width,
   minWidth,
@@ -221,5 +343,6 @@ export const layout = S.compose<LayoutProps, LayoutStyle>([
   height,
   minHeight,
   maxHeight,
-  verticalAlign
+  verticalAlign,
+  zIndex
 ])

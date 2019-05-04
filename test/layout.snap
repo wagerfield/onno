@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`bottom: {
+  "b": "auto"
+} 1`] = `
+Array [
+  Object {
+    "bottom": "auto",
+  },
+]
+`;
+
+exports[`bottom: {
+  "bottom": -100
+} 1`] = `
+Array [
+  Object {
+    "bottom": "-100px",
+  },
+]
+`;
+
 exports[`display: {
   "d": "inline"
 } 1`] = `
@@ -42,6 +62,11 @@ Array [
 
 exports[`layout: {
   "d": "grid",
+  "pos": "sticky",
+  "t": 1,
+  "r": 0.8,
+  "b": "auto",
+  "l": "5em",
   "w": 0.4,
   "minw": "20em",
   "maxw": "40ch",
@@ -49,11 +74,27 @@ exports[`layout: {
   "minh": "50%",
   "maxh": "100",
   "s": 1,
-  "va": "super"
+  "va": "super",
+  "zi": 10
 } 1`] = `
 Array [
   Object {
     "display": "grid",
+  },
+  Object {
+    "position": "sticky",
+  },
+  Object {
+    "top": "100%",
+  },
+  Object {
+    "right": "80%",
+  },
+  Object {
+    "bottom": "auto",
+  },
+  Object {
+    "left": "5em",
   },
   Object {
     "height": "100%",
@@ -80,11 +121,19 @@ Array [
   Object {
     "verticalAlign": "super",
   },
+  Object {
+    "zIndex": 10,
+  },
 ]
 `;
 
 exports[`layout: {
   "display": "flex",
+  "position": "fixed",
+  "top": 0,
+  "right": 0.2,
+  "bottom": 60,
+  "left": "4rem",
   "width": 150,
   "minWidth": 0.5,
   "maxWidth": 0.75,
@@ -92,11 +141,27 @@ exports[`layout: {
   "minHeight": "100vh",
   "maxHeight": "auto",
   "size": 0.25,
-  "verticalAlign": "sub"
+  "verticalAlign": "sub",
+  "zIndex": 2
 } 1`] = `
 Array [
   Object {
     "display": "flex",
+  },
+  Object {
+    "position": "fixed",
+  },
+  Object {
+    "top": 0,
+  },
+  Object {
+    "right": "20%",
+  },
+  Object {
+    "bottom": "60px",
+  },
+  Object {
+    "left": "4rem",
   },
   Object {
     "height": "25%",
@@ -122,6 +187,29 @@ Array [
   },
   Object {
     "verticalAlign": "sub",
+  },
+  Object {
+    "zIndex": 2,
+  },
+]
+`;
+
+exports[`left: {
+  "l": 4
+} 1`] = `
+Array [
+  Object {
+    "left": "16px",
+  },
+]
+`;
+
+exports[`left: {
+  "left": 0.05
+} 1`] = `
+Array [
+  Object {
+    "left": "5%",
   },
 ]
 `;
@@ -206,6 +294,46 @@ Array [
 ]
 `;
 
+exports[`position: {
+  "pos": "absolute"
+} 1`] = `
+Array [
+  Object {
+    "position": "absolute",
+  },
+]
+`;
+
+exports[`position: {
+  "position": "relative"
+} 1`] = `
+Array [
+  Object {
+    "position": "relative",
+  },
+]
+`;
+
+exports[`right: {
+  "r": "20rem"
+} 1`] = `
+Array [
+  Object {
+    "right": "20rem",
+  },
+]
+`;
+
+exports[`right: {
+  "right": 8
+} 1`] = `
+Array [
+  Object {
+    "right": "256px",
+  },
+]
+`;
+
 exports[`size: {
   "s": 1
 } 1`] = `
@@ -224,6 +352,26 @@ Array [
   Object {
     "height": "64px",
     "width": "64px",
+  },
+]
+`;
+
+exports[`top: {
+  "t": 0
+} 1`] = `
+Array [
+  Object {
+    "top": 0,
+  },
+]
+`;
+
+exports[`top: {
+  "top": 0.5
+} 1`] = `
+Array [
+  Object {
+    "top": "50%",
   },
 ]
 `;
@@ -264,6 +412,33 @@ exports[`width: {
 Array [
   Object {
     "width": "100%",
+  },
+]
+`;
+
+exports[`zIndex: {
+  "zIndex": 2,
+  "theme": {
+    "zIndices": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "zIndex": 30,
+  },
+]
+`;
+
+exports[`zIndex: {
+  "zi": 2
+} 1`] = `
+Array [
+  Object {
+    "zIndex": 2,
   },
 ]
 `;
