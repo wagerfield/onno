@@ -9,21 +9,21 @@ exports[`handles responsive prop arrays: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": 11,
       "y": 11,
       "z": 11,
     },
   },
   Object {
-    "@media screen and (min-width: 360px)": Object {
+    "@media(min-width: 360px)": Object {
       "x": 22,
       "y": 22,
       "z": 22,
     },
   },
   Object {
-    "@media screen and (min-width: 720px)": Object {
+    "@media(min-width: 720px)": Object {
       "x": 33,
       "y": 33,
       "z": 33,
@@ -42,21 +42,21 @@ exports[`handles responsive prop objects: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": "XS",
       "y": "XS",
       "z": "XS",
     },
   },
   Object {
-    "@media screen and (min-width: 720px)": Object {
+    "@media(min-width: 720px)": Object {
       "x": "MD",
       "y": "MD",
       "z": "MD",
     },
   },
   Object {
-    "@media screen and (min-width: 1440px)": Object {
+    "@media(min-width: 1440px)": Object {
       "x": "XL",
       "y": "XL",
       "z": "XL",
@@ -80,14 +80,14 @@ exports[`style array is sorted in breakpoint order: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 200px)": Object {
+    "@media(min-width: 200px)": Object {
       "x": 1,
       "y": 1,
       "z": 1,
     },
   },
   Object {
-    "@media screen and (min-width: 100px)": Object {
+    "@media(min-width: 100px)": Object {
       "x": 2,
       "y": 2,
       "z": 2,
@@ -106,21 +106,21 @@ exports[`style array is sorted in breakpoint order: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": "XS",
       "y": "XS",
       "z": "XS",
     },
   },
   Object {
-    "@media screen and (min-width: 720px)": Object {
+    "@media(min-width: 720px)": Object {
       "x": "MD",
       "y": "MD",
       "z": "MD",
     },
   },
   Object {
-    "@media screen and (min-width: 1080px)": Object {
+    "@media(min-width: 1080px)": Object {
       "x": "LG",
       "y": "LG",
       "z": "LG",
@@ -155,21 +155,21 @@ exports[`theme breakpoint array aliases: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": 0,
       "y": 0,
       "z": 0,
     },
   },
   Object {
-    "@media screen and (min-width: 100px)": Object {
+    "@media(min-width: 100px)": Object {
       "x": 1,
       "y": 1,
       "z": 1,
     },
   },
   Object {
-    "@media screen and (min-width: 200px)": Object {
+    "@media(min-width: 200px)": Object {
       "x": 2,
       "y": 2,
       "z": 2,
@@ -204,21 +204,21 @@ exports[`theme breakpoint array aliases: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": 0,
       "y": 0,
       "z": 0,
     },
   },
   Object {
-    "@media screen and (min-width: 100px)": Object {
+    "@media(min-width: 100px)": Object {
       "x": 1,
       "y": 1,
       "z": 1,
     },
   },
   Object {
-    "@media screen and (min-width: 200px)": Object {
+    "@media(min-width: 200px)": Object {
       "x": 2,
       "y": 2,
       "z": 2,
@@ -244,21 +244,21 @@ exports[`theme breakpoint arrays: {
 } 1`] = `
 Array [
   Object {
-    "@media screen and (min-width: 0)": Object {
+    "@media(min-width: 0)": Object {
       "x": 1,
       "y": 1,
       "z": 1,
     },
   },
   Object {
-    "@media screen and (min-width: 100px)": Object {
+    "@media(min-width: 100px)": Object {
       "x": 2,
       "y": 2,
       "z": 2,
     },
   },
   Object {
-    "@media screen and (min-width: 200px)": Object {
+    "@media(min-width: 200px)": Object {
       "x": 3,
       "y": 3,
       "z": 3,

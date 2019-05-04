@@ -16,7 +16,7 @@ export const addPc = when(isFraction)((x) => x * 100 + "%")
 
 export const addPcOrPx = (x: any) => addPx(addPc(x))
 
-export const mq = (x: any) => `@media screen and (min-width: ${addPx(x)})`
+export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 
