@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responsive prop arrays: {
+  "a": [
+    11,
+    22,
+    33
+  ]
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": 11,
+      "y": 11,
+      "z": 11,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 360px)": Object {
+      "x": 22,
+      "y": 22,
+      "z": 22,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 720px)": Object {
+      "x": 33,
+      "y": 33,
+      "z": 33,
+    },
+  },
+]
+`;
+
+exports[`responsive prop objects: {
+  "a": {
+    "xs": "xs",
+    "md": "md",
+    "xl": "xl",
+    "na": "na"
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": "xs",
+      "y": "xs",
+      "z": "xs",
+    },
+  },
+  Object {
+    "@media screen and (min-width: 720px)": Object {
+      "x": "md",
+      "y": "md",
+      "z": "md",
+    },
+  },
+  Object {
+    "@media screen and (min-width: 1440px)": Object {
+      "x": "xl",
+      "y": "xl",
+      "z": "xl",
+    },
+  },
+]
+`;
+
+exports[`theme breakpoint aliases: {
+  "theme": {
+    "breakpoints": [
+      {
+        "alias": "a0",
+        "value": 0
+      },
+      {
+        "alias": "a1",
+        "value": 100
+      },
+      {
+        "alias": "a2",
+        "value": 200
+      }
+    ]
+  },
+  "a": [
+    0,
+    1,
+    2,
+    3
+  ]
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 100px)": Object {
+      "x": 1,
+      "y": 1,
+      "z": 1,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 200px)": Object {
+      "x": 2,
+      "y": 2,
+      "z": 2,
+    },
+  },
+]
+`;
+
+exports[`theme breakpoint aliases: {
+  "theme": {
+    "breakpoints": [
+      {
+        "alias": "a0",
+        "value": 0
+      },
+      {
+        "alias": "a1",
+        "value": 100
+      },
+      {
+        "alias": "a2",
+        "value": 200
+      }
+    ]
+  },
+  "a": {
+    "a0": 0,
+    "a1": 1,
+    "a2": 2,
+    "a3": 3
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 100px)": Object {
+      "x": 1,
+      "y": 1,
+      "z": 1,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 200px)": Object {
+      "x": 2,
+      "y": 2,
+      "z": 2,
+    },
+  },
+]
+`;
+
+exports[`theme breakpoint arrays: {
+  "a": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "theme": {
+    "breakpoints": [
+      0,
+      100,
+      200
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": 1,
+      "y": 1,
+      "z": 1,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 100px)": Object {
+      "x": 2,
+      "y": 2,
+      "z": 2,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 200px)": Object {
+      "x": 3,
+      "y": 3,
+      "z": 3,
+    },
+  },
+]
+`;
+
+exports[`theme breakpoint objects: {
+  "theme": {
+    "breakpoints": {
+      "a0": 0,
+      "a1": 100,
+      "a2": 200
+    }
+  },
+  "a": [
+    1,
+    2,
+    3,
+    4
+  ]
+} 1`] = `null`;
+
+exports[`theme breakpoint objects: {
+  "theme": {
+    "breakpoints": {
+      "a0": 0,
+      "a1": 100,
+      "a2": 200
+    }
+  },
+  "a": {
+    "a0": 0,
+    "a1": 1,
+    "a2": 2,
+    "a3": 3
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media screen and (min-width: 0)": Object {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 100px)": Object {
+      "x": 1,
+      "y": 1,
+      "z": 1,
+    },
+  },
+  Object {
+    "@media screen and (min-width: 200px)": Object {
+      "x": 2,
+      "y": 2,
+      "z": 2,
+    },
+  },
+]
+`;
