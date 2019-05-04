@@ -1,15 +1,15 @@
 # Styles
 
-Composition functions will appear in **bold** at the bottom of each table.
+Composition functions appear in **bold** at the bottom of each table.
 
 ## Color
 
-| Function Name   | Props Keys           | Style Keys      | Theme Keys      |
-| :-------------- | :------------------- | :-------------- | :-------------- |
-| backgroundColor | backgroundColor, bgc | backgroundColor | colors, palette |
-| borderColor     | borderColor, bc      | borderColor     | colors, palette |
-| textColor       | color, tc            | color           | colors, palette |
-| **color**       | _all of the above_   |
+| Function Name   | Props Keys                        | Style Keys      | Theme Keys      |
+| :-------------- | :-------------------------------- | :-------------- | :-------------- |
+| backgroundColor | backgroundColor, bgc              | backgroundColor | colors, palette |
+| borderColor     | borderColor, bc                   | borderColor     | colors, palette |
+| textColor       | color, tc                         | color           | colors, palette |
+| **color**       | <td colspan=3> _all of the above_ |
 
 ## Space
 
