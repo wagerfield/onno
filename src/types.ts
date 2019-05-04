@@ -2,7 +2,7 @@ export type Length = number
 
 export type Nil = null | undefined
 
-export type Unit = boolean | number | string
+export type Unit = number | string
 
 export type Key = string
 
@@ -114,9 +114,9 @@ export interface NestedStyle<S extends Style> {
   [key: string]: S
 }
 
-export type StyleArrayValue<S extends Style> = S | NestedStyle<S>
+export type StyleObject<S extends Style> = S | NestedStyle<S>
 
-export type StyleArray<S extends Style> = StyleArrayValue<S>[]
+export type StyleArray<S extends Style> = StyleObject<S>[]
 
 export type StyleFunction<P extends ThemeProps, S extends Style> = (
   props: P
