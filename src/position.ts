@@ -124,3 +124,11 @@ export type EdgeProps = TopProps & RightProps & BottomProps & LeftProps
 export type EdgeStyle = TopStyle & RightStyle & BottomStyle & LeftStyle
 
 export const edge = S.compose<EdgeProps, EdgeStyle>([top, right, bottom, left])
+
+// Move
+
+export type MoveProps = PositionProps & ZIndexProps & EdgeProps
+
+export type MoveStyle = PositionStyle & ZIndexStyle & EdgeStyle
+
+export const move = S.compose<MoveProps, MoveStyle>([position, zIndex, edge])
