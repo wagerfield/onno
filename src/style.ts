@@ -65,9 +65,8 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     const { theme } = props
     const styles: T.StyleArray<S> = []
     const pushStyle = (value: any, query?: string) => {
-      let result: T.StyleObject<S> | null = renderValue(value, theme)
-      if (result && query) result = { [query]: result }
-      if (result) styles.push(result)
+      const result: T.StyleObject<S> | null = renderValue(value, theme)
+      if (result) styles.push(query ? { [query]: result } : result)
     }
 
     // Handle responsive prop values
