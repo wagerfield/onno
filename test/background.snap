@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`background: {
+  "backgroundColor": "link",
+  "backgroundImage": "src(baz.png)",
+  "backgroundPosition": "left bottom",
+  "backgroundRepeat": "repeat-y",
+  "backgroundSize": "cover"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "#00F",
+  },
+  Object {
+    "backgroundImage": "src(baz.png)",
+  },
+  Object {
+    "backgroundPosition": "left bottom",
+  },
+  Object {
+    "backgroundRepeat": "repeat-y",
+  },
+  Object {
+    "backgroundSize": "cover",
+  },
+]
+`;
+
+exports[`background: {
+  "bgc": "gray.1",
+  "bgi": "src(zoo.png)",
+  "bgp": "top right",
+  "bgr": "repeat-x",
+  "bgs": "contain"
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "#AAA",
+  },
+  Object {
+    "backgroundImage": "src(zoo.png)",
+  },
+  Object {
+    "backgroundPosition": "top right",
+  },
+  Object {
+    "backgroundRepeat": "repeat-x",
+  },
+  Object {
+    "backgroundSize": "contain",
+  },
+]
+`;
+
+exports[`backgroundImage: {
+  "backgroundImage": "src(foo.png)"
+} 1`] = `
+Array [
+  Object {
+    "backgroundImage": "src(foo.png)",
+  },
+]
+`;
+
+exports[`backgroundImage: {
+  "bgi": "src(bar.png)"
+} 1`] = `
+Array [
+  Object {
+    "backgroundImage": "src(bar.png)",
+  },
+]
+`;
+
+exports[`backgroundPosition: {
+  "backgroundPosition": "center"
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": "center",
+  },
+]
+`;
+
+exports[`backgroundPosition: {
+  "bgp": "0 50%"
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": "0 50%",
+  },
+]
+`;
+
+exports[`backgroundRepeat: {
+  "backgroundRepeat": "none"
+} 1`] = `
+Array [
+  Object {
+    "backgroundRepeat": "none",
+  },
+]
+`;
+
+exports[`backgroundRepeat: {
+  "bgr": "repeat-x"
+} 1`] = `
+Array [
+  Object {
+    "backgroundRepeat": "repeat-x",
+  },
+]
+`;
+
+exports[`backgroundSize: {
+  "backgroundSize": "cover"
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": "cover",
+  },
+]
+`;
+
+exports[`backgroundSize: {
+  "bgs": "contain"
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": "contain",
+  },
+]
+`;

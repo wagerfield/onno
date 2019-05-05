@@ -63,5 +63,17 @@ Composition functions appear in **bold** at the bottom of each table.
 | fontWeight    | fontWeight, fw     | fontWeight    | fontWeights         |
 | lineHeight    | lineHeight, lh     | lineHeight    | lineHeights         |
 | letterSpacing | letterSpacing, ls  | letterSpacing | letterSpacings      |
+| textColor     | color, tc          | color         | colors, palette     |
 | textAlign     | textAlign, ta      | textAlign     | none                |
 | **text**      | _all of the above_ |
+
+## Background
+
+| Function Name      | Props Keys              | Style Keys         | Theme Keys      |
+| :----------------- | :---------------------- | :----------------- | :-------------- |
+| backgroundColor    | backgroundColor, bgc    | backgroundColor    | colors, palette |
+| backgroundImage    | backgroundImage, bgi    | backgroundImage    | none            |
+| backgroundPosition | backgroundPosition, bgi | backgroundPosition | none            |
+| backgroundRepeat   | backgroundRepeat, bgi   | backgroundRepeat   | none            |
+| backgroundSize     | backgroundSize, bgi     | backgroundSize     | none            |
+| **background**     | _all of the above_      |
