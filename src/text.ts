@@ -119,7 +119,7 @@ export const lineHeight = S.style<LineHeightProps, LineHeightStyle>({
 
 // Letter Spacing
 
-export type LetterSpacingValue = C.LetterSpacingProperty<T.Length>
+export type LetterSpacingValue = C.LetterSpacingProperty<T.Length | string>
 
 export type LetterSpacingProp = T.Prop<LetterSpacingValue>
 
