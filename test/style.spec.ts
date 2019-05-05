@@ -10,7 +10,7 @@ test("returns style function", () => {
 })
 
 test("returns null for unresolved keys", () => {
-  expect(baselineFunc({ z: "foo" })).toBeNull()
+  expect(baselineFunc({ z: "foo" } as any)).toBeNull()
 })
 
 test("returns style object array", () => {
@@ -26,10 +26,10 @@ test("styleKeys default to first propsKeys", () => {
 })
 
 test("prop aliases", () => {
-  testBaseline({ a: 1, b: 2, c: 3, d: 4 })
-  testBaseline({ b: 2, c: 3, d: 4 })
-  testBaseline({ c: 3, d: 4 })
-  testBaseline({ d: 4 })
+  testBaseline({ a: 1, b: 2, c: 3, d: 4 } as any)
+  testBaseline({ b: 2, c: 3, d: 4 } as any)
+  testBaseline({ c: 3, d: 4 } as any)
+  testBaseline({ d: 4 } as any)
 })
 
 test("nested props", () => {
@@ -43,7 +43,7 @@ test("transform functions", () => {
   const testAddPx = U.snapshot(U.style({ transform: S.addPx }))
   const testAddPc = U.snapshot(U.style({ transform: S.addPc }))
 
-  const testProps = (props: S.Props) => {
+  const testProps = (props: U.TestProps) => {
     testBaseline(props, "baseline")
     testAddPx(props, "addPx")
     testAddPc(props, "addPc")
@@ -58,7 +58,7 @@ test("transform functions", () => {
 test("fallbacks", () => {
   const testFallback = U.snapshot(U.style({ fallback: [0, 4, 8] }))
 
-  const testProps = (props: S.Props) => {
+  const testProps = (props: U.TestProps) => {
     testBaseline(props, "baseline")
     testFallback(props, "fallback")
   }

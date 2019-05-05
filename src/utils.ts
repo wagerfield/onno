@@ -20,7 +20,7 @@ export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 
-export const get = (path?: any, obj?: any) => {
+export function get(path?: any, obj?: any) {
   if (isNil(path) || isNil(obj)) return null
   const keys = isArray(path) ? path : toPath(path)
   return keys.reduce((v, k) => {
@@ -34,7 +34,7 @@ export const get = (path?: any, obj?: any) => {
   }, obj)
 }
 
-export const resolve = (paths?: any[], obj?: any) => {
+export function resolve(paths?: any[], obj?: any) {
   if (isNil(obj) || !isArray(paths)) return null
   return paths.reduceRight((v, p) => {
     const r = get(p, obj)

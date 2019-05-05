@@ -1,20 +1,41 @@
-import * as S from "../src"
+import * as I from "../src"
 
-export const style = (options?: Partial<S.StyleOptions>) =>
-  S.style({
+export interface TestProps extends I.ThemeProps {
+  a?: any
+  b?: any
+  c?: any
+}
+
+export interface TestStyle extends I.Style {
+  x: any
+  y: any
+  z: any
+}
+
+export function style<
+  P extends I.ThemeProps = TestProps,
+  S extends I.Style = TestStyle
+>(options?: Partial<I.StyleOptions>) {
+  return I.style<P, S>({
     propsKeys: ["a", "b", "c"],
     styleKeys: ["x", "y", "z"],
     themeKeys: ["t", "u", "v"],
     ...options
   })
-
-export const snapshot = (func: S.Func) => (props: S.Props, label?: string) => {
-  let snapshotName = JSON.stringify(props, null, 2)
-  if (label) snapshotName = `[${label}] ${snapshotName}`
-  expect(func(props)).toMatchSnapshot(snapshotName)
 }
 
-export const fixture = {
+export function snapshot<
+  P extends I.ThemeProps = TestProps,
+  S extends I.Style = TestStyle
+>(fn: I.StyleFunction<P, S>) {
+  return (props: P, label?: string) => {
+    let snapshotName = JSON.stringify(props, null, 2)
+    if (label) snapshotName = `[${label}] ${snapshotName}`
+    expect(fn(props)).toMatchSnapshot(snapshotName)
+  }
+}
+
+export const OBJ = {
   foo: "FOO",
   bar: {
     a: "A",
