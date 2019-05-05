@@ -2,27 +2,24 @@ import * as T from "./types"
 import * as U from "./utils"
 import * as F from "./fallback"
 
-export const render = <S extends T.Style>(keys?: T.Keys, value?: any) =>
-  !U.isNil(value) && U.isArray(keys) && keys.length
-    ? keys.reduce(
-        (s, k) => {
-          s[k] = value
-          return s
-        },
-        {} as S
-      )
-    : null
+export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
+  if (U.isNil(value) || !U.isArray(keys) || !keys.length) return null
+  return keys.reduce(
+    (s, k) => {
+      s[k] = value
+      return s
+    },
+    {} as S
+  )
+}
 
-export const style = <P extends T.ThemeProps, S extends T.Style>({
-  propsKeys,
-  styleKeys,
-  themeKeys,
-  transform,
-  fallback
-}: T.StyleOptions): T.StyleFunction<P, S> => {
+export function style<P extends T.ThemeProps, S extends T.Style>(
+  options: T.StyleOptions
+): T.StyleFunction<P, S> {
+  const { propsKeys, styleKeys, themeKeys, transform, fallback } = options
   const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
-  // Create scoped renderValue function
+  // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
     let themed = false
 
@@ -46,8 +43,9 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     // Render style object
     return render<S>(keys, value)
   }
-  // Return style function
-  return (props: P) => {
+
+  // Create scoped renderProps style function
+  const renderProps: T.StyleFunction<P, S> = (props: P) => {
     // Get first propsValue from propsKeys
     const propsValue = U.resolve(propsKeys, props)
 
@@ -59,7 +57,7 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     const styles: T.StyleArray<S> = []
     const pushStyle = (value: any, query?: string) => {
       const result: T.StyleObject<S> | null = renderValue(value, theme)
-      if (result) styles.push(query ? { [query]: result } : result)
+      return result && styles.push(query ? { [query]: result } : result)
     }
 
     // Handle responsive prop values
@@ -77,6 +75,12 @@ export const style = <P extends T.ThemeProps, S extends T.Style>({
     // Return styles array when not empty
     return styles.length ? styles : null
   }
+
+  // Store options on renderProps function
+  renderProps.options = options
+
+  // Return renderProps function
+  return renderProps
 }
 
 export const extend = (a: Partial<T.StyleOptions>) => <
