@@ -20,23 +20,24 @@ export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 
-export const get = (key?: any, x?: any) =>
-  isNil(key) || isNil(x)
-    ? null
-    : toPath(key).reduce((v, k) => {
-        let r = v && v[k]
-        if (r && r.alias) r = r.value
-        else if (isArray(v)) {
-          const a = v.find((o) => o && o.alias === k)
-          if (a) r = a.value
-        }
-        return isNil(r) ? null : r
-      }, x)
+export const get = (path?: any, obj?: any) => {
+  if (isNil(path) || isNil(obj)) return null
+  const keys = isArray(path) ? path : toPath(path)
+  return keys.reduce((v, k) => {
+    let r = v && v[k]
+    if (r && r.alias) r = r.value
+    else if (isArray(v)) {
+      const a = v.find((o) => o && o.alias === k)
+      if (a) r = a.value
+    }
+    return isNil(r) ? null : r
+  }, obj)
+}
 
-export const resolve = (keys?: any[], x?: any) =>
-  isArray(keys)
-    ? keys.reduceRight((v, k) => {
-        const r = get(k, x)
-        return isNil(r) ? v : r
-      }, null)
-    : null
+export const resolve = (paths?: any[], obj?: any) => {
+  if (isNil(obj) || !isArray(paths)) return null
+  return paths.reduceRight((v, p) => {
+    const r = get(p, obj)
+    return isNil(r) ? v : r
+  }, null)
+}

@@ -93,7 +93,7 @@ test("get", () => {
   expect(S.get("zoo", U.fixture)).toBeNull()
   expect(S.get("foo.a", U.fixture)).toBeNull()
 
-  // Resolve
+  // Strings
   expect(S.get("foo", U.fixture)).toBe(U.fixture.foo)
   expect(S.get("bar", U.fixture)).toBe(U.fixture.bar)
   expect(S.get("bar.a", U.fixture)).toBe(U.fixture.bar.a)
@@ -101,6 +101,16 @@ test("get", () => {
   expect(S.get("bar.c", U.fixture)).toBe(U.fixture.bar.c)
   expect(S.get("bar.d", U.fixture)).toBe(U.fixture.bar.d)
   expect(S.get("bar.d.1", U.fixture)).toBe(U.fixture.bar.d[1])
+
+  // Arrays
+  expect(S.get(["foo"], U.fixture)).toBe(U.fixture.foo)
+  expect(S.get(["bar"], U.fixture)).toBe(U.fixture.bar)
+  expect(S.get(["bar", "a"], U.fixture)).toBe(U.fixture.bar.a)
+  expect(S.get(["bar", "b"], U.fixture)).toBe(U.fixture.bar.b)
+  expect(S.get(["bar", "c"], U.fixture)).toBe(U.fixture.bar.c)
+  expect(S.get(["bar", "d"], U.fixture)).toBe(U.fixture.bar.d)
+  expect(S.get(["bar", "d", 1], U.fixture)).toBe(U.fixture.bar.d[1])
+  expect(S.get(["bar", "d", "2"], U.fixture)).toBe(U.fixture.bar.d[2])
 
   // Aliases
   expect(S.get("baz.0", U.fixture)).toBeNull()
