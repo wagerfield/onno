@@ -1,11 +1,15 @@
 import * as C from "csstype"
 import * as T from "./types"
 import * as S from "./style"
-import * as F from "./fallback"
 
 const ex = S.extend({
   themeKeys: ["colors", "palette"],
-  fallback: F.PALETTE
+  fallback: {
+    gray: ["#EEE", "#AAA", "#666"],
+    text: "#222",
+    link: "#00F",
+    bg: "#FFF"
+  }
 })
 
 // Background Color

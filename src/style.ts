@@ -1,6 +1,13 @@
 import * as T from "./types"
 import * as U from "./utils"
-import * as F from "./fallback"
+
+export const BREAKPOINTS: T.Breakpoints = [
+  { alias: "xs", value: 360 * 0 },
+  { alias: "sm", value: 360 * 1 },
+  { alias: "md", value: 360 * 2 },
+  { alias: "lg", value: 360 * 3 },
+  { alias: "xl", value: 360 * 4 }
+]
 
 export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
   if (U.isNil(value) || !U.isArray(keys) || !keys.length) return null
@@ -62,7 +69,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
 
     // Handle responsive prop values
     if (typeof propsValue === "object") {
-      const breakpoints = (theme && theme.breakpoints) || F.BREAKPOINTS
+      const breakpoints = (theme && theme.breakpoints) || BREAKPOINTS
       if (U.isArray(breakpoints)) {
         breakpoints.forEach((value: any, index) => {
           const breakpoint = U.get(index, breakpoints)
