@@ -7,7 +7,7 @@ import * as U from "./utils"
 
 export type FontFamilyValue = C.FontFamilyProperty
 
-export type FontFamilyProp = T.Prop<FontFamilyValue>
+export type FontFamilyProp = T.Prop<FontFamilyValue | number>
 
 export interface FontFamilyProps extends T.ThemeProps {
   fontFamily?: FontFamilyProp

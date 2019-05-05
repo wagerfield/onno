@@ -2,7 +2,7 @@ export type Length = number
 
 export type Nil = null | undefined
 
-export type Unit = boolean | number | string
+export type Primitive = boolean | number | string
 
 export type Key = string
 
@@ -12,33 +12,27 @@ export type Func = (...args: any[]) => any
 
 export type Pred = (...args: any[]) => boolean
 
-export type ResponsivePropArrayValue<P> = P | Unit
-
-export type ResponsivePropArray<P> = ResponsivePropArrayValue<P>[]
+export type ResponsivePropArray<P> = P[]
 
 export interface ResponsivePropObject<P> {
-  [key: string]: P | Unit
+  [key: string]: P
 }
 
 export type ResponsiveProp<P> = ResponsivePropArray<P> | ResponsivePropObject<P>
 
-export type Prop<P> = P | ResponsiveProp<P> | Unit | Nil
-
-export interface Props {
-  [key: string]: any
-}
+export type Prop<P> = P | ResponsiveProp<P> | Nil
 
 export interface Alias {
   alias: Key
-  value: Unit
+  value: Primitive | ThemeValue
 }
 
-export type ThemeArrayValue = Alias | Unit
+export type ThemeArrayValue = Alias | Primitive
 
 export type ThemeArray = ThemeArrayValue[]
 
 export interface ThemeObject {
-  [key: string]: ThemeObject | ThemeArray | Unit
+  [key: string]: ThemeObject | ThemeArray | Primitive
 }
 
 export type ThemeValue = ThemeArray | ThemeObject | Nil
@@ -84,7 +78,7 @@ export interface Theme {
   colorStyles?: ThemeValue
 }
 
-export interface ThemeProps extends Props {
+export interface ThemeProps {
   theme?: Theme
 }
 
@@ -98,7 +92,7 @@ export interface StyleOptions {
   fallback?: ThemeValue
 }
 
-export type StyleValue = Unit | string[] // string[] for fallback values
+export type StyleValue = number | string | string[] // string[] for fallback values
 
 export interface Style {
   [key: string]: StyleValue

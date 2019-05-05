@@ -12,7 +12,7 @@ const ex = S.extend({
 
 export type BackgroundColorValue = C.BackgroundColorProperty
 
-export type BackgroundColorProp = T.Prop<BackgroundColorValue>
+export type BackgroundColorProp = T.Prop<BackgroundColorValue | number>
 
 export interface BackgroundColorProps extends T.ThemeProps {
   backgroundColor?: BackgroundColorProp
@@ -31,7 +31,7 @@ export const backgroundColor = ex<BackgroundColorProps, BackgroundColorStyle>({
 
 export type BorderColorValue = C.BorderColorProperty
 
-export type BorderColorProp = T.Prop<BorderColorValue>
+export type BorderColorProp = T.Prop<BorderColorValue | number>
 
 export interface BorderColorProps extends T.ThemeProps {
   borderColor?: BorderColorProp
@@ -50,7 +50,7 @@ export const borderColor = ex<BorderColorProps, BorderColorStyle>({
 
 export type TextColorValue = C.ColorProperty
 
-export type TextColorProp = T.Prop<TextColorValue>
+export type TextColorProp = T.Prop<TextColorValue | number>
 
 export interface TextColorProps extends T.ThemeProps {
   color?: TextColorProp
