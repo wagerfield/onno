@@ -71,7 +71,7 @@ export const fontStyle = S.style<FontStyleProps, FontStyleStyle>({
 
 // Font Weight
 
-export type FontWeightValue = C.FontWeightProperty
+export type FontWeightValue = C.FontWeightProperty | string
 
 export type FontWeightProp = T.Prop<FontWeightValue>
 

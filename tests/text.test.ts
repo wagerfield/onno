@@ -1,16 +1,43 @@
 import * as S from "../src"
 import * as U from "./test-utils"
 
+const theme: S.Theme = {
+  fontFamilies: {
+    foo: "Foo",
+    bar: "Bar"
+  },
+  fontSizes: {
+    sm: 10,
+    md: 20,
+    lg: 40
+  },
+  fontWeights: {
+    light: 200,
+    normal: 500,
+    bold: 800
+  },
+  lineHeights: {
+    wide: 2,
+    zero: 0
+  },
+  letterSpacings: {
+    sparse: "1em",
+    dense: -2
+  }
+}
+
 test("fontFamily", () => {
   const testProps = U.snapshot(S.fontFamily)
   testProps({ fontFamily: "text" })
   testProps({ ff: "mono" })
+  testProps({ ff: "foo", theme })
 })
 
 test("fontSize", () => {
   const testProps = U.snapshot(S.fontSize)
   testProps({ fontSize: 0 })
   testProps({ fs: 4 })
+  testProps({ fs: "sm", theme })
 })
 
 test("fontStyle", () => {
@@ -23,18 +50,21 @@ test("fontWeight", () => {
   const testProps = U.snapshot(S.fontWeight)
   testProps({ fontWeight: "normal" })
   testProps({ fw: "bold" })
+  testProps({ fw: "light", theme })
 })
 
 test("lineHeight", () => {
   const testProps = U.snapshot(S.lineHeight)
   testProps({ lineHeight: "normal" })
   testProps({ lh: "narrow" })
+  testProps({ lh: "wide", theme })
 })
 
 test("letterSpacing", () => {
   const testProps = U.snapshot(S.letterSpacing)
   testProps({ letterSpacing: 0 })
   testProps({ ls: 2 })
+  testProps({ ls: "dense", theme })
 })
 
 test("textAlign", () => {
@@ -46,14 +76,15 @@ test("textAlign", () => {
 test("textSet", () => {
   const testProps = U.snapshot(S.textSet)
   testProps({
-    fontFamily: "Roboto Mono",
-    fontSize: "3rem",
+    fontFamily: "bar",
+    fontSize: "lg",
     fontStyle: "italic",
-    fontWeight: 300,
-    lineHeight: "2em",
-    letterSpacing: "0.5em",
+    fontWeight: "bold",
+    lineHeight: "zero",
+    letterSpacing: "sparse",
     textAlign: "right",
-    color: "link"
+    color: "link",
+    theme
   })
   testProps({
     ff: "Times New Roman",

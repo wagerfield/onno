@@ -1,6 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fontFamily: {
+  "ff": "foo",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "fontFamily": "Foo",
+  },
+]
+`;
+
+exports[`fontFamily: {
   "ff": "mono"
 } 1`] = `
 Array [
@@ -26,6 +60,40 @@ exports[`fontSize: {
 Array [
   Object {
     "fontSize": "12px",
+  },
+]
+`;
+
+exports[`fontSize: {
+  "fs": "sm",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "fontSize": "10px",
   },
 ]
 `;
@@ -80,12 +148,80 @@ Array [
 ]
 `;
 
+exports[`fontWeight: {
+  "fw": "light",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "fontWeight": 200,
+  },
+]
+`;
+
 exports[`letterSpacing: {
   "letterSpacing": 0
 } 1`] = `
 Array [
   Object {
     "letterSpacing": 0,
+  },
+]
+`;
+
+exports[`letterSpacing: {
+  "ls": "dense",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "letterSpacing": "-2px",
   },
 ]
 `;
@@ -106,6 +242,40 @@ exports[`lineHeight: {
 Array [
   Object {
     "lineHeight": 1.25,
+  },
+]
+`;
+
+exports[`lineHeight: {
+  "lh": "wide",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "lineHeight": 2,
   },
 ]
 `;
@@ -179,33 +349,57 @@ Array [
 `;
 
 exports[`textSet: {
-  "fontFamily": "Roboto Mono",
-  "fontSize": "3rem",
+  "fontFamily": "bar",
+  "fontSize": "lg",
   "fontStyle": "italic",
-  "fontWeight": 300,
-  "lineHeight": "2em",
-  "letterSpacing": "0.5em",
+  "fontWeight": "bold",
+  "lineHeight": "zero",
+  "letterSpacing": "sparse",
   "textAlign": "right",
-  "color": "link"
+  "color": "link",
+  "theme": {
+    "fontFamilies": {
+      "foo": "Foo",
+      "bar": "Bar"
+    },
+    "fontSizes": {
+      "sm": 10,
+      "md": 20,
+      "lg": 40
+    },
+    "fontWeights": {
+      "light": 200,
+      "normal": 500,
+      "bold": 800
+    },
+    "lineHeights": {
+      "wide": 2,
+      "zero": 0
+    },
+    "letterSpacings": {
+      "sparse": "1em",
+      "dense": -2
+    }
+  }
 } 1`] = `
 Array [
   Object {
-    "fontFamily": "Roboto Mono",
+    "fontFamily": "Bar",
   },
   Object {
-    "fontSize": "3rem",
+    "fontSize": "40px",
   },
   Object {
     "fontStyle": "italic",
   },
   Object {
-    "fontWeight": 300,
+    "fontWeight": 800,
   },
   Object {
-    "lineHeight": "2em",
+    "lineHeight": 0,
   },
   Object {
-    "letterSpacing": "0.5em",
+    "letterSpacing": "1em",
   },
   Object {
     "textAlign": "right",
