@@ -3,13 +3,32 @@ import * as T from "./types"
 import * as S from "./style"
 
 const ex = S.extend({
-  themeKeys: ["colors", "palette"],
+  themeKeys: ["colors"],
   fallback: {
     gray: ["#EEE", "#AAA", "#666"],
     text: "#222",
     link: "#00F",
     bg: "#FFF"
   }
+})
+
+// Background
+
+export type BackgroundValue = C.BackgroundProperty<T.Length>
+
+export type BackgroundProp = T.Prop<BackgroundValue>
+
+export interface BackgroundProps extends T.ThemeProps {
+  background?: BackgroundProp
+  bg?: BackgroundProp
+}
+
+export interface BackgroundStyle extends T.Style {
+  background: BackgroundValue
+}
+
+export const background = ex<BackgroundProps, BackgroundStyle>({
+  propsKeys: ["background", "bg"]
 })
 
 // Background Color
@@ -39,7 +58,7 @@ export type BorderColorProp = T.Prop<BorderColorValue | number>
 
 export interface BorderColorProps extends T.ThemeProps {
   borderColor?: BorderColorProp
-  bc?: BorderColorProp
+  bdc?: BorderColorProp
 }
 
 export interface BorderColorStyle extends T.Style {
@@ -47,40 +66,43 @@ export interface BorderColorStyle extends T.Style {
 }
 
 export const borderColor = ex<BorderColorProps, BorderColorStyle>({
-  propsKeys: ["borderColor", "bc"]
-})
-
-// Text Color
-
-export type TextColorValue = C.ColorProperty
-
-export type TextColorProp = T.Prop<TextColorValue | number>
-
-export interface TextColorProps extends T.ThemeProps {
-  color?: TextColorProp
-  tc?: TextColorProp
-}
-
-export interface TextColorStyle extends T.Style {
-  color: TextColorValue
-}
-
-export const textColor = ex<TextColorProps, TextColorStyle>({
-  propsKeys: ["color", "tc"]
+  propsKeys: ["borderColor", "bdc"]
 })
 
 // Color
 
-export type ColorProps = BackgroundColorProps &
+export type ColorValue = C.ColorProperty
+
+export type ColorProp = T.Prop<ColorValue | number>
+
+export interface ColorProps extends T.ThemeProps {
+  color?: ColorProp
+  tc?: ColorProp
+}
+
+export interface ColorStyle extends T.Style {
+  color: ColorValue
+}
+
+export const color = ex<ColorProps, ColorStyle>({
+  propsKeys: ["color", "tc"]
+})
+
+// Color Set
+
+export type ColorSetProps = BackgroundProps &
+  BackgroundColorProps &
   BorderColorProps &
-  TextColorProps
+  ColorProps
 
-export type ColorStyle = BackgroundColorStyle &
+export type ColorSetStyle = BackgroundStyle &
+  BackgroundColorStyle &
   BorderColorStyle &
-  TextColorStyle
+  ColorStyle
 
-export const color = S.compose<ColorProps, ColorStyle>([
+export const colorSet = S.compose<ColorSetProps, ColorSetStyle>([
+  background,
   backgroundColor,
   borderColor,
-  textColor
+  color
 ])
