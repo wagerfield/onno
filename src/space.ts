@@ -1,8 +1,8 @@
 import * as C from "csstype"
 import * as T from "./types"
+import * as K from "./const"
 import * as S from "./style"
 import * as U from "./utils"
-import * as F from "./fallback"
 
 const MT = "marginTop"
 const MR = "marginRight"
@@ -17,7 +17,7 @@ const PL = "paddingLeft"
 const ex = S.extend({
   themeKeys: ["spaces"],
   transform: U.addPx,
-  fallback: F.PX_SCALE
+  fallback: K.PX_SCALE
 })
 
 // Margin Types

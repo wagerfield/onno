@@ -1,9 +1,9 @@
 import * as C from "csstype"
 import * as T from "./types"
+import * as K from "./const"
 import * as S from "./style"
 import * as U from "./utils"
 import * as P from "./color"
-import * as F from "./fallback"
 
 const ex = S.extend({
   themeKeys: ["borders"],
@@ -148,7 +148,7 @@ export const borderRadius = ex<BorderRadiusProps, BorderRadiusStyle>({
   propsKeys: ["borderRadius", "rad"],
   themeKeys: ["borderRadii"],
   transform: U.addPcOrPx,
-  fallback: F.PX_SCALE
+  fallback: K.PX_SCALE
 })
 
 // Border Set
