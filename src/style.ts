@@ -90,20 +90,23 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   return renderProps
 }
 
+export function compose<P extends T.ThemeProps, S extends T.Style>(
+  styles: T.StyleFunction<any, any>[]
+): T.StyleFunction<P, S> {
+  const styleSet = new Set(styles)
+  return (props: P) => {
+    const result: S[] = []
+    styleSet.forEach((fn) => {
+      const r = fn(props)
+      if (r) result.push(...r)
+    })
+    return result.length ? result : null
+  }
+}
+
 export const extend = (a: Partial<T.StyleOptions>) => <
   P extends T.ThemeProps,
   S extends T.Style
 >(
   b: T.StyleOptions
 ) => style<P, S>({ ...a, ...b })
-
-export const compose = <P extends T.ThemeProps, S extends T.Style>(
-  styles: T.StyleFunction<any, any>[]
-): T.StyleFunction<P, S> => (props: P) =>
-  styles.reduce(
-    (a, f) => {
-      const r = f(props)
-      return r ? a.concat(r) : a
-    },
-    [] as S[]
-  )
