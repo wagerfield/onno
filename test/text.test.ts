@@ -43,8 +43,8 @@ test("textAlign", () => {
   testProps({ ta: "justify" })
 })
 
-test("text", () => {
-  const testProps = U.snapshot(S.text)
+test("textSet", () => {
+  const testProps = U.snapshot(S.textSet)
   testProps({
     fontFamily: "Roboto Mono",
     fontSize: "3rem",
@@ -52,7 +52,8 @@ test("text", () => {
     fontWeight: 300,
     lineHeight: "2em",
     letterSpacing: "0.5em",
-    textAlign: "right"
+    textAlign: "right",
+    color: "link"
   })
   testProps({
     ff: "Times New Roman",
@@ -61,6 +62,7 @@ test("text", () => {
     fw: 100,
     lh: 2,
     ls: "3px",
-    ta: "left"
+    ta: "left",
+    tc: "gray.2"
   })
 })

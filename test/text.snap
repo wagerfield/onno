@@ -120,14 +120,35 @@ Array [
 ]
 `;
 
-exports[`text: {
+exports[`textAlign: {
+  "ta": "justify"
+} 1`] = `
+Array [
+  Object {
+    "textAlign": "justify",
+  },
+]
+`;
+
+exports[`textAlign: {
+  "textAlign": "center"
+} 1`] = `
+Array [
+  Object {
+    "textAlign": "center",
+  },
+]
+`;
+
+exports[`textSet: {
   "ff": "Times New Roman",
   "fs": "100px",
   "fst": "normal",
   "fw": 100,
   "lh": 2,
   "ls": "3px",
-  "ta": "left"
+  "ta": "left",
+  "tc": "gray.2"
 } 1`] = `
 Array [
   Object {
@@ -151,17 +172,21 @@ Array [
   Object {
     "textAlign": "left",
   },
+  Object {
+    "color": "#666",
+  },
 ]
 `;
 
-exports[`text: {
+exports[`textSet: {
   "fontFamily": "Roboto Mono",
   "fontSize": "3rem",
   "fontStyle": "italic",
   "fontWeight": 300,
   "lineHeight": "2em",
   "letterSpacing": "0.5em",
-  "textAlign": "right"
+  "textAlign": "right",
+  "color": "link"
 } 1`] = `
 Array [
   Object {
@@ -185,25 +210,8 @@ Array [
   Object {
     "textAlign": "right",
   },
-]
-`;
-
-exports[`textAlign: {
-  "ta": "justify"
-} 1`] = `
-Array [
   Object {
-    "textAlign": "justify",
-  },
-]
-`;
-
-exports[`textAlign: {
-  "textAlign": "center"
-} 1`] = `
-Array [
-  Object {
-    "textAlign": "center",
+    "color": "#00F",
   },
 ]
 `;

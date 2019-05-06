@@ -2,6 +2,7 @@ import * as C from "csstype"
 import * as T from "./types"
 import * as S from "./style"
 import * as U from "./utils"
+import * as P from "./color"
 
 // Font Family
 
@@ -20,7 +21,7 @@ export interface FontFamilyStyle extends T.Style {
 
 export const fontFamily = S.style<FontFamilyProps, FontFamilyStyle>({
   propsKeys: ["fontFamily", "ff"],
-  themeKeys: ["fontFamilies", "fonts"],
+  themeKeys: ["fontFamilies"],
   fallback: {
     text: "system-ui, sans-serif",
     mono: "Monaco, monospace"
@@ -157,30 +158,33 @@ export const textAlign = S.style<TextAlignProps, TextAlignStyle>({
   propsKeys: ["textAlign", "ta"]
 })
 
-// Text
+// Text Set
 
-export type TextProps = FontFamilyProps &
+export type TextSetProps = FontFamilyProps &
   FontSizeProps &
   FontStyleProps &
   FontWeightProps &
   LineHeightProps &
   LetterSpacingProps &
-  TextAlignProps
+  TextAlignProps &
+  P.ColorProps
 
-export type TextStyle = FontFamilyStyle &
+export type TextSetStyle = FontFamilyStyle &
   FontSizeStyle &
   FontStyleStyle &
   FontWeightStyle &
   LineHeightStyle &
   LetterSpacingStyle &
-  TextAlignStyle
+  TextAlignStyle &
+  P.ColorStyle
 
-export const text = S.compose<TextProps, TextStyle>([
+export const textSet = S.compose<TextSetProps, TextSetStyle>([
   fontFamily,
   fontSize,
   fontStyle,
   fontWeight,
   lineHeight,
   letterSpacing,
-  textAlign
+  textAlign,
+  P.color
 ])
