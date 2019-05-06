@@ -1,9 +1,10 @@
-// https://jestjs.io/docs/en/configuration#snapshotresolver-string
+const path = require("path")
 
-const snapDir = "snaps"
-const testDir = "tests"
+const snapDir = path.resolve("snaps")
+const testDir = path.resolve("tests")
 const testExt = ".test.ts"
 
+// https://jestjs.io/docs/en/configuration#snapshotresolver-string
 module.exports = {
   testPathForConsistencyCheck: "test/file.test.ts",
   // resolves from test to snapshot path
