@@ -1,6 +1,10 @@
 import * as S from "../src"
 import * as U from "./test-utils"
 
+const theme: S.Theme = {
+  spaces: [10, 20, 30]
+}
+
 test("marginTop", () => {
   const testProps = U.snapshot(S.marginTop)
   testProps({ marginTop: 0 })
@@ -41,6 +45,8 @@ test("margin", () => {
   const testProps = U.snapshot(S.margin)
   testProps({ margin: "10%" })
   testProps({ m: "auto" })
+  testProps({ m: 2, theme })
+  testProps({ m: 3, theme })
 })
 
 test("paddingTop", () => {
@@ -83,6 +89,8 @@ test("padding", () => {
   const testProps = U.snapshot(S.padding)
   testProps({ padding: "10%" })
   testProps({ p: "auto" })
+  testProps({ p: 2, theme })
+  testProps({ p: 3, theme })
 })
 
 test("marginSet", () => {
