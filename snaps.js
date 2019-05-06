@@ -1,7 +1,7 @@
 // https://jestjs.io/docs/en/configuration#snapshotresolver-string
 
-const snapDir = "snap"
-const testDir = "test"
+const snapDir = "snaps"
+const testDir = "tests"
 const testExt = ".test.ts"
 
 module.exports = {
