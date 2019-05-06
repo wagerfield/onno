@@ -97,3 +97,26 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths | addPx     |
 | borderRadius  | borderRadius, rad | borderRadius | borderRadii  | addPcOrPx |
 | **borderSet** | _all keys above_  |
+
+## Flex
+
+| Function Name     | Props Keys              | Style Keys     | Theme Keys | Transform |
+| :---------------- | :---------------------- | :------------- | :--------- | :-------- |
+| **flexParentSet** | _all parent keys below_ |
+| display           | display, d              | display        | none       | none      |
+| flexFlow          | flexFlow, fxf           | flexFlow       | none       | none      |
+| flexDirection     | flexDirection, fxd      | flexDirection  | none       | none      |
+| flexWrap          | flexWrap, fxw           | flexWrap       | none       | none      |
+| alignItems        | alignItems, ali         | alignItems     | none       | none      |
+| alignContent      | alignContent, alc       | alignContent   | none       | none      |
+| justifyItems      | justifyItems, jfi       | justifyItems   | none       | none      |
+| justifyContent    | justifyContent, jfc     | justifyContent | none       | none      |
+| **flexChildSet**  | _all child keys below_  |
+| flex              | flex, fx                | flex           | none       | none      |
+| flexBasis         | flexBasis, fxb          | flexBasis      | none       | none      |
+| flexGrow          | flexGrow, fxg           | flexGrow       | none       | none      |
+| flexShrink        | flexShrink, fxs         | flexShrink     | none       | none      |
+| alignSelf         | alignSelf, als          | alignSelf      | none       | none      |
+| justifySelf       | justifySelf, jfs        | justifySelf    | none       | none      |
+| order             | order, ord              | order          | none       | none      |
+| **flexSet**       | _all keys above_        |
