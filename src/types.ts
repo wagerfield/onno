@@ -47,7 +47,6 @@ export interface Theme {
   global?: ThemeValue
   // Color
   colors?: ThemeValue
-  palette?: ThemeValue
   // Space
   spaces?: ThemeValue
   // Layout
@@ -58,6 +57,7 @@ export interface Theme {
   heights?: ThemeValue
   minHeights?: ThemeValue
   maxHeights?: ThemeValue
+  zIndices?: ThemeValue
   // Typography
   fontFamilies?: ThemeValue
   fontSizes?: ThemeValue
@@ -66,12 +66,12 @@ export interface Theme {
   letterSpacings?: ThemeValue
   // Border
   borders?: ThemeValue
+  borderRadii?: ThemeValue
   borderStyles?: ThemeValue
   borderWidths?: ThemeValue
-  // Misc
-  radii?: ThemeValue
-  shadows?: ThemeValue
-  zIndices?: ThemeValue
+  // Shadows
+  boxShadows?: ThemeValue
+  textShadows?: ThemeValue
   // Variants
   buttons?: ThemeValue
   textStyles?: ThemeValue
