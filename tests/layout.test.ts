@@ -55,45 +55,66 @@ test("left", () => {
 })
 
 test("width", () => {
+  const theme = { widths: [10, 20, 30] }
   const testProps = U.snapshot(S.width)
   testProps({ width: 1 })
   testProps({ w: 1 / 4 })
+  testProps({ w: 2, theme })
+  testProps({ w: 3, theme })
 })
 
 test("minWidth", () => {
+  const theme = { minWidths: [10, 20, 30] }
   const testProps = U.snapshot(S.minWidth)
   testProps({ minWidth: "80vw" })
   testProps({ minw: 2 })
+  testProps({ minw: 2, theme })
+  testProps({ minw: 3, theme })
 })
 
 test("maxWidth", () => {
+  const theme = { maxWidths: [10, 20, 30] }
   const testProps = U.snapshot(S.maxWidth)
   testProps({ maxWidth: 4 })
   testProps({ maxw: -1 })
+  testProps({ maxw: 2, theme })
+  testProps({ maxw: 3, theme })
 })
 
 test("height", () => {
+  const theme = { heights: [10, 20, 30] }
   const testProps = U.snapshot(S.height)
   testProps({ height: 0 })
   testProps({ h: "200%" })
+  testProps({ h: 2, theme })
+  testProps({ h: 3, theme })
 })
 
 test("minHeight", () => {
+  const theme = { minHeights: [10, 20, 30] }
   const testProps = U.snapshot(S.minHeight)
   testProps({ minHeight: 8 })
   testProps({ minh: "40em" })
+  testProps({ minh: 2, theme })
+  testProps({ minh: 3, theme })
 })
 
 test("maxHeight", () => {
+  const theme = { maxHeights: [10, 20, 30] }
   const testProps = U.snapshot(S.maxHeight)
   testProps({ maxHeight: 10 })
   testProps({ maxh: 100 })
+  testProps({ maxh: 2, theme })
+  testProps({ maxh: 3, theme })
 })
 
 test("size", () => {
+  const theme = { sizes: [10, 20, 30] }
   const testProps = U.snapshot(S.size)
   testProps({ size: 6 })
   testProps({ s: 1 })
+  testProps({ s: 2, theme })
+  testProps({ s: 3, theme })
 })
 
 test("positionSet", () => {

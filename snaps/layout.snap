@@ -51,6 +51,40 @@ Array [
 `;
 
 exports[`height: {
+  "h": 2,
+  "theme": {
+    "heights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "height": "30px",
+  },
+]
+`;
+
+exports[`height: {
+  "h": 3,
+  "theme": {
+    "heights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "height": "8px",
+  },
+]
+`;
+
+exports[`height: {
   "height": 0
 } 1`] = `
 Array [
@@ -225,6 +259,40 @@ Array [
 `;
 
 exports[`maxHeight: {
+  "maxh": 2,
+  "theme": {
+    "maxHeights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "maxHeight": "30px",
+  },
+]
+`;
+
+exports[`maxHeight: {
+  "maxh": 3,
+  "theme": {
+    "maxHeights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "maxHeight": "8px",
+  },
+]
+`;
+
+exports[`maxHeight: {
   "maxh": 100
 } 1`] = `
 Array [
@@ -254,6 +322,40 @@ Array [
 ]
 `;
 
+exports[`maxWidth: {
+  "maxw": 2,
+  "theme": {
+    "maxWidths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "maxWidth": "30px",
+  },
+]
+`;
+
+exports[`maxWidth: {
+  "maxw": 3,
+  "theme": {
+    "maxWidths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "maxWidth": "8px",
+  },
+]
+`;
+
 exports[`minHeight: {
   "minHeight": 8
 } 1`] = `
@@ -274,6 +376,40 @@ Array [
 ]
 `;
 
+exports[`minHeight: {
+  "minh": 2,
+  "theme": {
+    "minHeights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "minHeight": "30px",
+  },
+]
+`;
+
+exports[`minHeight: {
+  "minh": 3,
+  "theme": {
+    "minHeights": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "minHeight": "8px",
+  },
+]
+`;
+
 exports[`minWidth: {
   "minWidth": "80vw"
 } 1`] = `
@@ -290,6 +426,40 @@ exports[`minWidth: {
 Array [
   Object {
     "minWidth": "4px",
+  },
+]
+`;
+
+exports[`minWidth: {
+  "minw": 2,
+  "theme": {
+    "minWidths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "minWidth": "30px",
+  },
+]
+`;
+
+exports[`minWidth: {
+  "minw": 3,
+  "theme": {
+    "minWidths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "minWidth": "8px",
   },
 ]
 `;
@@ -401,6 +571,42 @@ Array [
   Object {
     "height": "100%",
     "width": "100%",
+  },
+]
+`;
+
+exports[`size: {
+  "s": 2,
+  "theme": {
+    "sizes": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "height": "30px",
+    "width": "30px",
+  },
+]
+`;
+
+exports[`size: {
+  "s": 3,
+  "theme": {
+    "sizes": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "height": "8px",
+    "width": "8px",
   },
 ]
 `;
@@ -532,6 +738,40 @@ exports[`width: {
 Array [
   Object {
     "width": "25%",
+  },
+]
+`;
+
+exports[`width: {
+  "w": 2,
+  "theme": {
+    "widths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "width": "30px",
+  },
+]
+`;
+
+exports[`width: {
+  "w": 3,
+  "theme": {
+    "widths": [
+      10,
+      20,
+      30
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "width": "8px",
   },
 ]
 `;
