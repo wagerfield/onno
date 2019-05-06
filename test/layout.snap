@@ -60,29 +60,35 @@ Array [
 ]
 `;
 
-exports[`layout: {
+exports[`layoutSet: {
   "d": "grid",
+  "va": "super",
   "pos": "sticky",
+  "zi": 10,
   "t": 1,
   "r": 0.8,
   "b": "auto",
   "l": "5em",
+  "s": 1,
   "w": 0.4,
   "minw": "20em",
   "maxw": "40ch",
   "h": 8,
   "minh": "50%",
-  "maxh": "100",
-  "s": 1,
-  "va": "super",
-  "zi": 10
+  "maxh": "100"
 } 1`] = `
 Array [
   Object {
     "display": "grid",
   },
   Object {
+    "verticalAlign": "super",
+  },
+  Object {
     "position": "sticky",
+  },
+  Object {
+    "zIndex": 10,
   },
   Object {
     "top": "100%",
@@ -118,38 +124,38 @@ Array [
   Object {
     "maxHeight": "100",
   },
-  Object {
-    "verticalAlign": "super",
-  },
-  Object {
-    "zIndex": 10,
-  },
 ]
 `;
 
-exports[`layout: {
+exports[`layoutSet: {
   "display": "flex",
+  "verticalAlign": "sub",
   "position": "fixed",
+  "zIndex": 2,
   "top": 0,
   "right": 0.2,
   "bottom": 60,
   "left": "4rem",
+  "size": 0.25,
   "width": 150,
   "minWidth": 0.5,
   "maxWidth": 0.75,
   "height": 2,
   "minHeight": "100vh",
-  "maxHeight": "auto",
-  "size": 0.25,
-  "verticalAlign": "sub",
-  "zIndex": 2
+  "maxHeight": "auto"
 } 1`] = `
 Array [
   Object {
     "display": "flex",
   },
   Object {
+    "verticalAlign": "sub",
+  },
+  Object {
     "position": "fixed",
+  },
+  Object {
+    "zIndex": 2,
   },
   Object {
     "top": 0,
@@ -184,12 +190,6 @@ Array [
   },
   Object {
     "maxHeight": "auto",
-  },
-  Object {
-    "verticalAlign": "sub",
-  },
-  Object {
-    "zIndex": 2,
   },
 ]
 `;
@@ -314,6 +314,66 @@ Array [
 ]
 `;
 
+exports[`positionSet: {
+  "pos": "absolute",
+  "zi": 2,
+  "t": 1,
+  "r": 2,
+  "b": 3,
+  "l": 4
+} 1`] = `
+Array [
+  Object {
+    "position": "absolute",
+  },
+  Object {
+    "zIndex": 2,
+  },
+  Object {
+    "top": "100%",
+  },
+  Object {
+    "right": "4px",
+  },
+  Object {
+    "bottom": "8px",
+  },
+  Object {
+    "left": "16px",
+  },
+]
+`;
+
+exports[`positionSet: {
+  "position": "fixed",
+  "zIndex": 1,
+  "top": 0,
+  "right": 0.2,
+  "bottom": 1,
+  "left": "4rem"
+} 1`] = `
+Array [
+  Object {
+    "position": "fixed",
+  },
+  Object {
+    "zIndex": 1,
+  },
+  Object {
+    "top": 0,
+  },
+  Object {
+    "right": "20%",
+  },
+  Object {
+    "bottom": "100%",
+  },
+  Object {
+    "left": "4rem",
+  },
+]
+`;
+
 exports[`right: {
   "r": "20rem"
 } 1`] = `
@@ -352,6 +412,76 @@ Array [
   Object {
     "height": "64px",
     "width": "64px",
+  },
+]
+`;
+
+exports[`sizeSet: {
+  "s": 1,
+  "w": 0.4,
+  "minw": "20em",
+  "maxw": "40ch",
+  "h": 8,
+  "minh": "50%",
+  "maxh": "100"
+} 1`] = `
+Array [
+  Object {
+    "height": "100%",
+    "width": "100%",
+  },
+  Object {
+    "width": "40%",
+  },
+  Object {
+    "minWidth": "20em",
+  },
+  Object {
+    "maxWidth": "40ch",
+  },
+  Object {
+    "height": "256px",
+  },
+  Object {
+    "minHeight": "50%",
+  },
+  Object {
+    "maxHeight": "100",
+  },
+]
+`;
+
+exports[`sizeSet: {
+  "size": 0.25,
+  "width": 150,
+  "minWidth": 0.5,
+  "maxWidth": 0.75,
+  "height": 2,
+  "minHeight": "100vh",
+  "maxHeight": "auto"
+} 1`] = `
+Array [
+  Object {
+    "height": "25%",
+    "width": "25%",
+  },
+  Object {
+    "width": "150px",
+  },
+  Object {
+    "minWidth": "50%",
+  },
+  Object {
+    "maxWidth": "75%",
+  },
+  Object {
+    "height": "4px",
+  },
+  Object {
+    "minHeight": "100vh",
+  },
+  Object {
+    "maxHeight": "auto",
   },
 ]
 `;

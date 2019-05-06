@@ -31,6 +31,25 @@ export const display = S.style<DisplayProps, DisplayStyle>({
   propsKeys: ["display", "d"]
 })
 
+// Vertical Align
+
+export type VerticalAlignValue = C.VerticalAlignProperty<T.Length>
+
+export type VerticalAlignProp = T.Prop<VerticalAlignValue>
+
+export interface VerticalAlignProps extends T.ThemeProps {
+  verticalAlign?: VerticalAlignProp
+  va?: VerticalAlignProp
+}
+
+export interface VerticalAlignStyle extends T.Style {
+  verticalAlign: VerticalAlignValue
+}
+
+export const verticalAlign = S.style<VerticalAlignProps, VerticalAlignStyle>({
+  propsKeys: ["verticalAlign", "va"]
+})
+
 // Position
 
 export type PositionValue = C.PositionProperty
@@ -50,7 +69,27 @@ export const position = S.style<PositionProps, PositionStyle>({
   propsKeys: ["position", "pos"]
 })
 
-// Edge
+// Z Index
+
+export type ZIndexValue = C.ZIndexProperty
+
+export type ZIndexProp = T.Prop<ZIndexValue>
+
+export interface ZIndexProps extends T.ThemeProps {
+  zIndex?: ZIndexProp
+  zi?: ZIndexProp
+}
+
+export interface ZIndexStyle extends T.Style {
+  zIndex: ZIndexValue
+}
+
+export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
+  propsKeys: ["zIndex", "zi"],
+  themeKeys: ["zIndices"]
+})
+
+// Edge Types
 
 export type EdgeValue = C.Globals | "auto" | string | number
 
@@ -257,92 +296,74 @@ export const size = ex<SizeProps, SizeStyle>({
   styleKeys: ["width", "height"]
 })
 
-// Vertical Align
+// Position Set
 
-export type VerticalAlignValue = C.VerticalAlignProperty<T.Length>
+export type PositionSetProps = PositionProps &
+  ZIndexProps &
+  TopProps &
+  RightProps &
+  BottomProps &
+  LeftProps
 
-export type VerticalAlignProp = T.Prop<VerticalAlignValue>
+export type PositionSetStyle = PositionStyle &
+  ZIndexStyle &
+  TopStyle &
+  RightStyle &
+  BottomStyle &
+  LeftStyle
 
-export interface VerticalAlignProps extends T.ThemeProps {
-  verticalAlign?: VerticalAlignProp
-  va?: VerticalAlignProp
-}
+export const positionSet = S.compose<PositionSetProps, PositionSetStyle>([
+  position,
+  zIndex,
+  top,
+  right,
+  bottom,
+  left
+])
 
-export interface VerticalAlignStyle extends T.Style {
-  verticalAlign: VerticalAlignValue
-}
+// Size Set
 
-export const verticalAlign = S.style<VerticalAlignProps, VerticalAlignStyle>({
-  propsKeys: ["verticalAlign", "va"]
-})
-
-// Z Index
-
-export type ZIndexValue = C.ZIndexProperty
-
-export type ZIndexProp = T.Prop<ZIndexValue>
-
-export interface ZIndexProps extends T.ThemeProps {
-  zIndex?: ZIndexProp
-  zi?: ZIndexProp
-}
-
-export interface ZIndexStyle extends T.Style {
-  zIndex: ZIndexValue
-}
-
-export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
-  propsKeys: ["zIndex", "zi"],
-  themeKeys: ["zIndices"]
-})
-
-// Edge
-
-export type EdgeProps = TopProps & RightProps & BottomProps & LeftProps
-
-export type EdgeStyle = TopStyle & RightStyle & BottomStyle & LeftStyle
-
-export const edge = S.compose<EdgeProps, EdgeStyle>([top, right, bottom, left])
-
-// Layout
-
-export type LayoutProps = DisplayProps &
-  PositionProps &
-  EdgeProps &
-  SizeProps &
+export type SizeSetProps = SizeProps &
   WidthProps &
   MinWidthProps &
   MaxWidthProps &
   HeightProps &
   MinHeightProps &
-  MaxHeightProps &
-  VerticalAlignProps &
-  ZIndexProps
+  MaxHeightProps
 
-export type LayoutStyle = DisplayStyle &
-  PositionStyle &
-  EdgeStyle &
-  SizeStyle &
+export type SizeSetStyle = SizeStyle &
   WidthStyle &
   MinWidthStyle &
   MaxWidthStyle &
   HeightStyle &
   MinHeightStyle &
-  MaxHeightStyle &
-  VerticalAlignStyle &
-  ZIndexStyle
+  MaxHeightStyle
 
-export const layout = S.compose<LayoutProps, LayoutStyle>([
-  display,
-  position,
-  edge,
+export const sizeSet = S.compose<SizeSetProps, SizeSetStyle>([
   size,
   width,
   minWidth,
   maxWidth,
   height,
   minHeight,
-  maxHeight,
+  maxHeight
+])
+
+// Layout Set
+
+export type LayoutSetProps = DisplayProps &
+  VerticalAlignProps &
+  PositionSetProps &
+  SizeSetProps
+
+export type LayoutSetStyle = DisplayStyle &
+  VerticalAlignStyle &
+  PositionSetStyle &
+  SizeSetStyle
+
+export const layoutSet = S.compose<LayoutSetProps, LayoutSetStyle>([
+  display,
   verticalAlign,
-  zIndex
+  positionSet,
+  sizeSet
 ])
