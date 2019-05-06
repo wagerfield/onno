@@ -1,57 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`background: {
-  "backgroundColor": "link",
-  "backgroundImage": "src(baz.png)",
-  "backgroundPosition": "left bottom",
-  "backgroundRepeat": "repeat-y",
-  "backgroundSize": "cover"
-} 1`] = `
-Array [
-  Object {
-    "backgroundColor": "#00F",
-  },
-  Object {
-    "backgroundImage": "src(baz.png)",
-  },
-  Object {
-    "backgroundPosition": "left bottom",
-  },
-  Object {
-    "backgroundRepeat": "repeat-y",
-  },
-  Object {
-    "backgroundSize": "cover",
-  },
-]
-`;
-
-exports[`background: {
-  "bgc": "gray.1",
-  "bgi": "src(zoo.png)",
-  "bgp": "top right",
-  "bgr": "repeat-x",
-  "bgs": "contain"
-} 1`] = `
-Array [
-  Object {
-    "backgroundColor": "#AAA",
-  },
-  Object {
-    "backgroundImage": "src(zoo.png)",
-  },
-  Object {
-    "backgroundPosition": "top right",
-  },
-  Object {
-    "backgroundRepeat": "repeat-x",
-  },
-  Object {
-    "backgroundSize": "contain",
-  },
-]
-`;
-
 exports[`backgroundImage: {
   "backgroundImage": "src(foo.png)"
 } 1`] = `
@@ -92,6 +40,46 @@ Array [
 ]
 `;
 
+exports[`backgroundPosition: {
+  "bgp": 0
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": 0,
+  },
+]
+`;
+
+exports[`backgroundPosition: {
+  "bgp": 0.2
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": "20%",
+  },
+]
+`;
+
+exports[`backgroundPosition: {
+  "bgp": 1
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": "100%",
+  },
+]
+`;
+
+exports[`backgroundPosition: {
+  "bgp": 100
+} 1`] = `
+Array [
+  Object {
+    "backgroundPosition": "100px",
+  },
+]
+`;
+
 exports[`backgroundRepeat: {
   "backgroundRepeat": "none"
 } 1`] = `
@@ -112,6 +100,66 @@ Array [
 ]
 `;
 
+exports[`backgroundSet: {
+  "background": "red url(baz.jpg) center no-repeat",
+  "backgroundColor": "link",
+  "backgroundImage": "src(baz.png)",
+  "backgroundPosition": "left bottom",
+  "backgroundRepeat": "repeat-y",
+  "backgroundSize": "cover"
+} 1`] = `
+Array [
+  Object {
+    "background": "red url(baz.jpg) center no-repeat",
+  },
+  Object {
+    "backgroundColor": "#00F",
+  },
+  Object {
+    "backgroundImage": "src(baz.png)",
+  },
+  Object {
+    "backgroundPosition": "left bottom",
+  },
+  Object {
+    "backgroundRepeat": "repeat-y",
+  },
+  Object {
+    "backgroundSize": "cover",
+  },
+]
+`;
+
+exports[`backgroundSet: {
+  "bg": "bg",
+  "bgc": "gray.1",
+  "bgi": "src(zoo.png)",
+  "bgp": "top right",
+  "bgr": "repeat-x",
+  "bgs": "contain"
+} 1`] = `
+Array [
+  Object {
+    "background": "#FFF",
+  },
+  Object {
+    "backgroundColor": "#AAA",
+  },
+  Object {
+    "backgroundImage": "src(zoo.png)",
+  },
+  Object {
+    "backgroundPosition": "top right",
+  },
+  Object {
+    "backgroundRepeat": "repeat-x",
+  },
+  Object {
+    "backgroundSize": "contain",
+  },
+]
+`;
+
 exports[`backgroundSize: {
   "backgroundSize": "cover"
 } 1`] = `
@@ -123,11 +171,51 @@ Array [
 `;
 
 exports[`backgroundSize: {
+  "backgroundSize": 0
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": 0,
+  },
+]
+`;
+
+exports[`backgroundSize: {
+  "backgroundSize": 0.75
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": "75%",
+  },
+]
+`;
+
+exports[`backgroundSize: {
+  "backgroundSize": 1
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": "100%",
+  },
+]
+`;
+
+exports[`backgroundSize: {
   "bgs": "contain"
 } 1`] = `
 Array [
   Object {
     "backgroundSize": "contain",
+  },
+]
+`;
+
+exports[`backgroundSize: {
+  "bgs": 20
+} 1`] = `
+Array [
+  Object {
+    "backgroundSize": "20px",
   },
 ]
 `;
