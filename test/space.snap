@@ -5,10 +5,7 @@ exports[`margin: {
 } 1`] = `
 Array [
   Object {
-    "marginBottom": "auto",
-    "marginLeft": "auto",
-    "marginRight": "auto",
-    "marginTop": "auto",
+    "margin": "auto",
   },
 ]
 `;
@@ -18,10 +15,7 @@ exports[`margin: {
 } 1`] = `
 Array [
   Object {
-    "marginBottom": "10%",
-    "marginLeft": "10%",
-    "marginRight": "10%",
-    "marginTop": "10%",
+    "margin": "10%",
   },
 ]
 `;
@@ -82,6 +76,78 @@ exports[`marginRight: {
 Array [
   Object {
     "marginRight": "8px",
+  },
+]
+`;
+
+exports[`marginSet: {
+  "m": 0,
+  "mx": 1,
+  "my": 2,
+  "mt": 3,
+  "mr": 4,
+  "mb": 5,
+  "ml": 6
+} 1`] = `
+Array [
+  Object {
+    "margin": 0,
+  },
+  Object {
+    "marginLeft": "2px",
+    "marginRight": "2px",
+  },
+  Object {
+    "marginBottom": "4px",
+    "marginTop": "4px",
+  },
+  Object {
+    "marginTop": "8px",
+  },
+  Object {
+    "marginRight": "16px",
+  },
+  Object {
+    "marginBottom": "32px",
+  },
+  Object {
+    "marginLeft": "64px",
+  },
+]
+`;
+
+exports[`marginSet: {
+  "margin": 0,
+  "marginX": 1,
+  "marginY": 2,
+  "marginTop": 3,
+  "marginRight": 4,
+  "marginBottom": 5,
+  "marginLeft": 6
+} 1`] = `
+Array [
+  Object {
+    "margin": 0,
+  },
+  Object {
+    "marginLeft": "2px",
+    "marginRight": "2px",
+  },
+  Object {
+    "marginBottom": "4px",
+    "marginTop": "4px",
+  },
+  Object {
+    "marginTop": "8px",
+  },
+  Object {
+    "marginRight": "16px",
+  },
+  Object {
+    "marginBottom": "32px",
+  },
+  Object {
+    "marginLeft": "64px",
   },
 ]
 `;
@@ -155,10 +221,7 @@ exports[`padding: {
 } 1`] = `
 Array [
   Object {
-    "paddingBottom": "auto",
-    "paddingLeft": "auto",
-    "paddingRight": "auto",
-    "paddingTop": "auto",
+    "padding": "auto",
   },
 ]
 `;
@@ -168,10 +231,7 @@ exports[`padding: {
 } 1`] = `
 Array [
   Object {
-    "paddingBottom": "10%",
-    "paddingLeft": "10%",
-    "paddingRight": "10%",
-    "paddingTop": "10%",
+    "padding": "10%",
   },
 ]
 `;
@@ -232,6 +292,78 @@ exports[`paddingRight: {
 Array [
   Object {
     "paddingRight": "8px",
+  },
+]
+`;
+
+exports[`paddingSet: {
+  "p": 7,
+  "px": 8,
+  "py": 9,
+  "pt": 10,
+  "pr": "10em",
+  "pb": "20%",
+  "pl": "auto"
+} 1`] = `
+Array [
+  Object {
+    "padding": "128px",
+  },
+  Object {
+    "paddingLeft": "256px",
+    "paddingRight": "256px",
+  },
+  Object {
+    "paddingBottom": "512px",
+    "paddingTop": "512px",
+  },
+  Object {
+    "paddingTop": "10px",
+  },
+  Object {
+    "paddingRight": "10em",
+  },
+  Object {
+    "paddingBottom": "20%",
+  },
+  Object {
+    "paddingLeft": "auto",
+  },
+]
+`;
+
+exports[`paddingSet: {
+  "padding": 0,
+  "paddingX": 1,
+  "paddingY": 2,
+  "paddingTop": 3,
+  "paddingRight": 4,
+  "paddingBottom": 5,
+  "paddingLeft": 6
+} 1`] = `
+Array [
+  Object {
+    "padding": 0,
+  },
+  Object {
+    "paddingLeft": "2px",
+    "paddingRight": "2px",
+  },
+  Object {
+    "paddingBottom": "4px",
+    "paddingTop": "4px",
+  },
+  Object {
+    "paddingTop": "8px",
+  },
+  Object {
+    "paddingRight": "16px",
+  },
+  Object {
+    "paddingBottom": "32px",
+  },
+  Object {
+    "paddingLeft": "64px",
   },
 ]
 `;
@@ -300,7 +432,7 @@ Array [
 ]
 `;
 
-exports[`space: {
+exports[`spaceSet: {
   "m": 0,
   "mx": 1,
   "my": 2,
@@ -318,10 +450,7 @@ exports[`space: {
 } 1`] = `
 Array [
   Object {
-    "marginBottom": 0,
-    "marginLeft": 0,
-    "marginRight": 0,
-    "marginTop": 0,
+    "margin": 0,
   },
   Object {
     "marginLeft": "2px",
@@ -344,10 +473,7 @@ Array [
     "marginLeft": "64px",
   },
   Object {
-    "paddingBottom": "128px",
-    "paddingLeft": "128px",
-    "paddingRight": "128px",
-    "paddingTop": "128px",
+    "padding": "128px",
   },
   Object {
     "paddingLeft": "256px",
@@ -372,7 +498,7 @@ Array [
 ]
 `;
 
-exports[`space: {
+exports[`spaceSet: {
   "margin": 0,
   "marginX": 1,
   "marginY": 2,
@@ -390,10 +516,7 @@ exports[`space: {
 } 1`] = `
 Array [
   Object {
-    "marginBottom": 0,
-    "marginLeft": 0,
-    "marginRight": 0,
-    "marginTop": 0,
+    "margin": 0,
   },
   Object {
     "marginLeft": "2px",
@@ -416,10 +539,7 @@ Array [
     "marginLeft": "64px",
   },
   Object {
-    "paddingBottom": "128px",
-    "paddingLeft": "128px",
-    "paddingRight": "128px",
-    "paddingTop": "128px",
+    "padding": "128px",
   },
   Object {
     "paddingLeft": "256px",

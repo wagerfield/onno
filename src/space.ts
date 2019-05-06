@@ -15,8 +15,8 @@ const PB = "paddingBottom"
 const PL = "paddingLeft"
 
 const ex = S.extend({
-  transform: U.addPx,
   themeKeys: ["spaces"],
+  transform: U.addPx,
   fallback: F.PX_SCALE
 })
 
@@ -128,15 +128,11 @@ export interface MarginProps extends T.ThemeProps {
 }
 
 export interface MarginStyle extends T.Style {
-  [MT]: MarginValue
-  [MR]: MarginValue
-  [MB]: MarginValue
-  [ML]: MarginValue
+  margin: MarginValue
 }
 
 export const margin = ex<MarginProps, MarginStyle>({
-  propsKeys: ["margin", "m"],
-  styleKeys: [MT, MR, MB, ML]
+  propsKeys: ["margin", "m"]
 })
 
 // Padding Types
@@ -247,27 +243,44 @@ export interface PaddingProps extends T.ThemeProps {
 }
 
 export interface PaddingStyle extends T.Style {
-  [PT]: PaddingValue
-  [PR]: PaddingValue
-  [PB]: PaddingValue
-  [PL]: PaddingValue
+  padding: PaddingValue
 }
 
 export const padding = ex<PaddingProps, PaddingStyle>({
-  propsKeys: ["padding", "p"],
-  styleKeys: [PT, PR, PB, PL]
+  propsKeys: ["padding", "p"]
 })
 
-// Space
+// Margin Set
 
-export type SpaceProps = MarginProps &
+export type MarginSetProps = MarginProps &
   MarginXProps &
   MarginYProps &
   MarginTopProps &
   MarginRightProps &
   MarginBottomProps &
-  MarginLeftProps &
-  PaddingProps &
+  MarginLeftProps
+
+export type MarginSetStyle = MarginStyle &
+  MarginXStyle &
+  MarginYStyle &
+  MarginTopStyle &
+  MarginRightStyle &
+  MarginBottomStyle &
+  MarginLeftStyle
+
+export const marginSet = S.compose<MarginSetProps, MarginSetStyle>([
+  margin,
+  marginX,
+  marginY,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft
+])
+
+// Padding Set
+
+export type PaddingSetProps = PaddingProps &
   PaddingXProps &
   PaddingYProps &
   PaddingTopProps &
@@ -275,14 +288,7 @@ export type SpaceProps = MarginProps &
   PaddingBottomProps &
   PaddingLeftProps
 
-export type SpaceStyle = MarginStyle &
-  MarginXStyle &
-  MarginYStyle &
-  MarginTopStyle &
-  MarginRightStyle &
-  MarginBottomStyle &
-  MarginLeftStyle &
-  PaddingStyle &
+export type PaddingSetStyle = PaddingStyle &
   PaddingXStyle &
   PaddingYStyle &
   PaddingTopStyle &
@@ -290,14 +296,7 @@ export type SpaceStyle = MarginStyle &
   PaddingBottomStyle &
   PaddingLeftStyle
 
-export const space = S.compose<SpaceProps, SpaceStyle>([
-  margin,
-  marginX,
-  marginY,
-  marginTop,
-  marginRight,
-  marginBottom,
-  marginLeft,
+export const paddingSet = S.compose<PaddingSetProps, PaddingSetStyle>([
   padding,
   paddingX,
   paddingY,
@@ -305,4 +304,15 @@ export const space = S.compose<SpaceProps, SpaceStyle>([
   paddingRight,
   paddingBottom,
   paddingLeft
+])
+
+// Space Set
+
+export type SpaceSetProps = MarginSetProps & PaddingSetProps
+
+export type SpaceSetStyle = MarginSetStyle & PaddingSetStyle
+
+export const spaceSet = S.compose<SpaceSetProps, SpaceSetStyle>([
+  marginSet,
+  paddingSet
 ])

@@ -85,8 +85,52 @@ test("padding", () => {
   testProps({ p: "auto" })
 })
 
-test("space", () => {
-  const testProps = U.snapshot(S.space)
+test("marginSet", () => {
+  const testProps = U.snapshot(S.marginSet)
+  testProps({
+    margin: 0,
+    marginX: 1,
+    marginY: 2,
+    marginTop: 3,
+    marginRight: 4,
+    marginBottom: 5,
+    marginLeft: 6
+  })
+  testProps({
+    m: 0,
+    mx: 1,
+    my: 2,
+    mt: 3,
+    mr: 4,
+    mb: 5,
+    ml: 6
+  })
+})
+
+test("paddingSet", () => {
+  const testProps = U.snapshot(S.paddingSet)
+  testProps({
+    padding: 0,
+    paddingX: 1,
+    paddingY: 2,
+    paddingTop: 3,
+    paddingRight: 4,
+    paddingBottom: 5,
+    paddingLeft: 6
+  })
+  testProps({
+    p: 7,
+    px: 8,
+    py: 9,
+    pt: 10,
+    pr: "10em",
+    pb: "20%",
+    pl: "auto"
+  })
+})
+
+test("spaceSet", () => {
+  const testProps = U.snapshot(S.spaceSet)
   testProps({
     margin: 0,
     marginX: 1,
