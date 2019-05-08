@@ -11,7 +11,7 @@ Array [
 `;
 
 exports[`boxShadow: {
-  "bs": "0 0 0 red"
+  "bsh": "0 0 0 red"
 } 1`] = `
 Array [
   Object {
@@ -21,7 +21,7 @@ Array [
 `;
 
 exports[`boxShadow: {
-  "bs": "one",
+  "bsh": "one",
   "theme": {
     "boxShadows": {
       "one": "box-shadow-one",
@@ -51,7 +51,7 @@ Array [
 `;
 
 exports[`textShadow: {
-  "ts": "0 0 0 red"
+  "tsh": "0 0 0 red"
 } 1`] = `
 Array [
   Object {
@@ -61,7 +61,7 @@ Array [
 `;
 
 exports[`textShadow: {
-  "ts": "two",
+  "tsh": "two",
   "theme": {
     "boxShadows": {
       "one": "box-shadow-one",

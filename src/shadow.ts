@@ -10,7 +10,7 @@ export type BoxShadowProp = T.Prop<BoxShadowValue>
 
 export interface BoxShadowProps extends T.ThemeProps {
   boxShadow?: BoxShadowProp
-  bs?: BoxShadowProp
+  bsh?: BoxShadowProp
 }
 
 export interface BoxShadowStyle extends T.Style {
@@ -18,7 +18,7 @@ export interface BoxShadowStyle extends T.Style {
 }
 
 export const boxShadow = style<BoxShadowProps, BoxShadowStyle>({
-  propsKeys: ["boxShadow", "bs"],
+  propsKeys: ["boxShadow", "bsh"],
   themeKeys: ["boxShadows"]
 })
 
@@ -30,7 +30,7 @@ export type TextShadowProp = T.Prop<TextShadowValue>
 
 export interface TextShadowProps extends T.ThemeProps {
   textShadow?: TextShadowProp
-  ts?: TextShadowProp
+  tsh?: TextShadowProp
 }
 
 export interface TextShadowStyle extends T.Style {
@@ -38,6 +38,6 @@ export interface TextShadowStyle extends T.Style {
 }
 
 export const textShadow = style<TextShadowProps, TextShadowStyle>({
-  propsKeys: ["textShadow", "ts"],
+  propsKeys: ["textShadow", "tsh"],
   themeKeys: ["textShadows"]
 })

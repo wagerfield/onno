@@ -15,13 +15,13 @@ const theme: S.Theme = {
 test("boxShadow", () => {
   const testProps = U.snapshot(S.boxShadow)
   testProps({ boxShadow: "0 1px 2px black" })
-  testProps({ bs: "0 0 0 red" })
-  testProps({ bs: "one", theme })
+  testProps({ bsh: "0 0 0 red" })
+  testProps({ bsh: "one", theme })
 })
 
 test("textShadow", () => {
   const testProps = U.snapshot(S.textShadow)
   testProps({ textShadow: "0 1px 2px black" })
-  testProps({ ts: "0 0 0 red" })
-  testProps({ ts: "two", theme })
+  testProps({ tsh: "0 0 0 red" })
+  testProps({ tsh: "two", theme })
 })
