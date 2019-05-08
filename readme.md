@@ -5,9 +5,9 @@ Suite of CSS in JS utility functions inspired by [Styled System][styled-system] 
 ## Features
 
 - Framework agnostic
+- Zero dependencies
 - First class theming support
 - Rigorously tested with 100% test coverage
-- Zero dependencies...well actually one if you count `csstype`
 - Written in TypeScript with exceptional type definitions
 
 ## Author
