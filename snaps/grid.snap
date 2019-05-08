@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`grid: {
+  "g": "bar"
+} 1`] = `
+Array [
+  Object {
+    "grid": "bar",
+  },
+]
+`;
+
+exports[`grid: {
+  "grid": "foo"
+} 1`] = `
+Array [
+  Object {
+    "grid": "foo",
+  },
+]
+`;
