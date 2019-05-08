@@ -136,10 +136,10 @@ Composition functions follow the naming convention of ending in `Set` and appear
 
 ## Shadow
 
-| Function Name | Props Keys     | Style Keys | Theme Keys | Transform |
-| :------------ | :------------- | :--------- | :--------- | :-------- |
-| boxShadow     | boxShadow, bs  | boxShadow  | none       | none      |
-| textShadow    | textShadow, ts | textShadow | none       | none      |
+| Function Name | Props Keys     | Style Keys | Theme Keys  | Transform |
+| :------------ | :------------- | :--------- | :---------- | :-------- |
+| boxShadow     | boxShadow, bs  | boxShadow  | boxShadows  | none      |
+| textShadow    | textShadow, ts | textShadow | textShadows | none      |
 
 ## Space
 

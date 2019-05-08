@@ -18,7 +18,8 @@ export interface BoxShadowStyle extends T.Style {
 }
 
 export const boxShadow = S.style<BoxShadowProps, BoxShadowStyle>({
-  propsKeys: ["boxShadow", "bs"]
+  propsKeys: ["boxShadow", "bs"],
+  themeKeys: ["boxShadows"]
 })
 
 // Text Shadow
@@ -37,5 +38,6 @@ export interface TextShadowStyle extends T.Style {
 }
 
 export const textShadow = S.style<TextShadowProps, TextShadowStyle>({
-  propsKeys: ["textShadow", "ts"]
+  propsKeys: ["textShadow", "ts"],
+  themeKeys: ["textShadows"]
 })
