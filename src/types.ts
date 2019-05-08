@@ -75,9 +75,9 @@ export interface Theme {
   boxShadows?: ThemeValue
   textShadows?: ThemeValue
   // Variants
-  buttons?: ThemeValue
-  textStyles?: ThemeValue
+  buttonStyles?: ThemeValue
   colorStyles?: ThemeValue
+  textStyles?: ThemeValue
 }
 
 export interface ThemeProps {
