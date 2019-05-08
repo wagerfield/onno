@@ -1,11 +1,15 @@
 import * as C from "csstype"
 import * as T from "./types"
-import { COLORS } from "./const"
 import { extend, compose } from "./style"
 
 const ex = extend({
   themeKeys: ["colors"],
-  fallback: COLORS
+  fallback: {
+    gray: ["#EEE", "#AAA", "#666"],
+    text: "#222",
+    link: "#00F",
+    bg: "#FFF"
+  }
 })
 
 // Background

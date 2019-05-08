@@ -1,6 +1,6 @@
 // Core
 export * from "./types"
-export * from "./const"
+export * from "./constants"
 export * from "./utils"
 export * from "./style"
 

@@ -1,6 +1,13 @@
 import * as T from "./types"
-import { BREAKPOINTS } from "./const"
 import { get, mq, resolve, isArray, isNil } from "./utils"
+
+const BREAKPOINTS: T.Breakpoints = [
+  { alias: "xs", value: 360 * 0 },
+  { alias: "sm", value: 360 * 1 },
+  { alias: "md", value: 360 * 2 },
+  { alias: "lg", value: 360 * 3 },
+  { alias: "xl", value: 360 * 4 }
+]
 
 export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
   if (isNil(value) || !isArray(keys) || !keys.length) return null

@@ -1,6 +1,6 @@
 import * as C from "csstype"
 import * as T from "./types"
-import { PX_SCALE } from "./const"
+import { PX_SCALE } from "./constants"
 import { addPx } from "./utils"
 import { compose, extend, style } from "./style"
 import { display, DisplayProps, DisplayStyle } from "./display"
