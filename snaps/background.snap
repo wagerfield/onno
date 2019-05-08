@@ -131,7 +131,7 @@ Array [
 `;
 
 exports[`backgroundSet: {
-  "bg": "bg",
+  "bg": "text",
   "bgc": "gray.1",
   "bgi": "src(zoo.png)",
   "bgp": "top right",
@@ -140,7 +140,7 @@ exports[`backgroundSet: {
 } 1`] = `
 Array [
   Object {
-    "background": "#FFF",
+    "background": "#222",
   },
   Object {
     "backgroundColor": "#AAA",

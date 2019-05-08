@@ -7,8 +7,7 @@ const ex = extend({
   fallback: {
     gray: ["#EEE", "#AAA", "#666"],
     text: "#222",
-    link: "#00F",
-    bg: "#FFF"
+    link: "#00F"
   }
 })
 

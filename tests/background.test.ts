@@ -44,7 +44,7 @@ test("backgroundSet", () => {
     backgroundSize: "cover"
   })
   testProps({
-    bg: "bg",
+    bg: "text",
     bgc: "gray.1",
     bgi: "src(zoo.png)",
     bgp: "top right",

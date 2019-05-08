@@ -19,7 +19,7 @@ test("background", () => {
 test("backgroundColor", () => {
   const testProps = U.snapshot(S.backgroundColor)
   testProps({ backgroundColor: "red" })
-  testProps({ bgc: "bg" })
+  testProps({ bgc: "link" })
   testProps({ bgc: "r", theme })
 })
 
@@ -41,7 +41,7 @@ test("colorSet", () => {
   const testProps = U.snapshot(S.colorSet)
   testProps({
     background: "gray.0",
-    backgroundColor: "bg",
+    backgroundColor: "link",
     borderColor: "lime",
     color: "blue"
   })

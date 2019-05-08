@@ -48,11 +48,11 @@ Array [
 `;
 
 exports[`backgroundColor: {
-  "bgc": "bg"
+  "bgc": "link"
 } 1`] = `
 Array [
   Object {
-    "backgroundColor": "#FFF",
+    "backgroundColor": "#00F",
   },
 ]
 `;
@@ -150,7 +150,7 @@ Array [
 
 exports[`colorSet: {
   "background": "gray.0",
-  "backgroundColor": "bg",
+  "backgroundColor": "link",
   "borderColor": "lime",
   "color": "blue"
 } 1`] = `
@@ -159,7 +159,7 @@ Array [
     "background": "#EEE",
   },
   Object {
-    "backgroundColor": "#FFF",
+    "backgroundColor": "#00F",
   },
   Object {
     "borderColor": "lime",
