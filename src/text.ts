@@ -158,6 +158,44 @@ export const textAlign = style<TextAlignProps, TextAlignStyle>({
   propsKeys: ["textAlign", "ta"]
 })
 
+// Text Decoration
+
+export type TextDecorationValue = C.TextDecorationProperty
+
+export type TextDecorationProp = T.Prop<TextDecorationValue>
+
+export interface TextDecorationProps extends T.ThemeProps {
+  textDecoration?: TextDecorationProp
+  td?: TextDecorationProp
+}
+
+export interface TextDecorationStyle extends T.Style {
+  textDecoration: TextDecorationValue
+}
+
+export const textDecoration = style<TextDecorationProps, TextDecorationStyle>({
+  propsKeys: ["textDecoration", "td"]
+})
+
+// Text Transform
+
+export type TextTransformValue = C.TextTransformProperty
+
+export type TextTransformProp = T.Prop<TextTransformValue>
+
+export interface TextTransformProps extends T.ThemeProps {
+  textTransform?: TextTransformProp
+  tt?: TextTransformProp
+}
+
+export interface TextTransformStyle extends T.Style {
+  textTransform: TextTransformValue
+}
+
+export const textTransform = style<TextTransformProps, TextTransformStyle>({
+  propsKeys: ["textTransform", "tt"]
+})
+
 // Text Set
 
 export type TextSetProps = FontFamilyProps &
@@ -167,6 +205,8 @@ export type TextSetProps = FontFamilyProps &
   LineHeightProps &
   LetterSpacingProps &
   TextAlignProps &
+  TextDecorationProps &
+  TextTransformProps &
   ColorProps
 
 export type TextSetStyle = FontFamilyStyle &
@@ -176,6 +216,8 @@ export type TextSetStyle = FontFamilyStyle &
   LineHeightStyle &
   LetterSpacingStyle &
   TextAlignStyle &
+  TextDecorationStyle &
+  TextTransformStyle &
   ColorStyle
 
 export const textSet = compose<TextSetProps, TextSetStyle>([
@@ -186,5 +228,7 @@ export const textSet = compose<TextSetProps, TextSetStyle>([
   lineHeight,
   letterSpacing,
   textAlign,
+  textDecoration,
+  textTransform,
   color
 ])

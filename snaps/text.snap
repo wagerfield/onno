@@ -310,6 +310,26 @@ Array [
 ]
 `;
 
+exports[`textDecoration: {
+  "td": "underline"
+} 1`] = `
+Array [
+  Object {
+    "textDecoration": "underline",
+  },
+]
+`;
+
+exports[`textDecoration: {
+  "textDecoration": "none"
+} 1`] = `
+Array [
+  Object {
+    "textDecoration": "none",
+  },
+]
+`;
+
 exports[`textSet: {
   "ff": "Times New Roman",
   "fs": "100px",
@@ -318,6 +338,8 @@ exports[`textSet: {
   "lh": 2,
   "ls": "3px",
   "ta": "left",
+  "td": "underline",
+  "tt": "uppercase",
   "tc": "gray.2"
 } 1`] = `
 Array [
@@ -343,6 +365,12 @@ Array [
     "textAlign": "left",
   },
   Object {
+    "textDecoration": "underline",
+  },
+  Object {
+    "textTransform": "uppercase",
+  },
+  Object {
     "color": "#666",
   },
 ]
@@ -356,6 +384,8 @@ exports[`textSet: {
   "lineHeight": "zero",
   "letterSpacing": "sparse",
   "textAlign": "right",
+  "textDecoration": "none",
+  "textTransform": "lowercase",
   "color": "link",
   "theme": {
     "fontFamilies": {
@@ -405,7 +435,33 @@ Array [
     "textAlign": "right",
   },
   Object {
+    "textDecoration": "none",
+  },
+  Object {
+    "textTransform": "lowercase",
+  },
+  Object {
     "color": "#00F",
+  },
+]
+`;
+
+exports[`textTransform: {
+  "textTransform": "lowercase"
+} 1`] = `
+Array [
+  Object {
+    "textTransform": "lowercase",
+  },
+]
+`;
+
+exports[`textTransform: {
+  "tt": "uppercase"
+} 1`] = `
+Array [
+  Object {
+    "textTransform": "uppercase",
   },
 ]
 `;

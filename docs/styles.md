@@ -143,10 +143,10 @@ Composition functions follow the naming convention of ending in `Set` and appear
 
 ## Shadow
 
-| Function Name | Props Keys     | Style Keys | Theme Keys  | Transform |
-| :------------ | :------------- | :--------- | :---------- | :-------- |
-| boxShadow     | boxShadow, bs  | boxShadow  | boxShadows  | none      |
-| textShadow    | textShadow, ts | textShadow | textShadows | none      |
+| Function Name | Props Keys      | Style Keys | Theme Keys  | Transform |
+| :------------ | :-------------- | :--------- | :---------- | :-------- |
+| boxShadow     | boxShadow, bsh  | boxShadow  | boxShadows  | none      |
+| textShadow    | textShadow, tsh | textShadow | textShadows | none      |
 
 ## Space
 
@@ -172,14 +172,16 @@ Composition functions follow the naming convention of ending in `Set` and appear
 
 ## Text
 
-| Function Name | Props Keys        | Style Keys    | Theme Keys     | Transform |
-| :------------ | :---------------- | :------------ | :------------- | :-------- |
-| fontFamily    | fontFamily, ff    | fontFamily    | fontFamilies   | none      |
-| fontSize      | fontSize, fs      | fontSize      | fontSizes      | addPx     |
-| fontStyle     | fontStyle, fst    | fontStyle     | none           | none      |
-| fontWeight    | fontWeight, fw    | fontWeight    | fontWeights    | none      |
-| lineHeight    | lineHeight, lh    | lineHeight    | lineHeights    | none      |
-| letterSpacing | letterSpacing, ls | letterSpacing | letterSpacings | addPx     |
-| textAlign     | textAlign, ta     | textAlign     | none           | none      |
-| color         | color, tc         | color         | colors         | none      |
-| **textSet**   | _all keys above_  |
+| Function Name  | Props Keys         | Style Keys     | Theme Keys     | Transform |
+| :------------- | :----------------- | :------------- | :------------- | :-------- |
+| fontFamily     | fontFamily, ff     | fontFamily     | fontFamilies   | none      |
+| fontSize       | fontSize, fs       | fontSize       | fontSizes      | addPx     |
+| fontStyle      | fontStyle, fst     | fontStyle      | none           | none      |
+| fontWeight     | fontWeight, fw     | fontWeight     | fontWeights    | none      |
+| lineHeight     | lineHeight, lh     | lineHeight     | lineHeights    | none      |
+| letterSpacing  | letterSpacing, ls  | letterSpacing  | letterSpacings | addPx     |
+| textAlign      | textAlign, ta      | textAlign      | none           | none      |
+| textDecoration | textDecoration, td | textDecoration | none           | none      |
+| textTransform  | textTransform, tt  | textTransform  | none           | none      |
+| color          | color, tc          | color          | colors         | none      |
+| **textSet**    | _all keys above_   |

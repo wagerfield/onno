@@ -73,6 +73,18 @@ test("textAlign", () => {
   testProps({ ta: "justify" })
 })
 
+test("textDecoration", () => {
+  const testProps = U.snapshot(S.textDecoration)
+  testProps({ textDecoration: "none" })
+  testProps({ td: "underline" })
+})
+
+test("textTransform", () => {
+  const testProps = U.snapshot(S.textTransform)
+  testProps({ textTransform: "lowercase" })
+  testProps({ tt: "uppercase" })
+})
+
 test("textSet", () => {
   const testProps = U.snapshot(S.textSet)
   testProps({
@@ -83,6 +95,8 @@ test("textSet", () => {
     lineHeight: "zero",
     letterSpacing: "sparse",
     textAlign: "right",
+    textDecoration: "none",
+    textTransform: "lowercase",
     color: "link",
     theme
   })
@@ -94,6 +108,8 @@ test("textSet", () => {
     lh: 2,
     ls: "3px",
     ta: "left",
+    td: "underline",
+    tt: "uppercase",
     tc: "gray.2"
   })
 })
