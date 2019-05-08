@@ -3,6 +3,7 @@ import * as T from "./types"
 import * as K from "./const"
 import * as S from "./style"
 import * as U from "./utils"
+import * as D from "./display"
 
 const SK = "sizes"
 
@@ -10,25 +11,6 @@ const ex = S.extend({
   themeKeys: [SK],
   transform: U.addPcOrPx,
   fallback: K.PC_SCALE
-})
-
-// Display
-
-export type DisplayValue = C.DisplayProperty
-
-export type DisplayProp = T.Prop<DisplayValue>
-
-export interface DisplayProps extends T.ThemeProps {
-  display?: DisplayProp
-  d?: DisplayProp
-}
-
-export interface DisplayStyle extends T.Style {
-  display: DisplayValue
-}
-
-export const display = S.style<DisplayProps, DisplayStyle>({
-  propsKeys: ["display", "d"]
 })
 
 // Vertical Align
@@ -351,18 +333,18 @@ export const sizeSet = S.compose<SizeSetProps, SizeSetStyle>([
 
 // Layout Set
 
-export type LayoutSetProps = DisplayProps &
+export type LayoutSetProps = D.DisplayProps &
   VerticalAlignProps &
   PositionSetProps &
   SizeSetProps
 
-export type LayoutSetStyle = DisplayStyle &
+export type LayoutSetStyle = D.DisplayStyle &
   VerticalAlignStyle &
   PositionSetStyle &
   SizeSetStyle
 
 export const layoutSet = S.compose<LayoutSetProps, LayoutSetStyle>([
-  display,
+  D.display,
   verticalAlign,
   positionSet,
   sizeSet

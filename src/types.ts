@@ -47,6 +47,8 @@ export interface Theme {
   global?: ThemeValue
   // Color
   colors?: ThemeValue
+  // Display
+  opacities?: ThemeValue
   // Space
   spaces?: ThemeValue
   // Layout

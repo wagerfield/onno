@@ -2,7 +2,7 @@ import * as C from "csstype"
 import * as T from "./types"
 import * as S from "./style"
 import * as A from "./align"
-import * as L from "./layout"
+import * as D from "./display"
 
 // Flex
 
@@ -139,7 +139,7 @@ export const flexWrap = S.style<FlexWrapProps, FlexWrapStyle>({
 
 // Flex Parent Set
 
-export type FlexParentSetProps = L.DisplayProps &
+export type FlexParentSetProps = D.DisplayProps &
   A.AlignItemsProps &
   A.AlignContentProps &
   A.JustifyItemsProps &
@@ -148,7 +148,7 @@ export type FlexParentSetProps = L.DisplayProps &
   FlexDirectionProps &
   FlexWrapProps
 
-export type FlexParentSetStyle = L.DisplayStyle &
+export type FlexParentSetStyle = D.DisplayStyle &
   A.AlignItemsStyle &
   A.AlignContentStyle &
   A.JustifyItemsStyle &
@@ -158,7 +158,7 @@ export type FlexParentSetStyle = L.DisplayStyle &
   FlexWrapStyle
 
 export const flexParentSet = S.compose<FlexParentSetProps, FlexParentSetStyle>([
-  L.display,
+  D.display,
   A.alignItems,
   A.alignContent,
   A.justifyItems,

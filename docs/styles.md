@@ -12,27 +12,18 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | color           | color, tc            | color           | colors     | none      |
 | **colorSet**    | _all keys above_     |
 
-## Space
+## Display
 
-| Function Name  | Props Keys               | Style Keys                | Theme Keys | Transform |
-| :------------- | :----------------------- | :------------------------ | :--------- | :-------- |
-| **marginSet**  | _all margin keys below_  |
-| marginTop      | marginTop, mt            | marginTop                 | spaces     | addPx     |
-| marginRight    | marginRight, mr          | marginRight               | spaces     | addPx     |
-| marginBottom   | marginBottom, mb         | marginBottom              | spaces     | addPx     |
-| marginLeft     | marginLeft, ml           | marginLeft                | spaces     | addPx     |
-| marginX        | marginX, mx              | marginLeft, marginRight   | spaces     | addPx     |
-| marginY        | marginY, my              | marginTop, marginBottom   | spaces     | addPx     |
-| margin         | margin, m                | margin                    | spaces     | addPx     |
-| **paddingSet** | _all padding keys below_ |
-| paddingTop     | paddingTop, pt           | paddingTop                | spaces     | addPx     |
-| paddingRight   | paddingRight, pr         | paddingRight              | spaces     | addPx     |
-| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces     | addPx     |
-| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces     | addPx     |
-| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces     | addPx     |
-| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces     | addPx     |
-| padding        | padding, p               | padding                   | spaces     | addPx     |
-| **spaceSet**   | _all keys above_         |
+| Function Name   | Props Keys                | Style Keys | Theme Keys | Transform |
+| :-------------- | :------------------------ | :--------- | :--------- | :-------- |
+| display         | display, d                | display    | none       | none      |
+| opacity         | opacity, o                | opacity    | opacities  | none      |
+| visibility      | visibility, vis           | visibility | none       | none      |
+| **overflowSet** | _all overflow keys below_ |
+| overflow        | overflow, of              | overflow   | none       | none      |
+| overflowX       | overflowX, ofx            | overflowX  | none       | none      |
+| overflowY       | overflowY, ofy            | overflowY  | none       | none      |
+| **displaySet**  | _all keys above_          |
 
 ## Layout
 
@@ -56,6 +47,28 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | minHeight       | minHeight, minh           | minHeight     | minHeights, sizes | addPcOrPx |
 | maxHeight       | maxHeight, maxh           | maxHeight     | maxHeights, sizes | addPcOrPx |
 | **layoutSet**   | _all keys above_          |
+
+## Space
+
+| Function Name  | Props Keys               | Style Keys                | Theme Keys | Transform |
+| :------------- | :----------------------- | :------------------------ | :--------- | :-------- |
+| **marginSet**  | _all margin keys below_  |
+| marginTop      | marginTop, mt            | marginTop                 | spaces     | addPx     |
+| marginRight    | marginRight, mr          | marginRight               | spaces     | addPx     |
+| marginBottom   | marginBottom, mb         | marginBottom              | spaces     | addPx     |
+| marginLeft     | marginLeft, ml           | marginLeft                | spaces     | addPx     |
+| marginX        | marginX, mx              | marginLeft, marginRight   | spaces     | addPx     |
+| marginY        | marginY, my              | marginTop, marginBottom   | spaces     | addPx     |
+| margin         | margin, m                | margin                    | spaces     | addPx     |
+| **paddingSet** | _all padding keys below_ |
+| paddingTop     | paddingTop, pt           | paddingTop                | spaces     | addPx     |
+| paddingRight   | paddingRight, pr         | paddingRight              | spaces     | addPx     |
+| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces     | addPx     |
+| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces     | addPx     |
+| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces     | addPx     |
+| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces     | addPx     |
+| padding        | padding, p               | padding                   | spaces     | addPx     |
+| **spaceSet**   | _all keys above_         |
 
 ## Text
 

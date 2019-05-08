@@ -20,26 +20,6 @@ Array [
 ]
 `;
 
-exports[`display: {
-  "d": "inline"
-} 1`] = `
-Array [
-  Object {
-    "display": "inline",
-  },
-]
-`;
-
-exports[`display: {
-  "display": "block"
-} 1`] = `
-Array [
-  Object {
-    "display": "block",
-  },
-]
-`;
-
 exports[`height: {
   "h": "200%"
 } 1`] = `

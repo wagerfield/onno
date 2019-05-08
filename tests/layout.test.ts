@@ -1,12 +1,6 @@
 import * as S from "../src"
 import * as U from "./test-utils"
 
-test("display", () => {
-  const testProps = U.snapshot(S.display)
-  testProps({ display: "block" })
-  testProps({ d: "inline" })
-})
-
 test("position", () => {
   const testProps = U.snapshot(S.position)
   testProps({ position: "relative" })

@@ -1,4 +1,4 @@
-// API
+// Core
 export * from "./types"
 export * from "./const"
 export * from "./utils"
@@ -9,6 +9,7 @@ export * from "./align"
 export * from "./background"
 export * from "./border"
 export * from "./color"
+export * from "./display"
 export * from "./flex"
 export * from "./layout"
 export * from "./space"
