@@ -1,8 +1,8 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as K from "./const"
-import * as S from "./style"
-import * as U from "./utils"
+import { PX_SCALE } from "./const"
+import { compose, extend } from "./style"
+import { addPx } from "./utils"
 
 const MT = "marginTop"
 const MR = "marginRight"
@@ -14,10 +14,10 @@ const PR = "paddingRight"
 const PB = "paddingBottom"
 const PL = "paddingLeft"
 
-const ex = S.extend({
+const ex = extend({
   themeKeys: ["spaces"],
-  transform: U.addPx,
-  fallback: K.PX_SCALE
+  transform: addPx,
+  fallback: PX_SCALE
 })
 
 // Margin Types
@@ -268,7 +268,7 @@ export type MarginSetStyle = MarginStyle &
   MarginBottomStyle &
   MarginLeftStyle
 
-export const marginSet = S.compose<MarginSetProps, MarginSetStyle>([
+export const marginSet = compose<MarginSetProps, MarginSetStyle>([
   margin,
   marginX,
   marginY,
@@ -296,7 +296,7 @@ export type PaddingSetStyle = PaddingStyle &
   PaddingBottomStyle &
   PaddingLeftStyle
 
-export const paddingSet = S.compose<PaddingSetProps, PaddingSetStyle>([
+export const paddingSet = compose<PaddingSetProps, PaddingSetStyle>([
   padding,
   paddingX,
   paddingY,
@@ -312,7 +312,7 @@ export type SpaceSetProps = MarginSetProps & PaddingSetProps
 
 export type SpaceSetStyle = MarginSetStyle & PaddingSetStyle
 
-export const spaceSet = S.compose<SpaceSetProps, SpaceSetStyle>([
+export const spaceSet = compose<SpaceSetProps, SpaceSetStyle>([
   marginSet,
   paddingSet
 ])

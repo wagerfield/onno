@@ -1,6 +1,6 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as S from "./style"
+import { style } from "./style"
 
 // Box Shadow
 
@@ -17,7 +17,7 @@ export interface BoxShadowStyle extends T.Style {
   boxShadow: BoxShadowValue
 }
 
-export const boxShadow = S.style<BoxShadowProps, BoxShadowStyle>({
+export const boxShadow = style<BoxShadowProps, BoxShadowStyle>({
   propsKeys: ["boxShadow", "bs"],
   themeKeys: ["boxShadows"]
 })
@@ -37,7 +37,7 @@ export interface TextShadowStyle extends T.Style {
   textShadow: TextShadowValue
 }
 
-export const textShadow = S.style<TextShadowProps, TextShadowStyle>({
+export const textShadow = style<TextShadowProps, TextShadowStyle>({
   propsKeys: ["textShadow", "ts"],
   themeKeys: ["textShadows"]
 })

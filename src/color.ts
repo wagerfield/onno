@@ -1,11 +1,11 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as K from "./const"
-import * as S from "./style"
+import { COLORS } from "./const"
+import { extend, compose } from "./style"
 
-const ex = S.extend({
+const ex = extend({
   themeKeys: ["colors"],
-  fallback: K.COLORS
+  fallback: COLORS
 })
 
 // Background
@@ -96,7 +96,7 @@ export type ColorSetStyle = BackgroundStyle &
   BorderColorStyle &
   ColorStyle
 
-export const colorSet = S.compose<ColorSetProps, ColorSetStyle>([
+export const colorSet = compose<ColorSetProps, ColorSetStyle>([
   background,
   backgroundColor,
   borderColor,

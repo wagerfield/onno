@@ -1,16 +1,16 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as K from "./const"
-import * as S from "./style"
-import * as U from "./utils"
-import * as D from "./display"
+import { PC_SCALE } from "./const"
+import { addPcOrPx } from "./utils"
+import { compose, extend, style } from "./style"
+import { display, DisplayProps, DisplayStyle } from "./display"
 
 const SK = "sizes"
 
-const ex = S.extend({
+const ex = extend({
   themeKeys: [SK],
-  transform: U.addPcOrPx,
-  fallback: K.PC_SCALE
+  transform: addPcOrPx,
+  fallback: PC_SCALE
 })
 
 // Vertical Align
@@ -28,7 +28,7 @@ export interface VerticalAlignStyle extends T.Style {
   verticalAlign: VerticalAlignValue
 }
 
-export const verticalAlign = S.style<VerticalAlignProps, VerticalAlignStyle>({
+export const verticalAlign = style<VerticalAlignProps, VerticalAlignStyle>({
   propsKeys: ["verticalAlign", "va"]
 })
 
@@ -47,7 +47,7 @@ export interface PositionStyle extends T.Style {
   position: PositionValue
 }
 
-export const position = S.style<PositionProps, PositionStyle>({
+export const position = style<PositionProps, PositionStyle>({
   propsKeys: ["position", "pos"]
 })
 
@@ -66,7 +66,7 @@ export interface ZIndexStyle extends T.Style {
   zIndex: ZIndexValue
 }
 
-export const zIndex = S.style<ZIndexProps, ZIndexStyle>({
+export const zIndex = style<ZIndexProps, ZIndexStyle>({
   propsKeys: ["zIndex", "zi"],
   themeKeys: ["zIndices"]
 })
@@ -294,7 +294,7 @@ export type PositionSetStyle = PositionStyle &
   BottomStyle &
   LeftStyle
 
-export const positionSet = S.compose<PositionSetProps, PositionSetStyle>([
+export const positionSet = compose<PositionSetProps, PositionSetStyle>([
   position,
   zIndex,
   top,
@@ -321,7 +321,7 @@ export type SizeSetStyle = SizeStyle &
   MinHeightStyle &
   MaxHeightStyle
 
-export const sizeSet = S.compose<SizeSetProps, SizeSetStyle>([
+export const sizeSet = compose<SizeSetProps, SizeSetStyle>([
   size,
   width,
   minWidth,
@@ -333,18 +333,18 @@ export const sizeSet = S.compose<SizeSetProps, SizeSetStyle>([
 
 // Layout Set
 
-export type LayoutSetProps = D.DisplayProps &
+export type LayoutSetProps = DisplayProps &
   VerticalAlignProps &
   PositionSetProps &
   SizeSetProps
 
-export type LayoutSetStyle = D.DisplayStyle &
+export type LayoutSetStyle = DisplayStyle &
   VerticalAlignStyle &
   PositionSetStyle &
   SizeSetStyle
 
-export const layoutSet = S.compose<LayoutSetProps, LayoutSetStyle>([
-  D.display,
+export const layoutSet = compose<LayoutSetProps, LayoutSetStyle>([
+  display,
   verticalAlign,
   positionSet,
   sizeSet

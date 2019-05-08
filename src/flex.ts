@@ -1,8 +1,30 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as S from "./style"
-import * as A from "./align"
-import * as D from "./display"
+import { compose, style } from "./style"
+import { display, DisplayProps, DisplayStyle } from "./display"
+import {
+  alignContent,
+  AlignContentProps,
+  AlignContentStyle,
+  alignItems,
+  AlignItemsProps,
+  AlignItemsStyle,
+  alignSelf,
+  AlignSelfProps,
+  AlignSelfStyle,
+  justifyContent,
+  JustifyContentProps,
+  JustifyContentStyle,
+  justifyItems,
+  JustifyItemsProps,
+  JustifyItemsStyle,
+  justifySelf,
+  JustifySelfProps,
+  JustifySelfStyle,
+  order,
+  OrderProps,
+  OrderStyle
+} from "./align"
 
 // Flex
 
@@ -19,7 +41,7 @@ export interface FlexStyle extends T.Style {
   flex: FlexValue
 }
 
-export const flex = S.style<FlexProps, FlexStyle>({
+export const flex = style<FlexProps, FlexStyle>({
   propsKeys: ["flex", "fx"]
 })
 
@@ -38,7 +60,7 @@ export interface FlexBasisStyle extends T.Style {
   flexBasis: FlexBasisValue
 }
 
-export const flexBasis = S.style<FlexBasisProps, FlexBasisStyle>({
+export const flexBasis = style<FlexBasisProps, FlexBasisStyle>({
   propsKeys: ["flexBasis", "fxb"]
 })
 
@@ -57,7 +79,7 @@ export interface FlexGrowStyle extends T.Style {
   flexGrow: FlexGrowValue
 }
 
-export const flexGrow = S.style<FlexGrowProps, FlexGrowStyle>({
+export const flexGrow = style<FlexGrowProps, FlexGrowStyle>({
   propsKeys: ["flexGrow", "fxg"]
 })
 
@@ -76,7 +98,7 @@ export interface FlexShrinkStyle extends T.Style {
   flexShrink: FlexShrinkValue
 }
 
-export const flexShrink = S.style<FlexShrinkProps, FlexShrinkStyle>({
+export const flexShrink = style<FlexShrinkProps, FlexShrinkStyle>({
   propsKeys: ["flexShrink", "fxs"]
 })
 
@@ -95,7 +117,7 @@ export interface FlexFlowStyle extends T.Style {
   flexFlow: FlexFlowValue
 }
 
-export const flexFlow = S.style<FlexFlowProps, FlexFlowStyle>({
+export const flexFlow = style<FlexFlowProps, FlexFlowStyle>({
   propsKeys: ["flexFlow", "fxf"]
 })
 
@@ -114,7 +136,7 @@ export interface FlexDirectionStyle extends T.Style {
   flexDirection: FlexDirectionValue
 }
 
-export const flexDirection = S.style<FlexDirectionProps, FlexDirectionStyle>({
+export const flexDirection = style<FlexDirectionProps, FlexDirectionStyle>({
   propsKeys: ["flexDirection", "fxd"]
 })
 
@@ -133,36 +155,36 @@ export interface FlexWrapStyle extends T.Style {
   flexWrap: FlexWrapValue
 }
 
-export const flexWrap = S.style<FlexWrapProps, FlexWrapStyle>({
+export const flexWrap = style<FlexWrapProps, FlexWrapStyle>({
   propsKeys: ["flexWrap", "fxw"]
 })
 
 // Flex Parent Set
 
-export type FlexParentSetProps = D.DisplayProps &
-  A.AlignItemsProps &
-  A.AlignContentProps &
-  A.JustifyItemsProps &
-  A.JustifyContentProps &
+export type FlexParentSetProps = DisplayProps &
+  AlignItemsProps &
+  AlignContentProps &
+  JustifyItemsProps &
+  JustifyContentProps &
   FlexFlowProps &
   FlexDirectionProps &
   FlexWrapProps
 
-export type FlexParentSetStyle = D.DisplayStyle &
-  A.AlignItemsStyle &
-  A.AlignContentStyle &
-  A.JustifyItemsStyle &
-  A.JustifyContentStyle &
+export type FlexParentSetStyle = DisplayStyle &
+  AlignItemsStyle &
+  AlignContentStyle &
+  JustifyItemsStyle &
+  JustifyContentStyle &
   FlexFlowStyle &
   FlexDirectionStyle &
   FlexWrapStyle
 
-export const flexParentSet = S.compose<FlexParentSetProps, FlexParentSetStyle>([
-  D.display,
-  A.alignItems,
-  A.alignContent,
-  A.justifyItems,
-  A.justifyContent,
+export const flexParentSet = compose<FlexParentSetProps, FlexParentSetStyle>([
+  display,
+  alignItems,
+  alignContent,
+  justifyItems,
+  justifyContent,
   flexFlow,
   flexDirection,
   flexWrap
@@ -170,26 +192,26 @@ export const flexParentSet = S.compose<FlexParentSetProps, FlexParentSetStyle>([
 
 // Flex Child Set
 
-export type FlexChildSetProps = A.AlignSelfProps &
-  A.JustifySelfProps &
-  A.OrderProps &
+export type FlexChildSetProps = AlignSelfProps &
+  JustifySelfProps &
+  OrderProps &
   FlexProps &
   FlexBasisProps &
   FlexGrowProps &
   FlexShrinkProps
 
-export type FlexChildSetStyle = A.AlignSelfStyle &
-  A.JustifySelfStyle &
-  A.OrderStyle &
+export type FlexChildSetStyle = AlignSelfStyle &
+  JustifySelfStyle &
+  OrderStyle &
   FlexStyle &
   FlexBasisStyle &
   FlexGrowStyle &
   FlexShrinkStyle
 
-export const flexChildSet = S.compose<FlexChildSetProps, FlexChildSetStyle>([
-  A.alignSelf,
-  A.justifySelf,
-  A.order,
+export const flexChildSet = compose<FlexChildSetProps, FlexChildSetStyle>([
+  alignSelf,
+  justifySelf,
+  order,
   flex,
   flexBasis,
   flexGrow,
@@ -202,7 +224,7 @@ export type FlexSetProps = FlexParentSetProps & FlexChildSetProps
 
 export type FlexSetStyle = FlexParentSetStyle & FlexChildSetStyle
 
-export const flexSet = S.compose<FlexSetProps, FlexSetStyle>([
+export const flexSet = compose<FlexSetProps, FlexSetStyle>([
   flexParentSet,
   flexChildSet
 ])

@@ -1,15 +1,43 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as K from "./const"
-import * as U from "./utils"
-import * as S from "./style"
-import * as A from "./align"
-import * as D from "./display"
+import { PX_SCALE } from "./const"
+import { addPx } from "./utils"
+import { compose, extend, style } from "./style"
+import { display, DisplayProps, DisplayStyle } from "./display"
+import {
+  alignContent,
+  AlignContentProps,
+  AlignContentStyle,
+  alignItems,
+  AlignItemsProps,
+  AlignItemsStyle,
+  alignSelf,
+  AlignSelfProps,
+  AlignSelfStyle,
+  justifyContent,
+  JustifyContentProps,
+  JustifyContentStyle,
+  justifyItems,
+  JustifyItemsProps,
+  JustifyItemsStyle,
+  justifySelf,
+  JustifySelfProps,
+  JustifySelfStyle,
+  placeContent,
+  PlaceContentProps,
+  PlaceContentStyle,
+  placeItems,
+  PlaceItemsProps,
+  PlaceItemsStyle,
+  placeSelf,
+  PlaceSelfProps,
+  PlaceSelfStyle
+} from "./align"
 
-const ex = S.extend({
+const ex = extend({
   themeKeys: ["spaces"],
-  transform: U.addPx,
-  fallback: K.PX_SCALE
+  transform: addPx,
+  fallback: PX_SCALE
 })
 
 // Grid
@@ -27,7 +55,7 @@ export interface GridStyle extends T.Style {
   grid: GridValue
 }
 
-export const grid = S.style<GridProps, GridStyle>({
+export const grid = style<GridProps, GridStyle>({
   propsKeys: ["grid", "g"]
 })
 
@@ -46,7 +74,7 @@ export interface GridTemplateStyle extends T.Style {
   gridTemplate: GridTemplateValue
 }
 
-export const gridTemplate = S.style<GridTemplateProps, GridTemplateStyle>({
+export const gridTemplate = style<GridTemplateProps, GridTemplateStyle>({
   propsKeys: ["gridTemplate", "gt"]
 })
 
@@ -65,7 +93,7 @@ export interface GridTemplateRowsStyle extends T.Style {
   gridTemplateRows: GridTemplateRowsValue
 }
 
-export const gridTemplateRows = S.style<
+export const gridTemplateRows = style<
   GridTemplateRowsProps,
   GridTemplateRowsStyle
 >({
@@ -87,7 +115,7 @@ export interface GridTemplateColumnsStyle extends T.Style {
   gridTemplateColumns: GridTemplateColumnsValue
 }
 
-export const gridTemplateColumns = S.style<
+export const gridTemplateColumns = style<
   GridTemplateColumnsProps,
   GridTemplateColumnsStyle
 >({
@@ -109,7 +137,7 @@ export interface GridTemplateAreasStyle extends T.Style {
   gridTemplateAreas: GridTemplateAreasValue
 }
 
-export const gridTemplateAreas = S.style<
+export const gridTemplateAreas = style<
   GridTemplateAreasProps,
   GridTemplateAreasStyle
 >({
@@ -188,7 +216,7 @@ export interface GridAutoRowsStyle extends T.Style {
   gridAutoRows: GridAutoRowsValue
 }
 
-export const gridAutoRows = S.style<GridAutoRowsProps, GridAutoRowsStyle>({
+export const gridAutoRows = style<GridAutoRowsProps, GridAutoRowsStyle>({
   propsKeys: ["gridAutoRows", "gar"]
 })
 
@@ -207,7 +235,7 @@ export interface GridAutoColumnsStyle extends T.Style {
   gridAutoColumns: GridAutoColumnsValue
 }
 
-export const gridAutoColumns = S.style<
+export const gridAutoColumns = style<
   GridAutoColumnsProps,
   GridAutoColumnsStyle
 >({
@@ -229,7 +257,7 @@ export interface GridAutoFlowStyle extends T.Style {
   gridAutoFlow: GridAutoFlowValue
 }
 
-export const gridAutoFlow = S.style<GridAutoFlowProps, GridAutoFlowStyle>({
+export const gridAutoFlow = style<GridAutoFlowProps, GridAutoFlowStyle>({
   propsKeys: ["gridAutoFlow", "gaf"]
 })
 
@@ -248,7 +276,7 @@ export interface GridAreaStyle extends T.Style {
   gridArea: GridAreaValue
 }
 
-export const gridArea = S.style<GridAreaProps, GridAreaStyle>({
+export const gridArea = style<GridAreaProps, GridAreaStyle>({
   propsKeys: ["gridArea", "ga"]
 })
 
@@ -267,7 +295,7 @@ export interface GridRowStyle extends T.Style {
   gridRow: GridRowValue
 }
 
-export const gridRow = S.style<GridRowProps, GridRowStyle>({
+export const gridRow = style<GridRowProps, GridRowStyle>({
   propsKeys: ["gridRow", "gr"]
 })
 
@@ -286,7 +314,7 @@ export interface GridRowStartStyle extends T.Style {
   gridRowStart: GridRowStartValue
 }
 
-export const gridRowStart = S.style<GridRowStartProps, GridRowStartStyle>({
+export const gridRowStart = style<GridRowStartProps, GridRowStartStyle>({
   propsKeys: ["gridRowStart", "grs"]
 })
 
@@ -305,7 +333,7 @@ export interface GridRowEndStyle extends T.Style {
   gridRowEnd: GridRowEndValue
 }
 
-export const gridRowEnd = S.style<GridRowEndProps, GridRowEndStyle>({
+export const gridRowEnd = style<GridRowEndProps, GridRowEndStyle>({
   propsKeys: ["gridRowEnd", "gre"]
 })
 
@@ -324,7 +352,7 @@ export interface GridColumnStyle extends T.Style {
   gridColumn: GridColumnValue
 }
 
-export const gridColumn = S.style<GridColumnProps, GridColumnStyle>({
+export const gridColumn = style<GridColumnProps, GridColumnStyle>({
   propsKeys: ["gridColumn", "gc"]
 })
 
@@ -343,7 +371,7 @@ export interface GridColumnStartStyle extends T.Style {
   gridColumnStart: GridColumnStartValue
 }
 
-export const gridColumnStart = S.style<
+export const gridColumnStart = style<
   GridColumnStartProps,
   GridColumnStartStyle
 >({
@@ -365,19 +393,19 @@ export interface GridColumnEndStyle extends T.Style {
   gridColumnEnd: GridColumnEndValue
 }
 
-export const gridColumnEnd = S.style<GridColumnEndProps, GridColumnEndStyle>({
+export const gridColumnEnd = style<GridColumnEndProps, GridColumnEndStyle>({
   propsKeys: ["gridColumnEnd", "gce"]
 })
 
 // Grid Parent Set
 
-export type GridParentSetProps = D.DisplayProps &
-  A.PlaceItemsProps &
-  A.PlaceContentProps &
-  A.AlignItemsProps &
-  A.AlignContentProps &
-  A.JustifyItemsProps &
-  A.JustifyContentProps &
+export type GridParentSetProps = DisplayProps &
+  PlaceItemsProps &
+  PlaceContentProps &
+  AlignItemsProps &
+  AlignContentProps &
+  JustifyItemsProps &
+  JustifyContentProps &
   GridProps &
   GridTemplateProps &
   GridTemplateRowsProps &
@@ -390,13 +418,13 @@ export type GridParentSetProps = D.DisplayProps &
   GridAutoColumnsProps &
   GridAutoFlowProps
 
-export type GridParentSetStyle = D.DisplayStyle &
-  A.PlaceItemsStyle &
-  A.PlaceContentStyle &
-  A.AlignItemsStyle &
-  A.AlignContentStyle &
-  A.JustifyItemsStyle &
-  A.JustifyContentStyle &
+export type GridParentSetStyle = DisplayStyle &
+  PlaceItemsStyle &
+  PlaceContentStyle &
+  AlignItemsStyle &
+  AlignContentStyle &
+  JustifyItemsStyle &
+  JustifyContentStyle &
   GridStyle &
   GridTemplateStyle &
   GridTemplateRowsStyle &
@@ -409,14 +437,14 @@ export type GridParentSetStyle = D.DisplayStyle &
   GridAutoColumnsStyle &
   GridAutoFlowStyle
 
-export const gridParentSet = S.compose<GridParentSetProps, GridParentSetStyle>([
-  D.display,
-  A.placeItems,
-  A.placeContent,
-  A.alignItems,
-  A.alignContent,
-  A.justifyItems,
-  A.justifyContent,
+export const gridParentSet = compose<GridParentSetProps, GridParentSetStyle>([
+  display,
+  placeItems,
+  placeContent,
+  alignItems,
+  alignContent,
+  justifyItems,
+  justifyContent,
   grid,
   gridTemplate,
   gridTemplateRows,
@@ -432,9 +460,9 @@ export const gridParentSet = S.compose<GridParentSetProps, GridParentSetStyle>([
 
 // Grid Child Set
 
-export type GridChildSetProps = A.PlaceSelfProps &
-  A.AlignSelfProps &
-  A.JustifySelfProps &
+export type GridChildSetProps = PlaceSelfProps &
+  AlignSelfProps &
+  JustifySelfProps &
   GridAreaProps &
   GridRowProps &
   GridRowStartProps &
@@ -443,9 +471,9 @@ export type GridChildSetProps = A.PlaceSelfProps &
   GridColumnStartProps &
   GridColumnEndProps
 
-export type GridChildSetStyle = A.PlaceSelfStyle &
-  A.AlignSelfStyle &
-  A.JustifySelfStyle &
+export type GridChildSetStyle = PlaceSelfStyle &
+  AlignSelfStyle &
+  JustifySelfStyle &
   GridAreaStyle &
   GridRowStyle &
   GridRowStartStyle &
@@ -454,10 +482,10 @@ export type GridChildSetStyle = A.PlaceSelfStyle &
   GridColumnStartStyle &
   GridColumnEndStyle
 
-export const gridChildSet = S.compose<GridChildSetProps, GridChildSetStyle>([
-  A.placeSelf,
-  A.alignSelf,
-  A.justifySelf,
+export const gridChildSet = compose<GridChildSetProps, GridChildSetStyle>([
+  placeSelf,
+  alignSelf,
+  justifySelf,
   gridArea,
   gridRow,
   gridRowStart,
@@ -473,7 +501,7 @@ export type GridSetProps = GridParentSetProps & GridChildSetProps
 
 export type GridSetStyle = GridParentSetStyle & GridChildSetStyle
 
-export const gridSet = S.compose<GridSetProps, GridSetStyle>([
+export const gridSet = compose<GridSetProps, GridSetStyle>([
   gridParentSet,
   gridChildSet
 ])

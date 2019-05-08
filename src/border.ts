@@ -1,13 +1,13 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as K from "./const"
-import * as S from "./style"
-import * as U from "./utils"
-import * as P from "./color"
+import { PX_SCALE } from "./const"
+import { compose, extend, style } from "./style"
+import { addPx, addPcOrPx } from "./utils"
+import { borderColor, BorderColorProps, BorderColorStyle } from "./color"
 
-const ex = S.extend({
+const ex = extend({
   themeKeys: ["borders"],
-  transform: U.addPx
+  transform: addPx
 })
 
 // Border
@@ -104,7 +104,7 @@ export interface BorderStyleStyle extends T.Style {
   borderStyle: BorderStyleValue
 }
 
-export const borderStyle = S.style<BorderStyleProps, BorderStyleStyle>({
+export const borderStyle = style<BorderStyleProps, BorderStyleStyle>({
   propsKeys: ["borderStyle", "bds"],
   themeKeys: ["borderStyles"]
 })
@@ -147,8 +147,8 @@ export interface BorderRadiusStyle extends T.Style {
 export const borderRadius = ex<BorderRadiusProps, BorderRadiusStyle>({
   propsKeys: ["borderRadius", "rad"],
   themeKeys: ["borderRadii"],
-  transform: U.addPcOrPx,
-  fallback: K.PX_SCALE
+  transform: addPcOrPx,
+  fallback: PX_SCALE
 })
 
 // Border Set
@@ -158,7 +158,7 @@ export type BorderSetProps = BorderProps &
   BorderRightProps &
   BorderBottomProps &
   BorderLeftProps &
-  P.BorderColorProps &
+  BorderColorProps &
   BorderStyleProps &
   BorderWidthProps &
   BorderRadiusProps
@@ -168,18 +168,18 @@ export type BorderSetStyle = BorderStyle &
   BorderRightStyle &
   BorderBottomStyle &
   BorderLeftStyle &
-  P.BorderColorStyle &
+  BorderColorStyle &
   BorderStyleStyle &
   BorderWidthStyle &
   BorderRadiusStyle
 
-export const borderSet = S.compose<BorderSetProps, BorderSetStyle>([
+export const borderSet = compose<BorderSetProps, BorderSetStyle>([
   border,
   borderTop,
   borderRight,
   borderBottom,
   borderLeft,
-  P.borderColor,
+  borderColor,
   borderStyle,
   borderWidth,
   borderRadius

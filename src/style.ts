@@ -1,9 +1,9 @@
 import * as T from "./types"
-import * as K from "./const"
-import * as U from "./utils"
+import { BREAKPOINTS } from "./const"
+import { get, mq, resolve, isArray, isNil } from "./utils"
 
 export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
-  if (U.isNil(value) || !U.isArray(keys) || !keys.length) return null
+  if (isNil(value) || !isArray(keys) || !keys.length) return null
   return keys.reduce(
     (s, k) => {
       s[k] = value
@@ -17,24 +17,24 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   options: T.StyleOptions
 ): T.StyleFunction<P, S> {
   const { propsKeys, styleKeys, themeKeys, transform, fallback } = options
-  const keys = U.isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+  const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
   // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
     let themed = false
 
     // Resolve theme value
-    if (theme && U.isArray(themeKeys)) {
+    if (theme && isArray(themeKeys)) {
       const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
-      const themeValue = U.resolve(mappedKeys, theme)
-      themed = !U.isNil(themeValue)
+      const themeValue = resolve(mappedKeys, theme)
+      themed = !isNil(themeValue)
       if (themed) value = themeValue
     }
 
     // Resolve fallback value
     if (fallback && !themed) {
-      const fallbackValue = U.get(value, fallback)
-      if (!U.isNil(fallbackValue)) value = fallbackValue
+      const fallbackValue = get(value, fallback)
+      if (!isNil(fallbackValue)) value = fallbackValue
     }
 
     // Transform value
@@ -47,10 +47,10 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   // Create scoped renderProps style function
   const renderProps: T.StyleFunction<P, S> = (props: P) => {
     // Get first propsValue from propsKeys
-    const propsValue = U.resolve(propsKeys, props)
+    const propsValue = resolve(propsKeys, props)
 
     // Return null when value is undefined
-    if (U.isNil(propsValue)) return null
+    if (isNil(propsValue)) return null
 
     // Build styles array
     const { theme } = props
@@ -62,12 +62,12 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
 
     // Handle responsive prop values
     if (typeof propsValue === "object") {
-      const breakpoints = (theme && theme.breakpoints) || K.BREAKPOINTS
-      if (U.isArray(breakpoints)) {
+      const breakpoints = (theme && theme.breakpoints) || BREAKPOINTS
+      if (isArray(breakpoints)) {
         breakpoints.forEach((value: any, index) => {
-          const breakpoint = U.get(index, breakpoints)
-          const styleValue = U.resolve([index, value.alias], propsValue)
-          if (!U.isNil(styleValue)) pushStyle(styleValue, U.mq(breakpoint))
+          const breakpoint = get(index, breakpoints)
+          const styleValue = resolve([index, value.alias], propsValue)
+          if (!isNil(styleValue)) pushStyle(styleValue, mq(breakpoint))
         })
       }
     } else pushStyle(propsValue)

@@ -1,6 +1,6 @@
 import * as C from "csstype"
 import * as T from "./types"
-import * as S from "./style"
+import { compose, style } from "./style"
 
 // Display
 
@@ -17,7 +17,7 @@ export interface DisplayStyle extends T.Style {
   display: DisplayValue
 }
 
-export const display = S.style<DisplayProps, DisplayStyle>({
+export const display = style<DisplayProps, DisplayStyle>({
   propsKeys: ["display", "d"]
 })
 
@@ -36,7 +36,7 @@ export interface OpacityStyle extends T.Style {
   opacity: OpacityValue
 }
 
-export const opacity = S.style<OpacityProps, OpacityStyle>({
+export const opacity = style<OpacityProps, OpacityStyle>({
   propsKeys: ["opacity", "o"],
   themeKeys: ["opacities"]
 })
@@ -56,7 +56,7 @@ export interface OverflowStyle extends T.Style {
   overflow: OverflowValue
 }
 
-export const overflow = S.style<OverflowProps, OverflowStyle>({
+export const overflow = style<OverflowProps, OverflowStyle>({
   propsKeys: ["overflow", "of"]
 })
 
@@ -75,7 +75,7 @@ export interface OverflowXStyle extends T.Style {
   overflowX: OverflowXValue
 }
 
-export const overflowX = S.style<OverflowXProps, OverflowXStyle>({
+export const overflowX = style<OverflowXProps, OverflowXStyle>({
   propsKeys: ["overflowX", "ofx"]
 })
 
@@ -94,7 +94,7 @@ export interface OverflowYStyle extends T.Style {
   overflowY: OverflowYValue
 }
 
-export const overflowY = S.style<OverflowYProps, OverflowYStyle>({
+export const overflowY = style<OverflowYProps, OverflowYStyle>({
   propsKeys: ["overflowY", "ofy"]
 })
 
@@ -113,7 +113,7 @@ export interface VisibilityStyle extends T.Style {
   visibility: VisibilityValue
 }
 
-export const visibility = S.style<VisibilityProps, VisibilityStyle>({
+export const visibility = style<VisibilityProps, VisibilityStyle>({
   propsKeys: ["visibility", "vis"]
 })
 
@@ -123,7 +123,7 @@ export type OverflowSetProps = OverflowProps & OverflowXProps & OverflowYProps
 
 export type OverflowSetStyle = OverflowStyle & OverflowXStyle & OverflowYStyle
 
-export const overflowSet = S.compose<OverflowSetProps, OverflowSetStyle>([
+export const overflowSet = compose<OverflowSetProps, OverflowSetStyle>([
   overflow,
   overflowX,
   overflowY
@@ -141,7 +141,7 @@ export type DisplaySetStyle = DisplayStyle &
   OverflowSetStyle &
   VisibilityStyle
 
-export const displaySet = S.compose<DisplaySetProps, DisplaySetStyle>([
+export const displaySet = compose<DisplaySetProps, DisplaySetStyle>([
   display,
   opacity,
   overflowSet,
