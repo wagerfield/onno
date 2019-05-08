@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`boxShadow: {
+  "boxShadow": "0 1px 2px black"
+} 1`] = `
+Array [
+  Object {
+    "boxShadow": "0 1px 2px black",
+  },
+]
+`;
+
+exports[`boxShadow: {
+  "bs": "0 0 0 red"
+} 1`] = `
+Array [
+  Object {
+    "boxShadow": "0 0 0 red",
+  },
+]
+`;
+
+exports[`textShadow: {
+  "textShadow": "0 1px 2px black"
+} 1`] = `
+Array [
+  Object {
+    "textShadow": "0 1px 2px black",
+  },
+]
+`;
+
+exports[`textShadow: {
+  "ts": "0 0 0 red"
+} 1`] = `
+Array [
+  Object {
+    "textShadow": "0 0 0 red",
+  },
+]
+`;

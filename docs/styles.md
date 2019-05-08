@@ -169,3 +169,10 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | alignSelf           | alignSelf, als           | alignSelf           | none       | none      |
 | justifySelf         | justifySelf, jfs         | justifySelf         | none       | none      |
 | **gridSet**         | _all keys above_         |
+
+## Shadow
+
+| Function Name | Props Keys     | Style Keys | Theme Keys | Transform |
+| :------------ | :------------- | :--------- | :--------- | :-------- |
+| boxShadow     | boxShadow, bs  | boxShadow  | none       | none      |
+| textShadow    | textShadow, ts | textShadow | none       | none      |
