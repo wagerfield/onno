@@ -116,6 +116,63 @@ export const justifySelf = style<JustifySelfProps, JustifySelfStyle>({
   propsKeys: ["justifySelf", "jfs"]
 })
 
+// Place Content
+
+export type PlaceContentValue = C.PlaceContentProperty
+
+export type PlaceContentProp = T.Prop<PlaceContentValue>
+
+export interface PlaceContentProps extends T.ThemeProps {
+  placeContent?: PlaceContentProp
+  plc?: PlaceContentProp
+}
+
+export interface PlaceContentStyle extends T.Style {
+  placeContent: PlaceContentValue
+}
+
+export const placeContent = style<PlaceContentProps, PlaceContentStyle>({
+  propsKeys: ["placeContent", "plc"]
+})
+
+// Place Items
+
+export type PlaceItemsValue = C.PlaceItemsProperty
+
+export type PlaceItemsProp = T.Prop<PlaceItemsValue>
+
+export interface PlaceItemsProps extends T.ThemeProps {
+  placeItems?: PlaceItemsProp
+  pli?: PlaceItemsProp
+}
+
+export interface PlaceItemsStyle extends T.Style {
+  placeItems: PlaceItemsValue
+}
+
+export const placeItems = style<PlaceItemsProps, PlaceItemsStyle>({
+  propsKeys: ["placeItems", "pli"]
+})
+
+// Place Self
+
+export type PlaceSelfValue = C.PlaceSelfProperty
+
+export type PlaceSelfProp = T.Prop<PlaceSelfValue>
+
+export interface PlaceSelfProps extends T.ThemeProps {
+  placeSelf?: PlaceSelfProp
+  pls?: PlaceSelfProp
+}
+
+export interface PlaceSelfStyle extends T.Style {
+  placeSelf: PlaceSelfValue
+}
+
+export const placeSelf = style<PlaceSelfProps, PlaceSelfStyle>({
+  propsKeys: ["placeSelf", "pls"]
+})
+
 // Order
 
 export type OrderValue = C.Globals | number

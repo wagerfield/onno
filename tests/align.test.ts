@@ -37,6 +37,24 @@ test("justifySelf", () => {
   testProps({ jfs: "flex-end" })
 })
 
+test("placeContent", () => {
+  const testProps = U.snapshot(S.placeContent)
+  testProps({ placeContent: "space-around" })
+  testProps({ plc: "space-between" })
+})
+
+test("placeItems", () => {
+  const testProps = U.snapshot(S.placeItems)
+  testProps({ placeItems: "stretch" })
+  testProps({ pli: "center" })
+})
+
+test("placeSelf", () => {
+  const testProps = U.snapshot(S.placeSelf)
+  testProps({ placeSelf: "flex-start" })
+  testProps({ pls: "flex-end" })
+})
+
 test("order", () => {
   const testProps = U.snapshot(S.order)
   testProps({ order: 1 })
