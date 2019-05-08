@@ -1,13 +1,9 @@
 import * as T from "./types"
 import { get, mq, resolve, isArray, isNil } from "./utils"
 
-const BREAKPOINTS: T.Breakpoints = [
-  { alias: "xs", value: 360 * 0 },
-  { alias: "sm", value: 360 * 1 },
-  { alias: "md", value: 360 * 2 },
-  { alias: "lg", value: 360 * 3 },
-  { alias: "xl", value: 360 * 4 }
-]
+const BREAKPOINTS: T.Breakpoints = ["xs", "sm", "md", "lg", "xl"].map(
+  (alias, index) => ({ alias, value: index * 360 })
+)
 
 export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
   if (isNil(value) || !isArray(keys) || !keys.length) return null
