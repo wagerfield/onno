@@ -24,18 +24,18 @@ exports[`boxShadow: {
   "bs": "one",
   "theme": {
     "boxShadows": {
-      "one": "boxShadowOne",
-      "two": "boxShadowTwo"
+      "one": "box-shadow-one",
+      "two": "box-shadow-two"
     },
     "textShadows": {
-      "one": "textShadowOne",
-      "two": "textShadowTwo"
+      "one": "text-shadow-one",
+      "two": "text-shadow-two"
     }
   }
 } 1`] = `
 Array [
   Object {
-    "boxShadow": "boxShadowOne",
+    "boxShadow": "box-shadow-one",
   },
 ]
 `;
@@ -64,18 +64,18 @@ exports[`textShadow: {
   "ts": "two",
   "theme": {
     "boxShadows": {
-      "one": "boxShadowOne",
-      "two": "boxShadowTwo"
+      "one": "box-shadow-one",
+      "two": "box-shadow-two"
     },
     "textShadows": {
-      "one": "textShadowOne",
-      "two": "textShadowTwo"
+      "one": "text-shadow-one",
+      "two": "text-shadow-two"
     }
   }
 } 1`] = `
 Array [
   Object {
-    "textShadow": "textShadowTwo",
+    "textShadow": "text-shadow-two",
   },
 ]
 `;

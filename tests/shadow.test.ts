@@ -3,12 +3,12 @@ import * as U from "./test-utils"
 
 const theme: S.Theme = {
   boxShadows: {
-    one: "boxShadowOne",
-    two: "boxShadowTwo"
+    one: "box-shadow-one",
+    two: "box-shadow-two"
   },
   textShadows: {
-    one: "textShadowOne",
-    two: "textShadowTwo"
+    one: "text-shadow-one",
+    two: "text-shadow-two"
   }
 }
 
