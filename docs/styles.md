@@ -2,6 +2,13 @@
 
 Composition functions follow the naming convention of ending in `Set` and appear in **bold** within the tables below.
 
+## Animation
+
+| Function Name | Props Keys | Style Keys | Theme Keys  | Transform |
+| :------------ | :--------- | :--------- | :---------- | :-------- |
+| animation     | animation  | animation  | animations  | none      |
+| transition    | transition | transition | transitions | none      |
+
 ## Background
 
 | Function Name      | Props Keys              | Style Keys         | Theme Keys | Transform |

@@ -45,12 +45,18 @@ export interface Theme {
   breakpoints?: Breakpoints
   // Global
   global?: ThemeValue
+  // Animation
+  animations?: ThemeValue
+  transitions?: ThemeValue
+  // Border
+  borders?: ThemeValue
+  borderRadii?: ThemeValue
+  borderStyles?: ThemeValue
+  borderWidths?: ThemeValue
   // Color
   colors?: ThemeValue
   // Display
   opacities?: ThemeValue
-  // Space
-  spaces?: ThemeValue
   // Layout
   sizes?: ThemeValue
   widths?: ThemeValue
@@ -60,21 +66,18 @@ export interface Theme {
   minHeights?: ThemeValue
   maxHeights?: ThemeValue
   zIndices?: ThemeValue
-  // Typography
+  // Shadow
+  boxShadows?: ThemeValue
+  textShadows?: ThemeValue
+  // Space
+  spaces?: ThemeValue
+  // Text
   fontFamilies?: ThemeValue
   fontSizes?: ThemeValue
   fontWeights?: ThemeValue
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
-  // Border
-  borders?: ThemeValue
-  borderRadii?: ThemeValue
-  borderStyles?: ThemeValue
-  borderWidths?: ThemeValue
-  // Shadows
-  boxShadows?: ThemeValue
-  textShadows?: ThemeValue
-  // Variants
+  // Variant
   buttonStyles?: ThemeValue
   colorStyles?: ThemeValue
   textStyles?: ThemeValue

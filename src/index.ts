@@ -6,6 +6,7 @@ export * from "./style"
 
 // Styles
 export * from "./align"
+export * from "./animation"
 export * from "./background"
 export * from "./border"
 export * from "./color"
