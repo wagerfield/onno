@@ -2,88 +2,6 @@
 
 Composition functions follow the naming convention of ending in `Set` and appear in **bold** within the tables below.
 
-## Color
-
-| Function Name   | Props Keys           | Style Keys      | Theme Keys | Transform |
-| :-------------- | :------------------- | :-------------- | :--------- | :-------- |
-| background      | background, bg       | background      | colors     | none      |
-| backgroundColor | backgroundColor, bgc | backgroundColor | colors     | none      |
-| borderColor     | borderColor, bdc     | borderColor     | colors     | none      |
-| color           | color, tc            | color           | colors     | none      |
-| **colorSet**    | _all keys above_     |
-
-## Display
-
-| Function Name   | Props Keys                | Style Keys | Theme Keys | Transform |
-| :-------------- | :------------------------ | :--------- | :--------- | :-------- |
-| display         | display, d                | display    | none       | none      |
-| opacity         | opacity, o                | opacity    | opacities  | none      |
-| visibility      | visibility, vis           | visibility | none       | none      |
-| **overflowSet** | _all overflow keys below_ |
-| overflow        | overflow, of              | overflow   | none       | none      |
-| overflowX       | overflowX, ofx            | overflowX  | none       | none      |
-| overflowY       | overflowY, ofy            | overflowY  | none       | none      |
-| **displaySet**  | _all keys above_          |
-
-## Layout
-
-| Function Name   | Props Keys                | Style Keys    | Theme Keys        | Transform |
-| :-------------- | :------------------------ | :------------ | :---------------- | :-------- |
-| display         | display, d                | display       | none              | none      |
-| verticalAlign   | verticalAlign, va         | verticalAlign | none              | none      |
-| **positionSet** | _all position keys below_ |
-| position        | position, pos             | position      | none              | none      |
-| zIndex          | zIndex, zi                | zIndex        | zIndices          | none      |
-| top             | top, t                    | top           | sizes             | addPcOrPx |
-| right           | right, r                  | right         | sizes             | addPcOrPx |
-| bottom          | bottom, b                 | bottom        | sizes             | addPcOrPx |
-| left            | left, l                   | left          | sizes             | addPcOrPx |
-| **sizeSet**     | _all size keys below_     |
-| size            | size, s                   | width, height | sizes             | addPcOrPx |
-| width           | width, w                  | width         | widths, sizes     | addPcOrPx |
-| minWidth        | minWidth, minw            | minWidth      | minWidths, sizes  | addPcOrPx |
-| maxWidth        | maxWidth, maxw            | maxWidth      | maxWidths, sizes  | addPcOrPx |
-| height          | height, h                 | height        | heights, sizes    | addPcOrPx |
-| minHeight       | minHeight, minh           | minHeight     | minHeights, sizes | addPcOrPx |
-| maxHeight       | maxHeight, maxh           | maxHeight     | maxHeights, sizes | addPcOrPx |
-| **layoutSet**   | _all keys above_          |
-
-## Space
-
-| Function Name  | Props Keys               | Style Keys                | Theme Keys | Transform |
-| :------------- | :----------------------- | :------------------------ | :--------- | :-------- |
-| **marginSet**  | _all margin keys below_  |
-| marginTop      | marginTop, mt            | marginTop                 | spaces     | addPx     |
-| marginRight    | marginRight, mr          | marginRight               | spaces     | addPx     |
-| marginBottom   | marginBottom, mb         | marginBottom              | spaces     | addPx     |
-| marginLeft     | marginLeft, ml           | marginLeft                | spaces     | addPx     |
-| marginX        | marginX, mx              | marginLeft, marginRight   | spaces     | addPx     |
-| marginY        | marginY, my              | marginTop, marginBottom   | spaces     | addPx     |
-| margin         | margin, m                | margin                    | spaces     | addPx     |
-| **paddingSet** | _all padding keys below_ |
-| paddingTop     | paddingTop, pt           | paddingTop                | spaces     | addPx     |
-| paddingRight   | paddingRight, pr         | paddingRight              | spaces     | addPx     |
-| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces     | addPx     |
-| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces     | addPx     |
-| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces     | addPx     |
-| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces     | addPx     |
-| padding        | padding, p               | padding                   | spaces     | addPx     |
-| **spaceSet**   | _all keys above_         |
-
-## Text
-
-| Function Name | Props Keys        | Style Keys    | Theme Keys     | Transform |
-| :------------ | :---------------- | :------------ | :------------- | :-------- |
-| fontFamily    | fontFamily, ff    | fontFamily    | fontFamilies   | none      |
-| fontSize      | fontSize, fs      | fontSize      | fontSizes      | addPx     |
-| fontStyle     | fontStyle, fst    | fontStyle     | none           | none      |
-| fontWeight    | fontWeight, fw    | fontWeight    | fontWeights    | none      |
-| lineHeight    | lineHeight, lh    | lineHeight    | lineHeights    | none      |
-| letterSpacing | letterSpacing, ls | letterSpacing | letterSpacings | addPx     |
-| textAlign     | textAlign, ta     | textAlign     | none           | none      |
-| color         | color, tc         | color         | colors         | none      |
-| **textSet**   | _all keys above_  |
-
 ## Background
 
 | Function Name      | Props Keys              | Style Keys         | Theme Keys | Transform |
@@ -110,6 +28,29 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths | addPx     |
 | borderRadius  | borderRadius, rad | borderRadius | borderRadii  | addPcOrPx |
 | **borderSet** | _all keys above_  |
+
+## Color
+
+| Function Name   | Props Keys           | Style Keys      | Theme Keys | Transform |
+| :-------------- | :------------------- | :-------------- | :--------- | :-------- |
+| background      | background, bg       | background      | colors     | none      |
+| backgroundColor | backgroundColor, bgc | backgroundColor | colors     | none      |
+| borderColor     | borderColor, bdc     | borderColor     | colors     | none      |
+| color           | color, tc            | color           | colors     | none      |
+| **colorSet**    | _all keys above_     |
+
+## Display
+
+| Function Name   | Props Keys                | Style Keys | Theme Keys | Transform |
+| :-------------- | :------------------------ | :--------- | :--------- | :-------- |
+| display         | display, d                | display    | none       | none      |
+| opacity         | opacity, o                | opacity    | opacities  | none      |
+| visibility      | visibility, vis           | visibility | none       | none      |
+| **overflowSet** | _all overflow keys below_ |
+| overflow        | overflow, of              | overflow   | none       | none      |
+| overflowX       | overflowX, ofx            | overflowX  | none       | none      |
+| overflowY       | overflowY, ofy            | overflowY  | none       | none      |
+| **displaySet**  | _all keys above_          |
 
 ## Flex
 
@@ -170,9 +111,68 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | justifySelf         | justifySelf, jfs         | justifySelf         | none       | none      |
 | **gridSet**         | _all keys above_         |
 
+## Layout
+
+| Function Name   | Props Keys                | Style Keys    | Theme Keys        | Transform |
+| :-------------- | :------------------------ | :------------ | :---------------- | :-------- |
+| display         | display, d                | display       | none              | none      |
+| verticalAlign   | verticalAlign, va         | verticalAlign | none              | none      |
+| **positionSet** | _all position keys below_ |
+| position        | position, pos             | position      | none              | none      |
+| zIndex          | zIndex, zi                | zIndex        | zIndices          | none      |
+| top             | top, t                    | top           | sizes             | addPcOrPx |
+| right           | right, r                  | right         | sizes             | addPcOrPx |
+| bottom          | bottom, b                 | bottom        | sizes             | addPcOrPx |
+| left            | left, l                   | left          | sizes             | addPcOrPx |
+| **sizeSet**     | _all size keys below_     |
+| size            | size, s                   | width, height | sizes             | addPcOrPx |
+| width           | width, w                  | width         | widths, sizes     | addPcOrPx |
+| minWidth        | minWidth, minw            | minWidth      | minWidths, sizes  | addPcOrPx |
+| maxWidth        | maxWidth, maxw            | maxWidth      | maxWidths, sizes  | addPcOrPx |
+| height          | height, h                 | height        | heights, sizes    | addPcOrPx |
+| minHeight       | minHeight, minh           | minHeight     | minHeights, sizes | addPcOrPx |
+| maxHeight       | maxHeight, maxh           | maxHeight     | maxHeights, sizes | addPcOrPx |
+| **layoutSet**   | _all keys above_          |
+
 ## Shadow
 
 | Function Name | Props Keys     | Style Keys | Theme Keys | Transform |
 | :------------ | :------------- | :--------- | :--------- | :-------- |
 | boxShadow     | boxShadow, bs  | boxShadow  | none       | none      |
 | textShadow    | textShadow, ts | textShadow | none       | none      |
+
+## Space
+
+| Function Name  | Props Keys               | Style Keys                | Theme Keys | Transform |
+| :------------- | :----------------------- | :------------------------ | :--------- | :-------- |
+| **marginSet**  | _all margin keys below_  |
+| marginTop      | marginTop, mt            | marginTop                 | spaces     | addPx     |
+| marginRight    | marginRight, mr          | marginRight               | spaces     | addPx     |
+| marginBottom   | marginBottom, mb         | marginBottom              | spaces     | addPx     |
+| marginLeft     | marginLeft, ml           | marginLeft                | spaces     | addPx     |
+| marginX        | marginX, mx              | marginLeft, marginRight   | spaces     | addPx     |
+| marginY        | marginY, my              | marginTop, marginBottom   | spaces     | addPx     |
+| margin         | margin, m                | margin                    | spaces     | addPx     |
+| **paddingSet** | _all padding keys below_ |
+| paddingTop     | paddingTop, pt           | paddingTop                | spaces     | addPx     |
+| paddingRight   | paddingRight, pr         | paddingRight              | spaces     | addPx     |
+| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces     | addPx     |
+| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces     | addPx     |
+| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces     | addPx     |
+| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces     | addPx     |
+| padding        | padding, p               | padding                   | spaces     | addPx     |
+| **spaceSet**   | _all keys above_         |
+
+## Text
+
+| Function Name | Props Keys        | Style Keys    | Theme Keys     | Transform |
+| :------------ | :---------------- | :------------ | :------------- | :-------- |
+| fontFamily    | fontFamily, ff    | fontFamily    | fontFamilies   | none      |
+| fontSize      | fontSize, fs      | fontSize      | fontSizes      | addPx     |
+| fontStyle     | fontStyle, fst    | fontStyle     | none           | none      |
+| fontWeight    | fontWeight, fw    | fontWeight    | fontWeights    | none      |
+| lineHeight    | lineHeight, lh    | lineHeight    | lineHeights    | none      |
+| letterSpacing | letterSpacing, ls | letterSpacing | letterSpacings | addPx     |
+| textAlign     | textAlign, ta     | textAlign     | none           | none      |
+| color         | color, tc         | color         | colors         | none      |
+| **textSet**   | _all keys above_  |
