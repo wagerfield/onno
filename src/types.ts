@@ -91,8 +91,8 @@ export interface ThemeProps {
 
 export type TransformFunction = (value: any) => any
 
-export interface StyleOptions {
-  propsKeys: Keys
+export interface StyleOptions<P extends ThemeProps> {
+  propsKeys: Exclude<keyof P, "theme">[]
   styleKeys?: Keys
   themeKeys?: Keys
   transform?: TransformFunction
@@ -115,5 +115,5 @@ export type StyleArray<S extends Style> = StyleObject<S>[]
 
 export interface StyleFunction<P extends ThemeProps, S extends Style> {
   (props: P): StyleArray<S> | null
-  options?: StyleOptions
+  options?: StyleOptions<P>
 }

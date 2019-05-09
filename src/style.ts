@@ -17,10 +17,12 @@ export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
 }
 
 export function style<P extends T.ThemeProps, S extends T.Style>(
-  options: T.StyleOptions
+  options: T.StyleOptions<P>
 ): T.StyleFunction<P, S> {
   const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
-  const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+  const keys = isArray(styleKeys)
+    ? styleKeys
+    : (propsKeys.slice(0, 1) as T.Keys)
 
   // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
@@ -95,9 +97,9 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   }
 }
 
-export const extend = (a: Partial<T.StyleOptions>) => <
+export const extend = (a: Partial<T.StyleOptions<any>>) => <
   P extends T.ThemeProps,
   S extends T.Style
 >(
-  b: T.StyleOptions
+  b: T.StyleOptions<P>
 ) => style<P, S>({ ...a, ...b })
