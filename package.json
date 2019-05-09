@@ -19,20 +19,23 @@
     "emotion",
     "glamor"
   ],
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
   "types": "lib/index.d.ts",
   "files": [
+    "cjs",
+    "esm",
     "lib"
   ],
   "scripts": {
-    "stats": "node stats",
-    "clean": "rimraf coverage lib",
-    "build": "tsc --noEmitOnError",
     "dev": "tsc --watch --skipLibCheck",
+    "clean": "rimraf cjs esm lib coverage",
+    "stats": "node stats",
     "test": "jest --coverage",
     "test-watch": "jest --watch",
     "lint": "tslint --fix --format codeFrame '{src,test}/**/*.ts'",
-    "format": "prettier --write '*.{json,js,md}' '{lib,src,test}/**/*.{js,ts}'",
+    "build": "tsc --declaration --noEmitOnError && rollup --config",
+    "format": "prettier --write '*.{json,js,md}' '{cjs,esm,lib,src,test}/**/*.{js,ts}'",
     "prepublishOnly": "yarn lint && yarn test && yarn clean && yarn build && yarn format"
   },
   "husky": {
@@ -79,7 +82,10 @@
     "lint-staged": "8.1.6",
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
+    "rollup": "1.11.3",
+    "rollup-plugin-typescript": "1.0.1",
     "ts-jest": "24.0.2",
+    "tslib": "1.9.3",
     "tslint": "5.16.0",
     "typescript": "3.4.5"
   }

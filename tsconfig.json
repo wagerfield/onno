@@ -8,7 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "noUnusedLocals": true,
-    "declaration": true,
     "strict": true
   }
 }

@@ -1,6 +1,8 @@
 # folders
 node_modules
 coverage
+cjs
+esm
 lib
 tmp
 

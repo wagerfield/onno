@@ -7,5 +7,7 @@ const getStats = (pattern) => {
   }, 0)
 }
 
+console.log("cjs:", getStats("cjs/*.js"))
+console.log("esm:", getStats("esm/*.js"))
 console.log("lib:", getStats("lib/*.js"))
 console.log("tmp:", getStats("tmp/*.js"))
