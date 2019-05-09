@@ -24,18 +24,13 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
 
   // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
-    let themed = false
-
-    // Resolve theme value
-    if (theme && isArray(themeKeys)) {
-      const mappedKeys = themeKeys.map((k) => `${k}.${value}`)
+    if (resolve(themeKeys, theme)) {
+      // Resolve theme value
+      const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
       const themeValue = resolve(mappedKeys, theme)
-      themed = !isNil(themeValue)
-      if (themed) value = themeValue
-    }
-
-    // Resolve default value
-    if (defaults && !themed) {
+      if (!isNil(themeValue)) value = themeValue
+    } else if (defaults) {
+      // Resolve default value
       const defaultValue = get(value, defaults)
       if (!isNil(defaultValue)) value = defaultValue
     }

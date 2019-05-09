@@ -137,7 +137,7 @@ exports[`borderRadius: {
 } 1`] = `
 Array [
   Object {
-    "borderRadius": "16px",
+    "borderRadius": "4px",
   },
 ]
 `;

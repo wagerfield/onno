@@ -59,7 +59,7 @@ exports[`height: {
 } 1`] = `
 Array [
   Object {
-    "height": "8px",
+    "height": "3px",
   },
 ]
 `;
@@ -267,7 +267,7 @@ exports[`maxHeight: {
 } 1`] = `
 Array [
   Object {
-    "maxHeight": "8px",
+    "maxHeight": "3px",
   },
 ]
 `;
@@ -331,7 +331,7 @@ exports[`maxWidth: {
 } 1`] = `
 Array [
   Object {
-    "maxWidth": "8px",
+    "maxWidth": "3px",
   },
 ]
 `;
@@ -385,7 +385,7 @@ exports[`minHeight: {
 } 1`] = `
 Array [
   Object {
-    "minHeight": "8px",
+    "minHeight": "3px",
   },
 ]
 `;
@@ -439,7 +439,7 @@ exports[`minWidth: {
 } 1`] = `
 Array [
   Object {
-    "minWidth": "8px",
+    "minWidth": "3px",
   },
 ]
 `;
@@ -585,8 +585,8 @@ exports[`size: {
 } 1`] = `
 Array [
   Object {
-    "height": "8px",
-    "width": "8px",
+    "height": "3px",
+    "width": "3px",
   },
 ]
 `;
@@ -751,7 +751,7 @@ exports[`width: {
 } 1`] = `
 Array [
   Object {
-    "width": "8px",
+    "width": "3px",
   },
 ]
 `;

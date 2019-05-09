@@ -56,11 +56,11 @@ test("transform functions", () => {
 })
 
 test("defaults", () => {
-  const testFallback = U.snapshot(U.style({ defaults: [0, 4, 8] }))
+  const testDefaults = U.snapshot(U.style({ defaults: [0, 4, 8] }))
 
   const testProps = (props: U.TestProps) => {
     testBaseline(props, "baseline")
-    testFallback(props, "defaults")
+    testDefaults(props, "defaults")
   }
 
   testProps({ a: 1 })

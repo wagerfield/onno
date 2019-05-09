@@ -59,31 +59,9 @@ exports[`supports nested theme and defaults: [2] {
 } 1`] = `
 Array [
   Object {
-    "x": "F2",
-    "y": "F2",
-    "z": "F2",
-  },
-]
-`;
-
-exports[`supports nested theme and defaults: [3] {
-  "a": 3,
-  "theme": {
-    "t": {
-      "u": {
-        "v": [
-          "0V",
-          "1V"
-        ]
-      }
-    }
-  }
-} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
+    "x": 2,
+    "y": 2,
+    "z": 2,
   },
 ]
 `;
@@ -210,30 +188,9 @@ exports[`supports theme and defaults: [2] {
 } 1`] = `
 Array [
   Object {
-    "x": "F2",
-    "y": "F2",
-    "z": "F2",
-  },
-]
-`;
-
-exports[`supports theme and defaults: [3] {
-  "a": 3,
-  "theme": {
-    "t": [
-      "T0"
-    ],
-    "u": [
-      "U0",
-      "U1"
-    ]
-  }
-} 1`] = `
-Array [
-  Object {
-    "x": 3,
-    "y": 3,
-    "z": 3,
+    "x": 2,
+    "y": 2,
+    "z": 2,
   },
 ]
 `;

@@ -39,7 +39,7 @@ exports[`margin: {
 } 1`] = `
 Array [
   Object {
-    "margin": "8px",
+    "margin": "3px",
   },
 ]
 `;
@@ -289,7 +289,7 @@ exports[`padding: {
 } 1`] = `
 Array [
   Object {
-    "padding": "8px",
+    "padding": "3px",
   },
 ]
 `;

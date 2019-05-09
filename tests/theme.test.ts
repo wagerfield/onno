@@ -39,7 +39,6 @@ test("supports theme and defaults", () => {
   testProps({ a: 0, theme: theme1 }, "0")
   testProps({ a: 1, theme: theme1 }, "1")
   testProps({ a: 2, theme: theme1 }, "2")
-  testProps({ a: 3, theme: theme1 }, "3")
 })
 
 test("supports nested theme and defaults", () => {
@@ -47,7 +46,6 @@ test("supports nested theme and defaults", () => {
   testProps({ a: 0, theme: theme2 }, "0")
   testProps({ a: 1, theme: theme2 }, "1")
   testProps({ a: 2, theme: theme2 }, "2")
-  testProps({ a: 3, theme: theme2 }, "3")
 })
 
 test("supports theme array aliases", () => {
