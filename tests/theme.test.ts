@@ -1,6 +1,6 @@
 import * as U from "./test-utils"
 
-const fallback = ["F0", "F1", "F2"]
+const defaults = ["F0", "F1", "F2"]
 const themeKeys = ["t.u.v"]
 
 const theme1 = {
@@ -34,16 +34,16 @@ test("supports nested theme", () => {
   testProps({ a: 2, theme: theme2 }, "2")
 })
 
-test("supports theme and fallback", () => {
-  const testProps = U.snapshot(U.style({ fallback }))
+test("supports theme and defaults", () => {
+  const testProps = U.snapshot(U.style({ defaults }))
   testProps({ a: 0, theme: theme1 }, "0")
   testProps({ a: 1, theme: theme1 }, "1")
   testProps({ a: 2, theme: theme1 }, "2")
   testProps({ a: 3, theme: theme1 }, "3")
 })
 
-test("supports nested theme and fallback", () => {
-  const testProps = U.snapshot(U.style({ fallback, themeKeys }))
+test("supports nested theme and defaults", () => {
+  const testProps = U.snapshot(U.style({ defaults, themeKeys }))
   testProps({ a: 0, theme: theme2 }, "0")
   testProps({ a: 1, theme: theme2 }, "1")
   testProps({ a: 2, theme: theme2 }, "2")

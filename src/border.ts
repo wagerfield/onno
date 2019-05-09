@@ -148,7 +148,7 @@ export const borderRadius = ex<BorderRadiusProps, BorderRadiusStyle>({
   propsKeys: ["borderRadius", "rad"],
   themeKeys: ["borderRadii"],
   transform: addPcOrPx,
-  fallback: PX_SCALE
+  defaults: PX_SCALE
 })
 
 // Border Set

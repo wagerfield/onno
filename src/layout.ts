@@ -10,7 +10,7 @@ const SK = "sizes"
 const ex = extend({
   themeKeys: [SK],
   transform: addPcOrPx,
-  fallback: PC_SCALE
+  defaults: PC_SCALE
 })
 
 // Vertical Align

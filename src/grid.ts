@@ -37,7 +37,7 @@ import {
 const ex = extend({
   themeKeys: ["spaces"],
   transform: addPx,
-  fallback: PX_SCALE
+  defaults: PX_SCALE
 })
 
 // Grid

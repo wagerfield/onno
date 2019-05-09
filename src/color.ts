@@ -4,7 +4,7 @@ import { extend, compose } from "./style"
 
 const ex = extend({
   themeKeys: ["colors"],
-  fallback: {
+  defaults: {
     gray: ["#EEE", "#AAA", "#666"],
     text: "#222",
     link: "#00F"

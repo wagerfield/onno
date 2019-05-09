@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`aliased fallbacks: {
+exports[`aliased defaults: {
   "a": "foo"
 } 1`] = `
 Array [
@@ -12,7 +12,7 @@ Array [
 ]
 `;
 
-exports[`aliased fallbacks: {
+exports[`aliased defaults: {
   "a": 0
 } 1`] = `
 Array [
@@ -24,7 +24,7 @@ Array [
 ]
 `;
 
-exports[`aliased fallbacks: {
+exports[`aliased defaults: {
   "b": "bar"
 } 1`] = `
 Array [
@@ -36,7 +36,7 @@ Array [
 ]
 `;
 
-exports[`aliased fallbacks: {
+exports[`aliased defaults: {
   "b": 1
 } 1`] = `
 Array [
@@ -48,7 +48,7 @@ Array [
 ]
 `;
 
-exports[`fallbacks: [baseline] {
+exports[`defaults: [baseline] {
   "a": 1
 } 1`] = `
 Array [
@@ -60,7 +60,7 @@ Array [
 ]
 `;
 
-exports[`fallbacks: [baseline] {
+exports[`defaults: [baseline] {
   "a": 2
 } 1`] = `
 Array [
@@ -72,7 +72,7 @@ Array [
 ]
 `;
 
-exports[`fallbacks: [fallback] {
+exports[`defaults: [defaults] {
   "a": 1
 } 1`] = `
 Array [
@@ -84,7 +84,7 @@ Array [
 ]
 `;
 
-exports[`fallbacks: [fallback] {
+exports[`defaults: [defaults] {
   "a": 2
 } 1`] = `
 Array [
@@ -96,7 +96,7 @@ Array [
 ]
 `;
 
-exports[`nested fallbacks: {
+exports[`nested defaults: {
   "a": "j.k"
 } 1`] = `
 Array [
@@ -108,7 +108,7 @@ Array [
 ]
 `;
 
-exports[`nested fallbacks: {
+exports[`nested defaults: {
   "a": "k.l.m"
 } 1`] = `
 Array [
@@ -120,7 +120,7 @@ Array [
 ]
 `;
 
-exports[`nested fallbacks: {
+exports[`nested defaults: {
   "a": "k.l.n"
 } 1`] = `
 Array [
@@ -132,7 +132,7 @@ Array [
 ]
 `;
 
-exports[`nested fallbacks: {
+exports[`nested defaults: {
   "a": "k.l.o.1"
 } 1`] = `
 Array [
@@ -144,7 +144,7 @@ Array [
 ]
 `;
 
-exports[`nested fallbacks: {
+exports[`nested defaults: {
   "a": "k.l.z"
 } 1`] = `
 Array [

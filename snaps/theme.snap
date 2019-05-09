@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`supports nested theme and fallback: [0] {
+exports[`supports nested theme and defaults: [0] {
   "a": 0,
   "theme": {
     "t": {
@@ -22,7 +22,7 @@ Array [
 ]
 `;
 
-exports[`supports nested theme and fallback: [1] {
+exports[`supports nested theme and defaults: [1] {
   "a": 1,
   "theme": {
     "t": {
@@ -44,7 +44,7 @@ Array [
 ]
 `;
 
-exports[`supports nested theme and fallback: [2] {
+exports[`supports nested theme and defaults: [2] {
   "a": 2,
   "theme": {
     "t": {
@@ -66,7 +66,7 @@ Array [
 ]
 `;
 
-exports[`supports nested theme and fallback: [3] {
+exports[`supports nested theme and defaults: [3] {
   "a": 3,
   "theme": {
     "t": {
@@ -154,7 +154,7 @@ Array [
 ]
 `;
 
-exports[`supports theme and fallback: [0] {
+exports[`supports theme and defaults: [0] {
   "a": 0,
   "theme": {
     "t": [
@@ -175,7 +175,7 @@ Array [
 ]
 `;
 
-exports[`supports theme and fallback: [1] {
+exports[`supports theme and defaults: [1] {
   "a": 1,
   "theme": {
     "t": [
@@ -196,7 +196,7 @@ Array [
 ]
 `;
 
-exports[`supports theme and fallback: [2] {
+exports[`supports theme and defaults: [2] {
   "a": 2,
   "theme": {
     "t": [
@@ -217,7 +217,7 @@ Array [
 ]
 `;
 
-exports[`supports theme and fallback: [3] {
+exports[`supports theme and defaults: [3] {
   "a": 3,
   "theme": {
     "t": [

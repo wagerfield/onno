@@ -19,7 +19,7 @@ export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
 export function style<P extends T.ThemeProps, S extends T.Style>(
   options: T.StyleOptions
 ): T.StyleFunction<P, S> {
-  const { propsKeys, styleKeys, themeKeys, transform, fallback } = options
+  const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
   // Create scoped renderValue style function
@@ -34,10 +34,10 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
       if (themed) value = themeValue
     }
 
-    // Resolve fallback value
-    if (fallback && !themed) {
-      const fallbackValue = get(value, fallback)
-      if (!isNil(fallbackValue)) value = fallbackValue
+    // Resolve default value
+    if (defaults && !themed) {
+      const defaultValue = get(value, defaults)
+      if (!isNil(defaultValue)) value = defaultValue
     }
 
     // Transform value

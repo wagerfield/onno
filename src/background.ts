@@ -13,7 +13,7 @@ import {
 
 const ex = extend({
   transform: addPcOrPx,
-  fallback: [0, "100%"]
+  defaults: [0, "100%"]
 })
 
 // Background Image

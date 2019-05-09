@@ -55,21 +55,21 @@ test("transform functions", () => {
   testProps({ a: 0 })
 })
 
-test("fallbacks", () => {
-  const testFallback = U.snapshot(U.style({ fallback: [0, 4, 8] }))
+test("defaults", () => {
+  const testFallback = U.snapshot(U.style({ defaults: [0, 4, 8] }))
 
   const testProps = (props: U.TestProps) => {
     testBaseline(props, "baseline")
-    testFallback(props, "fallback")
+    testFallback(props, "defaults")
   }
 
   testProps({ a: 1 })
   testProps({ a: 2 })
 })
 
-test("nested fallbacks", () => {
+test("nested defaults", () => {
   const styleFunc = U.style({
-    fallback: {
+    defaults: {
       k: {
         l: {
           m: 0,
@@ -88,9 +88,9 @@ test("nested fallbacks", () => {
   testProps({ a: "k.l.o.1" })
 })
 
-test("aliased fallbacks", () => {
+test("aliased defaults", () => {
   const styleFunc = U.style({
-    fallback: [
+    defaults: [
       {
         alias: "foo",
         value: 11

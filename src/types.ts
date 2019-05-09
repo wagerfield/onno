@@ -96,7 +96,7 @@ export interface StyleOptions {
   styleKeys?: Keys
   themeKeys?: Keys
   transform?: TransformFunction
-  fallback?: ThemeValue
+  defaults?: ThemeValue
 }
 
 export type StyleValue = number | string | string[] // string[] for fallback values

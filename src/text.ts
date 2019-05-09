@@ -22,7 +22,7 @@ export interface FontFamilyStyle extends T.Style {
 export const fontFamily = style<FontFamilyProps, FontFamilyStyle>({
   propsKeys: ["fontFamily", "ff"],
   themeKeys: ["fontFamilies"],
-  fallback: {
+  defaults: {
     text: "system-ui, sans-serif",
     mono: "Monaco, monospace"
   }
@@ -47,7 +47,7 @@ export const fontSize = style<FontSizeProps, FontSizeStyle>({
   propsKeys: ["fontSize", "fs"],
   themeKeys: ["fontSizes"],
   transform: addPx,
-  fallback: [12, 14, 16, 20, 24, 32, 48, 64]
+  defaults: [12, 14, 16, 20, 24, 32, 48, 64]
 })
 
 // Font Style
@@ -87,7 +87,7 @@ export interface FontWeightStyle extends T.Style {
 export const fontWeight = style<FontWeightProps, FontWeightStyle>({
   propsKeys: ["fontWeight", "fw"],
   themeKeys: ["fontWeights"],
-  fallback: {
+  defaults: {
     normal: 400,
     bold: 700
   }
@@ -111,7 +111,7 @@ export interface LineHeightStyle extends T.Style {
 export const lineHeight = style<LineHeightProps, LineHeightStyle>({
   propsKeys: ["lineHeight", "lh"],
   themeKeys: ["lineHeights"],
-  fallback: {
+  defaults: {
     normal: 1.5,
     narrow: 1.25,
     single: 1
