@@ -94,7 +94,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
     const result: S[] = []
     styleSet.forEach((fn) => {
       const r = fn(props)
-      if (r) result.push(...r)
+      if (r) Array.prototype.push.apply(result, r)
     })
     return result.length ? result : null
   }
