@@ -81,6 +81,8 @@ export interface Theme {
   buttonStyles?: ThemeValue
   colorStyles?: ThemeValue
   textStyles?: ThemeValue
+  // Component
+  components?: ThemeValue
 }
 
 export interface ThemeProps {
