@@ -1,7 +1,7 @@
 {
   "name": "onno-vue",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vue onno bindings",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-vue#readme",
@@ -27,6 +27,6 @@
   ],
   "dependencies": {
     "csstype": "2.6.4",
-    "onno": "0.0.3"
+    "onno": "0.0.4"
   }
 }
