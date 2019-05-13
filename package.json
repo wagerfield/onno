@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "onno-repo",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "scripts": {
