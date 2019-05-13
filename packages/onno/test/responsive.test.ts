@@ -9,7 +9,7 @@ test("returns null for unresolved breakpoints", () => {
     baselineFunc({
       a: [1, 2, 3],
       theme: {
-        breakpoints: []
+        breakpoints: null
       }
     })
   ).toBeNull()

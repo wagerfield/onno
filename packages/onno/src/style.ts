@@ -1,5 +1,5 @@
 import * as T from "./types"
-import { get, mq, resolve, uniq, isArray, isNil } from "./utils"
+import { get, mq, resolve, uniq, isArray, isNil, isUndefined } from "./utils"
 
 const KEYS: T.StyleOptionsKeys[] = ["propsKeys", "styleKeys", "themeKeys"]
 
@@ -64,7 +64,8 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
 
     // Handle responsive prop values
     if (typeof propsValue === "object") {
-      const breakpoints = (theme && theme.breakpoints) || BREAKPOINTS
+      const themeBreaks = theme && theme.breakpoints
+      const breakpoints = isUndefined(themeBreaks) ? BREAKPOINTS : themeBreaks
       if (isArray(breakpoints)) {
         breakpoints.forEach((value: any, index) => {
           const breakpoint = get(index, breakpoints)
