@@ -2,5 +2,12 @@
   "version": "0.0.2",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*"]
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "message": "chore(release): publish %v",
+      "tagVersionPrefix": "",
+      "exact": true
+    }
+  }
 }
