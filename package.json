@@ -48,6 +48,7 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "snapshotResolver": "<rootDir>/snapshots",
     "coveragePathIgnorePatterns": [
       "test-utils"
     ]
