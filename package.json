@@ -18,7 +18,7 @@
     "patch": "lerna version patch",
     "minor": "lerna version minor",
     "major": "lerna version major",
-    "publish": "lerna publish",
+    "release": "lerna publish",
     "prepublishOnly": "yarn clean && yarn build && yarn bundle"
   },
   "workspaces": [
