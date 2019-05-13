@@ -1,6 +1,6 @@
 # onno
 
-Suite of CSS in JS utility functions inspired by [Styled System][styled-system].
+Suite of CSS in JS utility functions for rapid UI development.
 
 ## Features
 
