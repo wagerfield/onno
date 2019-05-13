@@ -1,0 +1,32 @@
+{
+  "name": "onno-vue",
+  "license": "MIT",
+  "version": "0.0.1",
+  "description": "Vue onno bindings",
+  "author": "Matthew Wagerfield <matthew@wagerfield.com>",
+  "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wagerfield/onno.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wagerfield/onno/issues"
+  },
+  "keywords": [
+    "css-in-js",
+    "styled-system",
+    "vue"
+  ],
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "lib"
+  ],
+  "dependencies": {
+    "csstype": "2.6.4",
+    "onno": "0.0.1"
+  }
+}

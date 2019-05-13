@@ -1,13 +1,13 @@
 {
-  "include": ["src"],
   "compilerOptions": {
-    "outDir": "lib",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "noUnusedLocals": true,
+    "noEmitOnError": true,
+    "declaration": true,
     "strict": true
   }
 }

@@ -1,43 +1,27 @@
 {
-  "name": "themed-system",
-  "description": "Suite of CSS in JS utility functions",
-  "version": "0.1.0",
+  "private": true,
+  "name": "onno-repo",
+  "version": "0.0.1",
   "license": "MIT",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
-  "homepage": "https://github.com/wagerfield/themed-system#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wagerfield/themed-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wagerfield/themed-system/issues"
-  },
-  "keywords": [
-    "css-in-js",
-    "styled-system",
-    "styled-components",
-    "emotion",
-    "glamor"
-  ],
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "cjs",
-    "esm",
-    "lib"
-  ],
   "scripts": {
-    "dev": "tsc --watch --skipLibCheck",
-    "clean": "rimraf cjs esm lib coverage",
-    "stats": "node stats",
-    "test": "jest --coverage",
-    "test-watch": "jest --watch",
-    "lint": "tslint --fix --format codeFrame '{src,test}/**/*.ts'",
-    "build": "tsc --declaration --noEmitOnError && rollup --config",
-    "format": "prettier --write '*.{json,js,md}' '{cjs,esm,lib,src,test}/**/*.{js,ts}'",
-    "prepublishOnly": "yarn lint && yarn test && yarn clean && yarn build && yarn format"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "tslint 'packages/**/*.ts' --format codeFrame",
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier '**/*.{json,js,ts,md}'",
+    "format:check": "yarn format --check",
+    "format:write": "yarn format --write",
+    "clean": "lerna exec -- rimraf cjs esm lib && rimraf coverage",
+    "build": "lerna exec -- tsc",
+    "version": "lerna version",
+    "publish": "lerna publish",
+    "prepublishOnly": "yarn lint:fix && yarn test:coverage && yarn clean && yarn build && yarn format:write"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -62,14 +46,7 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest",
-    "snapshotResolver": "<rootDir>/snaps",
-    "coveragePathIgnorePatterns": [
-      "test-utils"
-    ]
-  },
-  "dependencies": {
-    "csstype": "2.6.4"
+    "preset": "ts-jest"
   },
   "devDependencies": {
     "@commitlint/cli": "7.6.0",
@@ -79,6 +56,7 @@
     "gzip-size": "5.1.0",
     "husky": "2.2.0",
     "jest": "24.8.0",
+    "lerna": "3.13.0",
     "lint-staged": "8.1.6",
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
