@@ -23,7 +23,7 @@ export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 
 export function get(path?: any, obj?: any) {
-  if (isNil(path) || isNil(obj)) return null
+  if (isNil(path) || isNil(obj)) return undefined
   const keys = isArray(path) ? path : toPath(path)
   return keys.reduce((v, k) => {
     let r = v && v[k]
@@ -32,16 +32,16 @@ export function get(path?: any, obj?: any) {
       const a = v.find((o) => o && o.alias === k)
       if (a) r = a.value
     }
-    return isNil(r) ? null : r
+    return r
   }, obj)
 }
 
 export function resolve(paths?: any[], obj?: any) {
-  if (isNil(obj) || !isArray(paths)) return null
+  if (isNil(obj) || !isArray(paths)) return undefined
   return paths.reduceRight((v, p) => {
     const r = get(p, obj)
-    return isNil(r) ? v : r
-  }, null)
+    return isUndefined(r) ? v : r
+  }, undefined)
 }
 
 export const uniq = <V>(list: V[]) =>

@@ -28,7 +28,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
 
   // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
-    if (resolve(themeKeys, theme)) {
+    if (!isUndefined(resolve(themeKeys, theme))) {
       // Resolve theme value
       const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
       const themeValue = resolve(mappedKeys, theme)

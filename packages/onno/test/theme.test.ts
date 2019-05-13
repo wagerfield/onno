@@ -20,6 +20,10 @@ const theme3 = {
   v: [{ alias: "foo", value: 11 }, { alias: "bar", value: 22 }]
 }
 
+const theme4 = {
+  u: null
+}
+
 test("supports theme", () => {
   const testProps = U.snapshot(U.style())
   testProps({ a: 0, theme: theme1 }, "0")
@@ -56,4 +60,10 @@ test("supports theme array aliases", () => {
   testProps({ a: 0, theme: theme3 }, "0")
   testProps({ a: 1, theme: theme3 }, "1")
   testProps({ a: 2, theme: theme3 }, "2")
+})
+
+test("defaults can be nullified", () => {
+  const testProps = U.snapshot(U.style({ defaults }))
+  testProps({ a: 1, theme: theme4 })
+  testProps({ a: 1 })
 })

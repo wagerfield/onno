@@ -60,5 +60,6 @@ export const OBJ = {
     },
     "V4", // Normal value
     0 // Falsey value
-  ]
+  ],
+  boo: null
 }

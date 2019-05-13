@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`defaults can be nullified: {
+  "a": 1
+} 1`] = `
+Array [
+  Object {
+    "x": "F1",
+    "y": "F1",
+    "z": "F1",
+  },
+]
+`;
+
+exports[`defaults can be nullified: {
+  "a": 1,
+  "theme": {
+    "u": null
+  }
+} 1`] = `
+Array [
+  Object {
+    "x": 1,
+    "y": 1,
+    "z": 1,
+  },
+]
+`;
+
 exports[`supports nested theme and defaults: [0] {
   "a": 0,
   "theme": {

@@ -93,13 +93,14 @@ test("toPath", () => {
 })
 
 test("get", () => {
-  // Null
-  expect(O.get()).toBeNull()
-  expect(O.get("foo")).toBeNull()
-  expect(O.get("zoo", U.OBJ)).toBeNull()
-  expect(O.get("foo.a", U.OBJ)).toBeNull()
+  // Undefined
+  expect(O.get()).toBeUndefined()
+  expect(O.get("foo")).toBeUndefined()
+  expect(O.get("zoo", U.OBJ)).toBeUndefined()
+  expect(O.get("foo.a", U.OBJ)).toBeUndefined()
 
   // Strings
+  expect(O.get("boo", U.OBJ)).toBeNull()
   expect(O.get("foo", U.OBJ)).toBe(U.OBJ.foo)
   expect(O.get("bar", U.OBJ)).toBe(U.OBJ.bar)
   expect(O.get("bar.a", U.OBJ)).toBe(U.OBJ.bar.a)
@@ -109,6 +110,7 @@ test("get", () => {
   expect(O.get("bar.d.1", U.OBJ)).toBe(U.OBJ.bar.d[1])
 
   // Arrays
+  expect(O.get(["boo"], U.OBJ)).toBeNull()
   expect(O.get(["foo"], U.OBJ)).toBe(U.OBJ.foo)
   expect(O.get(["bar"], U.OBJ)).toBe(U.OBJ.bar)
   expect(O.get(["bar", "a"], U.OBJ)).toBe(U.OBJ.bar.a)
@@ -119,29 +121,30 @@ test("get", () => {
   expect(O.get(["bar", "d", "2"], U.OBJ)).toBe(U.OBJ.bar.d[2])
 
   // Aliases
-  expect(O.get("baz.0", U.OBJ)).toBeNull()
-  expect(O.get("baz.A0", U.OBJ)).toBeNull()
+  expect(O.get("baz.0", U.OBJ)).toBeUndefined()
+  expect(O.get("baz.A0", U.OBJ)).toBeUndefined()
   expect(O.get("baz.1", U.OBJ)).toBe(U.OBJ.baz[1]) // { value: "V1" }
-  expect(O.get("baz.A1", U.OBJ)).toBeNull()
+  expect(O.get("baz.A1", U.OBJ)).toBeUndefined()
   expect(O.get("baz.2", U.OBJ)).toBe("V2")
   expect(O.get("baz.A2", U.OBJ)).toBe("V2")
   expect(O.get("baz.3", U.OBJ)).toBe(0)
   expect(O.get("baz.A3", U.OBJ)).toBe(0)
   expect(O.get("baz.4", U.OBJ)).toBe("V4")
-  expect(O.get("baz.A4", U.OBJ)).toBeNull()
+  expect(O.get("baz.A4", U.OBJ)).toBeUndefined()
   expect(O.get("baz.5", U.OBJ)).toBe(0)
-  expect(O.get("baz.A5", U.OBJ)).toBeNull()
+  expect(O.get("baz.A5", U.OBJ)).toBeUndefined()
 })
 
 test("resolve", () => {
   // Null
-  expect(O.resolve()).toBeNull()
-  expect(O.resolve([])).toBeNull()
-  expect(O.resolve([], U.OBJ)).toBeNull()
-  expect(O.resolve(["zoo"], U.OBJ)).toBeNull()
-  expect(O.resolve(["foo.a"], U.OBJ)).toBeNull()
+  expect(O.resolve()).toBeUndefined()
+  expect(O.resolve([])).toBeUndefined()
+  expect(O.resolve([], U.OBJ)).toBeUndefined()
+  expect(O.resolve(["zoo"], U.OBJ)).toBeUndefined()
+  expect(O.resolve(["foo.a"], U.OBJ)).toBeUndefined()
 
   // Resolve
+  expect(O.resolve(["boo"], U.OBJ)).toBeNull()
   expect(O.resolve(["foo"], U.OBJ)).toBe(U.OBJ.foo)
   expect(O.resolve(["bar"], U.OBJ)).toBe(U.OBJ.bar)
   expect(O.resolve(["bar.a"], U.OBJ)).toBe(U.OBJ.bar.a)
@@ -156,21 +159,21 @@ test("resolve", () => {
 
   // Fallback
   expect(O.resolve(["foo.a", "bar.a"], U.OBJ)).toBe(U.OBJ.bar.a)
-  expect(O.resolve(["foo.a", "bar.e"], U.OBJ)).toBeNull()
+  expect(O.resolve(["foo.a", "bar.e"], U.OBJ)).toBeUndefined()
 
   // Aliases
-  expect(O.resolve(["baz.0"], U.OBJ)).toBeNull()
-  expect(O.resolve(["baz.A0"], U.OBJ)).toBeNull()
+  expect(O.resolve(["baz.0"], U.OBJ)).toBeUndefined()
+  expect(O.resolve(["baz.A0"], U.OBJ)).toBeUndefined()
   expect(O.resolve(["baz.1"], U.OBJ)).toBe(U.OBJ.baz[1]) // { value: "V1" }
-  expect(O.resolve(["baz.A1"], U.OBJ)).toBeNull()
+  expect(O.resolve(["baz.A1"], U.OBJ)).toBeUndefined()
   expect(O.resolve(["baz.2"], U.OBJ)).toBe("V2")
   expect(O.resolve(["baz.A2"], U.OBJ)).toBe("V2")
   expect(O.resolve(["baz.3"], U.OBJ)).toBe(0)
   expect(O.resolve(["baz.A3"], U.OBJ)).toBe(0)
   expect(O.resolve(["baz.4"], U.OBJ)).toBe("V4")
-  expect(O.resolve(["baz.A4"], U.OBJ)).toBeNull()
+  expect(O.resolve(["baz.A4"], U.OBJ)).toBeUndefined()
   expect(O.resolve(["baz.5"], U.OBJ)).toBe(0)
-  expect(O.resolve(["baz.A5"], U.OBJ)).toBeNull()
+  expect(O.resolve(["baz.A5"], U.OBJ)).toBeUndefined()
 })
 
 test("uniq", () => {
