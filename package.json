@@ -18,7 +18,7 @@
     "bundle": "rollup --config",
     "version": "lerna version",
     "publish": "lerna publish",
-    "prepublishOnly": "yarn lint:fix && yarn test:coverage && yarn clean && yarn build && yarn bundle"
+    "prepublishOnly": "yarn clean && yarn build && yarn bundle"
   },
   "workspaces": [
     "packages/*"
