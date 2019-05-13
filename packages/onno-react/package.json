@@ -1,7 +1,7 @@
 {
   "name": "onno-react",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React onno bindings",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-react#readme",
@@ -27,6 +27,6 @@
   ],
   "dependencies": {
     "csstype": "2.6.4",
-    "onno": "0.0.1"
+    "onno": "^0.0.2"
   }
 }
