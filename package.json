@@ -56,7 +56,7 @@
     "gzip-size": "5.1.0",
     "husky": "2.2.0",
     "jest": "24.8.0",
-    "lerna": "3.13.0",
+    "lerna": "3.13.4",
     "lint-staged": "8.1.6",
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
