@@ -14,7 +14,7 @@
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
     "clean": "lerna exec -- rimraf cjs esm lib && rimraf coverage",
-    "build": "lerna exec -- tsc",
+    "build": "lerna exec -- tsc && rollup --config",
     "version": "lerna version",
     "publish": "lerna publish",
     "prepublishOnly": "yarn lint:fix && yarn test:coverage && yarn clean && yarn build && yarn format:write"

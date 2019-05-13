@@ -1,16 +1,18 @@
 import typescript from "rollup-plugin-typescript"
+import { resolve } from "path"
+import { sync } from "glob"
 
-export default {
-  input: "src/index.ts",
+export default sync("packages/*").map((pkg) => ({
+  input: resolve(pkg, "src/index.ts"),
   output: [
     {
-      file: "cjs/index.js",
+      file: resolve(pkg, "cjs/index.js"),
       format: "cjs"
     },
     {
-      file: "esm/index.js",
+      file: resolve(pkg, "esm/index.js"),
       format: "esm"
     }
   ],
   plugins: [typescript()]
-}
+}))
