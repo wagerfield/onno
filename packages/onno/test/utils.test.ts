@@ -7,6 +7,12 @@ test("isNil", () => {
   expect(O.isNil(0)).toBe(false)
 })
 
+test("isUndefined", () => {
+  expect(O.isUndefined(undefined)).toBe(true)
+  expect(O.isUndefined(null)).toBe(false)
+  expect(O.isUndefined(0)).toBe(false)
+})
+
 test("isUnitless", () => {
   expect(O.isUnitless(1)).toBe(true)
   expect(O.isUnitless(-1)).toBe(true)

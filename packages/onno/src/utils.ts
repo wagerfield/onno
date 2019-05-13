@@ -4,6 +4,8 @@ export const isArray = Array.isArray
 
 export const isNil = (x: any): x is void => x == null
 
+export const isUndefined = (x: any) => x === undefined
+
 export const isUnitless = (x: any) => typeof x === "number" && !!x
 
 export const isFraction = (x: any) => isUnitless(x) && x > 0 && x < 1
