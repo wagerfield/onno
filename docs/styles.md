@@ -185,3 +185,13 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | textTransform  | textTransform, tt  | textTransform  | none           | none      |
 | color          | color, tc          | color          | colors         | none      |
 | **textSet**    | _all keys above_   |
+
+## Transform
+
+| Function Name     | Props Keys             | Style Keys        | Theme Keys | Transform |
+| :---------------- | :--------------------- | :---------------- | :--------- | :-------- |
+| perspective       | perspective, ps        | perspective       | none       | none      |
+| perspectiveOrigin | perspectiveOrigin, pso | perspectiveOrigin | none       | none      |
+| transform         | transform, tf          | transform         | none       | none      |
+| transformOrigin   | transformOrigin, tfo   | transformOrigin   | none       | none      |
+| **transformSet**  | _all keys above_       |
