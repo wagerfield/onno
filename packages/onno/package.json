@@ -1,7 +1,7 @@
 {
   "name": "onno",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Suite of CSS in JS utility functions for rapid UI development",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno#readme",
