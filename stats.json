@@ -1,20 +1,20 @@
 {
   "packages/onno/cjs/index.js": {
-    "bundled": 18220,
-    "minified": 13908,
-    "gzipped": 3793
+    "bundled": 18948,
+    "minified": 14469,
+    "gzipped": 3913
   },
   "packages/onno/esm/index.js": {
-    "bundled": 15809,
-    "minified": 11369,
-    "gzipped": 3221,
+    "bundled": 16414,
+    "minified": 11801,
+    "gzipped": 3315,
     "treeshaked": {
       "rollup": {
-        "code": 7016,
+        "code": 7190,
         "import_statements": 0
       },
       "webpack": {
-        "code": 7973
+        "code": 8149
       }
     }
   },
