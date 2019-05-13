@@ -14,10 +14,11 @@
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
     "clean": "lerna exec -- rimraf cjs esm lib && rimraf coverage",
-    "build": "lerna exec -- tsc && rollup --config",
+    "build": "lerna exec -- tsc",
+    "bundle": "rollup --config",
     "version": "lerna version",
     "publish": "lerna publish",
-    "prepublishOnly": "yarn lint:fix && yarn test:coverage && yarn clean && yarn build && yarn format:write"
+    "prepublishOnly": "yarn lint:fix && yarn test:coverage && yarn clean && yarn build && yarn bundle"
   },
   "workspaces": [
     "packages/*"
@@ -53,7 +54,6 @@
     "@commitlint/config-conventional": "7.6.0",
     "@types/jest": "24.0.12",
     "glob": "7.1.4",
-    "gzip-size": "5.1.0",
     "husky": "2.2.0",
     "jest": "24.8.0",
     "lerna": "3.13.4",
@@ -61,6 +61,8 @@
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
     "rollup": "1.11.3",
+    "rollup-plugin-prettier": "0.6.0",
+    "rollup-plugin-size-snapshot": "0.8.0",
     "rollup-plugin-typescript": "1.0.1",
     "ts-jest": "24.0.2",
     "tslib": "1.9.3",
