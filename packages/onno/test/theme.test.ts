@@ -24,6 +24,17 @@ const theme4 = {
   u: null
 }
 
+const theme5 = {
+  v: {
+    foo: {
+      one: "one"
+    },
+    bar: {
+      two: "two"
+    }
+  }
+}
+
 test("supports theme", () => {
   const testProps = U.snapshot(U.style())
   testProps({ a: 0, theme: theme1 }, "0")
@@ -66,4 +77,11 @@ test("defaults can be nullified", () => {
   const testProps = U.snapshot(U.style({ defaults }))
   testProps({ a: 1, theme: theme4 })
   testProps({ a: 1 })
+})
+
+test("styleKeys can be nullified", () => {
+  const testProps = U.snapshot(U.style({ styleKeys: null }))
+  testProps({ a: "foo", theme: theme5 })
+  testProps({ b: "bar", theme: theme5 })
+  testProps({ a: "baz", theme: theme5 })
 })

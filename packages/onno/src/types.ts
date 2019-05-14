@@ -95,7 +95,7 @@ export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
 
 export interface StyleOptions {
   propsKeys: Keys
-  styleKeys?: Keys
+  styleKeys?: Keys | null
   themeKeys?: Keys
   transform?: TransformFunction
   defaults?: ThemeValue

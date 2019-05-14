@@ -248,6 +248,30 @@ Array [
 ]
 `;
 
+exports[`styleKeys can be nullified: {
+  "a": "baz"
+} 1`] = `null`;
+
+exports[`styleKeys can be nullified: {
+  "a": "foo"
+} 1`] = `
+Array [
+  Object {
+    "one": "foo",
+  },
+]
+`;
+
+exports[`styleKeys can be nullified: {
+  "b": "bar"
+} 1`] = `
+Array [
+  Object {
+    "two": "bar",
+  },
+]
+`;
+
 exports[`styleKeys default to first propsKeys: {
   "a": "foo"
 } 1`] = `

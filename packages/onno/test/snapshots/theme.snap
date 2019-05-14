@@ -27,6 +27,60 @@ Array [
 ]
 `;
 
+exports[`styleKeys can be nullified: {
+  "a": "baz",
+  "theme": {
+    "v": {
+      "foo": {
+        "one": "one"
+      },
+      "bar": {
+        "two": "two"
+      }
+    }
+  }
+} 1`] = `null`;
+
+exports[`styleKeys can be nullified: {
+  "a": "foo",
+  "theme": {
+    "v": {
+      "foo": {
+        "one": "one"
+      },
+      "bar": {
+        "two": "two"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "one": "one",
+  },
+]
+`;
+
+exports[`styleKeys can be nullified: {
+  "b": "bar",
+  "theme": {
+    "v": {
+      "foo": {
+        "one": "one"
+      },
+      "bar": {
+        "two": "two"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "two": "two",
+  },
+]
+`;
+
 exports[`supports nested theme and defaults: [0] {
   "a": 0,
   "theme": {

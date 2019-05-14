@@ -32,6 +32,29 @@ test("styleKeys default to first propsKeys", () => {
   testProps({ b: "bar" })
 })
 
+test("styleKeys can be nullified", () => {
+  interface Props extends O.ThemeProps {
+    a?: any
+    b?: any
+  }
+  const styleFunc = O.style<Props>({
+    propsKeys: ["a", "b"],
+    styleKeys: null,
+    defaults: {
+      foo: {
+        one: "foo"
+      },
+      bar: {
+        two: "bar"
+      }
+    }
+  })
+  const testProps = U.snapshot(styleFunc)
+  testProps({ a: "foo" })
+  testProps({ b: "bar" })
+  testProps({ a: "baz" })
+})
+
 test("prop aliases", () => {
   testBaseline({ a: 1, b: 2, c: 3, d: 4 } as any)
   testBaseline({ b: 2, c: 3, d: 4 } as any)

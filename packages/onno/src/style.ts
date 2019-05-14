@@ -1,5 +1,14 @@
 import * as T from "./types"
-import { get, mq, resolve, uniq, isArray, isNil, isUndefined } from "./utils"
+import {
+  mq,
+  get,
+  uniq,
+  resolve,
+  isArray,
+  isNil,
+  isObject,
+  isUndefined
+} from "./utils"
 
 const KEYS: T.StyleOptionsKeys[] = ["propsKeys", "styleKeys", "themeKeys"]
 
@@ -20,11 +29,10 @@ export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
   )
 }
 
-export function style<P extends T.ThemeProps, S extends T.Style>(
+export function style<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.StyleFunction<P, S> {
   const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
-  const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
   // Create scoped renderValue style function
   const renderValue = (value: any, theme?: T.Theme) => {
@@ -42,8 +50,15 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     // Transform value
     if (typeof transform === "function") value = transform(value)
 
-    // Render style object
-    return render<S>(keys as T.Keys, value)
+    // Resolve style object
+    if (styleKeys === null) {
+      // Return style object
+      return isObject(value) && !isArray(value) ? (value as S) : null
+    } else {
+      // Render style object
+      const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+      return render<S>(keys, value)
+    }
   }
 
   // Create scoped renderProps style function
@@ -63,7 +78,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     }
 
     // Handle responsive prop values
-    if (typeof propsValue === "object") {
+    if (isObject(propsValue)) {
       const themeBreaks = theme && theme.breakpoints
       const breakpoints = isUndefined(themeBreaks) ? BREAKPOINTS : themeBreaks
       if (isArray(breakpoints)) {
@@ -79,13 +94,9 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     return styles.length ? styles : null
   }
 
-  // Store options
+  // Set options and composed
   renderProps.options = options
-
-  // Set composed flag
   renderProps.composed = false
-
-  // Return renderProps function
   return renderProps
 }
 
@@ -111,7 +122,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   KEYS.forEach((key) => (options[key] = uniq(options[key]!)))
 
   // Create scoped renderProps style function
-  const renderProps = (props: P) => {
+  const renderProps: T.StyleFunction<P, S> = (props: P) => {
     const result: S[] = []
     styleSet.forEach((fn) => {
       const r = fn(props)
@@ -120,13 +131,9 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
     return result.length ? result : null
   }
 
-  // Store options
+  // Set options and composed
   renderProps.options = options
-
-  // Set composed flag
   renderProps.composed = true
-
-  // Return renderProps function
   return renderProps
 }
 
