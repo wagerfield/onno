@@ -13,6 +13,15 @@ test("isUndefined", () => {
   expect(O.isUndefined(0)).toBe(false)
 })
 
+test("isObject", () => {
+  expect(O.isObject(null)).toBe(true)
+  expect(O.isObject({})).toBe(true)
+  expect(O.isObject([])).toBe(true)
+  expect(O.isObject(0)).toBe(false)
+  expect(O.isObject("0")).toBe(false)
+  expect(O.isObject(undefined)).toBe(false)
+})
+
 test("isUnitless", () => {
   expect(O.isUnitless(1)).toBe(true)
   expect(O.isUnitless(-1)).toBe(true)
