@@ -1,0 +1,10 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Test Coverage
+          command: yarn test:coverage
