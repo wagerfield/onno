@@ -1,30 +1,32 @@
 # API
 
-At the core of `onno` is the `style` function. The `style` function takes an `options` object and returns a `render` function.
+At the core of `onno` is the `style` function.
 
-The returned `render` function can then be called with some `props` to produce an array of style objects. Arrays of style objects are widely supported by the majority of CSS in JS libraries like [styled-components][styled-components] and [emotion][emotion].
+The `style` function takes an `options` object and returns a `render` function.
+
+The returned `render` function can then be called with some `props` to produce an array of style objects. Style object arrays are supported by the majority of CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion].
 
 The `style` function pipeline is illustrated below:
 
     style = (options) => (props) => styles
 
-## style
+## `style`
 
 The `style` function is _incredibly_ versatile and can be used in a variety of ways to produce powerful `render` functions.
 
 It expects an `options` object as the first and _only_ argument with the following key values:
 
-### options
+### `options`
 
-| Key                     | Type          | Description                                      |
-| :---------------------- | :------------ | :----------------------------------------------- |
-| [propsKeys](#propskeys) | String[]      | Props keys to map values from. **Required**      |
-| [styleKeys](#styleKeys) | String[]      | Style keys render values to. _Optional_          |
-| [themeKeys](#themeKeys) | String[]      | Theme keys to lookup values from. _Optional_     |
-| [transform](#transform) | Function      | Function to transform values through. _Optional_ |
-| [defaults](#defaults)   | Array\|Object | Default lookup array or object. _Optional_       |
+| Key                       | Type            | Required | Description                          |
+| :------------------------ | :-------------- | :------- | :----------------------------------- |
+| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from        |
+| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys render values to          |
+| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from     |
+| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through |
+| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup array or object       |
 
-#### propsKeys
+#### `propsKeys`
 
 An array of `props` keys to map values from. For example:
 
@@ -58,7 +60,7 @@ Since `["width", "w"]` is passed as `propsKeys` both keys can be used as `props`
 
 **NOTE:** As is the case with _all_ options keys, the order of precedence is respected. In the last example where both "w" and "width" are provided, the "width" value takes precedence over the "w" value.
 
-#### styleKeys
+#### `styleKeys`
 
 An array of `style` keys to map values to. For example:
 
@@ -129,7 +131,7 @@ const theme = {
 <Button bst="secondary" theme={theme} />
 ```
 
-#### themeKeys
+#### `themeKeys`
 
 An array of `theme` keys to lookup values from. For example:
 
@@ -225,7 +227,7 @@ In the example above, the `fontFamilies` and `fontSizes` theme objects are neste
 
 The `colors` theme object also has values nested within it. However, since `themeKeys` is specified as `["colors"]` the values have to be accessed via dot syntax in the `props` values instead.
 
-#### transform
+#### `transform`
 
 Function to transform resolved values through. For example:
 
@@ -266,7 +268,7 @@ export const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
 export const addRem = when(isUnitless)((x) => x + "rem")
 ```
 
-#### defaults
+#### `defaults`
 
 Default lookup array or object to resolve values from. For example:
 
@@ -338,9 +340,9 @@ const theme = {
 
 The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" is outside of the array bounds, so the raw value is rendered.
 
-## compose
+## `compose`
 
-## extend
+## `extend`
 
 [styled-components]: https://styled-components.com
 [emotion]: https://emotion.sh
