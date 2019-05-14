@@ -195,3 +195,11 @@ Composition functions follow the naming convention of ending in `Set` and appear
 | transform         | transform, tf          | transform         | none       | none      |
 | transformOrigin   | transformOrigin, tfo   | transformOrigin   | none       | none      |
 | **transformSet**  | _all keys above_       |
+
+## Variant
+
+| Function Name | Props Keys       | Style Keys | Theme Keys   | Transform |
+| :------------ | :--------------- | :--------- | :----------- | :-------- |
+| buttonStyle   | buttonStyle, bst | any        | buttonStyles | none      |
+| colorStyle    | colorStyle, cst  | any        | colorStyles  | none      |
+| textStyle     | textStyle, tst   | any        | textStyles   | none      |

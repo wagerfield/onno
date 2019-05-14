@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buttonStyle: {
+  "bst": "foo",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `null`;
+
+exports[`buttonStyle: {
+  "bst": "one",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "background": "red",
+    "color": "white",
+  },
+]
+`;
+
+exports[`buttonStyle: {
+  "bst": [
+    "one",
+    "two"
+  ],
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media(min-width: 0)": Object {
+      "background": "red",
+      "color": "white",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      "background": "blue",
+      "color": "black",
+    },
+  },
+]
+`;
+
+exports[`buttonStyle: {
+  "buttonStyle": "one"
+} 1`] = `null`;
+
+exports[`colorStyle: {
+  "colorStyle": "one"
+} 1`] = `null`;
+
+exports[`colorStyle: {
+  "cst": "foo",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `null`;
+
+exports[`colorStyle: {
+  "cst": "one",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "backgroundColor": "red",
+    "borderColor": "pink",
+    "color": "white",
+  },
+]
+`;
+
+exports[`colorStyle: {
+  "cst": [
+    "one",
+    "two"
+  ],
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media(min-width: 0)": Object {
+      "backgroundColor": "red",
+      "borderColor": "pink",
+      "color": "white",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      "backgroundColor": "blue",
+      "borderColor": "aqua",
+      "color": "black",
+    },
+  },
+]
+`;
+
+exports[`textStyle: {
+  "textStyle": "one"
+} 1`] = `null`;
+
+exports[`textStyle: {
+  "tst": "foo",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `null`;
+
+exports[`textStyle: {
+  "tst": "one",
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "letterSpacing": "1px",
+    "textTransform": "uppercase",
+  },
+]
+`;
+
+exports[`textStyle: {
+  "tst": [
+    "one",
+    "two"
+  ],
+  "theme": {
+    "buttonStyles": {
+      "one": {
+        "background": "red",
+        "color": "white"
+      },
+      "two": {
+        "background": "blue",
+        "color": "black"
+      }
+    },
+    "colorStyles": {
+      "one": {
+        "backgroundColor": "red",
+        "borderColor": "pink",
+        "color": "white"
+      },
+      "two": {
+        "backgroundColor": "blue",
+        "borderColor": "aqua",
+        "color": "black"
+      }
+    },
+    "textStyles": {
+      "one": {
+        "letterSpacing": "1px",
+        "textTransform": "uppercase"
+      },
+      "two": {
+        "letterSpacing": "2px",
+        "textTransform": "lowercase"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "@media(min-width: 0)": Object {
+      "letterSpacing": "1px",
+      "textTransform": "uppercase",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      "letterSpacing": "2px",
+      "textTransform": "lowercase",
+    },
+  },
+]
+`;
