@@ -15,6 +15,7 @@
     "format:write": "yarn format --write",
     "clean": "rimraf coverage 'packages/**/{cjs,esm,lib}'",
     "build": "lerna exec tsc",
+    "setup": "lerna bootstrap",
     "bundle": "rollup --config",
     "release": "lerna publish",
     "prepublishOnly": "yarn clean && yarn build && yarn bundle"
