@@ -10,7 +10,7 @@ export const isObject = (x: any) => typeof x === "object"
 
 export const isUnitless = (x: any) => typeof x === "number" && !!x
 
-export const isFraction = (x: any) => isUnitless(x) && x > 0 && x < 1
+export const isFraction = (x: any) => isUnitless(x) && x > -1 && x < 1
 
 export const when = (p: T.Pred) => (f: T.Func) => (x: any) => (p(x) ? f(x) : x)
 

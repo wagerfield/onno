@@ -60,6 +60,7 @@ test("when", () => {
 test("addPx", () => {
   expect(O.addPx(0)).toBe(0)
   expect(O.addPx(1)).toBe("1px")
+  expect(O.addPx(-2)).toBe("-2px")
   expect(O.addPx("2em")).toBe("2em")
 })
 
@@ -67,6 +68,7 @@ test("addPc", () => {
   expect(O.addPc(0)).toBe(0)
   expect(O.addPc(1)).toBe(1)
   expect(O.addPc(0.15)).toBe("15%")
+  expect(O.addPc(-0.25)).toBe("-25%")
   expect(O.addPc(3 / 4)).toBe("75%")
   expect(O.addPc("2em")).toBe("2em")
 })
@@ -75,8 +77,11 @@ test("addPcOrPx", () => {
   expect(O.addPcOrPx(0)).toBe(0)
 
   expect(O.addPcOrPx(0.1)).toBe("10%")
+  expect(O.addPcOrPx(-0.1)).toBe("-10%")
   expect(O.addPcOrPx(0.5)).toBe("50%")
+  expect(O.addPcOrPx(-0.5)).toBe("-50%")
   expect(O.addPcOrPx(3 / 4)).toBe("75%")
+  expect(O.addPcOrPx(-3 / 4)).toBe("-75%")
 
   expect(O.addPcOrPx(1)).toBe("1px")
   expect(O.addPcOrPx(2)).toBe("2px")
