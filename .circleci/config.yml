@@ -13,4 +13,4 @@ jobs:
           command: yarn setup
       - run:
           name: Test Coverage
-          command: yarn test:coverage
+          command: yarn test:coverage --runInBand
