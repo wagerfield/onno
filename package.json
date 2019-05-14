@@ -5,9 +5,9 @@
   "license": "MIT",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch --runInBand",
+    "test:coverage": "jest --coverage --runInBand",
     "lint": "tslint 'packages/**/*.ts' --format codeFrame",
     "lint:fix": "yarn lint --fix",
     "format": "prettier '**/*.{json,js,ts,md}'",
