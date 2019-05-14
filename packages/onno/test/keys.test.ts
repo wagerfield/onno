@@ -11,8 +11,8 @@ const index: Index = O
 function getStyles(composed: boolean) {
   return Object.keys(index).reduce(
     (fns, key) => {
-      const val = index[key]
-      if (val.options && val.composed === composed) fns.push(val)
+      const fn = index[key]
+      if (fn.options && fn.composed === composed) fns.push(fn)
       return fns
     },
     [] as O.StyleFunction<any, any>[]
