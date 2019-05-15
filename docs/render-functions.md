@@ -1,6 +1,6 @@
 # Render Functions
 
-Composed `render` functions follow the naming convention of ending in `Set` and appear in **bold** within the tables below.
+Composed `render` functions follow the naming convention of ending in `Set` and appear in **bold** within the tables.
 
 ## Animation
 

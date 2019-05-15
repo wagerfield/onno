@@ -350,9 +350,9 @@ The first `Box` does not have a `theme` so the value is resolved from the `defau
 
 The `compose` function takes an array of `render` functions and returns a _composed_ `render` function.
 
-When the _composed_ `render` function is called with some `props` it will iterate over the array of `render` functions and call them with the provided `props`.
+When the _composed_ `render` function is called with some `props` it will iterate over the array of `render` functions and call them each in turn with the provided `props`.
 
-The arrays of style objects returned from each `render` function are merged and returned from the _composed_ `render` function.
+The arrays of style objects returned from each `render` function are merged and returned.
 
 This interface allows you to compose multiple `render` functions into a single one for greater portability.
 
@@ -394,6 +394,46 @@ It is worth noting that _composed_ render functions can be recomposed into other
 Onno ships with an extensive suite of _standard_ and _composed_ `render` functions which can be [found here](render-functions.md).
 
 ## `extend`
+
+The `extend` function allows you to partially apply some [`options`](#options) to the [`style`](#style) function.
+
+It takes some partial `options` and returns a function which expects the remaining `options` and then returns a `render` function having called `style` with the first `options` merged with the second `options`.
+
+This is useful for creating `render` functions that share some common `options` eg. `themeKeys`, `transform` or `defaults`. For example:
+
+```jsx
+import styled from "styled-components"
+import { addPx, extend } from "onno"
+
+const space = extend({
+  themeKeys: ["spaces"],
+  transform: addPx,
+  defaults: [0, 2, 4, 8, 16, 32, 64]
+})
+
+const margin = space({
+  propsKeys: ["margin", "m"]
+})
+
+const padding = space({
+  propsKeys: ["padding", "p"],
+  transform: null
+})
+
+const Box = styled.div(margin, padding)
+
+// [{ margin: "4px" }, { padding: 16 }]
+<Box margin={2} padding={4} />
+
+// [{ margin: "64px" }, { padding: 10 }]
+<Box m={6} p={10} />
+```
+
+In the example above, the `extend` function is called with some partial style `options` and assigned to the `space` function. Both the `margin` and `padding` render functions then call the `space` function with additional style `options` they wish to set or override.
+
+Both the `margin` and `padding`render function share the same `themeKeys` and `defaults`. When indexes are passed as values to these props, the values are resolved from `defaults` array. Since the `margin` render function inherits the `addPx` transform function, the resolved values have "px" appended to them. However, since the `padding` render function overrides the `transform` function to `null` the resolved values are not transformed.
+
+Internally onno uses this function extensively for `render` functions that share common options.
 
 [styled-components]: https://styled-components.com
 [emotion]: https://emotion.sh/docs/object-styles#arrays
