@@ -17,7 +17,7 @@ const styles = (props) => [{
   color: props.color
 }]
 
-// Template tag literal
+// Tagged template literal
 const Box1 = styled.div`
   ${styles}
 `
