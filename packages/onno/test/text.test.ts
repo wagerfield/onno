@@ -28,7 +28,7 @@ const theme: O.Theme = {
 
 test("fontFamily", () => {
   const testProps = U.snapshot(O.fontFamily)
-  testProps({ fontFamily: "text" })
+  testProps({ fontFamily: "main" })
   testProps({ ff: "mono" })
   testProps({ ff: "foo", theme })
 })

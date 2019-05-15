@@ -45,7 +45,7 @@ Array [
 `;
 
 exports[`fontFamily: {
-  "fontFamily": "text"
+  "fontFamily": "main"
 } 1`] = `
 Array [
   Object {

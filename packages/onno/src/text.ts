@@ -23,7 +23,7 @@ export const fontFamily = style<FontFamilyProps, FontFamilyStyle>({
   propsKeys: ["fontFamily", "ff"],
   themeKeys: ["fontFamilies"],
   defaults: {
-    text: "system-ui, sans-serif",
+    main: "system-ui, sans-serif",
     mono: "Monaco, monospace"
   }
 })
