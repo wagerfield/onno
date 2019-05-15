@@ -395,7 +395,7 @@ Onno ships with an extensive suite of _standard_ and _composed_ `render` functio
 
 ## `extend`
 
-The `extend` function allows you to share [`options`](#options) between [`style`](#style) render functions.
+The `extend` function allows you to share [`options`](#options) between `render` functions.
 
 It takes some partially applied style `options` and returns a function which expects the remaining options.
 
@@ -429,9 +429,9 @@ const Box = styled.div(margin, padding)
 <Box m={6} p={10} />
 ```
 
-In the example above, the `extend` function is called with some partial style `options` and assigned to the `space` function. Both the `margin` and `padding` render functions are the result of calling the `space` function with additional style `options` they wish to set or override.
+In the example above, the `extend` function is called with some partial style `options` and the returned function is assigned to the `space` variable. Both the `margin` and `padding` render functions are the result of calling the `space` function with additional style `options` they wish to set or override.
 
-Both the `margin` and `padding`render function share the same `themeKeys` and `defaults`. When indexes are passed to these props, the values are resolved from `defaults` array. Since the `margin` render function inherits the `addPx` transform function, the resolved values have "px" appended to them. However, since the `padding` render function overrides the `transform` function to `null` the resolved values are not transformed.
+Both the `margin` and `padding` render functions share the same `themeKeys` and `defaults`. When indexes are passed to these props, the values are resolved from `defaults` array. Since the `margin` render function inherits the `addPx` transform function, the resolved values have "px" appended to them. However, since the `padding` render function overrides the `transform` function to `null` the resolved values are not transformed.
 
 [styled-components]: https://styled-components.com
 [emotion]: https://emotion.sh/docs/object-styles#arrays
