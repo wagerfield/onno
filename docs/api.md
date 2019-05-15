@@ -76,9 +76,9 @@ const Box = styled.div(width)
 
 In the example above, the `width` render function is passed to the `styled` div. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
 
-Since "width" _and_ "w" are passed as `propsKeys` both keys can be used as `props` to render the provided value to the style objects. This interface allows you to create multiple aliases for the same key value mapping.
+Since "width" _and_ "w" are passed as `propsKeys` both can be used as `props` to render the provided value to the style objects. This interface allows you to create multiple aliases for the same key value mapping.
 
-The order of keys in `propsKeys` defines the order of precedence. In the last example where both "w" and "width" are set on `Box` the "width" value takes precedence over the "w" value since it appears first in the `propsKeys` array.
+The order of keys in `propsKeys` defines the order of precedence. In the last example where both "w" and "width" are set on `Box` the "width" prop value takes precedence over "w" since it appears first in the `propsKeys` array.
 
 ### `styleKeys`
 
@@ -105,7 +105,7 @@ const Box = styled.div(size)
 <Box s="25%" size="200px" />
 ```
 
-When `styleKeys` are left undefined, the first value in the `propsKeys` array will be used. In the `propsKeys` [example above](#propskeys) the first "width" key is therefore used as the `styleKeys` default value as `["width"]`.
+When `styleKeys` are left undefined, the first value in the `propsKeys` array will be used. In the `propsKeys` [example above](#propskeys) the first "width" key is used as the `styleKeys` default: `["width"]`.
 
 In cases where you simply want to map a CSS property like `display` or `fontSize` to the same prop key, you can omit `styleKeys` to achieve this default behaviour.
 
@@ -113,7 +113,7 @@ However, in cases like the `size` render function above where you want to map so
 
 Finally, in special cases where you do not want values to be mapped to `styleKeys` you can pass `null`. This functionality is useful for creating `variant` functions.
 
-A `variant` function allows you to map a prop value to a style object in a `theme` or `defaults`. For example:
+A `variant` function allows you to map a prop value to a style object in a `theme` or the `defaults`. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -177,13 +177,13 @@ const theme = {
 <Box maxw={3} theme={theme} />
 ```
 
-In the example above the `maxWidth` render function has two `themeKeys`. Typically you will only have one key, but this demonstrates that multiple theme keys can be used to lookup and resolve a value. Much like `propsKeys` the order of the theme keys defines the order of precedence in which they are resolved.
+In the example above the `maxWidth` render function has two `themeKeys`. Typically you will only have one theme key, but this demonstrates that multiple theme keys can be used to lookup and resolve a value. Much like `propsKeys` the order of the theme keys defines the order of precedence in which they are resolved.
 
-Since both `maxWidths` and `sizes` are specified as arrays of values within the `theme` their values are resolved by passing integers to index the array.
+Since both `maxWidths` and `sizes` are specified as arrays of values within the `theme` their values are resolved by passing integers to index the arrays.
 
 The first `Box` passes an index of "1" which resolves to "256px" from the `maxWidths` theme array. The second `Box` passes an index of "2" which falls outside of the `maxWidths` array, so the resolver moves onto the next theme key (`sizes`) where it is able to resolve the value of "32px" at this location. The third `Box` passes an index of "3" which falls outside the `sizes` theme array and therefore the raw value of "3" is rendered.
 
-Finally, both `props` and `themeKeys` support dot syntax strings to allow you to nest parts of your theme if so desired. For example:
+Finally, both `props` and `themeKeys` support dot syntax strings to allow you to nest parts of your `theme` (or `defaults`) if so desired. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -263,15 +263,17 @@ In the example above the `margin` render function uses onno's `addPx` transform 
 
 Since the second `Box` passes a value with "em" units, the `addPx` transform function ignores this value.
 
-In addition to `addPx`, onno also provides an `addPc` transform function for converting decimal values between -1 and 1 to percentages eg. "0.1" becomes "10%" and "-0.5" becomes "-50%". There is also a `addPcOrPx` transform function which will first attempt to convert decimals between -1 and 1 to percent and then attempt to convert unitless values to "px".
+In addition to `addPx`, onno also provides an `addPc` transform function for converting decimal values between -1 and 1 to percentages eg. "0.1" becomes "10%" and "-0.5" becomes "-50%". There is also a `addPcOrPx` transform function which will first attempt to convert decimals between -1 and 1 to percent and then convert unitless values to "px".
 
-You can of course write your own `transform` functions. Transform functions take one value and returns another value. For example:
+You can of course write your own `transform` functions.
+
+Transform functions simply take one value and return another value. For example:
 
 ```js
 const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
 ```
 
-Alternatively use onno's `when` and `isUnitless` utils:
+Alternatively you can use onno's `when` and `isUnitless` utils to the same effect:
 
 ```js
 import { when, isUnitless } from "onno"
@@ -352,7 +354,7 @@ The `compose` function takes an array of `render` functions and returns a _compo
 
 When the _composed_ `render` function is called with some `props` it will iterate over the array of `render` functions and call them each in turn with the provided `props`.
 
-The arrays of style objects returned from each `render` function are merged and returned.
+The arrays of style objects returned from each `render` function are then merged and returned.
 
 This interface allows you to compose multiple `render` functions into a single one for greater portability.
 
