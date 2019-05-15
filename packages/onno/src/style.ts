@@ -31,7 +31,7 @@ export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
 
 export function style<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
-): T.StyleFunction<P, S> {
+): T.RenderFunction<P, S> {
   const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
 
   // Create scoped renderValue style function
@@ -62,7 +62,7 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   }
 
   // Create scoped renderProps style function
-  const renderProps: T.StyleFunction<P, S> = (props: P) => {
+  const renderProps: T.RenderFunction<P, S> = (props: P) => {
     // Get first propsValue from propsKeys
     const propsValue = resolve(propsKeys, props)
 
@@ -101,9 +101,9 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
 }
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
-  styles: T.StyleFunction<any, any>[]
-): T.StyleFunction<P, S> {
-  const styleSet = uniq(styles)
+  renderers: T.RenderFunction<any, any>[]
+): T.RenderFunction<P, S> {
+  const rendererSet = uniq(renderers)
   const options: T.StyleOptions = {
     propsKeys: [],
     styleKeys: [],
@@ -111,7 +111,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   }
 
   // Build options keys
-  styleSet.forEach((fn) =>
+  rendererSet.forEach((fn) =>
     KEYS.forEach((key) => {
       const keys = fn.options[key]
       if (keys) push.apply(options[key], keys)
@@ -122,9 +122,9 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   KEYS.forEach((key) => (options[key] = uniq(options[key]!)))
 
   // Create scoped renderProps style function
-  const renderProps: T.StyleFunction<P, S> = (props: P) => {
+  const renderProps: T.RenderFunction<P, S> = (props: P) => {
     const result: S[] = []
-    styleSet.forEach((fn) => {
+    rendererSet.forEach((fn) => {
       const r = fn(props)
       if (r) push.apply(result, r)
     })

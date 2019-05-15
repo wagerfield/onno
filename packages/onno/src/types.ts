@@ -77,11 +77,11 @@ export interface Theme {
   fontWeights?: ThemeValue
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
-  // Variant
+  // Variants
   buttonStyles?: ThemeValue
   colorStyles?: ThemeValue
   textStyles?: ThemeValue
-  // Component
+  // Components
   components?: ThemeValue
 }
 
@@ -102,7 +102,7 @@ export interface StyleOptions {
 }
 
 export interface Style {
-  [key: string]: number | string | undefined
+  [key: string]: number | string | string[] | undefined
 }
 
 export interface NestedStyle<S extends Style> {
@@ -113,7 +113,7 @@ export type StyleObject<S extends Style> = S | NestedStyle<S>
 
 export type StyleArray<S extends Style> = StyleObject<S>[]
 
-export interface StyleFunction<P extends ThemeProps, S extends Style> {
+export interface RenderFunction<P extends ThemeProps, S extends Style> {
   (props: P): StyleArray<S> | null
   options: StyleOptions
   composed: boolean

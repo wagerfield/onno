@@ -27,7 +27,7 @@ export function style<
 export function snapshot<
   P extends O.ThemeProps = TestProps,
   S extends O.Style = TestStyle
->(fn: O.StyleFunction<P, S>) {
+>(fn: O.RenderFunction<P, S>) {
   return (props: P, label?: string) => {
     let snapshotName = JSON.stringify(props, null, 2)
     if (label) snapshotName = `[${label}] ${snapshotName}`
