@@ -27,10 +27,6 @@ const Box = styled.div`
 
 ## `style`
 
-Function Signature
-
-    style = (options) => (props) => styles
-
 The `style` function can be used in a variety of ways to produce powerful `render` functions.
 
 It expects an `options` object as the first and _only_ argument with the following key values:
@@ -359,11 +355,7 @@ The first `Box` does not have a `theme` so the value is resolved from the `defau
 
 ## `compose`
 
-    compose = (renderers) => (props) => styles
-
 ## `extend`
-
-    extend = (options) => (options) => (props) => styles
 
 [styled-components]: https://styled-components.com
 [emotion]: https://emotion.sh
