@@ -61,62 +61,62 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 
 ## Flex
 
-| Function Name     | Props Keys              | Style Keys     | Theme Keys | Transform |
-| :---------------- | :---------------------- | :------------- | :--------- | :-------- |
-| **flexParentSet** | _all parent keys below_ |
-| display           | display, d              | display        | none       | none      |
-| flexFlow          | flexFlow, fxf           | flexFlow       | none       | none      |
-| flexDirection     | flexDirection, fxd      | flexDirection  | none       | none      |
-| flexWrap          | flexWrap, fxw           | flexWrap       | none       | none      |
-| alignItems        | alignItems, ali         | alignItems     | none       | none      |
-| alignContent      | alignContent, alc       | alignContent   | none       | none      |
-| justifyItems      | justifyItems, jfi       | justifyItems   | none       | none      |
-| justifyContent    | justifyContent, jfc     | justifyContent | none       | none      |
-| **flexChildSet**  | _all child keys below_  |
-| flex              | flex, fx                | flex           | none       | none      |
-| flexBasis         | flexBasis, fxb          | flexBasis      | none       | none      |
-| flexGrow          | flexGrow, fxg           | flexGrow       | none       | none      |
-| flexShrink        | flexShrink, fxs         | flexShrink     | none       | none      |
-| alignSelf         | alignSelf, als          | alignSelf      | none       | none      |
-| justifySelf       | justifySelf, jfs        | justifySelf    | none       | none      |
-| order             | order, ord              | order          | none       | none      |
-| **flexSet**       | _all keys above_        |
+| Function Name     | Props Keys                   | Style Keys     | Theme Keys | Transform |
+| :---------------- | :--------------------------- | :------------- | :--------- | :-------- |
+| **flexParentSet** | _all flex parent keys below_ |
+| display           | display, d                   | display        | none       | none      |
+| flexFlow          | flexFlow, fxf                | flexFlow       | none       | none      |
+| flexDirection     | flexDirection, fxd           | flexDirection  | none       | none      |
+| flexWrap          | flexWrap, fxw                | flexWrap       | none       | none      |
+| alignItems        | alignItems, ali              | alignItems     | none       | none      |
+| alignContent      | alignContent, alc            | alignContent   | none       | none      |
+| justifyItems      | justifyItems, jfi            | justifyItems   | none       | none      |
+| justifyContent    | justifyContent, jfc          | justifyContent | none       | none      |
+| **flexChildSet**  | _all flex child keys below_  |
+| flex              | flex, fx                     | flex           | none       | none      |
+| flexBasis         | flexBasis, fxb               | flexBasis      | none       | none      |
+| flexGrow          | flexGrow, fxg                | flexGrow       | none       | none      |
+| flexShrink        | flexShrink, fxs              | flexShrink     | none       | none      |
+| alignSelf         | alignSelf, als               | alignSelf      | none       | none      |
+| justifySelf       | justifySelf, jfs             | justifySelf    | none       | none      |
+| order             | order, ord                   | order          | none       | none      |
+| **flexSet**       | _all keys above_             |
 
 ## Grid
 
-| Function Name       | Props Keys               | Style Keys          | Theme Keys | Transform |
-| :------------------ | :----------------------- | :------------------ | :--------- | :-------- |
-| **gridParentSet**   | _all parent keys below_  |
-| display             | display, d               | display             | none       | none      |
-| grid                | grid, g                  | grid                | none       | none      |
-| gridTemplate        | gridTemplate, gt         | gridTemplate        | none       | none      |
-| gridTemplateRows    | gridTemplateRows, gtr    | gridTemplateRows    | none       | none      |
-| gridTemplateColumns | gridTemplateColumns, gtc | gridTemplateColumns | none       | none      |
-| gridTemplateAreas   | gridTemplateAreas, gta   | gridTemplateAreas   | none       | none      |
-| gridGap             | gridGap, gg              | gridGap             | spaces     | addPx     |
-| gridRowGap          | gridRowGap, grg          | gridRowGap          | spaces     | addPx     |
-| gridColumnGap       | gridColumnGap, gcg       | gridColumnGap       | spaces     | addPx     |
-| gridAutoRows        | gridAutoRows, gar        | gridAutoRows        | none       | none      |
-| gridAutoColumns     | gridAutoColumns, gac     | gridAutoColumns     | none       | none      |
-| gridAutoFlow        | gridAutoFlow, gaf        | gridAutoFlow        | none       | none      |
-| placeItems          | placeItems, pli          | placeItems          | none       | none      |
-| placeContent        | placeContent, plc        | placeContent        | none       | none      |
-| alignItems          | alignItems, ali          | alignItems          | none       | none      |
-| alignContent        | alignContent, alc        | alignContent        | none       | none      |
-| justifyItems        | justifyItems, jfi        | justifyItems        | none       | none      |
-| justifyContent      | justifyContent, jfc      | justifyContent      | none       | none      |
-| **gridChildSet**    | _all child keys below_   |
-| gridArea            | gridArea, ga             | gridArea            | none       | none      |
-| gridRow             | gridRow, gr              | gridRow             | none       | none      |
-| gridRowStart        | gridRowStart, grs        | gridRowStart        | none       | none      |
-| gridRowEnd          | gridRowEnd, gre          | gridRowEnd          | none       | none      |
-| gridColumn          | gridColumn, gc           | gridColumn          | none       | none      |
-| gridColumnStart     | gridColumnStart, gcs     | gridColumnStart     | none       | none      |
-| gridColumnEnd       | gridColumnEnd, gce       | gridColumnEnd       | none       | none      |
-| placeSelf           | placeSelf, pls           | placeSelf           | none       | none      |
-| alignSelf           | alignSelf, als           | alignSelf           | none       | none      |
-| justifySelf         | justifySelf, jfs         | justifySelf         | none       | none      |
-| **gridSet**         | _all keys above_         |
+| Function Name       | Props Keys                   | Style Keys          | Theme Keys | Transform |
+| :------------------ | :--------------------------- | :------------------ | :--------- | :-------- |
+| **gridParentSet**   | _all grid parent keys below_ |
+| display             | display, d                   | display             | none       | none      |
+| grid                | grid, g                      | grid                | none       | none      |
+| gridTemplate        | gridTemplate, gt             | gridTemplate        | none       | none      |
+| gridTemplateRows    | gridTemplateRows, gtr        | gridTemplateRows    | none       | none      |
+| gridTemplateColumns | gridTemplateColumns, gtc     | gridTemplateColumns | none       | none      |
+| gridTemplateAreas   | gridTemplateAreas, gta       | gridTemplateAreas   | none       | none      |
+| gridGap             | gridGap, gg                  | gridGap             | spaces     | addPx     |
+| gridRowGap          | gridRowGap, grg              | gridRowGap          | spaces     | addPx     |
+| gridColumnGap       | gridColumnGap, gcg           | gridColumnGap       | spaces     | addPx     |
+| gridAutoRows        | gridAutoRows, gar            | gridAutoRows        | none       | none      |
+| gridAutoColumns     | gridAutoColumns, gac         | gridAutoColumns     | none       | none      |
+| gridAutoFlow        | gridAutoFlow, gaf            | gridAutoFlow        | none       | none      |
+| placeItems          | placeItems, pli              | placeItems          | none       | none      |
+| placeContent        | placeContent, plc            | placeContent        | none       | none      |
+| alignItems          | alignItems, ali              | alignItems          | none       | none      |
+| alignContent        | alignContent, alc            | alignContent        | none       | none      |
+| justifyItems        | justifyItems, jfi            | justifyItems        | none       | none      |
+| justifyContent      | justifyContent, jfc          | justifyContent      | none       | none      |
+| **gridChildSet**    | _all grid child keys below_  |
+| gridArea            | gridArea, ga                 | gridArea            | none       | none      |
+| gridRow             | gridRow, gr                  | gridRow             | none       | none      |
+| gridRowStart        | gridRowStart, grs            | gridRowStart        | none       | none      |
+| gridRowEnd          | gridRowEnd, gre              | gridRowEnd          | none       | none      |
+| gridColumn          | gridColumn, gc               | gridColumn          | none       | none      |
+| gridColumnStart     | gridColumnStart, gcs         | gridColumnStart     | none       | none      |
+| gridColumnEnd       | gridColumnEnd, gce           | gridColumnEnd       | none       | none      |
+| placeSelf           | placeSelf, pls               | placeSelf           | none       | none      |
+| alignSelf           | alignSelf, als               | alignSelf           | none       | none      |
+| justifySelf         | justifySelf, jfs             | justifySelf         | none       | none      |
+| **gridSet**         | _all keys above_             |
 
 ## Layout
 
