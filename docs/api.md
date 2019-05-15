@@ -32,6 +32,8 @@ const Box2 = styled.div(styles)
 <Box2 background="#00F" color="black">Two</Box2>
 ```
 
+In the example above `Box1` uses the `styles` function in a tagged template literal and `Box2` passes it directly as an argument. [styled-components][styled-components] and [emotion][emotion] support each approach and combinations of both so you can pass a tagged template literal followed by a list of render functions.
+
 ## `style`
 
 The `style` function can be used in a variety of ways to produce powerful `render` functions.
@@ -60,9 +62,7 @@ const width = style({
   propsKeys: ["width", "w"]
 })
 
-const Box = styled.div`
-  ${width}
-`
+const Box = styled.div(width)
 
 // [{ width: "100px" }]
 <Box width="100px" />
@@ -93,9 +93,7 @@ const size = style({
   styleKeys: ["width", "height"]
 })
 
-const Box = styled.div`
-  ${size}
-`
+const Box = styled.div(size)
 
 // [{ width: "100px", height: "100px" }]
 <Box size="100px" />
@@ -127,9 +125,7 @@ const buttonStyle = style({
   styleKeys: null
 })
 
-const Button = styled.button`
-  ${buttonStyle}
-`
+const Button = styled.button(buttonStyle)
 
 const theme = {
   buttonStyles: {
@@ -164,9 +160,7 @@ const maxWidth = style({
   themeKeys: ["maxWidths", "sizes"]
 })
 
-const Box = styled.div`
-  ${maxWidth}
-`
+const Box = styled.div(maxWidth)
 
 const theme = {
   maxWidths: ["128px", "256px"],
@@ -210,11 +204,7 @@ const color = style({
   themeKeys: ["colors"]
 })
 
-const Text = styled.div`
-  ${fontFamily}
-  ${fontSize}
-  ${color}
-`
+const Text = styled.div(fontFamily, fontSize, color)
 
 const theme = {
   typography: {
@@ -260,9 +250,7 @@ const margin = style({
   transform: addPx
 })
 
-const Box = styled.div`
-  ${margin}
-`
+const Box = styled.div(margin)
 
 // [{ margin: "16px" }]
 <Box margin={16} />
@@ -310,10 +298,7 @@ const color = style({
   }
 })
 
-const Text = styled.div`
-  ${lineHeight}
-  ${color}
-`
+const Text = styled.div(lineHeight, color)
 
 // [{ color: "#222", lineHeight: 1.5 }]
 <Text color="text" lineHeight={2} />
@@ -340,9 +325,7 @@ const width = style({
   defaults: [16, 32, 64]
 })
 
-const Box = styled.div`
-  ${width}
-`
+const Box = styled.div(width)
 
 const theme = {
   widths: [10, 20]
