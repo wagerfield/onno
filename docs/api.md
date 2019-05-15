@@ -17,12 +17,19 @@ const styles = (props) => [{
   color: props.color
 }]
 
-const Box = styled.div`
+// Template tag literal
+const Box1 = styled.div`
   ${styles}
 `
 
-// [{ background: "#F00" }, { color: "#FFF" }]
-<Box background="#F00" color="#FFF" />
+// Object styles
+const Box2 = styled.div(styles)
+
+// [{ background: "#F00" }, { color: "white" }]
+<Box1 background="#F00" color="white">One</Box1>
+
+// [{ background: "#00F" }, { color: "black" }]
+<Box2 background="#00F" color="black">One</Box2>
 ```
 
 ## `style`
