@@ -29,7 +29,7 @@ const Box2 = styled.div(styles)
 <Box1 background="#F00" color="white">One</Box1>
 
 // [{ background: "#00F" }, { color: "black" }]
-<Box2 background="#00F" color="black">One</Box2>
+<Box2 background="#00F" color="black">Two</Box2>
 ```
 
 ## `style`
@@ -365,4 +365,4 @@ The first `Box` does not have a `theme` so the value is resolved from the `defau
 ## `extend`
 
 [styled-components]: https://styled-components.com
-[emotion]: https://emotion.sh
+[emotion]: https://emotion.sh/docs/object-styles#arrays
