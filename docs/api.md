@@ -1,10 +1,29 @@
 # API
 
-At the core of `onno` is the `style` function.
+At the core of onno is the `style` function.
 
 The `style` function takes an `options` object and returns a `render` function.
 
-The returned `render` function can then be called with some `props` to produce an array of style objects. Style object arrays are supported by the majority of CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion].
+The `render` function can then be called with some `props` to produce an array of style objects.
+
+Render functions that produce style object arrays are supported by the majority of CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]. For example:
+
+```js
+import styled from "styled-components"
+
+const styles = (props) => [{
+  background: props.background
+}, {
+  color: props.color
+}]
+
+const Box = styled.div`
+  ${styles}
+`
+
+// [{ background: "#F00" }, { color: "#FFF" }]
+<Box background="#F00" color="#FFF" />
+```
 
 The `style` function pipeline is illustrated below:
 
@@ -12,19 +31,19 @@ The `style` function pipeline is illustrated below:
 
 ## `style`
 
-The `style` function is _incredibly_ versatile and can be used in a variety of ways to produce powerful `render` functions.
+The `style` function can be used in a variety of ways to produce powerful `render` functions.
 
 It expects an `options` object as the first and _only_ argument with the following key values:
 
 ### `options`
 
-| Key                       | Type            | Required | Description                          |
-| :------------------------ | :-------------- | :------- | :----------------------------------- |
-| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from        |
-| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys render values to          |
-| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from     |
-| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through |
-| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup array or object       |
+| Key                       | Type           | Required | Description                          |
+| :------------------------ | :------------- | :------- | :----------------------------------- |
+| [`propsKeys`](#propskeys) | `String[]`     | `true`   | Props keys to map values from        |
+| [`styleKeys`](#styleKeys) | `String[]`     | `false`  | Style keys assign values to          |
+| [`themeKeys`](#themeKeys) | `String[]`     | `false`  | Theme keys to lookup values from     |
+| [`transform`](#transform) | `Function`     | `false`  | Function to transform values through |
+| [`defaults`](#defaults)   | `Array|Object` | `false`  | Default lookup values                |
 
 #### `propsKeys`
 
@@ -52,13 +71,11 @@ const Box = styled.div`
 <Box w="25%" width="200px" />
 ```
 
-In the above example, the `width` render function is used in the styled `Box` component CSS template.
+In the above example, the `width` render function is used in the styled `Box` component CSS template. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
 
-Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style object array.
+Since "width" _and_ "w" are passed as `propsKeys` both keys can be used as `props` to render the respective value to the style objects. This interface allows you to specify aliases for the same mapping.
 
-Since `["width", "w"]` is passed as `propsKeys` both keys can be used as `props` to render the provided value to the returned style object array. This interface allows you to specify aliases for the same mapping.
-
-**NOTE:** As is the case with _all_ options keys, the order of precedence is respected. In the last example where both "w" and "width" are provided, the "width" value takes precedence over the "w" value.
+**NOTE:** As is the case with _all_ options keys, the order of precedence is respected. In the last example where both "w" and "width" are provided, the "width" value takes precedence over the "w" value since it appears first in the `propsKeys` array.
 
 #### `styleKeys`
 
