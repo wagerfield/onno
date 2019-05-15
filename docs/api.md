@@ -67,11 +67,11 @@ const Box = styled.div`
 <Box w="25%" width="200px" />
 ```
 
-In the above example, the `width` render function is used in the styled `Box` component CSS template. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
+In the above example, the `width` render function is used in the styled `Box` tagged template literal. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
 
-Since "width" _and_ "w" are passed as `propsKeys` both keys can be used as `props` to render the respective value to the style objects. This interface allows you to specify aliases for the same mapping.
+Since "width" _and_ "w" are passed as `propsKeys` both keys can be used as `props` to render the provided value to the style objects. This interface allows you to create multiple aliases for the same key value mapping.
 
-**NOTE:** As is the case with _all_ options keys, the order of precedence is respected. In the last example where both "w" and "width" are provided, the "width" value takes precedence over the "w" value since it appears first in the `propsKeys` array.
+The order of the keys in `propsKeys` defines the order of precedence. In the last example where both "w" and "width" are set on `Box`, the "width" value takes precedence over the "w" value since it appears first in the `propsKeys` array.
 
 ### `styleKeys`
 
