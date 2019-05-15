@@ -352,7 +352,7 @@ The `compose` function takes an array of `render` functions and returns a _compo
 
 When the _composed_ `render` function is called with some `props` it will iterate over the array of `render` functions and call them with the provided `props`.
 
-The array of style objects returned from each `render` function are then merged and returned.
+The arrays of style objects returned from each `render` function are merged and returned from the _composed_ `render` function.
 
 This interface allows you to compose multiple `render` functions into a single one for greater portability.
 
@@ -387,9 +387,9 @@ const Text = styled.div(fontSet)
 <Text ff="Lobster" fw="300" fs="24px" />
 ```
 
-The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the convention of postifxing `Set` onto your composed functions so you can discern a _standard_ render function from a _composed_ one.
+The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the convention of appending `Set` to your composed function names so you can discern a _standard_ render function from a _composed_ one.
 
-It is worth noting that _composed_ render functions can be composed into other render functions ad infinitum.
+It is worth noting that _composed_ render functions can be recomposed into other render functions ad infinitum.
 
 Onno ships with an extensive suite of _standard_ and _composed_ `render` functions which can be [found here](render-functions.md).
 
