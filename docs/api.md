@@ -32,7 +32,7 @@ const Box2 = styled.div(styles)
 <Box2 background="#00F" color="black">Two</Box2>
 ```
 
-In the example above `Box1` uses the `styles` function in a tagged template literal and `Box2` passes it directly as an argument. [styled-components][styled-components] and [emotion][emotion] support each approach and combinations of both so you can pass a tagged template literal followed by a list of render functions.
+In the example above `Box1` uses the `styles` function in a tagged template literal and `Box2` passes it directly as an argument to `styled`. [styled-components][styled-components] and [emotion][emotion] support each approach and combinations of both so you can pass a tagged template literal followed by a list of render functions.
 
 ## `style`
 
@@ -74,7 +74,7 @@ const Box = styled.div(width)
 <Box w="25%" width="200px" />
 ```
 
-In the above example, the `width` render function is passed to the styled `Box` component. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
+In the example above, the `width` render function is passed to the `styled` div. Any `props` on the `Box` component that match the provided `propsKeys` will be mapped to the rendered style objects.
 
 Since "width" _and_ "w" are passed as `propsKeys` both keys can be used as `props` to render the provided value to the style objects. This interface allows you to create multiple aliases for the same key value mapping.
 
