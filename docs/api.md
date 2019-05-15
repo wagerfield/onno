@@ -233,7 +233,7 @@ const theme = {
 <Text ff="mono" fs={2} tc="dark.text" theme={theme} />
 ```
 
-In the example above, the `fontFamilies` and `fontSizes` theme objects are nested inside a `typography` object. Specifying `themeKeys` to `["typography.fontSizes"]` for both the `fontFamily` and `fontSize` render functions causes `props` values to be resolved at these respective locations within the `theme`.
+In the example above, the `fontFamilies` and `fontSizes` theme objects are nested inside a `typography` object. Specifying `themeKeys` to `["typography.fontFamilies"]` and `["typography.fontSizes"]` causes `props` values to be resolved at these respective locations within the `theme`.
 
 The `colors` theme object also has values nested within it. However, since `themeKeys` is specified as `["colors"]` the values have to be accessed via dot syntax in the `props` values instead.
 
@@ -243,7 +243,7 @@ Function to transform resolved values through. For example:
 
 ```jsx
 import styled from "styled-components"
-import { style, addPx } from "onno"
+import { addPx, style } from "onno"
 
 const margin = style({
   propsKeys: ["margin", "m"],
@@ -259,7 +259,7 @@ const Box = styled.div(margin)
 <Box m="2em" />
 ```
 
-In the example above the `margin` render function uses onno's `addPx` transform function to add "px" to unitless values. A unitless value is a `number` which is not zero.
+In the example above, the `margin` render function uses onno's `addPx` transform function to add "px" to unitless values. A unitless value is a `number` which is not zero.
 
 Since the second `Box` passes a value with "em" units, the `addPx` transform function ignores this value.
 
@@ -267,7 +267,7 @@ In addition to `addPx`, onno also provides an `addPc` transform function for con
 
 You can of course write your own `transform` functions.
 
-Transform functions simply take one value and return another value. For example:
+Transform functions simply take a value and return a value. For example:
 
 ```js
 const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
