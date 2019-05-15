@@ -15,7 +15,7 @@ function getStyles(composed: boolean) {
       if (fn.options && fn.composed === composed) fns.push(fn)
       return fns
     },
-    [] as O.StyleFunction<any, any>[]
+    [] as O.RenderFunction<any, any>[]
   )
 }
 
