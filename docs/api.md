@@ -25,11 +25,9 @@ const Box = styled.div`
 <Box background="#F00" color="#FFF" />
 ```
 
-The `style` function pipeline is illustrated below:
+## `style`
 
     style = (options) => (props) => styles
-
-## `style`
 
 The `style` function can be used in a variety of ways to produce powerful `render` functions.
 
@@ -37,13 +35,13 @@ It expects an `options` object as the first and _only_ argument with the followi
 
 ### `options`
 
-| Key                       | Type           | Required | Description                          |
-| :------------------------ | :------------- | :------- | :----------------------------------- |
-| [`propsKeys`](#propskeys) | `String[]`     | `true`   | Props keys to map values from        |
-| [`styleKeys`](#styleKeys) | `String[]`     | `false`  | Style keys assign values to          |
-| [`themeKeys`](#themeKeys) | `String[]`     | `false`  | Theme keys to lookup values from     |
-| [`transform`](#transform) | `Function`     | `false`  | Function to transform values through |
-| [`defaults`](#defaults)   | `Array|Object` | `false`  | Default lookup values                |
+| Key                       | Type            | Required | Description                          |
+| :------------------------ | :-------------- | :------- | :----------------------------------- |
+| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from        |
+| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to          |
+| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from     |
+| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through |
+| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values                |
 
 #### `propsKeys`
 
