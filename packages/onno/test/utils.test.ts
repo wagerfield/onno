@@ -122,6 +122,7 @@ test("get", () => {
   expect(O.get("bar.c", U.OBJ)).toBe(U.OBJ.bar.c)
   expect(O.get("bar.d", U.OBJ)).toBe(U.OBJ.bar.d)
   expect(O.get("bar.d.1", U.OBJ)).toBe(U.OBJ.bar.d[1])
+  expect(O.get("bar.d.-2", U.OBJ)).toBe(-U.OBJ.bar.d[2])
 
   // Arrays
   expect(O.get(["boo"], U.OBJ)).toBeNull()
@@ -133,6 +134,8 @@ test("get", () => {
   expect(O.get(["bar", "d"], U.OBJ)).toBe(U.OBJ.bar.d)
   expect(O.get(["bar", "d", 1], U.OBJ)).toBe(U.OBJ.bar.d[1])
   expect(O.get(["bar", "d", "2"], U.OBJ)).toBe(U.OBJ.bar.d[2])
+  expect(O.get(["bar", "d", -1], U.OBJ)).toBe(-U.OBJ.bar.d[1])
+  expect(O.get(["bar", "d", "-2"], U.OBJ)).toBe(-U.OBJ.bar.d[2])
 
   // Aliases
   expect(O.get("baz.0", U.OBJ)).toBeUndefined()

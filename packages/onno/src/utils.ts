@@ -28,13 +28,13 @@ export function get(path?: any, obj?: any) {
   if (isNil(path) || isNil(obj)) return undefined
   const keys = isArray(path) ? path : toPath(path)
   return keys.reduce((v, k) => {
-    let r = v && v[k]
+    let r = v && (v[Math.abs(k)] || v[k])
     if (r && r.alias) r = r.value
     else if (isArray(v)) {
       const a = v.find((o) => o && o.alias === k)
       if (a) r = a.value
     }
-    return r
+    return isUnitless(r) ? r * (+k < 0 ? -1 : 1) : r
   }, obj)
 }
 
