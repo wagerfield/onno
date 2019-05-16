@@ -1,4 +1,4 @@
-# Rationale
+# Preface
 
 Onno was heavily inspired by [Styled System][styled-system]. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library.
 
