@@ -1,6 +1,6 @@
 # Preface
 
-Onno was heavily inspired by [Styled System][styled-system]. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library.
+Onno is heavily inspired by [Styled System][styled-system]. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also owed to [facepaint][facepaint] for responsive prop values.
 
 Truth be told, onno actually started life as a rewrite of Styled System in TypeScript following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to the API were introduced that eventually warranted another library.
 
@@ -224,3 +224,4 @@ A number of naming conventions have been introduced to onno to enforce consisten
 [styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
 [styled-system-api-style]: https://styled-system.com/api/#style
 [github-primer-primitives]: https://github.com/primer/primitives
+[facepaint]: https://github.com/emotion-js/facepaint
