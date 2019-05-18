@@ -21,7 +21,7 @@ Below is a list of additional features and refinements to Styled System's API th
 
 ### Framework Agnostic
 
-Styled System is designed to work with [React][react]. It has a dependency on `prop-types` (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains a close parity with Styled Components.
+Styled System is designed to work with [React][react]. It has a dependency on [`prop-types`][prop-types] (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains a close parity with Styled Components.
 
 The key difference between Emotion and Style Components is that [Emotion is framework agnostic][emotion-framework-agnostic] at its core. And it's not alone. Many other popular [CSS in JS][css-in-js] libraries like [JSS][jss], [Aphrodite][aphrodite], [Glamor][glamor] and [Fela][fela] can also be used with other popular frameworks like [Vue][vue] and [Angular][angular].
 
@@ -302,9 +302,9 @@ Onno's `transform` options expects a function with the signature `(value) => val
 
 Styled System ships with a [comprehensive set][styled-system-table] of render functions.
 
-Onno builds on these and provides a much more complete set of functions that cover the majority of commonly used CSS properties.
+Onno builds on these to provide a much more complete set of functions that cover the majority of commonly used CSS properties. More can be added in time with demand, so please submit a feature request if you desire a CSS property that is not implemented yet.
 
-These functions are organised into granular composition "sets" across a number of [source files][onno-source-files] for maintainability. Furthermore, each and every render function uses `csstype` definitions to validate prop values.
+These functions are organised across a number of [source files][onno-src] for better maintainability and include many useful composition sets. Furthermore, each and every render function uses `csstype` definitions to validate prop values.
 
 In addition to this, every render function provides an `alias` to facilitate rapid UI development. Unless you are familiar with onno's aliases, using them will obviously come at a sacrifice for readability and self-documentation, but they're there if you want to use them.
 
@@ -349,6 +349,7 @@ A number of naming conventions have been introduced to onno to enforce consisten
 [react]: https://reactjs.org
 [angular]: https://angularjs.org
 [typescript]: https://www.typescriptlang.org
+[onno-src]: https://github.com/wagerfield/onno/tree/master/packages/onno/src
 [styled-system]: https://styled-system.com
 [styled-system-table]: https://styled-system.com/table
 [styled-system-comment]: https://github.com/styled-system/styled-system/issues/463#issuecomment-487167817
@@ -359,6 +360,7 @@ A number of naming conventions have been introduced to onno to enforce consisten
 [emotion-framework-agnostic]: https://emotion.sh/docs/introduction#framework-agnostic
 [emotion-facepaint]: https://github.com/emotion-js/facepaint
 [github-primer-primitives]: https://github.com/primer/primitives
+[prop-types]: https://www.npmjs.com/package/prop-types
 [css-in-js]: https://github.com/tuchk4/awesome-css-in-js
 [aphrodite]: https://github.com/Khan/aphrodite
 [glamor]: https://github.com/threepointone/glamor
