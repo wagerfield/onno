@@ -1,8 +1,8 @@
-# Rationale <!-- omit in toc -->
+# Preface <!-- omit in toc -->
 
-Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive props.
+Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
 
-Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
+Onno actually started life as a simple rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library. The implementation shares very few similarities with Styled System and takes many cues from [Ramda][ramda] internally.
 
 ## Features <!-- omit in toc -->
 
@@ -15,6 +15,8 @@ Below is a list of additional features and refinements to Styled System's API th
 - [Theme keys as an array](#theme-keys-as-an-array)
 - [Serializable Themes](#serializable-themes)
 - [Dot syntax for `props` and `themeKeys`](#dot-syntax-for-props-and-themekeys)
+- [Transform Functions](#transform-functions)
+- [More Render Functions](#more-render-functions)
 - [Naming Conventions](#naming-conventions)
 
 ### Framework Agnostic
@@ -290,6 +292,22 @@ const Box = styled.div(width)
 <Box w="large.-1" />
 ```
 
+### Transform Functions
+
+Styled System provides a `transformValue` option to allow you to convert a unitless value to pixels for example. The `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support special cases where you might want to invert a value from a scale—such as when working with margins.
+
+Onno's `transform` options expects a function with the signature `(value) => value` and does not pass a "scale". This design decision was made
+
+### More Render Functions
+
+Styled System ships with a [comprehensive set][styled-system-table] of render functions.
+
+Onno builds on these and provides a much more complete set of functions that cover the majority of commonly used CSS properties.
+
+These functions are organised into granular composition "sets" across a number of [source files][onno-source-files] for maintainability. Furthermore, each and every render function uses `csstype` definitions to validate prop values.
+
+In addition to this, every render function provides an `alias` to facilitate rapid UI development. Unless you are familiar with onno's aliases, using them will obviously come at a sacrifice for readability and self-documentation, but they're there if you want to use them.
+
 ### Naming Conventions
 
 A number of naming conventions have been introduced to onno to enforce consistency and predictability.
@@ -327,10 +345,12 @@ A number of naming conventions have been introduced to onno to enforce consisten
    - The theme keys follow the convention of ending in "Styles" eg. `buttonStyles` and `colorStyles`
 
 [vue]: https://vuejs.org
+[ramda]: https://ramdajs.com
 [react]: https://reactjs.org
 [angular]: https://angularjs.org
 [typescript]: https://www.typescriptlang.org
 [styled-system]: https://styled-system.com
+[styled-system-table]: https://styled-system.com/table
 [styled-system-comment]: https://github.com/styled-system/styled-system/issues/463#issuecomment-487167817
 [styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
 [styled-system-api-style]: https://styled-system.com/api/#style
