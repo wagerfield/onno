@@ -1,12 +1,21 @@
-# Rationale
+# Rationale <!-- omit in toc -->
 
-Onno is essentially an iteration of [Styled System][styled-system]. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive props.
+Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive props.
 
 Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
 
-## Features
+## Features <!-- omit in toc -->
 
 Below is a list of additional features and refinements to Styled System's API that have been introduced by onno.
+
+- [Framework Agnostic](#framework-agnostic)
+- [TypeScript](#typescript)
+- [Props keys as an array](#props-keys-as-an-array)
+- [Style keys as an array](#style-keys-as-an-array)
+- [Theme keys as an array](#theme-keys-as-an-array)
+- [Serializable Themes](#serializable-themes)
+- [Dot syntax for `props` and `themeKeys`](#dot-syntax-for-props-and-themekeys)
+- [Naming Conventions](#naming-conventions)
 
 ### Framework Agnostic
 
@@ -64,7 +73,7 @@ export const theme: Theme = {
 
 To add your own `themeKeys`, simply create an interface that `extends` from `Theme`.
 
-### `props` keys as an array
+### Props keys as an array
 
 Styled System's [`style`][styled-system-api-style] function allows you to specify both a `prop` key and optional `alias` for the render function to map values from. Onno takes this one step further by consolidating these two options into a `propsKeys` array which allows you to specify as many aliases as you like, while also enforcing an order of precedence for them. For example:
 
@@ -95,7 +104,7 @@ const Text = styled.div(fontFamily)
 <Text f="Monaco" fontFamily="Roboto" ff="Lobster" font="Helvetica" />
 ```
 
-### `style` keys as an array
+### Style keys as an array
 
 Styled System provides a `cssProperty` option to map a `prop` key to a different CSS property. If the `cssProperty` option is omitted, the `prop` key is used by default. This works well for one-to-one key maps, but does not support one-to-many key maps.
 
@@ -126,7 +135,7 @@ const Box = styled.div(font, size)
 
 Much like Styled System, if you omit the `styleKeys` option then it defaults to an array containing _just_ the first key in the `propsKeys` array. This is the desired behaviour for the majority of one-to-one key maps like `display`, `backgroundColor`, `fontSize` etc.
 
-### `theme` keys as an array
+### Theme keys as an array
 
 Styled System provides a `key` option for specifying a "lookup" location in a `theme` object. This mechanism allows you to share common styles and design tokens between your render functions and the components using them.
 
