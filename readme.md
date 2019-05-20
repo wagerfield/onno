@@ -1,6 +1,4 @@
-![onno](assets/banner.png)
-
-# onno
+# ![onno](assets/banner.png)
 
 Suite of CSS in JS utility functions for rapid UI development.
 
