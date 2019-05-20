@@ -88,7 +88,7 @@ export const theme: Theme = {
 }
 ```
 
-To add your own `themeKeys` simply create an interface that extends from `Theme`.
+To add your own `themeKeys` simply create an interface that extends from `Theme`
 
 ### Prop keys as an array
 
@@ -197,7 +197,7 @@ It is good practice to define a `theme` _or facets of a theme_ in a serializable
 
 When working with arrays of values in a `theme` (Styled System refers to these as "scales") the only way to retrieve values from them is via an index. For large arrays of values, this can make it difficult to keep track of which index you require for a particular value and often leads to counting through the array with your finger. Further problems arise when values are added or removed from the array causing indexes to resolve to different values.
 
-Styled System's solution to the first problem is to create index aliases by adding string keys to an array of values _after_ it has been created and assigning them to values within the array. Though this approach works in JavaScript, it does not lend itself well to serialization. In addition to this, TypeScript disallows string index signatures on arrays.
+Styled System's solution to the first problem is to create index aliases by adding string keys to an array of values _after_ it has been created and assigning them to values within the array. Though this approach works in JavaScript, it does not lend itself well to serialization and TypeScript does not allow string index signatures on arrays.
 
 To address this problem, onno introduced "alias objects" which support array value lookups using both an `index` and a string `alias`. An alias object takes this form of `{ alias: string, value: any }`. This solution lends itself to serialization while also tackling the issue of adding, removing and reordering items in an array (as long as you are referencing the values via the `alias` of course).
 
@@ -275,9 +275,7 @@ const Box = styled.div(width)
 
 Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function.
 
-Onno also supports dot syntax for `prop` values, `themeKeys` and _alias objects_ within arrays. This flexible interface allows you to structure and nest your `theme` however you like.
-
-In addition to this, onno supports inversion of _any_ value simply by prefixing a lookup path or index with a negative sign. For example:
+Onno also supports dot syntax for `prop` values, `themeKeys` and _alias objects_ within arrays. This flexible interface allows you to structure and nest your `theme` however you like. In addition to this, onno supports inversion of _any_ value simply by prefixing a lookup path or index with a negative sign. For example:
 
 ```jsx
 import styled from "styled-system"
@@ -311,13 +309,13 @@ const Box = styled.div(width, margin)
 
 Styled System provides a `transformValue` option for transforming values _before_ they are mapped to CSS properties. This is useful for appending units like "px" to unitless values. Styled System's `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support cases where you might want to invert a value from a scale—such as when working with negative margins or positioning.
 
-Since onno's internal `get` utility supports inversion for _all_ values, passing the `scale` (or "lookup" as referred to by onno) to a `transform` function is not necessary. Onno's `transform` option therefore expects a function with the signature `(value) => value`.
+Since onno's internal `get` utility supports inversion for _all_ values, passing the `scale` (or "lookup" as referred to by onno) to a `transform` function is not necessary. Onno's `transform` option therefore expects a function with the signature `(value) => value`
 
 ### More render functions and aliases
 
 Styled System ships with a comprehensive set of render functions. Onno builds on these to provide a more complete set that covers the majority of commonly used CSS properties. More can be added in time with demand, so please [submit a feature request][onno-issues] if you require a render function that is not implemented yet.
 
-[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate rapid UI development. These aliases should be used at your own discretion since their terse benefits come at a sacrifice of readability and self-documentation.
+[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate rapid UI development. These aliases should be used at your own discretion since their terse benefits come at a sacrifice of self-documentation and readability for anyone not familiar with them.
 
 ### Strict naming conventions
 
@@ -326,32 +324,32 @@ A number of naming conventions have been introduced by onno to help enforce cons
 1. All _standard_ render functions have the same name as the CSS property they are rendering eg. `fontSize`, `boxShadow` and `textAlign`
    - The only exception to this rule are the special render functions that map a `prop` to multiple style keys eg. `marginX`, `marginY`, `paddingX`, `paddingY` and `size`
    - Styled System adopts this convention for all functions par `color` which is a composition of the `textColor` and `backgroundColor` functions.
-   - To adhere to the aforementioned convention, onno's `color` function simply renders the text `color` property. It is _not_ a composed function like in Styled System.
+   - To adhere to the convention, onno's `color` function simply renders the text `color` property. It is _not_ a composed function like it is in Styled System.
 2. All _standard_ render functions provide `propsKeys` aliases with the following naming conventions:
-   - `background` prop aliases start with `bg`
-   - `border` prop aliases start with `bd`
-   - `overflow` prop aliases start with `of`
-   - `flex` prop aliases start with `fx`
-   - `grid` prop aliases start with `g`
-   - `place` prop aliases start with `pl`
-   - `align` prop aliases start with `al`
-   - `justify` prop aliases start with `jf`
-   - `margin` prop aliases start with `m`
-   - `padding` prop aliases start with `p`
-   - `font` prop aliases start with `f`
-   - `text` prop aliases start with `t`
-   - `shadow` prop aliases end with `sh`
-   - `variant` prop aliases end with `st`
+   - `background` prop aliases _start_ with `bg`
+   - `border` prop aliases _start_ with `bd`
+   - `overflow` prop aliases _start_ with `of`
+   - `flex` prop aliases _start_ with `fx`
+   - `grid` prop aliases _start_ with `g`
+   - `place` prop aliases _start_ with `pl`
+   - `align` prop aliases _start_ with `al`
+   - `justify` prop aliases _start_ with `jf`
+   - `margin` prop aliases _start_ with `m`
+   - `padding` prop aliases _start_ with `p`
+   - `font` prop aliases _start_ with `f`
+   - `text` prop aliases _start_ with `t`
+   - `shadow` prop aliases _end_ with `sh`
+   - `variant` prop aliases _end_ with `st`
 3. All _composed_ render functions follow the convention of ending in "Set" eg. `colorSet` and `spaceSet`
    - This convention creates a distinction between _standard_ and _composed_ render functions and circumvents naming collisions such as `border` (the shorthand CSS property) and `borderSet` (a composition of all the border related render functions)
    - With reference to point 1, all _color_ related render functions (`color`, `backgroundColor` and `borderColor`) are composed into a `colorSet` render function.
    - Both `flex` and `grid` render functions are organised into a `ParentSet`, `ChildSet` and complete `Set` which contains all render functions. For example: `flexParentSet`, `flexChildSet` and `flexSet`
 4. All `theme` keys follow a plural naming convention and use the same name as the _standard_ or _composed_ render functions. The key differences between Styled System and onno's theme keys are:
-   - `fonts` > `fontFamilies`
-   - `space` > `spaces`
-   - `radii` > `borderRadii`
-   - `shadows` > `boxShadows` (onno also has `textShadows`)
-   - `buttons` > `buttonStyles`
+   - `fonts » fontFamilies`
+   - `space » spaces`
+   - `radii » borderRadii`
+   - `shadows » boxShadows` (onno also has `textShadows`)
+   - `buttons » buttonStyles`
 5. All _variant_ render functions end in "Style" eg. `buttonStyle` and `colorStyle`.
    - Variant theme keys follow the convention of ending in "Styles" eg. `buttonStyles` and `colorStyles`
 
