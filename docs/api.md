@@ -1,10 +1,6 @@
 # API <!-- omit in toc -->
 
-At the core of onno is the `style` function.
-
-The `style` function takes an `options` object and returns a `render` function.
-
-The `render` function can then be called with some `props` to produce an array of style objects.
+At the core of onno is the `style` function. The `style` function takes an `options` object and returns a `render` function. The `render` function can then be called with some `props` to produce an array of style objects.
 
 Functions that take `props` and return an array of style objects are supported by the majority of CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]. For example:
 
@@ -36,24 +32,24 @@ In the example above `Box1` uses the `styles` function in a tagged template lite
 
 ## Table of Contents <!-- omit in toc -->
 
-- [`style`](#style)
-  - [`options`](#options)
-  - [`propsKeys`](#propskeys)
-  - [`styleKeys`](#stylekeys)
-  - [`themeKeys`](#themekeys)
-  - [`transform`](#transform)
-  - [`defaults`](#defaults)
-- [`variant`](#variant)
-- [`compose`](#compose)
-- [`extend`](#extend)
+- [style](#style)
+  - [options](#options)
+  - [propsKeys](#propskeys)
+  - [styleKeys](#stylekeys)
+  - [themeKeys](#themekeys)
+  - [transform](#transform)
+  - [defaults](#defaults)
+- [variant](#variant)
+- [compose](#compose)
+- [extend](#extend)
 
-## `style`
+## style
 
 The `style` function can be used in a variety of ways to produce powerful `render` functions.
 
 It expects an `options` object as the first and _only_ argument with the following key values:
 
-### `options`
+### options
 
 | Key                       | Type            | Required | Description                          |
 | :------------------------ | :-------------- | :------- | :----------------------------------- |
@@ -63,7 +59,7 @@ It expects an `options` object as the first and _only_ argument with the followi
 | [`transform`](#transform) | `Function`      | `false`  | Function to transform values through |
 | [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values                |
 
-### `propsKeys`
+### propsKeys
 
 An array of `props` keys to map values from. For example:
 
@@ -93,7 +89,7 @@ Since "width" _and_ "w" are passed as `propsKeys` both can be used as `props` to
 
 The order of keys in `propsKeys` defines the order of precedence. In the last example where both "w" and "width" are set on `Box` the "width" prop value takes precedence over "w" since it appears first in the `propsKeys` array.
 
-### `styleKeys`
+### styleKeys
 
 An array of `style` keys to assign values to. For example:
 
@@ -126,7 +122,7 @@ However, in cases like the `size` render function above where you want to map so
 
 Finally, in special cases where you do not want values to be mapped to `styleKeys` you can pass `null`. This functionality is used to create [`variant` functions](#variant).
 
-### `themeKeys`
+### themeKeys
 
 An array of `theme` keys to lookup values from. For example:
 
@@ -216,7 +212,7 @@ In the example above, the `fontFamilies` and `fontSizes` theme objects are neste
 
 The `colors` theme object also has values nested within it. However, since `themeKeys` is specified as `["colors"]` the values have to be accessed via dot syntax in the `props` values instead.
 
-### `transform`
+### transform
 
 Function to transform resolved values through. For example:
 
@@ -260,7 +256,7 @@ import { when, isUnitless } from "onno"
 const addEm = when(isUnitless)((x) => x + "em")
 ```
 
-### `defaults`
+### defaults
 
 Default lookup array or object to resolve values from. For example:
 
@@ -327,13 +323,13 @@ const theme = {
 
 The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is rendered.
 
-## `variant`
+## variant
 
 The `variant` function maps a prop value to a _style object_ in a `theme` or `defaults` lookup. It shares the same function signature as the `style` function by taking an `options` object and returning a `render` function.
 
 The key difference between `variant` and `style` is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
 
-This functionality is useful for providing a place in your `theme` for styling components. For example:
+This functionality is useful for providing a place in your `theme` for grouping styles. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -369,7 +365,7 @@ const theme = {
 
 Onno ships with a [few variant functions](render-functions.md#variant) to get you started.
 
-## `compose`
+## compose
 
 The `compose` function takes an array of `render` functions and returns a _composed_ `render` function.
 
@@ -416,7 +412,7 @@ It is worth noting that _composed_ render functions can be recomposed into other
 
 Onno ships with an extensive suite of _standard_ and _composed_ `render` functions which can be [found here](render-functions.md).
 
-## `extend`
+## extend
 
 The `extend` function allows you to share [`options`](#options) between `render` functions.
 
