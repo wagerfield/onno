@@ -8,18 +8,18 @@ Onno actually started life as a rewrite of Styled System in [TypeScript][typescr
 
 Below is a list of additional features and refinements to Styled System's API that have been introduced by onno.
 
-- [Framework Agnostic](#framework-agnostic)
+- [Framework agnostic](#framework-agnostic)
 - [TypeScript](#typescript)
 - [Props keys as an array](#props-keys-as-an-array)
 - [Style keys as an array](#style-keys-as-an-array)
 - [Theme keys as an array](#theme-keys-as-an-array)
-- [Serializable Themes](#serializable-themes)
-- [Dot syntax for props and theme Keys](#dot-syntax-for-props-and-theme-keys)
-- [Simpler Transform Functions](#simpler-transform-functions)
-- [More Render Functions](#more-render-functions)
-- [Naming Conventions](#naming-conventions)
+- [Serializable themes](#serializable-themes)
+- [Dot syntax for props and theme keys](#dot-syntax-for-props-and-theme-keys)
+- [Simpler transform functions](#simpler-transform-functions)
+- [More render functions and aliases](#more-render-functions-and-aliases)
+- [Naming conventions](#naming-conventions)
 
-### Framework Agnostic
+### Framework agnostic
 
 Styled System is designed to work with [React][react]. It has a dependency on [`prop-types`][prop-types] (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains a close parity with Styled Components.
 
@@ -183,7 +183,7 @@ The second `Box` provides a `width` prop value of `2` which falls outside the `w
 
 If the `theme` did not have a `widths` array then the `sizes` array would resolve values for both render functions.
 
-### Serializable Themes
+### Serializable themes
 
 It is good practice to define a `theme` _or facets of a theme_ in a serializable data structure such as JSON or YAML. Doing so facilitates the portability of design tokens between languages and platforms. This is how companies like [GitHub][github-primer-primitives] organise their design tokens and projects like [Salesforce's Theo][salesforce-theo] consume and distribute them.
 
@@ -263,7 +263,7 @@ const Box = styled.div(width)
 <Box width={{ xs: "100%", md: "50%" }} />
 ```
 
-### Dot syntax for props and theme Keys
+### Dot syntax for props and theme keys
 
 Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function.
 
@@ -293,13 +293,13 @@ const Box = styled.div(width)
 <Box w="-large.4" />
 ```
 
-### Simpler Transform Functions
+### Simpler transform functions
 
 Styled System provides a `transformValue` option for transforming values _before_ they are mapped to CSS properties. This feature allows unitless values to have "px" appended to them for example. Styled System's `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support cases where you might want to invert a value from a scale—such as when working with negative margins or positioning.
 
 Since onno's internal `get` utility supports inversion for _all_ values, passing the `scale` (or "lookup" as referred to by onno) to a `transform` function is not necessary. Onno's `transform` option expects a function with the signature `(value) => value`.
 
-### More Render Functions
+### More render functions and aliases
 
 Styled System ships with a comprehensive set of render functions. Onno builds on these to provide a more complete set that covers the majority of commonly used CSS properties. More can be added in time with demand, so please [submit a feature request][onno-issues] if you require a render function that is not implemented yet.
 
@@ -307,7 +307,7 @@ Styled System ships with a comprehensive set of render functions. Onno builds on
 
 In addition to this, each and every render function shipped with onno provides an `alias` to facilitate rapid UI development. These aliases should be used at your own discretion since their terse benefits come at a sacrifice of readability and self-documentation.
 
-### Naming Conventions
+### Naming conventions
 
 A number of naming conventions have been introduced by onno to help enforce consistency and predictability.
 
