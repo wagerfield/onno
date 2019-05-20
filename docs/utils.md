@@ -1,6 +1,8 @@
 # Utils <!-- omit in toc -->
 
-Onno uses a number of utility functions internally to resolve, query and transform values. These functions can be useful for when you create your own transform functions or component style sets.
+Onno uses a number of utility functions internally to resolve, query and transform values.
+
+These functions can be useful for when you create your own transform functions or component style sets.
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -90,7 +92,7 @@ isFraction("0.1") // false
 
 ### `when`
 
-Branching logic function that takes a `predicate` and calls a `transform` function with the passed value when the predicate returns `true` for that value. When the predicate returns `false`, the original value is simply returned.
+Branching logic function that takes a `predicate` and calls a `transform` function for any given value when the predicate returns `true` for that value. When the predicate returns `false`, the original value is returned.
 
 ```js
 // Predicate Function
@@ -110,7 +112,7 @@ makeBigger("small") // "small"
 makeBigger("just right") // "just right"
 ```
 
-This is used in combination with the predicates documented above to build the `transform` functions included with onno. For example:
+The `when` function is used in combination with the predicates documented above to build the `transform` functions included with onno. For example:
 
 ```js
 const addPx = when(isUnitless)((x) => x + "px")
@@ -119,7 +121,7 @@ const addPc = when(isFraction)((x) => x * 100 + "%")
 
 ### `addPx`
 
-A [`transform`](api.md#transform) function that adds "px" to [unitless values](#isunitless).
+[Transform](api.md#transform) function that adds "px" to [unitless values](#isunitless).
 
 ```js
 addPx(32) // "32px"
@@ -130,7 +132,7 @@ addPx("2em") // "2em"
 
 ### `addPc`
 
-A [`transform`](api.md#transform) function that multiplies [fractional values](#isfraction) by 100 and adds "%" to them.
+[Transform](api.md#transform) function that multiplies [fractional values](#isfraction) by 100 and adds "%" to them.
 
 ```js
 addPx(1 / 4) // "25%"
@@ -141,7 +143,7 @@ addPx("4ch") // "4ch"
 
 ### `addPcOrPx`
 
-A [`transform`](api.md#transform) function that first attempts to convert a value [to percent](#addpc) and then [to pixels](#addpx).
+[Transform](api.md#transform) function that first attempts to convert a value [to percent](#addpc) and then [to pixels](#addpx).
 
 ```js
 addPcOrPx(3 / 4) // "75%"
@@ -154,7 +156,7 @@ addPcOrPx("50vw") // "50vw"
 
 ### `get`
 
-Resolves a value at a given `path` within a "lookup" object. Expects a `path` as the first argument and the "lookup" object as the second argument. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Lookup arrays can contain alias objects.
+Resolves a value at a given `path` within a `lookup` object or array. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Lookup arrays can contain alias objects.
 
 ```js
 const theme = {
@@ -192,7 +194,7 @@ get("foo", theme) // undefined
 
 ### `resolve`
 
-Takes an array of `paths` and iterates over them against a lookup object to try and resolve a value. Paths towards the start of the array will be resolved first.
+Takes an array of `paths` and iterates over them against a `lookup` object to try and resolve a value. Paths towards the start of the array will be resolved first.
 
 ```js
 const lookup = {
@@ -205,4 +207,4 @@ resolve(["widths.3", "sizes.3"], lookup) // 3
 resolve(["widths.4", "sizes.4"], lookup) // undefined
 ```
 
-This is the function that onno uses internally to resolve `theme` and `defaults` values. It calls the `get` method for each `path` in turn to try and resolve a value in the lookup object.
+This is the function that onno uses internally to resolve `theme` and `defaults` values. It calls the `get` method for each `path` in turn to try and resolve a value in the `lookup` object.
