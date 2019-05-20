@@ -2,7 +2,7 @@
 
 Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
 
-Onno actually started life as a simple rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library. The implementation shares very few similarities with Styled System and takes many cues from [Ramda][ramda] internally.
+Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library. The implementation shares very few similarities with Styled System and takes many cues from [Ramda][ramda] internally.
 
 ## Features <!-- omit in toc -->
 
@@ -29,6 +29,8 @@ As a developer who works with React _and_ Vue in equal measure, picking librarie
 
 Onno was therefore designed with an interface for providing framework specific integrations like `propTypes` for React. Currently there are extensions of `onno` for React (`onno-react`) and Vue (`onno-vue`) that provide `propTypes` and `props` for these respective frameworks. In the future, additional extensions can eaisly be added for other frameworks if the demand is there.
 
+If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The render functions for these respective libraries are augnmented with a `propTypes` property.
+
 ```jsx
 import styled from "styled-components"
 import { display } from "onno-react"
@@ -39,6 +41,8 @@ Box.propTypes = {
   ...display.propTypes
 }
 ```
+
+It's worth noting that _composed_ render functions include all `propTypes` for the _standard_ render functions they map to.
 
 ### TypeScript
 
