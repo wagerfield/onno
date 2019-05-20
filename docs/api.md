@@ -51,13 +51,13 @@ It expects an `options` object as the first and _only_ argument with the followi
 
 ### `options`
 
-| Key                       | Type            | Required | Description                          |
-| :------------------------ | :-------------- | :------- | :----------------------------------- |
-| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from        |
-| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to          |
-| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from     |
-| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through |
-| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values                |
+| Key                       | Type            | Required | Description                           |
+| :------------------------ | :-------------- | :------- | :------------------------------------ |
+| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from.        |
+| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to.          |
+| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from.     |
+| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through. |
+| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values.                |
 
 ### `propsKeys`
 
@@ -114,13 +114,13 @@ const Box = styled.div(size)
 <Box s="25%" size="200px" />
 ```
 
-When `styleKeys` is left undefined, the first value in the `propsKeys` array is used by default. In the `propsKeys` [example above](#propskeys) `styleKeys` defaults to `["width"]`.
+When `styleKeys` is left undefined, the first value in the `propsKeys` array is used by default. In the `propsKeys` [example above](#propskeys) `styleKeys` therefore defaults to `["width"]`.
 
-In cases where you want to map a CSS property like `display` or `fontSize` to the same `prop` key, you can omit `styleKeys` to achieve this default behaviour.
+In cases where you want to map a `prop` key like `display` or `fontSize` to the same CSS property, you can omit `styleKeys` to achieve this default behaviour.
 
 However, in cases like the `size` render function above where you want to map some `propsKeys` like `["size", "s"]` to different `styleKeys` like `["width", "height"]`, this interface allows you to do so.
 
-Finally, in special cases where you do not want values to be mapped to `styleKeys` you can pass `null`. This functionality is used to create [`variant` functions](#variant).
+Finally, in special cases where you do not want resolved values to be mapped to `styleKeys` you can pass `null`. This functionality is used to create [variant functions](#variant).
 
 ### `themeKeys`
 
@@ -143,31 +143,26 @@ const theme = {
 }
 
 // [{ maxWidth: "256px" }]
-<Box maxWidth={1} theme={theme} />
+<Box theme={theme} maxWidth={1} />
 
 // [{ maxWidth: "32px" }]
-<Box maxw={2} theme={theme} />
+<Box theme={theme} maxw={2} />
 
 // [{ maxWidth: 3 }]
-<Box maxw={3} theme={theme} />
+<Box theme={theme} maxw={3} />
 ```
 
 In the example above the `maxWidth` render function has two `themeKeys`. Typically you will only have one theme key, but this demonstrates that multiple theme keys can be used to lookup and resolve a value. Much like `propsKeys` the order of the theme keys defines the order of precedence in which they are resolved.
 
 Since both `maxWidths` and `sizes` are specified as arrays of values within the `theme` their values are resolved by passing integers to index the arrays.
 
-The first `Box` passes an index of "1" which resolves to "256px" from the `maxWidths` theme array. The second `Box` passes an index of "2" which falls outside of the `maxWidths` array, so the resolver moves onto the next theme key (`sizes`) where it is able to resolve the value of "32px" at this location. The third `Box` passes an index of "3" which falls outside the `sizes` theme array and therefore the raw value of "3" is rendered.
+The first `Box` passes an index of `1` which resolves to "256px" from the `maxWidths` theme array. The second `Box` passes an index of `2` which falls outside of the `maxWidths` array, so the resolver moves onto the next theme key (`sizes`) where it is able to resolve the value of "32px" at this location. The third `Box` passes an index of `3` which falls outside the `sizes` theme array and therefore the raw value of `3` is rendered.
 
-Finally, both `props` and `themeKeys` support dot syntax strings to allow you to nest parts of your `theme` (or `defaults`) if so desired. For example:
+Both `props` and `themeKeys` support dot syntax string values to allow you to nest parts of your `theme` or `defaults`. For example:
 
 ```jsx
 import styled from "styled-components"
 import { style } from "onno"
-
-const fontFamily = style({
-  propsKeys: ["fontFamily", "ff"],
-  themeKeys: ["typography.fontFamilies"]
-})
 
 const fontSize = style({
   propsKeys: ["fontSize", "fs"],
@@ -179,14 +174,10 @@ const color = style({
   themeKeys: ["colors"]
 })
 
-const Text = styled.div(fontFamily, fontSize, color)
+const Text = styled.div(fontSize, color)
 
 const theme = {
   typography: {
-    fontFamilies: {
-      main: "sans-serif",
-      mono: "monospace"
-    },
     fontSizes: ["16px", "24px", "32px"]
   },
   colors: {
@@ -201,16 +192,16 @@ const theme = {
   }
 }
 
-// [{ fontFamily: "sans-serif" }, { fontSize: "24px" }, { color: "black" }]
-<Text fontFamily="main" fontSize={1} color="light.text" theme={theme} />
+// [{ fontSize: "24px" }, { color: "black" }]
+<Text theme={theme} fontSize={1} color="light.text" />
 
-// [{ fontFamily: "monospace" }, { fontSize: "32px" }, { color: "white" }]
-<Text ff="mono" fs={2} tc="dark.text" theme={theme} />
+// [{ fontSize: "32px" }, { color: "white" }]
+<Text theme={theme} fs={2} tc="dark.text" />
 ```
 
-In the example above, the `fontFamilies` and `fontSizes` theme objects are nested inside a `typography` object. Specifying `themeKeys` to `["typography.fontFamilies"]` and `["typography.fontSizes"]` causes `props` values to be resolved at these respective locations within the `theme`.
+In the example above, the `fontSizes` theme lookup is nested inside a `typography` object. Specifying `themeKeys` to `["typography.fontSizes"]` results in `props` values being resolved at this location.
 
-The `colors` theme object also has values nested within it. However, since `themeKeys` is specified as `["colors"]` the values have to be accessed via dot syntax in the `props` values instead.
+The `colors` theme object also has lookups nested within it. However, since `themeKeys` is specified as `["colors"]` the values must be resolved via dot syntax in the `props` values instead.
 
 ### `transform`
 
@@ -234,21 +225,19 @@ const Box = styled.div(margin)
 <Box m="2em" />
 ```
 
-In the example above, the `margin` render function uses onno's `addPx` transform function to add "px" to unitless values. A unitless value is a `number` which is not zero.
+In the example above, the `margin` render function uses onno's `addPx` transform function to add "px" to _unitless values_. A unitless value is a `number` which is not zero.
 
 Since the second `Box` passes a value with "em" units, the `addPx` transform function ignores this value.
 
-In addition to `addPx`, onno also provides an `addPc` transform function for converting decimal values between -1 and 1 to percentages eg. "0.1" becomes "10%" and "-0.5" becomes "-50%". There is also a `addPcOrPx` transform function which will first attempt to convert decimals between -1 and 1 to percent and then convert unitless values to "px".
+In addition to `addPx`, onno also provides an `addPc` transform function for converting decimal values between -1 and 1 to percentages eg. "0.1" becomes "10%" and "-0.5" becomes "-50%". There is also a `addPcOrPx` transform function which will first attempt to convert decimal values between -1 and 1 to percent and then convert unitless values to "px".
 
-You can of course write your own `transform` functions.
-
-Transform functions simply take a value and return a value. For example:
+You can also write your own `transform` functions. Transform functions simply take a value and return a value. For example:
 
 ```js
 const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
 ```
 
-Alternatively you can use onno's `when` and `isUnitless` utils to the same effect:
+Alternatively you can use onno's `when` and `isUnitless` [util functions](utils.md) to the same effect:
 
 ```js
 import { when, isUnitless } from "onno"
@@ -327,9 +316,9 @@ The first `Box` does not have a `theme` so the value is resolved from the `defau
 
 The `variant` function maps a prop value to a _style object_ in a `theme` or `defaults` lookup. It shares the same function signature as the `style` function by taking an `options` object and returning a `render` function.
 
-The key difference between `variant` and `style` is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
+The key difference between the `variant` and `style` functions is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
 
-This functionality is useful for providing a place in your `theme` for grouping styles. For example:
+This functionality is useful for providing a place in your `theme` for grouping styles. Common use cases for this would be components and styles that are used in combination with one another like background and foreground colors. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -363,13 +352,13 @@ const theme = {
 <Button bst="secondary" theme={theme} />
 ```
 
-Onno ships with a [few variant functions](render-functions.md#variant) to get you started.
+Onno ships with some common [variant functions](render-functions.md#variant) to get you started.
 
 ## `compose`
 
 The `compose` function takes an array of `render` functions and returns a _composed_ `render` function.
 
-When the _composed_ `render` function is called with some `props` it will iterate over the array of `render` functions and call them each in turn with the provided `props`.
+When the _composed_ `render` function is called with some `props` it iterates over the array of `render` functions that were passed to it and calls them each in turn with the provided `props`.
 
 The arrays of style objects returned from each `render` function are then merged and returned.
 
@@ -406,7 +395,7 @@ const Text = styled.div(fontSet)
 <Text ff="Lobster" fw="300" fs="24px" />
 ```
 
-The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the convention of appending `Set` to your composed function names so you can discern a _standard_ render function from a _composed_ one.
+The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to your composed functions.
 
 It is worth noting that _composed_ render functions can be recomposed into other render functions ad infinitum.
 
@@ -414,9 +403,7 @@ Onno ships with an extensive suite of _standard_ and _composed_ `render` functio
 
 ## `extend`
 
-The `extend` function allows you to share [`options`](#options) between `render` functions.
-
-It takes some partially applied style `options` and returns a function which expects the remaining options.
+The `extend` function allows you to share [`options`](#options) between `render` functions. It takes some partially applied style `options` and returns a function which expects the remaining options.
 
 Calling the returned function with the remaining `options` will return a `render` function derived from the first style options merged with the second.
 
