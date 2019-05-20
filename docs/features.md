@@ -2,7 +2,7 @@
 
 Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
 
-Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library. The implementation shares very few similarities with Styled System and takes many cues from [Ramda][ramda] internally.
+Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library. The implementation takes many cues from [Ramda][ramda].
 
 ## Features <!-- omit in toc -->
 
@@ -15,7 +15,7 @@ Below is a list of additional features and refinements to Styled System's API th
 - [Theme keys as an array](#theme-keys-as-an-array)
 - [Serializable Themes](#serializable-themes)
 - [Dot syntax for `props` and `themeKeys`](#dot-syntax-for-props-and-themekeys)
-- [Transform Functions](#transform-functions)
+- [Simpler Transform Functions](#simpler-transform-functions)
 - [More Render Functions](#more-render-functions)
 - [Naming Conventions](#naming-conventions)
 
@@ -25,11 +25,11 @@ Styled System is designed to work with [React][react]. It has a dependency on [`
 
 The key difference between Emotion and Style Components is that [Emotion is framework agnostic][emotion-framework-agnostic] at its core. And it's not alone. Many other popular [CSS in JS][css-in-js] libraries like [JSS][jss], [Aphrodite][aphrodite], [Glamor][glamor] and [Fela][fela] can also be used with other popular frameworks like [Vue][vue] and [Angular][angular].
 
-As a developer who works with React _and_ Vue in equal measure, picking libraries that are framework agnostic is _desireable_—if not a _requirement_. While developing onno, it was _essential_ that it could be used with any framework to facilitate code reuse between component libraries implemented in React, Vue, Angular et al.
+As a developer who works with React and Vue in equal measure, using libraries that are framework agnostic is _desireable_—if not a _requirement_ in some cases. While developing onno, it was _essential_ that it could be used with any framework to facilitate code reuse between component libraries implemented in React, Vue, Angular et al.
 
 Onno was therefore designed with an interface for providing framework specific integrations like `propTypes` for React. Currently there are extensions of `onno` for React (`onno-react`) and Vue (`onno-vue`) that provide `propTypes` and `props` for these respective frameworks. In the future, additional extensions can eaisly be added for other frameworks if the demand is there.
 
-If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The render functions for these respective libraries are augnmented with a `propTypes` property.
+If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The render functions for these respective libraries are augmented with a `propTypes` property in the same way as Styled System.
 
 ```jsx
 import styled from "styled-components"
@@ -42,11 +42,11 @@ Box.propTypes = {
 }
 ```
 
-It's worth noting that _composed_ render functions include all `propTypes` for the _standard_ render functions they map to.
+It is worth noting that _composed_ render functions include all `propTypes` for the functions they map to.
 
 ### TypeScript
 
-Onno is written in TypeScript and ships with a comprehensive set of `type` definitions and `interfaces`. Furthermore it uses `csstype` for all included render functions to type check the values passed to `props`. Type checking is performed on both _standard_ and _responsive_ prop values as well as `defaultProps` when used with React. For example:
+Onno is written in TypeScript and ships with a comprehensive set of type definitions and interfaces. Furthermore it uses `csstype` for all included render functions to type check the values passed to `props`. Type checking is performed on both _standard_ and _responsive_ prop values as well as `defaultProps` when used with React. For example:
 
 ```tsx
 import styled from "styled-components"
@@ -60,7 +60,7 @@ Box.defaultProps = {
 }
 ```
 
-Furthermore, onno provides a `Theme` interface with all `themeKeys` that are declared across the suite of [render functions](render-functions.md). This makes writing themes a breeze since you get both autocompletion and type checking out of the box:
+Furthermore, onno provides a `Theme` interface with all the `themeKeys` that are declared across the suite of [render functions](render-functions.md). This makes writing themes a breeze since you get both autocompletion and type checking out of the box:
 
 ```ts
 import { Theme } from "onno"
@@ -139,11 +139,11 @@ const Box = styled.div(font, size)
 <Box f="Roboto" s="50%" />
 ```
 
-Much like Styled System, if you omit the `styleKeys` option then it defaults to an array containing _just_ the first key in the `propsKeys` array. This is the desired behaviour for the majority of one-to-one key maps like `display`, `backgroundColor`, `fontSize` etc.
+Much like Styled System, if you omit the `styleKeys` option then it defaults to an array containing _just_ the first key in the `propsKeys` array. This is the desired behaviour for the majority of one-to-one key maps like `display`, `fontSize`, `boxShadow` etc.
 
 ### Theme keys as an array
 
-Styled System provides a `key` option for specifying a "lookup" location in a `theme` object. This mechanism allows you to share common styles and design tokens between your render functions and the components using them.
+Styled System provides a `key` option for specifying a "lookup" location in a `theme`. This mechanism allows you to share common styles and design tokens between your render functions and the components using them.
 
 Onno takes this one step further by upgrading a single theme `key` to an array of `themeKeys`. In doing so, you can create powerful render functions that resolve values from multiple locations in a `theme` by cascading through them in order of precedence. For example:
 
@@ -176,7 +176,7 @@ const Box = styled.div(size, width)
 <Box theme={theme} s={1} w={2} />
 ```
 
-The second `Box` provides a `width` prop value of "2" which falls outside the `widths` array in the `theme`. Since the `width` render function specifies two `themeKeys` of "widths" and "sizes" the resolver then moves onto the `sizes` key in the `theme` where it is able to resolve a value of "400px" at that location.
+The second `Box` provides a `width` prop value of `2` which falls outside the `widths` array in the `theme`. Since the `width` render function specifies two `themeKeys` of "widths" and "sizes" the resolver then moves onto the `sizes` key in the `theme` where it is able to resolve a value of "400px" at that location.
 
 If the `theme` did not have a `widths` array then the `sizes` array would be used to resolve values for both render functions.
 
@@ -186,11 +186,11 @@ It is good practice to define a `theme` _or facets of a theme_ in a serializable
 
 When working with arrays of values in a `theme` (Styled System refers to these as "scales") the only way to retrieve values from them is via an index. For large arrays of values, this can make it difficult to keep track of which index you require for a particular value and often leads to counting through the array with your finger. Further problems arise when values are added or removed from the array causing indexes to resolve to different values.
 
-Styled System's solution to the first problem is to create aliases for indexes by adding string keys to an array of values _after_ it has been created and assigning them to values within the array. Though this approach works in JavaScript, it does not lend itself to serialization and cannot be described with JSON. In addition to this, TypeScript disallows string index signatures on arrays.
+Styled System's solution to the first problem is to create aliases for indexes by adding string keys to an array of values _after_ it has been created and assigning them to values within the array. Though this approach works in JavaScript, it does not lend itself well to serialization. In addition to this, TypeScript disallows string index signatures on arrays.
 
 To address this problem, onno introduces "alias objects" which support array value lookups using both an `index` and a string `alias`. An alias object takes this form of `{ alias, value }`. This solution lends itself to serialization while also tackling the issue of adding, removing and reordering items in an array (as long as you are referencing the values via the `alias` of course).
 
-For example, a `theme` written in JSON using alias objects in an array would look like this:
+For example, a `theme` written in JSON using array alias objects would look like this:
 
 ```json
 {
@@ -251,22 +251,22 @@ const Box = styled.div(width)
 //   { "@media(min-width: 0)":     { width: "100%" } },
 //   { "@media(min-width: 720px)": { width: "50%"  } }
 // ]
-<Box theme={theme} width={[ "100%", null, "50%" ]} />
+<Box width={[ "100%", null, "50%" ]} />
 
 // [
 //   { "@media(min-width: 0)":     { width: "100%" } },
 //   { "@media(min-width: 720px)": { width: "50%"  } }
 // ]
-<Box theme={theme} width={{ xs: "100%", md: "50%" }} />
+<Box width={{ xs: "100%", md: "50%" }} />
 ```
 
 ### Dot syntax for `props` and `themeKeys`
 
-Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and/or the default `scale` of a render function.
+Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function.
 
-Onno also supports dot syntax for `prop` values _and_ `themeKeys` while also resolving alias objects within arrays. This flexible interface allows you to structure and nest your `theme` however you so choose.
+Onno also supports dot syntax for `prop` values _and_ `themeKeys` while also resolving alias objects within arrays. This flexible interface allows you to structure and nest your `theme` however you like.
 
-In addition to this, onno also supports value inversion simply by prefixing the whole lookup path with a negative sign "-" _or_ the final segment of a path. For example:
+In addition to this, onno also supports value inversion by prefixing lookup paths or integers with a negative sign. For example:
 
 ```jsx
 import styled from "styled-system"
@@ -286,35 +286,27 @@ const Box = styled.div(width)
 // [{ width: "8px" }]
 <Box width="small.2" />
 
-// [{ width: "-32px" }]
-<Box width="-small.4" />
-
-// [{ width: "20px" }]
-<Box w="large.0" />
-
-// [{ width: "-40px" }]
-<Box w="large.-1" />
+// [{ width: "-320px" }]
+<Box w="-large.4" />
 ```
 
-### Transform Functions
+### Simpler Transform Functions
 
-Styled System provides a `transformValue` option to allow you to convert a unitless value to pixels for example. The `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support special cases where you might want to invert a value from a scale—such as when working with margins.
+Styled System provides a `transformValue` option for transforming values _before_ they are mapped to CSS properties. This feature allows unitless values to have "px" appended to them for example. Styled System's `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support cases where you might want to invert a value from a scale—such as when working with negative margins or positioning.
 
-Onno's `transform` options expects a function with the signature `(value) => value` and does not pass a "scale". This design decision was made
+Since onno's internal `get` utility supports inversion for _all_ values, passing the `scale` (or "lookup" as referred to by onno) to a `transform` function is not necessary. Onno's `transform` option expects a function with the signature `(value) => value`.
 
 ### More Render Functions
 
-Styled System ships with a [comprehensive set][styled-system-table] of render functions.
+Styled System ships with a comprehensive set of render functions. Onno builds on these to provide a more complete set that covers the majority of commonly used CSS properties. More can be added in time with demand, so please [submit a feature request][onno-issues] if you require a CSS property render function that is not implemented yet.
 
-Onno builds on these to provide a much more complete set of functions that cover the majority of commonly used CSS properties. More can be added in time with demand, so please submit a feature request if you desire a CSS property that is not implemented yet.
+[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. Furthermore, each and every render function uses `csstype` definitions to validate prop values when used with TypeScript.
 
-These functions are organised across a number of [source files][onno-src] for better maintainability and include many useful composition sets. Furthermore, each and every render function uses `csstype` definitions to validate prop values.
-
-In addition to this, every render function provides an `alias` to facilitate rapid UI development. Unless you are familiar with onno's aliases, using them will obviously come at a sacrifice for readability and self-documentation, but they're there if you want to use them.
+In addition to this, each and every render function shipped with onno provides an `alias` to facilitate rapid UI development. These aliases should be used at your own discretion since their terse benefits come at a sacrifice of readability and self-documentation.
 
 ### Naming Conventions
 
-A number of naming conventions have been introduced to onno to enforce consistency and predictability.
+A number of naming conventions have been introduced to onno to help enforce consistency and predictability.
 
 1. All _standard_ render functions have the same name as the CSS property they are rendering eg. `fontSize` and `textAlign`.
    - The only exception to this rule are the special render functions that map a `prop` to multiple style keys eg. `marginX`, `marginY`, `paddingX`, `paddingY` and `size`
@@ -353,6 +345,7 @@ A number of naming conventions have been introduced to onno to enforce consisten
 [react]: https://reactjs.org
 [angular]: https://angularjs.org
 [typescript]: https://www.typescriptlang.org
+[onno-issues]: https://github.com/wagerfield/onno/issues
 [onno-src]: https://github.com/wagerfield/onno/tree/master/packages/onno/src
 [styled-system]: https://styled-system.com
 [styled-system-table]: https://styled-system.com/table
