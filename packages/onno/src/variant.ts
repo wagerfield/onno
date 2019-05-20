@@ -1,5 +1,5 @@
 import * as T from "./types"
-import { style } from "./style"
+import { variant } from "./style"
 
 export type VariantProp = T.Prop<number | string>
 
@@ -10,10 +10,9 @@ export interface ButtonVariantProps extends T.ThemeProps {
   bst?: VariantProp
 }
 
-export const buttonStyle = style<ButtonVariantProps>({
+export const buttonStyle = variant<ButtonVariantProps>({
   propsKeys: ["buttonStyle", "bst"],
-  themeKeys: ["buttonStyles"],
-  styleKeys: null
+  themeKeys: ["buttonStyles"]
 })
 
 // Color
@@ -23,10 +22,9 @@ export interface ColorVariantProps extends T.ThemeProps {
   cst?: VariantProp
 }
 
-export const colorStyle = style<ColorVariantProps>({
+export const colorStyle = variant<ColorVariantProps>({
   propsKeys: ["colorStyle", "cst"],
-  themeKeys: ["colorStyles"],
-  styleKeys: null
+  themeKeys: ["colorStyles"]
 })
 
 // Text
@@ -36,8 +34,7 @@ export interface TextVariantProps extends T.ThemeProps {
   tst?: VariantProp
 }
 
-export const textStyle = style<TextVariantProps>({
+export const textStyle = variant<TextVariantProps>({
   propsKeys: ["textStyle", "tst"],
-  themeKeys: ["textStyles"],
-  styleKeys: null
+  themeKeys: ["textStyles"]
 })

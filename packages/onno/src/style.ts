@@ -100,6 +100,12 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   return renderProps
 }
 
+export function variant<P extends T.ThemeProps, S extends T.Style = any>(
+  options: T.VariantOptions
+): T.RenderFunction<P, S> {
+  return style<P, S>({ ...options, styleKeys: null })
+}
+
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   renderers: T.RenderFunction<any, any>[]
 ): T.RenderFunction<P, S> {

@@ -1,4 +1,4 @@
-# API
+# API <!-- omit in toc -->
 
 At the core of onno is the `style` function.
 
@@ -33,6 +33,19 @@ const Box2 = styled.div(styles)
 ```
 
 In the example above `Box1` uses the `styles` function in a tagged template literal and `Box2` passes it directly as an argument. Both [styled-components][styled-components] and [emotion][emotion] support each approach so you can decide which style to adopt.
+
+## Table of Contents <!-- omit in toc -->
+
+- [`style`](#style)
+  - [`options`](#options)
+  - [`propsKeys`](#propskeys)
+  - [`styleKeys`](#stylekeys)
+  - [`themeKeys`](#themekeys)
+  - [`transform`](#transform)
+  - [`defaults`](#defaults)
+- [`variant`](#variant)
+- [`compose`](#compose)
+- [`extend`](#extend)
 
 ## `style`
 
@@ -105,47 +118,13 @@ const Box = styled.div(size)
 <Box s="25%" size="200px" />
 ```
 
-When `styleKeys` are left undefined, the first value in the `propsKeys` array will be used. In the `propsKeys` [example above](#propskeys) the first "width" key is used as the `styleKeys` default: `["width"]`.
+When `styleKeys` is left undefined, the first value in the `propsKeys` array is used by default. In the `propsKeys` [example above](#propskeys) `styleKeys` defaults to `["width"]`.
 
-In cases where you simply want to map a CSS property like `display` or `fontSize` to the same prop key, you can omit `styleKeys` to achieve this default behaviour.
+In cases where you want to map a CSS property like `display` or `fontSize` to the same `prop` key, you can omit `styleKeys` to achieve this default behaviour.
 
 However, in cases like the `size` render function above where you want to map some `propsKeys` like `["size", "s"]` to different `styleKeys` like `["width", "height"]`, this interface allows you to do so.
 
-Finally, in special cases where you do not want values to be mapped to `styleKeys` you can pass `null`. This functionality is useful for creating `variant` functions.
-
-A `variant` function allows you to map a prop value to a style object in a `theme` or the `defaults`. For example:
-
-```jsx
-import styled from "styled-components"
-import { style } from "onno"
-
-const buttonStyle = style({
-  propsKeys: ["buttonStyle", "bst"],
-  themeKeys: ["buttonStyles"],
-  styleKeys: null
-})
-
-const Button = styled.button(buttonStyle)
-
-const theme = {
-  buttonStyles: {
-    primary: {
-      background: "blue"
-      color: "white"
-    },
-    secondary: {
-      background: "gray"
-      color: "black"
-    }
-  }
-}
-
-// [{ background: "blue", color: "white" }]
-<Button buttonStyle="primary" theme={theme} />
-
-// [{ background: "gray", color: "black" }]
-<Button bst="secondary" theme={theme} />
-```
+Finally, in special cases where you do not want values to be mapped to `styleKeys` you can pass `null`. This functionality is used to create [`variant` functions](#variant).
 
 ### `themeKeys`
 
@@ -347,6 +326,48 @@ const theme = {
 ```
 
 The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is rendered.
+
+## `variant`
+
+The `variant` function maps a prop value to a _style object_ in a `theme` or `defaults` lookup. It shares the same function signature as the `style` function by taking an `options` object and returning a `render` function.
+
+The key difference between `variant` and `style` is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
+
+This functionality is useful for providing a place in your `theme` for styling components. For example:
+
+```jsx
+import styled from "styled-components"
+import { style } from "onno"
+
+const buttonStyle = style({
+  propsKeys: ["buttonStyle", "bst"],
+  themeKeys: ["buttonStyles"],
+  styleKeys: null
+})
+
+const Button = styled.button(buttonStyle)
+
+const theme = {
+  buttonStyles: {
+    primary: {
+      background: "blue"
+      color: "white"
+    },
+    secondary: {
+      background: "gray"
+      color: "black"
+    }
+  }
+}
+
+// [{ background: "blue", color: "white" }]
+<Button buttonStyle="primary" theme={theme} />
+
+// [{ background: "gray", color: "black" }]
+<Button bst="secondary" theme={theme} />
+```
+
+Onno ships with a [few variant functions](render-functions.md#variant) to get you started.
 
 ## `compose`
 

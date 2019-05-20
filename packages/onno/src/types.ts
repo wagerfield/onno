@@ -93,12 +93,15 @@ export type TransformFunction = (value: any) => any
 
 export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
 
-export interface StyleOptions {
+export interface VariantOptions {
   propsKeys: Keys
-  styleKeys?: Keys | null
   themeKeys?: Keys
   transform?: TransformFunction
   defaults?: ThemeValue
+}
+
+export interface StyleOptions extends VariantOptions {
+  styleKeys?: Keys | null
 }
 
 export interface Style {

@@ -1,6 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`buttonStyle: {
+exports[`renders style object from defaults: {
+  "a": "foo"
+} 1`] = `
+Array [
+  Object {
+    "background": "foo",
+    "color": "foo",
+  },
+]
+`;
+
+exports[`renders style object from defaults: {
+  "b": "bar"
+} 1`] = `
+Array [
+  Object {
+    "background": "bar",
+    "color": "bar",
+  },
+]
+`;
+
+exports[`renders style object from theme: {
+  "a": "foo",
+  "theme": {
+    "var": {
+      "foo": {
+        "background": "foo",
+        "color": "foo"
+      },
+      "bar": {
+        "background": "bar",
+        "color": "bar"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "background": "foo",
+    "color": "foo",
+  },
+]
+`;
+
+exports[`renders style object from theme: {
+  "b": "bar",
+  "theme": {
+    "var": {
+      "foo": {
+        "background": "foo",
+        "color": "foo"
+      },
+      "bar": {
+        "background": "bar",
+        "color": "bar"
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "background": "bar",
+    "color": "bar",
+  },
+]
+`;
+
+exports[`returns null for unresolved values: {
+  "a": "foo"
+} 1`] = `null`;
+
+exports[`variant styles buttonStyle: {
   "bst": "foo",
   "theme": {
     "buttonStyles": {
@@ -38,7 +110,7 @@ exports[`buttonStyle: {
   }
 } 1`] = `null`;
 
-exports[`buttonStyle: {
+exports[`variant styles buttonStyle: {
   "bst": "one",
   "theme": {
     "buttonStyles": {
@@ -83,7 +155,7 @@ Array [
 ]
 `;
 
-exports[`buttonStyle: {
+exports[`variant styles buttonStyle: {
   "bst": [
     "one",
     "two"
@@ -139,15 +211,15 @@ Array [
 ]
 `;
 
-exports[`buttonStyle: {
+exports[`variant styles buttonStyle: {
   "buttonStyle": "one"
 } 1`] = `null`;
 
-exports[`colorStyle: {
+exports[`variant styles colorStyle: {
   "colorStyle": "one"
 } 1`] = `null`;
 
-exports[`colorStyle: {
+exports[`variant styles colorStyle: {
   "cst": "foo",
   "theme": {
     "buttonStyles": {
@@ -185,7 +257,7 @@ exports[`colorStyle: {
   }
 } 1`] = `null`;
 
-exports[`colorStyle: {
+exports[`variant styles colorStyle: {
   "cst": "one",
   "theme": {
     "buttonStyles": {
@@ -231,7 +303,7 @@ Array [
 ]
 `;
 
-exports[`colorStyle: {
+exports[`variant styles colorStyle: {
   "cst": [
     "one",
     "two"
@@ -289,11 +361,11 @@ Array [
 ]
 `;
 
-exports[`textStyle: {
+exports[`variant styles textStyle: {
   "textStyle": "one"
 } 1`] = `null`;
 
-exports[`textStyle: {
+exports[`variant styles textStyle: {
   "tst": "foo",
   "theme": {
     "buttonStyles": {
@@ -331,7 +403,7 @@ exports[`textStyle: {
   }
 } 1`] = `null`;
 
-exports[`textStyle: {
+exports[`variant styles textStyle: {
   "tst": "one",
   "theme": {
     "buttonStyles": {
@@ -376,7 +448,7 @@ Array [
 ]
 `;
 
-exports[`textStyle: {
+exports[`variant styles textStyle: {
   "tst": [
     "one",
     "two"
