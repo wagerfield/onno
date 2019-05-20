@@ -29,7 +29,7 @@ As a developer who works with React and Vue in equal measure, using libraries th
 
 Onno was therefore designed with an interface for providing framework specific integrations like `propTypes` for React. Currently there are extensions of `onno` for React (`onno-react`) and Vue (`onno-vue`) that provide `propTypes` and `props` for these respective frameworks. In the future, additional extensions can eaisly be added for other frameworks if the demand is there.
 
-If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The render functions for these respective libraries are augmented with a `propTypes` property in the same way as Styled System.
+If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The `onno-react` render functions are augmented with a `propTypes` property in the same way as Styled System.
 
 ```jsx
 import styled from "styled-components"
@@ -46,13 +46,20 @@ It is worth noting that _composed_ render functions include all `propTypes` for 
 
 ### TypeScript
 
-Onno is written in TypeScript and ships with a comprehensive set of type definitions and interfaces. Furthermore it uses `csstype` for all included render functions to type check the values passed to `props`. Type checking is performed on both _standard_ and _responsive_ prop values as well as `defaultProps` when used with React. For example:
+Onno is written in TypeScript and ships with a comprehensive set of type definitions and interfaces. Additionally, it uses `csstype` for all included render functions to type check the values passed to `props`. Type checking is performed on both _standard_ and _responsive_ prop values as well as `defaultProps` when used with React. For example:
 
-```jsx
+```tsx
 import styled from "styled-components"
-import { display, flexDirection } from "onno"
+import {
+  display,
+  DisplayProps,
+  flexDirection,
+  FlexDirectionProps
+} from "onno"
 
-const Box = styled.div(display, flexDirection)
+type BoxProps = DisplayProps & FlexDirectionProps
+
+const Box = styled.div<BoxProps>(display, flexDirection)
 
 Box.defaultProps = {
   display: "flex",
