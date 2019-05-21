@@ -14,6 +14,9 @@ jobs:
       - run:
           name: Run test suite
           command: yarn test:coverage --ci --runInBand
+      - run:
+          name: Run code coverage
+          command: codecov
       - store_artifacts:
           path: coverage
       - store_artifacts:

@@ -13,7 +13,7 @@ module.exports = {
       }
     ]
   ],
-  coverageReporters: ["text", "html"],
+  coverageReporters: ["lcov", "text"],
   coveragePathIgnorePatterns: ["test-utils"],
   snapshotResolver: "<rootDir>/snapshots",
   moduleNameMapper: {
