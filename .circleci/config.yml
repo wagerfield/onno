@@ -9,9 +9,14 @@ jobs:
           name: Install dependencies
           command: yarn
       - run:
+          name: Compile TypeScript
+          command: yarn build
+      - run:
           name: Run test suite
           command: yarn test:coverage --ci --runInBand
       - store_artifacts:
           path: coverage
+      - store_artifacts:
+          path: reports
       - store_test_results:
           path: reports
