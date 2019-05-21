@@ -1,4 +1,4 @@
-# onno
+# ![onno](https://github.com/wagerfield/onno/blob/master/assets/onno.png)
 
 Responsive, themed style props for building design systems.
 
