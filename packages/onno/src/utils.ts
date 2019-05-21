@@ -1,4 +1,4 @@
-import * as T from "./types"
+import { Func, Pred } from "./types"
 
 export const isArray = Array.isArray
 
@@ -12,7 +12,7 @@ export const isUnitless = (x: any) => typeof x === "number" && !!x
 
 export const isFraction = (x: any) => isUnitless(x) && x > -1 && x < 1
 
-export const when = (p: T.Pred) => (f: T.Func) => (x: any) => (p(x) ? f(x) : x)
+export const when = (p: Pred) => (f: Func) => (x: any) => (p(x) ? f(x) : x)
 
 export const addPx = when(isUnitless)((x) => x + "px")
 
@@ -21,6 +21,8 @@ export const addPc = when(isFraction)((x) => x * 100 + "%")
 export const addPcOrPx = (x: any) => addPx(addPc(x))
 
 export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
+
+export const toArray = <T>(args: T[]) => (isArray(args[0]) ? args[0] : args)
 
 export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
 

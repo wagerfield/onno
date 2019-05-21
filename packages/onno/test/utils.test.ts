@@ -98,6 +98,11 @@ test("mq", () => {
   expect(O.mq("20rem")).toMatchSnapshot()
 })
 
+test("toArray", () => {
+  expect(O.toArray([1, 2, 3])).toEqual([1, 2, 3])
+  expect(O.toArray([[1, 2, 3], 4, 5, 6])).toEqual([1, 2, 3])
+})
+
 test("toPath", () => {
   expect(O.toPath(0)).toEqual([0])
   expect(O.toPath(1)).toEqual([1])
