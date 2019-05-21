@@ -8,7 +8,7 @@ module.exports = {
       {
         output: "reports/junit/results.xml",
         suiteNameTemplate: "{filepath}",
-        classNameTemplate: "{title}",
+        classNameTemplate: "{filename}",
         titleTemplate: "{title}"
       }
     ]
