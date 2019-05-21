@@ -1,6 +1,6 @@
 # ![onno-vue](https://github.com/wagerfield/onno/blob/master/assets/onno-vue.png)
 
-Onno `props` bindings for [Vue][vue-props].
+Onno `props` for [Vue][vue-props].
 
     yarn add onno-vue
 

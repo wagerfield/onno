@@ -2,7 +2,7 @@
   "name": "onno-react",
   "license": "MIT",
   "version": "0.0.4",
-  "description": "React onno bindings",
+  "description": "Onno propTypes for React",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-react#readme",
   "repository": {

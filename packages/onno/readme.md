@@ -1,6 +1,6 @@
 # ![onno](https://github.com/wagerfield/onno/blob/master/assets/onno.png)
 
-Responsive style props for building design systems.
+Responsive style props for building themed design systems.
 
     yarn add onno
 

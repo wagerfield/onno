@@ -3,7 +3,7 @@
 ![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4B6&style=flat-square&label=size)
 
-Responsive style props for building design systems.
+Responsive style props for building themed design systems.
 
     yarn add onno
 

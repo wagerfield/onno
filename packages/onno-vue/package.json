@@ -2,7 +2,7 @@
   "name": "onno-vue",
   "license": "MIT",
   "version": "0.0.4",
-  "description": "Vue onno bindings",
+  "description": "Onno props for Vue",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-vue#readme",
   "repository": {
