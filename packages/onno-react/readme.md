@@ -1,6 +1,6 @@
 # ![onno-react](https://github.com/wagerfield/onno/blob/master/assets/onno-react.png)
 
-Onno `propTypes` bindings for [React][react-prop-types].
+Onno `propTypes` for [React][react-prop-types].
 
     yarn add onno-react
 
@@ -45,14 +45,14 @@ You can pass render functions to `propTypes` as an array _or_ list of arguments:
 ```js
 import { display, padding, propTypes } from "onno-react"
 
-// List of render functions
-const propTypes1 = propTypes(display, padding)
-
 // Array of render functions
 const propTypes2 = propTypes([display, padding])
+
+// List of render functions
+const propTypes1 = propTypes(display, padding)
 ```
 
-Following DRY principles, you can wrap your styles in an array or use onno's `compose` method:
+Following DRY principles, you can wrap your styles in an array _or_ use onno's `compose` method and pass them to the `styled` component and `propTypes` function:
 
 ```jsx
 import styled from "styled-components"
@@ -70,7 +70,7 @@ const Box2 = styled.div(boxSet)
 Box2.propTypes = propTypes(boxSet)
 ```
 
-To add `propTypes` alongside the render function props:
+To add other `propTypes` alongside the render function props:
 
 ```jsx
 import styled from "styled-components"
