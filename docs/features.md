@@ -21,28 +21,28 @@ Below is a list of additional features and refinements to Styled System's API th
 
 ### Framework agnostic
 
-Styled System is designed to work with [React][react]. It has a dependency on [`prop-types`][prop-types] (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains a close parity with Styled Components.
+Styled System is designed to work with [React][react]. It has a dependency on [`prop-types`][prop-types] (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains close parity with Styled Components.
 
 The key difference between Emotion and Styled Components is that [Emotion is framework agnostic][emotion-framework-agnostic] at its core. And it's not alone. Many other popular [CSS in JS][css-in-js] libraries like [JSS][jss], [Aphrodite][aphrodite] and [Fela][fela] can also be used with other popular frameworks like [Vue][vue] and [Angular][angular].
 
 As a developer who works with React and Vue in equal measure, using libraries that are framework agnostic is _desireable_—if not a _requirement_ in some cases. While developing onno, it was _essential_ that it could be used with any framework to facilitate code reuse between component libraries implemented in React, Vue, Angular et al.
 
-Onno was therefore designed with an interface for providing framework specific integrations like `propTypes` for React. Currently there are extensions of `onno` for React (`onno-react`) and Vue (`onno-vue`) that provide `propTypes` and `props` for these respective frameworks. In the future, additional extensions can eaisly be added for other frameworks if the demand is there.
+Onno was therefore designed with an interface for providing framework specific integrations. Currently there are extensions of `onno` for React (`onno-react`) and Vue (`onno-vue`) that provide `propTypes` and `props` for these respective frameworks. In the future, additional extensions can be added for other frameworks if the demand is there.
 
-If you want to use `propTypes` for runtime value checks, install `onno-react` (or `onno-vue`) in place of `onno` and import the render functions as you normally would. The `onno-react` render functions are augmented with a `propTypes` property in the same way as Styled System.
+If you want to use `propTypes` for runtime prop validation with React, install `onno-react` in place of `onno` and import the render functions as you normally would. `onno-react` provides a `propTypes` function that expects an array of `render` functions and returns a `propTypes` object.
 
 ```jsx
 import styled from "styled-components"
-import { display } from "onno-react"
+import { display, flexSet, propTypes } from "onno-react"
 
-const Box = styled.div(display)
+const styles = [display, flexSet]
 
-Box.propTypes = {
-  ...display.propTypes
-}
+const Box = styled.div(...styles)
+
+Box.propTypes = propTypes(styles)
 ```
 
-It is worth noting that _composed_ render functions include all `propTypes` for the functions they map to.
+It is worth noting that _composed_ render functions like `flexSet` include all `propTypes` for the functions they map to.
 
 ### TypeScript
 
