@@ -8,6 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:codecov": "codecov",
     "lint": "tslint 'packages/**/*.ts' --format codeFrame",
     "lint:fix": "yarn lint --fix",
     "format": "prettier '**/*.{json,js,ts,md}'",
