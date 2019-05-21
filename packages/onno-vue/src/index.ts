@@ -1,1 +1,1 @@
-export default "onno-vue"
+export * from "onno"
