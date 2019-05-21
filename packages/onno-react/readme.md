@@ -1,5 +1,9 @@
 # ![onno-react](https://github.com/wagerfield/onno/blob/master/assets/onno-react.png)
 
+![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-react.svg?color=4B6&style=flat-square&label=size)
+![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
+
 Onno `propTypes` for [React][react-prop-types].
 
     yarn add onno-react

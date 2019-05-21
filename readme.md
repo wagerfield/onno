@@ -1,7 +1,8 @@
 # ![onno](assets/onno.png)
 
-![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
+![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4B6&style=flat-square&label=size)
+![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
 
 Responsive style props for building themed design systems.
 
