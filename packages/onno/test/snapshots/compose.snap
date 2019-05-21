@@ -94,3 +94,59 @@ Array [
 `;
 
 exports[`returns style object array or null: {} 1`] = `null`;
+
+exports[`supports array of render functions: {
+  "a": 1,
+  "c": 3
+} 1`] = `
+Array [
+  Object {
+    "a": 1,
+  },
+  Object {
+    "c": 3,
+  },
+]
+`;
+
+exports[`supports array of render functions: {
+  "b": 2,
+  "d": 4
+} 1`] = `
+Array [
+  Object {
+    "a": 2,
+  },
+  Object {
+    "c": 4,
+  },
+]
+`;
+
+exports[`supports list of render functions: {
+  "a": 1,
+  "c": 3
+} 1`] = `
+Array [
+  Object {
+    "a": 1,
+  },
+  Object {
+    "c": 3,
+  },
+]
+`;
+
+exports[`supports list of render functions: {
+  "b": 2,
+  "d": 4
+} 1`] = `
+Array [
+  Object {
+    "a": 2,
+  },
+  Object {
+    "c": 4,
+  },
+]
+`;

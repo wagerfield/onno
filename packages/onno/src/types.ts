@@ -121,3 +121,5 @@ export interface RenderFunction<P extends ThemeProps, S extends Style> {
   options: StyleOptions
   composed: boolean
 }
+
+export type AnyRenderFunction = RenderFunction<any, any>

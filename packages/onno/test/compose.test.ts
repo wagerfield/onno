@@ -2,7 +2,7 @@ import * as O from "../src"
 import * as U from "./test-utils"
 
 test("returns style function", () => {
-  const styleSet = O.compose([])
+  const styleSet = O.compose()
   expect(styleSet).toEqual(expect.any(Function))
   expect(styleSet).toHaveLength(1)
 })
@@ -23,6 +23,28 @@ test("returns style object array or null", () => {
   testProps({ a: 1 })
   testProps({ b: 2, d: 4 })
   testProps({ a: 1, b: 2, c: 3, d: 4 })
+})
+
+test("supports array of render functions", () => {
+  const styleSet = O.compose([
+    O.style({ propsKeys: ["a", "b"] }),
+    O.style({ propsKeys: ["c", "d"] })
+  ])
+  const testProps = U.snapshot(styleSet)
+
+  testProps({ a: 1, c: 3 })
+  testProps({ b: 2, d: 4 })
+})
+
+test("supports list of render functions", () => {
+  const styleSet = O.compose(
+    O.style({ propsKeys: ["a", "b"] }),
+    O.style({ propsKeys: ["c", "d"] })
+  )
+  const testProps = U.snapshot(styleSet)
+
+  testProps({ a: 1, c: 3 })
+  testProps({ b: 2, d: 4 })
 })
 
 test("respects order of style functions", () => {
