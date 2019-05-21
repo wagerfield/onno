@@ -12,5 +12,8 @@ jobs:
           name: Bootstrap Lerna
           command: yarn setup
       - run:
+          name: Compile TypeScript
+          command: yarn build
+      - run:
           name: Test Coverage
           command: yarn test:coverage
