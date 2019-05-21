@@ -18,4 +18,4 @@ jobs:
           name: Test Coverage
           command: yarn test:coverage
       - store_test_results:
-          path: test-results
+          path: coverage
