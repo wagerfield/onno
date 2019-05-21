@@ -26,7 +26,9 @@
     "lib"
   ],
   "dependencies": {
+    "@types/prop-types": "15.7.1",
     "csstype": "2.6.4",
-    "onno": "0.0.4"
+    "onno": "0.0.4",
+    "prop-types": "15.7.2"
   }
 }
