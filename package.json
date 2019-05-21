@@ -5,15 +5,15 @@
   "license": "MIT",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "scripts": {
-    "test": "jest --runInBand",
-    "test:watch": "jest --watch --runInBand",
-    "test:coverage": "jest --coverage --runInBand",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "tslint 'packages/**/*.ts' --format codeFrame",
     "lint:fix": "yarn lint --fix",
     "format": "prettier '**/*.{json,js,ts,md}'",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
-    "clean": "rimraf coverage 'packages/**/{cjs,esm,lib}'",
+    "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib}'",
     "build": "lerna exec tsc",
     "setup": "lerna bootstrap",
     "bundle": "rollup --config",
@@ -46,17 +46,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "snapshotResolver": "<rootDir>/snapshots",
-    "moduleNameMapper": {
-      "^onno$": "<rootDir>/packages/onno/src"
-    },
-    "coveragePathIgnorePatterns": [
-      "test-utils"
-    ]
-  },
   "devDependencies": {
     "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
@@ -64,6 +53,7 @@
     "glob": "7.1.4",
     "husky": "2.3.0",
     "jest": "24.8.0",
+    "jest-junit": "6.4.0",
     "lerna": "3.14.1",
     "lint-staged": "8.1.7",
     "prettier": "1.17.1",
