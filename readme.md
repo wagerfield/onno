@@ -1,7 +1,7 @@
 # ![onno](assets/onno.png)
 
-![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=195&style=flat-square)
-![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=195&style=flat-square&label=size)
+![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4C6&style=flat-square)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C6&style=flat-square&label=size)
 
 Suite of CSS in JS utility functions for rapid UI development.
 
