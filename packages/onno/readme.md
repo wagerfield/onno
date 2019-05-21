@@ -1,6 +1,6 @@
 # ![onno](https://github.com/wagerfield/onno/blob/master/assets/onno.png)
 
-Responsive, themed style props for building design systems.
+Responsive style props for building design systems.
 
     yarn add onno
 
@@ -9,18 +9,15 @@ Responsive, themed style props for building design systems.
 - Framework agnostic
 - Zero dependencies
 - First class support for theming
-- Facilitates rapid UI development
 - Rigorously tested with 100% test coverage
-- Written in TypeScript with exceptional type definitions
-- Works with most major CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
+- Written in TypeScript with comprehensive type definitions and interfaces
+- Works with most CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
 
 ## Principles
 
-- Flexible
-- Extensible
 - Predictable
+- Extensible
 - Versatile
-- Lightweight
 
 ## Usage
 
@@ -28,10 +25,7 @@ Responsive, themed style props for building design systems.
 import styled from "styled-components"
 import { colorSet, spaceSet } from "onno"
 
-const Box = styled.div`
-  ${colorSet}
-  ${spaceSet}
-`
+const Box = styled.div(colorSet, spaceSet)
 
 // { padding: "16px" }
 <Box p={4} />
