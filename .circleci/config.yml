@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: Install dependencies
           command: yarn
       - run:
           name: Bootstrap Lerna
@@ -15,7 +15,7 @@ jobs:
           name: Compile TypeScript
           command: yarn build
       - run:
-          name: Test Coverage
+          name: Test coverage
           command: yarn test:coverage
       - store_artifacts:
           path: coverage
