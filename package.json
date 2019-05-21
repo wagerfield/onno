@@ -50,6 +50,9 @@
     "preset": "ts-jest",
     "testEnvironment": "node",
     "snapshotResolver": "<rootDir>/snapshots",
+    "moduleNameMapper": {
+      "^onno$": "<rootDir>/packages/onno/src"
+    },
     "coveragePathIgnorePatterns": [
       "test-utils"
     ]
