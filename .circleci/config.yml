@@ -17,5 +17,7 @@ jobs:
       - run:
           name: Test Coverage
           command: yarn test:coverage
+      - store_artifacts:
+          path: coverage
       - store_test_results:
           path: coverage
