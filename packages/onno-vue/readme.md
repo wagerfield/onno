@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)][circleci]
 [![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)][license]
 
-Onno `props` for [Vue][vue-props].
+**Onno `props` for [Vue][vue-props]**
 
     yarn add onno-vue
 

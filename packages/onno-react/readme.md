@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)][circleci]
 [![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)][license]
 
-Onno `propTypes` for [React][react-prop-types].
+**Onno `propTypes` for [React][react-prop-types]**
 
     yarn add onno-react
 
@@ -23,10 +23,10 @@ const Box = styled.div(display, padding)
 <Box display="flex" padding="10px" />
 
 // [{ display: "grid" }, { padding: "20em" }]
-<Box d="grid" padding="20em" />
+<Box d="grid" p="20em" />
 ```
 
-To add `propTypes` runtime validation to your components:
+To add `propTypes` for onno's render functions to your components:
 
 ```jsx
 import styled from "styled-components"
@@ -45,7 +45,7 @@ Box.propTypes = propTypes(display, padding)
 <Box d={true} p={[false]} />
 ```
 
-Render functions cab be passed to `propTypes` as an array _or_ list of arguments:
+Render functions can be passed to `propTypes` as an array _or_ list of arguments:
 
 ```js
 import { display, padding, propTypes } from "onno-react"
@@ -57,7 +57,7 @@ const propTypes2 = propTypes([display, padding])
 const propTypes1 = propTypes(display, padding)
 ```
 
-To follow DRY principles, wrap your styles in an array _or_ use onno's `compose` method:
+Following DRY principles, you can wrap your render functions in an array _or_ use onno's `compose` method:
 
 ```jsx
 import styled from "styled-components"
