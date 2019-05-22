@@ -1,7 +1,7 @@
 {
   "name": "onno",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Responsive style props for building themed design systems",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno#readme",
