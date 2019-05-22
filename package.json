@@ -14,12 +14,13 @@
     "format": "prettier '**/*.{json,js,ts,md}'",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
-    "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib}'",
-    "build": "lerna exec tsc",
+    "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types}'",
+    "types": "lerna exec -- tsc --emitDeclarationOnly",
+    "build": "lerna exec -- tsc",
     "setup": "lerna bootstrap",
     "bundle": "rollup --config",
     "release": "lerna publish",
-    "prepublishOnly": "yarn clean && yarn build && yarn bundle"
+    "prepublishOnly": "yarn clean && yarn types && yarn bundle && yarn format:write"
   },
   "workspaces": [
     "packages/*"
