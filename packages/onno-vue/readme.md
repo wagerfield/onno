@@ -1,8 +1,9 @@
-# ![onno-vue](https://github.com/wagerfield/onno/blob/master/assets/onno-vue.png)
+# ![onno-vue](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-vue.png)
 
 ![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-vue.svg?color=4B6&style=flat-square&label=size)
 ![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
+![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)
 
 Onno `props` for [Vue][vue-props].
 

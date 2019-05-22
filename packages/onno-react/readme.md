@@ -1,8 +1,9 @@
-# ![onno-react](https://github.com/wagerfield/onno/blob/master/assets/onno-react.png)
+# ![onno-react](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-react.png)
 
 ![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-react.svg?color=4B6&style=flat-square&label=size)
 ![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
+![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)
 
 Onno `propTypes` for [React][react-prop-types].
 
@@ -44,7 +45,7 @@ Box.propTypes = propTypes(display, padding)
 <Box d={true} p={[false]} />
 ```
 
-You can pass render functions to `propTypes` as an array _or_ list of arguments:
+Render functions cab be passed to `propTypes` as an array _or_ list of arguments:
 
 ```js
 import { display, padding, propTypes } from "onno-react"
@@ -56,7 +57,7 @@ const propTypes2 = propTypes([display, padding])
 const propTypes1 = propTypes(display, padding)
 ```
 
-Following DRY principles, you can wrap your styles in an array _or_ use onno's `compose` method and pass them to the `styled` component and `propTypes` function:
+To follow DRY principles, wrap your styles in an array _or_ use onno's `compose` method:
 
 ```jsx
 import styled from "styled-components"
