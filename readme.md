@@ -1,9 +1,9 @@
 # ![onno](assets/onno.png)
 
-![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
-![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4B6&style=flat-square&label=size)
-![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
-![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)
+[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)][codecov]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4B6&style=flat-square&label=size)][bundlephobia]
+[![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)][circleci]
+[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)][license]
 
 Responsive style props for building themed design systems.
 
@@ -14,7 +14,7 @@ Responsive style props for building themed design systems.
 - Framework agnostic
 - Zero dependencies
 - First class support for theming
-- Rigorously tested with 100% test coverage
+- Rigorously tested with [100% test coverage][codecov]
 - Written in TypeScript with comprehensive type definitions and interfaces
 - Works with most CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
 
@@ -48,9 +48,13 @@ const Box = styled.div(colorSet, spaceSet)
 
 ## License
 
-[MIT](https://github.com/wagerfield/onno/blob/master/license)
+[MIT][license]
 
 [github]: https://github.com/wagerfield
-[styled-system]: https://styled-system.com
+[license]: https://github.com/wagerfield/onno/blob/master/license
+[bundlephobia]: https://bundlephobia.com/result?p=onno
+[circleci]: https://circleci.com/gh/wagerfield/onno
+[codecov]: https://codecov.io/gh/wagerfield/onno
 [styled-components]: https://styled-components.com
+[styled-system]: https://styled-system.com
 [emotion]: https://emotion.sh

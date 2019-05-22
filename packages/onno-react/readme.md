@@ -1,9 +1,9 @@
 # ![onno-react](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-react.png)
 
-![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)
-![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-react.svg?color=4B6&style=flat-square&label=size)
-![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)
-![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)
+[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)][codecov]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-react.svg?color=4B6&style=flat-square&label=size)][bundlephobia]
+[![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)][circleci]
+[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)][license]
 
 Onno `propTypes` for [React][react-prop-types].
 
@@ -99,7 +99,11 @@ Box.propTypes = {
 
 ## License
 
-[MIT](https://github.com/wagerfield/onno/blob/master/license)
+[MIT][license]
 
 [github]: https://github.com/wagerfield
+[license]: https://github.com/wagerfield/onno/blob/master/license
+[bundlephobia]: https://bundlephobia.com/result?p=onno
+[circleci]: https://circleci.com/gh/wagerfield/onno
+[codecov]: https://codecov.io/gh/wagerfield/onno
 [react-prop-types]: https://reactjs.org/docs/typechecking-with-proptypes
