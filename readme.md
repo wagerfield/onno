@@ -1,9 +1,9 @@
 # ![onno](assets/onno.png)
 
-[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4B6&style=flat-square)][codecov]
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4B6&style=flat-square&label=size)][bundlephobia]
-[![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4B6&style=flat-square)][circleci]
-[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4B6&style=flat-square)][license]
+[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia]
+[![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4C8&style=flat-square)][circleci]
+[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
 
 Responsive style props for building themed design systems.
 
