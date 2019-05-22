@@ -362,7 +362,7 @@ When the _composed_ `render` function is called with some `props` it iterates ov
 
 The arrays of style objects returned from each `render` function are then merged and returned.
 
-This interface allows you to compose multiple `render` functions into a single one for greater portability.
+This interface allows you to compose multiple render functions into a single render function for greater portability.
 
 ```jsx
 import styled from "styled-components"
@@ -396,6 +396,21 @@ const Text = styled.div(fontSet)
 ```
 
 The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to your composed functions.
+
+Render functions can be passed to `compose` as an array _or_ list of arguments:
+
+```js
+import { compose, display, padding } from "onno"
+
+// Array of render functions
+const set1 = compose([display, padding])
+
+// List of render functions
+const set2 = compose(
+  display,
+  padding
+)
+```
 
 It is worth noting that _composed_ render functions can be recomposed into other render functions ad infinitum.
 
