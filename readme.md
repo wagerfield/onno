@@ -18,12 +18,6 @@ Responsive style props for building themed design systems.
 - Written in TypeScript with comprehensive type definitions and interfaces
 - Works with most CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
 
-## Principles
-
-- Predictable
-- Extensible
-- Versatile
-
 ## Usage
 
 ```jsx
