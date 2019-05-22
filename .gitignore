@@ -2,6 +2,7 @@
 node_modules
 coverage
 reports
+types
 cjs
 esm
 lib
