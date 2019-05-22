@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "packages",
+    "paths": {
+      "onno": ["onno/src"]
+    },
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

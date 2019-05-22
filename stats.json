@@ -19,40 +19,40 @@
     }
   },
   "packages/onno-react/cjs/index.js": {
-    "bundled": 948,
-    "minified": 755,
-    "gzipped": 365
+    "bundled": 20484,
+    "minified": 15623,
+    "gzipped": 4244
   },
   "packages/onno-react/esm/index.js": {
-    "bundled": 594,
-    "minified": 453,
-    "gzipped": 259,
+    "bundled": 17716,
+    "minified": 12709,
+    "gzipped": 3613,
     "treeshaked": {
       "rollup": {
-        "code": 137,
-        "import_statements": 103
+        "code": 7672,
+        "import_statements": 90
       },
       "webpack": {
-        "code": 1215
+        "code": 8684
       }
     }
   },
   "packages/onno-vue/cjs/index.js": {
-    "bundled": 268,
-    "minified": 213,
-    "gzipped": 166
+    "bundled": 19808,
+    "minified": 15088,
+    "gzipped": 4073
   },
   "packages/onno-vue/esm/index.js": {
-    "bundled": 21,
-    "minified": 18,
-    "gzipped": 38,
+    "bundled": 17174,
+    "minified": 12314,
+    "gzipped": 3461,
     "treeshaked": {
       "rollup": {
-        "code": 13,
-        "import_statements": 13
+        "code": 7538,
+        "import_statements": 0
       },
       "webpack": {
-        "code": 1032
+        "code": 8495
       }
     }
   }

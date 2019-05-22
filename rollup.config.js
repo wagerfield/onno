@@ -25,5 +25,6 @@ export default sync("packages/*").map((pkg) => ({
       snapshotPath: "stats.json",
       printInfo: false
     })
-  ]
+  ],
+  external: ["prop-types"]
 }))

@@ -19,14 +19,13 @@
   ],
   "main": "cjs/index.js",
   "module": "esm/index.js",
-  "types": "lib/index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "cjs",
     "esm",
-    "lib"
+    "types"
   ],
   "dependencies": {
-    "csstype": "2.6.4",
     "onno": "0.0.7"
   }
 }
