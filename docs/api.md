@@ -395,7 +395,7 @@ const Text = styled.div(fontSet)
 <Text ff="Lobster" fw="300" fs="24px" />
 ```
 
-The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to your composed functions.
+The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to your _composed_ functions to help distinguish them from _standard_ render functions.
 
 Render functions can be passed to `compose` as an array _or_ list of arguments:
 
