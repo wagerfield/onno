@@ -1,4 +1,4 @@
-# ![onno-vue](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-vue.png)
+# [![onno-vue](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-vue.png)][onno]
 
 [![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-vue.svg?color=4C8&style=flat-square&label=size)][bundlephobia]
@@ -21,6 +21,7 @@ Coming soon.
 
 [MIT][license]
 
+[onno]: https://onnojs.com
 [github]: https://github.com/wagerfield
 [license]: https://github.com/wagerfield/onno/blob/master/license
 [bundlephobia]: https://bundlephobia.com/result?p=onno
