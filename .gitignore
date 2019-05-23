@@ -16,3 +16,6 @@ todo.*
 
 # system
 .DS_Store
+
+# nuxt
+.nuxt

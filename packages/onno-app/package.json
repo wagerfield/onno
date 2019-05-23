@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "onno-app",
+  "license": "MIT",
+  "version": "0.0.8",
+  "homepage": "https://onnojs.com",
+  "description": "Responsive style props for building themed design systems",
+  "author": "Matthew Wagerfield <matthew@wagerfield.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wagerfield/onno.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wagerfield/onno/issues"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "2.7.1",
+    "onno": "0.0.8"
+  }
+}
