@@ -2,7 +2,7 @@ export type Length = number
 
 export type Nil = null | undefined
 
-export type Primitive = boolean | number | string
+export type Primitive = number | string
 
 export type Key = string
 
@@ -12,35 +12,34 @@ export type Func = (...args: any[]) => any
 
 export type Pred = (...args: any[]) => boolean
 
-export type ResponsivePropArray<P> = P[]
+export type ResponsivePropArray<T> = T[]
 
-export interface ResponsivePropObject<P> {
-  [key: string]: P
+export interface ResponsivePropObject<T> {
+  [key: string]: T
 }
 
-export type ResponsiveProp<P> = ResponsivePropArray<P> | ResponsivePropObject<P>
+export type ResponsiveProp<T> = ResponsivePropArray<T> | ResponsivePropObject<T>
 
-export type Prop<P> = P | ResponsiveProp<P> | Nil
+export type Prop<T> = T | ResponsiveProp<T> | Nil
 
-export interface Alias {
+export interface Alias<T> {
   alias: Key
-  value: Primitive | ThemeValue
+  value: T
 }
 
-export type ThemeArrayValue = Alias | Primitive
+export type ThemeArrayValue<T> = Alias<T> | T
 
-export type ThemeArray = ThemeArrayValue[]
+export type ThemeArray<T> = ThemeArrayValue<T>[]
 
-export interface ThemeObject {
-  [key: string]: ThemeObject | ThemeArray | Primitive
+export interface ThemeObject<T> {
+  [key: string]: ThemeObject<T> | ThemeArray<T> | T
 }
 
-export type ThemeValue = ThemeArray | ThemeObject | Nil
+export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | null
 
-export type Breakpoints = ThemeArray | Nil
+export type Breakpoints<T = Primitive> = ThemeArray<T> | null
 
 export interface Theme {
-  [key: string]: ThemeValue
   // Breakpoints
   breakpoints?: Breakpoints
   // Global
@@ -71,10 +70,8 @@ export interface Theme {
   // Shadow
   textShadows?: ThemeValue
   boxShadows?: ThemeValue
-  shadows?: ThemeValue
   // Space
   spaces?: ThemeValue
-  space?: ThemeValue
   // Text
   fontFamilies?: ThemeValue
   fontSizes?: ThemeValue
