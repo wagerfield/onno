@@ -15,7 +15,7 @@ const PB = "paddingBottom"
 const PL = "paddingLeft"
 
 const ex = extend({
-  themeKeys: ["spaces", "space"],
+  themeKeys: ["spaces"],
   transform: addPx,
   defaults: PX_SCALE
 })

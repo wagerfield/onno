@@ -345,8 +345,8 @@ A number of naming conventions have been introduced by onno to help enforce cons
    - With reference to point 1, all _color_ related render functions (`color`, `backgroundColor` and `borderColor`) are composed into a `colorSet` render function.
    - Both `flex` and `grid` render functions are organised into a `ParentSet`, `ChildSet` and complete `Set` which contains all render functions. For example: `flexParentSet`, `flexChildSet` and `flexSet`
 4. All `theme` keys follow a plural naming convention and use the same name as the _standard_ or _composed_ render functions. The key differences between Styled System and onno's theme keys are:
-   - `fonts » fontFamilies`
-   - `space » spaces` with `space` fallback
+   - `fonts » fontFamilies` with `fonts` fallback
+   - `space » spaces`
    - `radii » borderRadii` with `radii` fallback
    - `shadows » boxShadows` with `shadows` fallback (onno also has `textShadows`)
    - `buttons » buttonStyles`
