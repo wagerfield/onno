@@ -1,4 +1,4 @@
-# [![onno](assets/onno.png)][onno]
+# [![onno](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno.png)][onno]
 
 [![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia]
@@ -15,7 +15,7 @@ Responsive style props for building themed design systems.
 - Zero dependencies
 - First class support for themes and design tokens
 - Compatible with most CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
-- Written in TypeScript with comprehensive type definitions and interfaces
+- Written in [TypeScript][typescript] with comprehensive type definitions and interfaces
 - Rigorously tested with [100% code coverage][codecov]
 
 ## Usage
@@ -26,21 +26,32 @@ import { colorSet, spaceSet } from "onno"
 
 const Box = styled.div(colorSet, spaceSet)
 
-// { padding: "16px" }
+// [{ padding: "16px" }]
 <Box p={4} />
 
-// { margin: "-32px" }
+// [{ margin: "-32px" }]
 <Box m={-5} />
 
-// { marginLeft: "8px", marginRight: "8px", paddingBottom: "4px" }
+// [{ marginLeft: "8px", marginRight: "8px" }, { paddingBottom: "4px" }]
 <Box mx={3} pb={2} />
 
-// { backgroundColor: "red", color: "white" }
-<Box bgc="red" tc="white" />
+// [{ backgroundColor: "tomato" }, { color: "ivory" }]
+<Box backgroundColor="tomato" color="ivory" />
 
-// { background: "url(onno.png) center" }
+// [{ background: "url(onno.png) center" }]
 <Box bg="url(onno.png) center" />
 ```
+
+## Documentation
+
+- [Features](https://github.com/wagerfield/onno/blob/master/docs/features.md)
+- [Render Functions](https://github.com/wagerfield/onno/blob/master/docs/render-functions.md)
+- [API](https://github.com/wagerfield/onno/blob/master/docs/api.md)
+- [Utils](https://github.com/wagerfield/onno/blob/master/docs/utils.md)
+
+## Credit
+
+Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
 
 ## Author
 
@@ -56,6 +67,10 @@ const Box = styled.div(colorSet, spaceSet)
 [bundlephobia]: https://bundlephobia.com/result?p=onno
 [circleci]: https://circleci.com/gh/wagerfield/onno
 [codecov]: https://codecov.io/gh/wagerfield/onno
+[emotion]: https://emotion.sh
+[emotion-facepaint]: https://github.com/emotion-js/facepaint
 [styled-components]: https://styled-components.com
 [styled-system]: https://styled-system.com
-[emotion]: https://emotion.sh
+[styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
+[typescript]: https://www.typescriptlang.org
+[jxnblk]: https://jxnblk.com
