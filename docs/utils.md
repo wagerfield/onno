@@ -241,7 +241,7 @@ get("foo", theme) // undefined
 
 ### `resolve`
 
-Takes an array of `paths` and iterates over them against a `lookup` object to try and resolve a value. Paths towards the start of the array will be resolved first.
+Takes an array of `paths` and iterates over them against a `lookup` object to try and resolve a value. Paths are resolved from left to right within the array.
 
 ```js
 const lookup = {
