@@ -8,8 +8,11 @@ These functions can be useful for when you create your own transform functions o
 
 - [`isNil`](#isnil)
 - [`isUndefined`](#isundefined)
+- [`isType`](#istype)
 - [`isArray`](#isarray)
+- [`isNumber`](#isnumber)
 - [`isObject`](#isobject)
+- [`isString`](#isstring)
 - [`isUnitless`](#isunitless)
 - [`isFraction`](#isfraction)
 - [`when`](#when)
@@ -43,6 +46,22 @@ isUndefined("") // false
 isUndefined(0) // false
 ```
 
+### `isType`
+
+Creates a `typeof` check function for a given `type`.
+
+```js
+const isNumber = isType("number")
+isNumber(0) // true
+isNumber(1) // true
+isNumber("2") // false
+
+const isString = isType("string")
+isString("foo") // true
+isString({}) // false
+isString(5) // false
+```
+
 ### `isArray`
 
 Returns `true` for array values, `false` otherwise.
@@ -52,6 +71,19 @@ isArray([1, 2, 3]) // true
 isArray([]) // true
 isArray({}) // false
 isArray(1) // false
+```
+
+### `isNumber`
+
+Returns `true` for `typeof value === "number"` values, `false` otherwise.
+
+```js
+isNumber(1) // true
+isNumber(0) // true
+isNumber(-1) // true
+isNumber(null) // false
+isNumber([]) // false
+isNumber("") // false
 ```
 
 ### `isObject`
@@ -65,6 +97,19 @@ isObject(null) // true
 isObject(undefined) // false
 isObject("") // false
 isObject(0) // false
+```
+
+### `isString`
+
+Returns `true` for `typeof value === "string"` values, `false` otherwise.
+
+```js
+isString("") // true
+isString("foo") // true
+isString(undefined) // false
+isString(null) // false
+isString(10) // false
+isString({}) // false
 ```
 
 ### `isUnitless`
@@ -156,7 +201,7 @@ addPcOrPx("50vw") // "50vw"
 
 ### `get`
 
-Resolves a value at a given `path` within a `lookup` object or array. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Lookup arrays can contain alias objects.
+Resolves a value at a given `path` within a `lookup` object or array. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Resolved values can be inverted by prefixing the `path` with a negative sign. Lookup arrays can contain alias objects.
 
 ```js
 const theme = {
@@ -185,8 +230,10 @@ get("colors.gray.1", theme) // "#AAA"
 get(["colors", "link"], theme) // "#00F"
 get("colors.orange", theme) // undefined
 
-get("spaces.2", theme) // 4
-get(["spaces", 4], theme) // 16
+get("spaces.1", theme) // 2
+get("-spaces.2", theme) // -4
+get(["spaces", 3], theme) // 8
+get(["-spaces", 4], theme) // -16
 get(["spaces", 10], theme) // undefined
 
 get("foo", theme) // undefined
@@ -198,12 +245,12 @@ Takes an array of `paths` and iterates over them against a `lookup` object to tr
 
 ```js
 const lookup = {
-  sizes: [0, 1, 2, 3],
-  widths: [0, 10, 20]
+  sizes: [0, 10, 20, 30],
+  widths: [0, 100, 200]
 }
 
-resolve(["widths.2", "sizes.2"], lookup) // 20
-resolve(["widths.3", "sizes.3"], lookup) // 3
+resolve(["widths.2", "sizes.2"], lookup) // 200
+resolve(["-widths.3", "-sizes.3"], lookup) // -30
 resolve(["widths.4", "sizes.4"], lookup) // undefined
 ```
 

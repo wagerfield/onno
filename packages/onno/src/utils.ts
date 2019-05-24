@@ -6,9 +6,15 @@ export const isNil = (x: any): x is void => x == null
 
 export const isUndefined = (x: any) => x === undefined
 
-export const isObject = (x: any) => typeof x === "object"
+export const isType = <T>(type: string) => (x: any): x is T => typeof x === type
 
-export const isUnitless = (x: any) => typeof x === "number" && !!x
+export const isObject = isType("object")
+
+export const isNumber = isType<number>("number")
+
+export const isString = isType<string>("string")
+
+export const isUnitless = (x: any) => isNumber(x) && !!x
 
 export const isFraction = (x: any) => isUnitless(x) && x > -1 && x < 1
 
@@ -24,20 +30,29 @@ export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 
 export const toArray = <T>(args: T[]) => (isArray(args[0]) ? args[0] : args)
 
-export const toPath = (x: any) => (typeof x === "string" ? x.split(".") : [x])
+export const toPath = (x: any) => (isString(x) ? x.split(".") : [x])
 
 export function get(path?: any, lookup?: any) {
   if (isNil(path) || isNil(lookup)) return undefined
-  const keys = isArray(path) ? path : toPath(path)
-  return keys.reduce((v, k) => {
-    let r = v && (v[Math.abs(k)] || v[k])
+  const keys = isArray(path) ? path.concat() : toPath(path)
+  const head = keys[0]
+  const isKey = isString(head)
+  const invert = (isKey && head.indexOf("-") === 0) || head < 0
+  if (invert) keys[0] = isKey ? head.substring(1) : Math.abs(head)
+  const value = keys.reduce((v, k) => {
+    let r = v && v[k]
     if (r && r.alias) r = r.value
     else if (isArray(v)) {
       const a = v.find((o) => o && o.alias === k)
       if (a) r = a.value
     }
-    return isUnitless(r) ? r * (+k < 0 ? -1 : 1) : r
+    return r
   }, lookup)
+  return isNumber(value)
+    ? (invert ? -1 : 1) * value
+    : isString(value)
+    ? (invert ? "-" : "") + value
+    : value
 }
 
 export function resolve(paths?: any[], lookup?: any) {

@@ -297,7 +297,7 @@ exports[`maxWidth: {
 } 1`] = `
 Array [
   Object {
-    "maxWidth": "100%",
+    "maxWidth": "-100%",
   },
 ]
 `;

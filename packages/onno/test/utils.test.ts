@@ -13,6 +13,18 @@ test("isUndefined", () => {
   expect(O.isUndefined(0)).toBe(false)
 })
 
+test("isType", () => {
+  const isBoolean = O.isType<boolean>("boolean")
+  expect(isBoolean).toEqual(expect.any(Function))
+  expect(isBoolean).toHaveLength(1)
+  expect(isBoolean(true)).toBe(true)
+  expect(isBoolean(false)).toBe(true)
+  expect(isBoolean(undefined)).toBe(false)
+  expect(isBoolean(null)).toBe(false)
+  expect(isBoolean("0")).toBe(false)
+  expect(isBoolean(1)).toBe(false)
+})
+
 test("isObject", () => {
   expect(O.isObject(null)).toBe(true)
   expect(O.isObject({})).toBe(true)
@@ -20,6 +32,28 @@ test("isObject", () => {
   expect(O.isObject(0)).toBe(false)
   expect(O.isObject("0")).toBe(false)
   expect(O.isObject(undefined)).toBe(false)
+})
+
+test("isNumber", () => {
+  expect(O.isNumber(0)).toBe(true)
+  expect(O.isNumber(1)).toBe(true)
+  expect(O.isNumber(-1)).toBe(true)
+  expect(O.isNumber(undefined)).toBe(false)
+  expect(O.isNumber(null)).toBe(false)
+  expect(O.isNumber({})).toBe(false)
+  expect(O.isNumber([])).toBe(false)
+  expect(O.isNumber("0")).toBe(false)
+})
+
+test("isString", () => {
+  expect(O.isString("")).toBe(true)
+  expect(O.isString("0")).toBe(true)
+  expect(O.isString("foo")).toBe(true)
+  expect(O.isString(undefined)).toBe(false)
+  expect(O.isString(null)).toBe(false)
+  expect(O.isString({})).toBe(false)
+  expect(O.isString([])).toBe(false)
+  expect(O.isString(0)).toBe(false)
 })
 
 test("isUnitless", () => {
@@ -118,6 +152,10 @@ test("get", () => {
   expect(O.get("zoo", U.OBJ)).toBeUndefined()
   expect(O.get("foo.a", U.OBJ)).toBeUndefined()
 
+  // Indexes
+  expect(O.get(1, [1, 2, 3])).toBe(2)
+  expect(O.get(-2, [1, 2, 3])).toBe(-3)
+
   // Strings
   expect(O.get("boo", U.OBJ)).toBeNull()
   expect(O.get("foo", U.OBJ)).toBe(U.OBJ.foo)
@@ -127,9 +165,11 @@ test("get", () => {
   expect(O.get("bar.c", U.OBJ)).toBe(U.OBJ.bar.c)
   expect(O.get("bar.d", U.OBJ)).toBe(U.OBJ.bar.d)
   expect(O.get("bar.d.1", U.OBJ)).toBe(U.OBJ.bar.d[1])
-  expect(O.get("bar.d.-2", U.OBJ)).toBe(-U.OBJ.bar.d[2])
+  expect(O.get("-bar.d.2", U.OBJ)).toBe(-U.OBJ.bar.d[2])
 
   // Arrays
+  expect(O.get([1], [1, 2, 3])).toBe(2)
+  expect(O.get([-2], [1, 2, 3])).toBe(-3)
   expect(O.get(["boo"], U.OBJ)).toBeNull()
   expect(O.get(["foo"], U.OBJ)).toBe(U.OBJ.foo)
   expect(O.get(["bar"], U.OBJ)).toBe(U.OBJ.bar)
@@ -139,8 +179,8 @@ test("get", () => {
   expect(O.get(["bar", "d"], U.OBJ)).toBe(U.OBJ.bar.d)
   expect(O.get(["bar", "d", 1], U.OBJ)).toBe(U.OBJ.bar.d[1])
   expect(O.get(["bar", "d", "2"], U.OBJ)).toBe(U.OBJ.bar.d[2])
-  expect(O.get(["bar", "d", -1], U.OBJ)).toBe(-U.OBJ.bar.d[1])
-  expect(O.get(["bar", "d", "-2"], U.OBJ)).toBe(-U.OBJ.bar.d[2])
+  expect(O.get(["-bar", "d", 1], U.OBJ)).toBe(-U.OBJ.bar.d[1])
+  expect(O.get(["-bar", "d", "2"], U.OBJ)).toBe(-U.OBJ.bar.d[2])
 
   // Aliases
   expect(O.get("baz.0", U.OBJ)).toBeUndefined()
