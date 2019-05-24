@@ -14,6 +14,7 @@
     "format": "prettier '**/*.{json,js,ts,md}'",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
+    "copy:readme": "cpx readme.md packages/onno && cpx readme.md packages/onno-app",
     "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types}'",
     "types": "lerna exec -- tsc --emitDeclarationOnly",
     "build": "lerna exec -- tsc",
@@ -41,6 +42,10 @@
     "**/*.{json,js,md}": [
       "prettier --write",
       "git add"
+    ],
+    "readme.md": [
+      "yarn copy:readme",
+      "git add"
     ]
   },
   "commitlint": {
@@ -53,6 +58,7 @@
     "@commitlint/config-conventional": "7.6.0",
     "@types/jest": "24.0.13",
     "codecov": "3.5.0",
+    "cpx": "1.5.0",
     "glob": "7.1.4",
     "husky": "2.3.0",
     "jest": "24.8.0",
