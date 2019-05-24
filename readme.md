@@ -49,7 +49,7 @@ const Box = styled.div(colorSet, spaceSet)
 - [API](https://github.com/wagerfield/onno/blob/master/docs/api.md)
 - [Utils](https://github.com/wagerfield/onno/blob/master/docs/utils.md)
 
-## Credit
+## Credits
 
 Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
 
