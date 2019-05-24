@@ -40,6 +40,7 @@ export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | null
 export type Breakpoints<T = Primitive> = ThemeArray<T> | null
 
 export interface Theme {
+  [key: string]: ThemeValue | undefined
   // Breakpoints
   breakpoints?: Breakpoints
   // Global
