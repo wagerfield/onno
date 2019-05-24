@@ -4,7 +4,7 @@ import { sizeSnapshot } from "rollup-plugin-size-snapshot"
 import { sync } from "glob"
 import { join } from "path"
 
-export default sync("packages/*").map((pkg) => ({
+export default sync("packages/!(onno-app)").map((pkg) => ({
   input: join(pkg, "src/index.ts"),
   output: [
     {
