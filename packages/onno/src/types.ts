@@ -50,9 +50,11 @@ export interface Theme {
   transitions?: ThemeValue
   // Border
   borders?: ThemeValue
-  borderRadii?: ThemeValue
   borderStyles?: ThemeValue
   borderWidths?: ThemeValue
+  // Radii
+  borderRadii?: ThemeValue
+  radii?: ThemeValue
   // Color
   colors?: ThemeValue
   // Display
@@ -67,10 +69,12 @@ export interface Theme {
   maxHeights?: ThemeValue
   zIndices?: ThemeValue
   // Shadow
-  boxShadows?: ThemeValue
   textShadows?: ThemeValue
+  boxShadows?: ThemeValue
+  shadows?: ThemeValue
   // Space
   spaces?: ThemeValue
+  space?: ThemeValue
   // Text
   fontFamilies?: ThemeValue
   fontSizes?: ThemeValue

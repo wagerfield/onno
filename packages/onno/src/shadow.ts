@@ -19,7 +19,7 @@ export interface BoxShadowStyle extends T.Style {
 
 export const boxShadow = style<BoxShadowProps, BoxShadowStyle>({
   propsKeys: ["boxShadow", "bsh"],
-  themeKeys: ["boxShadows"]
+  themeKeys: ["boxShadows", "shadows"]
 })
 
 // Text Shadow

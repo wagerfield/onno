@@ -23,17 +23,17 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 
 ## Border
 
-| Function Name | Props Keys        | Style Keys   | Theme Keys   | Transform |
-| :------------ | :---------------- | :----------- | :----------- | :-------- |
-| border        | border, bd        | border       | borders      | addPx     |
-| borderTop     | borderTop, bdt    | borderTop    | borders      | addPx     |
-| borderRight   | borderRight, bdr  | borderRight  | borders      | addPx     |
-| borderBottom  | borderBottom, bdb | borderBottom | borders      | addPx     |
-| borderLeft    | borderLeft, bdl   | borderLeft   | borders      | addPx     |
-| borderColor   | borderColor, bdc  | borderColor  | colors       | addPx     |
-| borderStyle   | borderStyle, bds  | borderStyle  | borderStyles | none      |
-| borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths | addPx     |
-| borderRadius  | borderRadius, rad | borderRadius | borderRadii  | addPcOrPx |
+| Function Name | Props Keys        | Style Keys   | Theme Keys         | Transform |
+| :------------ | :---------------- | :----------- | :----------------- | :-------- |
+| border        | border, bd        | border       | borders            | addPx     |
+| borderTop     | borderTop, bdt    | borderTop    | borders            | addPx     |
+| borderRight   | borderRight, bdr  | borderRight  | borders            | addPx     |
+| borderBottom  | borderBottom, bdb | borderBottom | borders            | addPx     |
+| borderLeft    | borderLeft, bdl   | borderLeft   | borders            | addPx     |
+| borderColor   | borderColor, bdc  | borderColor  | colors             | addPx     |
+| borderStyle   | borderStyle, bds  | borderStyle  | borderStyles       | none      |
+| borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths       | addPx     |
+| borderRadius  | borderRadius, rad | borderRadius | borderRadii, radii | addPcOrPx |
 | **borderSet** | _all keys above_  |
 
 ## Color
@@ -84,38 +84,38 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 
 ## Grid
 
-| Function Name       | Props Keys                   | Style Keys          | Theme Keys | Transform |
-| :------------------ | :--------------------------- | :------------------ | :--------- | :-------- |
+| Function Name       | Props Keys                   | Style Keys          | Theme Keys    | Transform |
+| :------------------ | :--------------------------- | :------------------ | :------------ | :-------- |
 | **gridParentSet**   | _all grid parent keys below_ |
-| display             | display, d                   | display             | none       | none      |
-| grid                | grid, g                      | grid                | none       | none      |
-| gridTemplate        | gridTemplate, gt             | gridTemplate        | none       | none      |
-| gridTemplateRows    | gridTemplateRows, gtr        | gridTemplateRows    | none       | none      |
-| gridTemplateColumns | gridTemplateColumns, gtc     | gridTemplateColumns | none       | none      |
-| gridTemplateAreas   | gridTemplateAreas, gta       | gridTemplateAreas   | none       | none      |
-| gridGap             | gridGap, gg                  | gridGap             | spaces     | addPx     |
-| gridRowGap          | gridRowGap, grg              | gridRowGap          | spaces     | addPx     |
-| gridColumnGap       | gridColumnGap, gcg           | gridColumnGap       | spaces     | addPx     |
-| gridAutoRows        | gridAutoRows, gar            | gridAutoRows        | none       | none      |
-| gridAutoColumns     | gridAutoColumns, gac         | gridAutoColumns     | none       | none      |
-| gridAutoFlow        | gridAutoFlow, gaf            | gridAutoFlow        | none       | none      |
-| placeItems          | placeItems, pli              | placeItems          | none       | none      |
-| placeContent        | placeContent, plc            | placeContent        | none       | none      |
-| alignItems          | alignItems, ali              | alignItems          | none       | none      |
-| alignContent        | alignContent, alc            | alignContent        | none       | none      |
-| justifyItems        | justifyItems, jfi            | justifyItems        | none       | none      |
-| justifyContent      | justifyContent, jfc          | justifyContent      | none       | none      |
+| display             | display, d                   | display             | none          | none      |
+| grid                | grid, g                      | grid                | none          | none      |
+| gridTemplate        | gridTemplate, gt             | gridTemplate        | none          | none      |
+| gridTemplateRows    | gridTemplateRows, gtr        | gridTemplateRows    | none          | none      |
+| gridTemplateColumns | gridTemplateColumns, gtc     | gridTemplateColumns | none          | none      |
+| gridTemplateAreas   | gridTemplateAreas, gta       | gridTemplateAreas   | none          | none      |
+| gridGap             | gridGap, gg                  | gridGap             | spaces, space | addPx     |
+| gridRowGap          | gridRowGap, grg              | gridRowGap          | spaces, space | addPx     |
+| gridColumnGap       | gridColumnGap, gcg           | gridColumnGap       | spaces, space | addPx     |
+| gridAutoRows        | gridAutoRows, gar            | gridAutoRows        | none          | none      |
+| gridAutoColumns     | gridAutoColumns, gac         | gridAutoColumns     | none          | none      |
+| gridAutoFlow        | gridAutoFlow, gaf            | gridAutoFlow        | none          | none      |
+| placeItems          | placeItems, pli              | placeItems          | none          | none      |
+| placeContent        | placeContent, plc            | placeContent        | none          | none      |
+| alignItems          | alignItems, ali              | alignItems          | none          | none      |
+| alignContent        | alignContent, alc            | alignContent        | none          | none      |
+| justifyItems        | justifyItems, jfi            | justifyItems        | none          | none      |
+| justifyContent      | justifyContent, jfc          | justifyContent      | none          | none      |
 | **gridChildSet**    | _all grid child keys below_  |
-| gridArea            | gridArea, ga                 | gridArea            | none       | none      |
-| gridRow             | gridRow, gr                  | gridRow             | none       | none      |
-| gridRowStart        | gridRowStart, grs            | gridRowStart        | none       | none      |
-| gridRowEnd          | gridRowEnd, gre              | gridRowEnd          | none       | none      |
-| gridColumn          | gridColumn, gc               | gridColumn          | none       | none      |
-| gridColumnStart     | gridColumnStart, gcs         | gridColumnStart     | none       | none      |
-| gridColumnEnd       | gridColumnEnd, gce           | gridColumnEnd       | none       | none      |
-| placeSelf           | placeSelf, pls               | placeSelf           | none       | none      |
-| alignSelf           | alignSelf, als               | alignSelf           | none       | none      |
-| justifySelf         | justifySelf, jfs             | justifySelf         | none       | none      |
+| gridArea            | gridArea, ga                 | gridArea            | none          | none      |
+| gridRow             | gridRow, gr                  | gridRow             | none          | none      |
+| gridRowStart        | gridRowStart, grs            | gridRowStart        | none          | none      |
+| gridRowEnd          | gridRowEnd, gre              | gridRowEnd          | none          | none      |
+| gridColumn          | gridColumn, gc               | gridColumn          | none          | none      |
+| gridColumnStart     | gridColumnStart, gcs         | gridColumnStart     | none          | none      |
+| gridColumnEnd       | gridColumnEnd, gce           | gridColumnEnd       | none          | none      |
+| placeSelf           | placeSelf, pls               | placeSelf           | none          | none      |
+| alignSelf           | alignSelf, als               | alignSelf           | none          | none      |
+| justifySelf         | justifySelf, jfs             | justifySelf         | none          | none      |
 | **gridSet**         | _all keys above_             |
 
 ## Layout
@@ -143,31 +143,31 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 
 ## Shadow
 
-| Function Name | Props Keys      | Style Keys | Theme Keys  | Transform |
-| :------------ | :-------------- | :--------- | :---------- | :-------- |
-| boxShadow     | boxShadow, bsh  | boxShadow  | boxShadows  | none      |
-| textShadow    | textShadow, tsh | textShadow | textShadows | none      |
+| Function Name | Props Keys      | Style Keys | Theme Keys          | Transform |
+| :------------ | :-------------- | :--------- | :------------------ | :-------- |
+| boxShadow     | boxShadow, bsh  | boxShadow  | boxShadows, shadows | none      |
+| textShadow    | textShadow, tsh | textShadow | textShadows         | none      |
 
 ## Space
 
-| Function Name  | Props Keys               | Style Keys                | Theme Keys | Transform |
-| :------------- | :----------------------- | :------------------------ | :--------- | :-------- |
+| Function Name  | Props Keys               | Style Keys                | Theme Keys    | Transform |
+| :------------- | :----------------------- | :------------------------ | :------------ | :-------- |
 | **marginSet**  | _all margin keys below_  |
-| marginTop      | marginTop, mt            | marginTop                 | spaces     | addPx     |
-| marginRight    | marginRight, mr          | marginRight               | spaces     | addPx     |
-| marginBottom   | marginBottom, mb         | marginBottom              | spaces     | addPx     |
-| marginLeft     | marginLeft, ml           | marginLeft                | spaces     | addPx     |
-| marginX        | marginX, mx              | marginLeft, marginRight   | spaces     | addPx     |
-| marginY        | marginY, my              | marginTop, marginBottom   | spaces     | addPx     |
-| margin         | margin, m                | margin                    | spaces     | addPx     |
+| marginTop      | marginTop, mt            | marginTop                 | spaces, space | addPx     |
+| marginRight    | marginRight, mr          | marginRight               | spaces, space | addPx     |
+| marginBottom   | marginBottom, mb         | marginBottom              | spaces, space | addPx     |
+| marginLeft     | marginLeft, ml           | marginLeft                | spaces, space | addPx     |
+| marginX        | marginX, mx              | marginLeft, marginRight   | spaces, space | addPx     |
+| marginY        | marginY, my              | marginTop, marginBottom   | spaces, space | addPx     |
+| margin         | margin, m                | margin                    | spaces, space | addPx     |
 | **paddingSet** | _all padding keys below_ |
-| paddingTop     | paddingTop, pt           | paddingTop                | spaces     | addPx     |
-| paddingRight   | paddingRight, pr         | paddingRight              | spaces     | addPx     |
-| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces     | addPx     |
-| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces     | addPx     |
-| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces     | addPx     |
-| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces     | addPx     |
-| padding        | padding, p               | padding                   | spaces     | addPx     |
+| paddingTop     | paddingTop, pt           | paddingTop                | spaces, space | addPx     |
+| paddingRight   | paddingRight, pr         | paddingRight              | spaces, space | addPx     |
+| paddingBottom  | paddingBottom, pb        | paddingBottom             | spaces, space | addPx     |
+| paddingLeft    | paddingLeft, pl          | paddingLeft               | spaces, space | addPx     |
+| paddingX       | paddingX, px             | paddingLeft, paddingRight | spaces, space | addPx     |
+| paddingY       | paddingY, py             | paddingTop, paddingBottom | spaces, space | addPx     |
+| padding        | padding, p               | padding                   | spaces, space | addPx     |
 | **spaceSet**   | _all keys above_         |
 
 ## Text
