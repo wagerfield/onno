@@ -16,8 +16,8 @@
     "format:write": "yarn format --write",
     "copy:readme": "cpx readme.md packages/onno && cpx readme.md packages/onno-app",
     "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types}'",
-    "types": "lerna exec -- tsc --emitDeclarationOnly",
-    "build": "lerna exec -- tsc",
+    "types": "lerna exec --ignore onno-app -- tsc --emitDeclarationOnly",
+    "build": "lerna exec --ignore onno-app -- tsc",
     "setup": "lerna bootstrap",
     "bundle": "rollup --config",
     "release": "lerna publish",
@@ -41,10 +41,6 @@
     ],
     "**/*.{json,js,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "readme.md": [
-      "yarn copy:readme",
       "git add"
     ]
   },
