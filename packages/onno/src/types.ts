@@ -22,25 +22,25 @@ export type ResponsiveProp<T> = ResponsivePropArray<T> | ResponsivePropObject<T>
 
 export type Prop<T> = T | ResponsiveProp<T> | Nil
 
-export interface Alias<T> {
+export interface Alias<T = Primitive> {
   alias: Key
   value: T
 }
 
 export type ThemeArrayValue<T> = Alias<T> | T
 
-export type ThemeArray<T> = ThemeArrayValue<T>[]
+export type ThemeArray<T = Primitive> = ThemeArrayValue<T>[]
 
-export interface ThemeObject<T> {
+export interface ThemeObject<T = Primitive> {
   [key: string]: ThemeObject<T> | ThemeArray<T> | T
 }
 
-export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | null
+export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | Nil
 
-export type Breakpoints<T = Primitive> = ThemeArray<T> | null
+export type Breakpoints<T = Primitive> = ThemeArray<T> | Nil
 
 export interface Theme {
-  [key: string]: ThemeValue | undefined
+  [key: string]: ThemeValue
   // Breakpoints
   breakpoints?: Breakpoints
   // Global
