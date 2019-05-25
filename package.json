@@ -21,7 +21,8 @@
     "setup": "lerna bootstrap",
     "bundle": "rollup --config",
     "release": "lerna publish",
-    "prepublishOnly": "yarn clean && yarn types && yarn bundle && yarn format:write"
+    "preflight": "yarn clean && yarn types && yarn bundle && yarn format:write",
+    "prepublishOnly": "yarn preflight"
   },
   "workspaces": [
     "packages/*"
