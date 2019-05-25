@@ -1,7 +1,7 @@
 {
   "name": "onno-react",
   "license": "MIT",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Onno propTypes for React",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-react#readme",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "@types/prop-types": "15.7.1",
-    "onno": "0.0.11",
+    "onno": "0.0.12",
     "prop-types": "15.7.2"
   }
 }
