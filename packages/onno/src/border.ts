@@ -146,7 +146,7 @@ export interface BorderRadiusStyle extends T.Style {
 
 export const borderRadius = ex<BorderRadiusProps, BorderRadiusStyle>({
   propsKeys: ["borderRadius", "rad"],
-  themeKeys: ["borderRadii", "radii"],
+  themeKeys: ["borderRadii"],
   transform: addPcOrPx,
   defaults: PX_SCALE
 })
