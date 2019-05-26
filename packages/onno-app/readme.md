@@ -76,5 +76,6 @@ The additional features introduced by onno are [presented in detail here](https:
 [styled-components]: https://styled-components.com
 [styled-system]: https://styled-system.com
 [styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
+[styled-system-comment]: https://github.com/styled-system/styled-system/issues/463#issuecomment-487167817
 [typescript]: https://www.typescriptlang.org
 [jxnblk]: https://jxnblk.com
