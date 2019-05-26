@@ -1,3 +1,5 @@
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
 export type Length = number
 
 export type Nil = null | undefined
@@ -43,8 +45,6 @@ export interface Theme {
   [key: string]: ThemeValue
   // Breakpoints
   breakpoints?: Breakpoints
-  // Global
-  global?: ThemeValue
   // Animation
   animations?: ThemeValue
   transitions?: ThemeValue
@@ -79,7 +79,8 @@ export interface Theme {
   fontWeights?: ThemeValue
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
-  // Variants
+  // Styles
+  globalStyles?: ThemeValue
   buttonStyles?: ThemeValue
   colorStyles?: ThemeValue
   textStyles?: ThemeValue
@@ -95,15 +96,16 @@ export type TransformFunction = (value: any) => any
 
 export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
 
-export interface VariantOptions {
+export interface StyleOptions {
   propsKeys: Keys
+  styleKeys?: Keys | null
   themeKeys?: Keys
   transform?: TransformFunction
   defaults?: ThemeValue
 }
 
-export interface StyleOptions extends VariantOptions {
-  styleKeys?: Keys | null
+export interface VariantOptions extends Omit<StyleOptions, "styleKeys"> {
+  renderers?: AnyRenderFunction[]
 }
 
 export interface Style {
