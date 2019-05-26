@@ -1,10 +1,10 @@
-# Utils <!-- omit in toc -->
+# Utils<!-- omit in toc -->
 
 Onno uses a number of utility functions internally to resolve, query and transform values.
 
 These functions can be useful for when you create your own transform functions or component style sets.
 
-## Table of Contents <!-- omit in toc -->
+## Table of Contents<!-- omit in toc -->
 
 - [`isNil`](#isnil)
 - [`isUndefined`](#isundefined)

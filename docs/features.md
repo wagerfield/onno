@@ -1,4 +1,4 @@
-# Preface <!-- omit in toc -->
+# Preface<!-- omit in toc -->
 
 Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. [Facepaint][emotion-facepaint] also deserves credit for the original idea behind responsive style values.
 
@@ -6,7 +6,7 @@ Onno started life as a rewrite of Styled System in [TypeScript][typescript] foll
 
 The additional features introduced by onno are presented in detail below.
 
-## Features <!-- omit in toc -->
+## Features<!-- omit in toc -->
 
 - [Framework agnostic](#framework-agnostic)
 - [TypeScript](#typescript)

@@ -1,4 +1,4 @@
-# API <!-- omit in toc -->
+# API<!-- omit in toc -->
 
 At the core of onno is the `style` function. The `style` function takes an `options` object and returns a `render` function. The `render` function can then be called with some `props` to produce an array of style objects.
 
@@ -30,7 +30,7 @@ const Box2 = styled.div(styles)
 
 In the example above `Box1` uses the `styles` function in a tagged template literal and `Box2` passes it directly as an argument. Both [styled-components][styled-components] and [emotion][emotion] support each approach so you can decide which style to adopt.
 
-## Table of Contents <!-- omit in toc -->
+## Table of Contents<!-- omit in toc -->
 
 - [`style`](#style)
   - [`options`](#options)
