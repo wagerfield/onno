@@ -1,6 +1,6 @@
 # Preface <!-- omit in toc -->
 
-Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. A lot of the ideas are owed to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [Emotion's facepaint][emotion-facepaint] for the original ideas behind responsive prop values.
+Onno is an iteration of [Styled System][styled-system] rewritten in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. Credit is also due to [facepaint][emotion-facepaint] for the original ideas behind responsive style values.
 
 Onno actually started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However, during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
 
@@ -347,7 +347,7 @@ A number of naming conventions have been introduced by onno to help enforce cons
 4. All `theme` keys follow a plural naming convention and use the same name as the _standard_ or _composed_ render functions. The key differences between Styled System and onno's theme keys are:
    - `fonts » fontFamilies`
    - `space » spaces`
-   - `radii » borderRadii` (with `radii` fallback)
+   - `radii » borderRadii`
    - `shadows » boxShadows` (onno also has `textShadows`)
    - `buttons » buttonStyles`
 5. All _variant_ render functions end in "Style" eg. `buttonStyle` and `colorStyle`.
