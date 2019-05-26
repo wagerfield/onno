@@ -4,7 +4,7 @@ Onno is an iteration of [Styled System][styled-system] written in [TypeScript][t
 
 Onno started life as a rewrite of Styled System in [TypeScript][typescript] following a [discussion on GitHub][styled-system-comment]. However, during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
 
-The additional features introduced by onno are discussed in detail below.
+The additional features introduced by onno are presented in detail below.
 
 ## Features <!-- omit in toc -->
 
