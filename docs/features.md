@@ -13,6 +13,7 @@ The additional features introduced by onno are presented in detail below.
 - [Prop keys as an array](#prop-keys-as-an-array)
 - [Style keys as an array](#style-keys-as-an-array)
 - [Theme keys as an array](#theme-keys-as-an-array)
+- [Recursive render functions](#recursive-render-functions)
 - [Serializable themes](#serializable-themes)
 - [Dot syntax and value inversion](#dot-syntax-and-value-inversion)
 - [Simpler transform functions](#simpler-transform-functions)
@@ -194,6 +195,10 @@ const Box = styled.div(size, width)
 The second `Box` provides a `width` prop index value of `2` which falls outside the `widths` array in the `theme`. Since the `width` render function specifies two `themeKeys` of "widths" and "sizes" the resolver then moves onto the `sizes` key in the `theme` where it is able to resolve a value of "400px" at the third index (2) in this array.
 
 If the `theme` did not have a `widths` array then the `sizes` array would resolve values for both render functions.
+
+### Recursive render functions
+
+This is one of the _major features_ introduced by onno.
 
 ### Serializable themes
 
