@@ -71,3 +71,49 @@ Array [
 exports[`returns null for unresolved values: {
   "a": "foo"
 } 1`] = `null`;
+
+exports[`transforms values through renderers: {
+  "a": "foo",
+  "theme": {
+    "testStyles": {
+      "foo": {
+        "color": "text",
+        "width": 0.5
+      },
+      "bar": {
+        "color": "link",
+        "width": 4
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "color": "text",
+    "width": 0.5,
+  },
+]
+`;
+
+exports[`transforms values through renderers: {
+  "b": "bar",
+  "theme": {
+    "testStyles": {
+      "foo": {
+        "color": "text",
+        "width": 0.5
+      },
+      "bar": {
+        "color": "link",
+        "width": 4
+      }
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "color": "link",
+    "width": 4,
+  },
+]
+`;

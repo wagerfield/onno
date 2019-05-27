@@ -52,3 +52,26 @@ test("renders style object from theme", () => {
   testProps({ a: "foo", theme })
   testProps({ b: "bar", theme })
 })
+
+test("transforms values through renderers", () => {
+  const styleFunc = O.variant({
+    propsKeys: ["a", "b"],
+    themeKeys: ["testStyles"],
+    renderers: [O.color, O.width]
+  })
+  const theme = {
+    testStyles: {
+      foo: {
+        color: "text",
+        width: 0.5
+      },
+      bar: {
+        color: "link",
+        width: 4
+      }
+    }
+  }
+  const testProps = U.snapshot(styleFunc)
+  testProps({ a: "foo", theme })
+  testProps({ b: "bar", theme })
+})
