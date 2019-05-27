@@ -1,27 +1,12 @@
 import * as T from "./types"
 import { variant } from "./style"
-import { border, borderRadius } from "./border"
-import { transition } from "./animation"
-import { boxShadow } from "./shadow"
+import { globalSet } from "./global"
 import { colorSet } from "./color"
-import { spaceSet } from "./space"
-import { sizeSet } from "./layout"
 import { textSet } from "./text"
 
 export type VariantProp = T.Prop<number | string>
 
-// Global
-
-const globalRenderers = [
-  border,
-  borderRadius,
-  boxShadow,
-  colorSet,
-  spaceSet,
-  sizeSet,
-  textSet,
-  transition
-]
+// Global Variant
 
 export interface GlobalStyleProps extends T.ThemeProps {
   globalStyle?: VariantProp
@@ -31,10 +16,10 @@ export interface GlobalStyleProps extends T.ThemeProps {
 export const globalStyle = variant<GlobalStyleProps>({
   propsKeys: ["globalStyle", "gst"],
   themeKeys: ["globalStyles"],
-  renderers: globalRenderers
+  renderers: [globalSet]
 })
 
-// Button
+// Button Variant
 
 export interface ButtonStyleProps extends T.ThemeProps {
   buttonStyle?: VariantProp
@@ -44,10 +29,10 @@ export interface ButtonStyleProps extends T.ThemeProps {
 export const buttonStyle = variant<ButtonStyleProps>({
   propsKeys: ["buttonStyle", "bst"],
   themeKeys: ["buttonStyles"],
-  renderers: globalRenderers
+  renderers: [globalSet]
 })
 
-// Color
+// Color Variant
 
 export interface ColorStyleProps extends T.ThemeProps {
   colorStyle?: VariantProp
@@ -60,7 +45,7 @@ export const colorStyle = variant<ColorStyleProps>({
   renderers: [colorSet]
 })
 
-// Text
+// Text Variant
 
 export interface TextStyleProps extends T.ThemeProps {
   textStyle?: VariantProp
