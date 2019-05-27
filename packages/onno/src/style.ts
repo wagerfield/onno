@@ -2,7 +2,6 @@ import * as T from "./types"
 import {
   mq,
   get,
-  uniq,
   resolve,
   toArray,
   isArray,
@@ -102,6 +101,20 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   return renderProps
 }
 
+export function uniq(
+  renderers: T.AnyRenderFunction[],
+  initial: T.AnyRenderFunction[] = []
+): T.AnyRenderFunction[] {
+  return renderers.reduce((collection, renderer) => {
+    if (renderer.options.renderers) {
+      uniq(renderer.options.renderers, initial)
+    } else if (collection.indexOf(renderer) === -1) {
+      collection.push(renderer)
+    }
+    return collection
+  }, initial)
+}
+
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   renderers: T.AnyRenderFunction[]
 ): T.RenderFunction<P, S>
@@ -113,11 +126,12 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   ...args: any[]
 ): T.RenderFunction<P, S> {
-  const renderers = uniq<T.AnyRenderFunction>(toArray(args))
+  const renderers = uniq(toArray(args))
   const options: T.StyleOptions = {
     propsKeys: [],
     styleKeys: [],
-    themeKeys: []
+    themeKeys: [],
+    renderers
   }
 
   // Build options keys
@@ -127,9 +141,6 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
       if (keys) push.apply(options[key], keys)
     })
   )
-
-  // Make keys unique
-  KEYS.forEach((key) => (options[key] = uniq(options[key]!)))
 
   // Create scoped renderProps style function
   const renderProps: T.RenderFunction<P, S> = (props: P) => {

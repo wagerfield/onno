@@ -1,21 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`only calls a style function once: {
-  "a": 1
+exports[`deduplicates style functions: {
+  "a": 1,
+  "b": 2,
+  "c": 3,
+  "d": 4,
+  "e": 5,
+  "f": 6
 } 1`] = `
 Array [
+  Object {
+    "e": 5,
+  },
   Object {
     "a": 1,
   },
-]
-`;
-
-exports[`only calls a style function once: {
-  "b": 2
-} 1`] = `
-Array [
   Object {
-    "a": 2,
+    "c": 3,
   },
 ]
 `;

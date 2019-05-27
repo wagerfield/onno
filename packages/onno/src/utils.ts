@@ -62,12 +62,3 @@ export function resolve(paths?: any[], lookup?: any) {
     return isUndefined(r) ? v : r
   }, undefined)
 }
-
-export const uniq = <V>(list: V[]) =>
-  list.reduce(
-    (a, v) => {
-      if (a.indexOf(v) === -1) a.push(v)
-      return a
-    },
-    [] as V[]
-  )

@@ -237,10 +237,3 @@ test("resolve", () => {
   expect(O.resolve(["baz.5"], U.OBJ)).toBe(0)
   expect(O.resolve(["baz.A5"], U.OBJ)).toBeUndefined()
 })
-
-test("uniq", () => {
-  const a = { a: 1 }
-  const b = { b: 2 }
-  expect(O.uniq([1, 2, 2, 1])).toEqual([1, 2])
-  expect(O.uniq([a, b, b, a])).toEqual([a, b])
-})

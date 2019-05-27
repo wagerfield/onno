@@ -59,20 +59,16 @@ test("respects order of style functions", () => {
   testProps({ c: 3 })
 })
 
-test("only calls a style function once", () => {
-  interface TestProps extends O.ThemeProps {
-    a: any
-    b: any
-  }
+test("deduplicates style functions", () => {
+  const styleFunc1 = O.style<any, any>({ propsKeys: ["a", "b"] })
+  const styleFunc2 = O.style<any, any>({ propsKeys: ["c", "d"] })
+  const styleFunc3 = O.style<any, any>({ propsKeys: ["e", "f"] })
 
-  interface TestStyle extends O.Style {
-    a: any
-  }
+  const styleSet1 = O.compose([styleFunc1, styleFunc2, styleFunc1])
+  const styleSet2 = O.compose([styleFunc2, styleFunc3, styleFunc1])
+  const styleSet3 = O.compose([styleFunc3, styleSet1, styleSet2])
 
-  const styleFunc = O.style<TestProps, TestStyle>({ propsKeys: ["a", "b"] })
-  const styleSet = O.compose([styleFunc, styleFunc, styleFunc])
-  const testProps = U.snapshot(styleSet)
+  const testProps = U.snapshot(styleSet3)
 
-  testProps({ a: 1 })
-  testProps({ b: 2 })
+  testProps({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 })
 })
