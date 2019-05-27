@@ -5,9 +5,10 @@
         label="Size"
         :value="size"
         @input="$emit('update:size', $event)"
+        @keydown="setSizeStep"
         type="number"
         min="1"
-        step="1"
+        :step="sizeStep"
         :validator="validateSize"
       />
       <v-input
@@ -31,11 +32,19 @@ import VInput from "./input"
 
 export default {
   props,
+  data() {
+    return {
+      sizeStep: 1
+    }
+  },
   components: {
     VButton,
     VInput
   },
   methods: {
+    setSizeStep({ altKey, shiftKey }) {
+      this.sizeStep = altKey ? 0.5 : shiftKey ? 10 : 1
+    },
     validateSize(value) {
       return value >= 1 && value % 0.5 === 0
     },
