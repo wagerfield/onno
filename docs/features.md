@@ -14,7 +14,7 @@ The additional features introduced by onno are presented in detail below.
 - [Style keys as an array](#style-keys-as-an-array)
 - [Theme keys as an array](#theme-keys-as-an-array)
 - [Serializable themes](#serializable-themes)
-- [Dot syntax for props and theme keys](#dot-syntax-for-props-and-theme-keys)
+- [Dot syntax and value inversion](#dot-syntax-and-value-inversion)
 - [Simpler transform functions](#simpler-transform-functions)
 - [More render functions and aliases](#more-render-functions-and-aliases)
 - [Strict naming conventions](#strict-naming-conventions)
@@ -127,17 +127,19 @@ Styled System provides a `cssProperty` option to map a `prop` key to a different
 
 In some cases you need to map a `prop` value to multiple `style` keys. Examples of this are the `size` prop that maps to `width` and `height` style keys and the `marginX` prop that maps to `marginLeft` and `marginRight` style keys.
 
-Onno's `styleKeys` option solves this problem:
+Onno solves with problem with the `styleKeys` option which supports one-to-one, one-to-many, many-to-one and many-to-many key maps:
 
 ```jsx
 import styled from "styled-system"
 import { style } from "onno"
 
+// many-to-one
 const font = style({
   propsKeys: ["font", "f"],
   styleKeys: ["fontFamily"]
 })
 
+// many-to-many
 const size = style({
   propsKeys: ["size", "s"],
   styleKeys: ["width", "height"]
@@ -189,7 +191,7 @@ const Box = styled.div(size, width)
 <Box theme={theme} s={1} w={2} />
 ```
 
-The second `Box` provides a `width` prop value of `2` which falls outside the `widths` array in the `theme`. Since the `width` render function specifies two `themeKeys` of "widths" and "sizes" the resolver then moves onto the `sizes` key in the `theme` where it is able to resolve a value of "400px" at this location.
+The second `Box` provides a `width` prop index value of `2` which falls outside the `widths` array in the `theme`. Since the `width` render function specifies two `themeKeys` of "widths" and "sizes" the resolver then moves onto the `sizes` key in the `theme` where it is able to resolve a value of "400px" at the third index (2) in this array.
 
 If the `theme` did not have a `widths` array then the `sizes` array would resolve values for both render functions.
 
@@ -201,7 +203,7 @@ When working with arrays of values in a `theme` (Styled System refers to these a
 
 Styled System's solution to the first problem is to create index aliases by adding string keys to an array of values _after_ it has been created and assigning them to values within the array. Though this approach works in JavaScript, it does not lend itself well to serialization since values must be repeated and can easily fall out of sync. Furthermore, TypeScript does not permit string index signatures on arrays.
 
-To address this problem, onno introduced "alias objects" which support array value lookups using both an `index` and a string `alias`. An alias object takes this form of `{ alias: string, value: any }`. This solution lends itself to serialization while also tackling the issue of adding, removing and reordering items in an array (as long as you are referencing the values via the `alias` of course).
+To address this problem, onno introduced "alias objects" which support array value lookups using both an `index` _and_ a string `alias`. An alias object takes this form of `{ alias: string, value: any }`. This solution lends itself to serialization while also tackling the issue of adding, removing and reordering items in an array (as long as you are referencing the values via the `alias` of course).
 
 For example, a `theme` written in JSON using array alias objects would look like this:
 
@@ -264,9 +266,9 @@ const Box = styled.div(width)
 <Box width={{ xs: "100%", md: "50%" }} />
 ```
 
-### Dot syntax for props and theme keys
+### Dot syntax and value inversion
 
-Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function.
+Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function. Styled System's `space` functions (margin and padding) also support negative lookup values to invert resolved values. This is useful for negative margins.
 
 Onno also supports dot syntax for `prop` values, `themeKeys` and _alias objects_ within arrays. This flexible interface allows you to structure and nest your `theme` however you like. In addition to this, onno supports inversion of _any_ value simply by prefixing a lookup path or index with a negative sign. For example:
 
@@ -312,7 +314,7 @@ Since onno's internal `get` utility supports inversion for _all_ values, passing
 
 Styled System ships with a comprehensive set of render functions. Onno builds on these to provide a more complete set that covers the majority of commonly used CSS properties. More can be added in time with demand, so please [submit a feature request][onno-issues] if you require a render function that is not implemented yet.
 
-[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate _rapid UI development_ once you become familiar with them. Having said that, aliases should be used at your own discretion since their terse benefits come at a sacrifice of self-documentation and readability for anyone not familiar with them.
+[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate _rapid UI development_ once you become familiar with them. Having said that, aliases should be used at your own discretion since their terse benefits come at the sacrifice of self-documentation and readability for anyone who is not familiar with them.
 
 ### Strict naming conventions
 
