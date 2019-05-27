@@ -1,5 +1,3 @@
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
 export type Length = number
 
 export type Nil = null | undefined
@@ -101,11 +99,8 @@ export interface StyleOptions {
   styleKeys?: Keys | null
   themeKeys?: Keys
   transform?: TransformFunction
-  defaults?: ThemeValue
-}
-
-export interface VariantOptions extends Omit<StyleOptions, "styleKeys"> {
   renderers?: AnyRenderFunction[]
+  defaults?: ThemeValue
 }
 
 export interface Style {
@@ -120,10 +115,12 @@ export type StyleObject<S extends Style> = S | NestedStyle<S>
 
 export type StyleArray<S extends Style> = StyleObject<S>[]
 
+export type RenderFunctionType = "style" | "compose" | "variant"
+
 export interface RenderFunction<P extends ThemeProps, S extends Style> {
   (props: P): StyleArray<S> | null
+  type: RenderFunctionType
   options: StyleOptions
-  composed: boolean
 }
 
 export type AnyRenderFunction = RenderFunction<any, any>

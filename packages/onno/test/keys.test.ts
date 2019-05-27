@@ -8,19 +8,19 @@ interface Index {
 
 const index: Index = O
 
-function getStyles(composed: boolean) {
+function getStyles(type: O.RenderFunctionType) {
   return Object.keys(index).reduce(
     (fns, key) => {
       const fn = index[key]
-      if (fn.options && fn.composed === composed) fns.push(fn)
+      if (fn.options && fn.type === type) fns.push(fn)
       return fns
     },
     [] as O.RenderFunction<any, any>[]
   )
 }
 
-function getKeys(key: StyleOptionsKeys, composed: boolean) {
-  return getStyles(composed).reduce(
+function getKeys(key: StyleOptionsKeys, type: O.RenderFunctionType) {
+  return getStyles(type).reduce(
     (keys, fn) => {
       const options = fn.options
       const hasKeys = !O.isNil(options) && O.isArray(options[key])
@@ -31,7 +31,9 @@ function getKeys(key: StyleOptionsKeys, composed: boolean) {
 }
 
 test("propsKeys are unique", () => {
-  const arr = getKeys("propsKeys", false)
+  const stylePropKeys = getKeys("propsKeys", "style")
+  const variantPropKeys = getKeys("propsKeys", "variant")
+  const arr = stylePropKeys.concat(variantPropKeys)
   const set = new Set(arr)
   const diff = arr.concat()
   set.forEach((key) => {

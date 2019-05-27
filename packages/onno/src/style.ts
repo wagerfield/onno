@@ -19,7 +19,10 @@ const BREAKPOINTS: T.Breakpoints = ["xs", "sm", "md", "lg", "xl"].map(
 
 const push = Array.prototype.push
 
-export function render<S extends T.Style>(keys?: T.Keys, value?: any) {
+export function renderStyle<S extends T.Style>(
+  keys?: T.Keys,
+  value?: any
+): S | null {
   if (isNil(value) || !isArray(keys) || !keys.length) return null
   return keys.reduce(
     (s, k) => {
@@ -34,16 +37,17 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
   const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
+  const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
-  // Create scoped renderValue style function
-  const renderValue = (value: any, theme?: T.Theme) => {
+  // Scoped value renderer
+  const renderValue = (value: any, theme?: T.Theme): S | null => {
     if (!isUndefined(resolve(themeKeys, theme))) {
       // Resolve theme value
       const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
       const themeValue = resolve(mappedKeys, theme)
       if (!isNil(themeValue)) value = themeValue
     } else if (defaults) {
-      // Resolve default value
+      // Resolve defaults value
       const defaultValue = get(value, defaults)
       if (!isNil(defaultValue)) value = defaultValue
     }
@@ -51,30 +55,27 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     // Transform value
     if (typeof transform === "function") value = transform(value)
 
-    // Resolve style object
+    // Return raw value or rendered style object
     if (styleKeys === null) {
-      // Return style object
       return isObject(value) && !isArray(value) ? (value as S) : null
     } else {
-      // Render style object
-      const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-      return render<S>(keys, value)
+      return renderStyle<S>(keys, value)
     }
   }
 
-  // Create scoped renderProps style function
+  // Scoped props renderer
   const renderProps: T.RenderFunction<P, S> = (props: P) => {
     // Get first propsValue from propsKeys
-    const propsValue = resolve(propsKeys, props)
+    const propsValue = resolve(options.propsKeys, props)
 
-    // Return null when value is undefined
+    // Return null when value is nil
     if (isNil(propsValue)) return null
 
     // Build styles array
     const { theme } = props
     const styles: T.StyleArray<S> = []
     const pushStyle = (value: any, query?: string) => {
-      const result: T.StyleObject<S> | null = renderValue(value, theme)
+      const result = renderValue(value, theme)
       return result && styles.push(query ? { [query]: result } : result)
     }
 
@@ -95,9 +96,9 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     return styles.length ? styles : null
   }
 
-  // Set options and composed
+  // Return renderProps function
+  renderProps.type = "style" as "style"
   renderProps.options = options
-  renderProps.composed = false
   return renderProps
 }
 
@@ -140,9 +141,9 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
     return result.length ? result : null
   }
 
-  // Set options and composed
+  // Return render function
+  renderProps.type = "compose" as "compose"
   renderProps.options = options
-  renderProps.composed = true
   return renderProps
 }
 
@@ -154,7 +155,11 @@ export const extend = (a: Partial<T.StyleOptions>) => <
 ) => style<P, S>({ ...a, ...b })
 
 export function variant<P extends T.ThemeProps, S extends T.Style = any>(
-  options: T.VariantOptions
+  options: T.StyleOptions
 ): T.RenderFunction<P, S> {
-  return style<P, S>({ ...options, styleKeys: null })
+  const renderProps = style<P, S>({ ...options, styleKeys: null })
+
+  // Return render function
+  renderProps.type = "variant" as "variant"
+  return renderProps
 }
