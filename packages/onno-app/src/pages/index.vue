@@ -12,7 +12,7 @@ import VFooter from "~/components/footer"
 export default {
   data() {
     return {
-      size: 32,
+      size: 16,
       text: "onno",
       color: "ivory",
       background: "tomato"

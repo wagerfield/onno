@@ -13,11 +13,38 @@
 </template>
 
 <script>
-import paths from "~/common/paths"
+import chars from "~/common/chars"
 
+const NUM = /\d/g
 const MAP = {
   polygon: "points",
   path: "d"
+}
+
+const getProps = (path, scale, x, y) => {
+  const tag = isNaN(path[0]) ? "path" : "polygon"
+  return path.split(" ").reduce(
+    (props, str, idx, arr) => {
+      const match = str.match(NUM)
+      if (tag === "path" && match) {
+        props.w = Math.max(props.w, match[0] * scale)
+        props.h = Math.max(props.h, match[1] * scale)
+      } else if (tag === "polygon" && idx % 2) {
+        props.w = Math.max(props.w, arr[idx - 1] * scale)
+        props.h = Math.max(props.h, str * scale)
+      }
+      return props
+    },
+    {
+      tag,
+      path: path.replace(NUM, (v) => v * scale),
+      transform: `translate(${x})`,
+      w: 0,
+      h: 0,
+      x,
+      y
+    }
+  )
 }
 
 export default {
@@ -25,7 +52,7 @@ export default {
   props: {
     size: {
       type: Number,
-      default: 4
+      default: 2
     },
     text: {
       type: String,
@@ -37,36 +64,25 @@ export default {
     }
   },
   computed: {
-    paths() {
-      return paths(this.size)
-    },
-    space() {
-      return Math.ceil(this.size * 0.5)
-    },
     chars() {
       let x = 0
-      const { paths, space, size, text } = this
-      return text.split("").reduce((chars, key, index) => {
-        const path = paths[key]
+      const { size, text } = this
+      return text.split("").reduce((arr, key, index) => {
+        const path = chars[key]
         if (path) {
-          chars.push({
-            ...path,
-            transform: `translate(${x})`,
-            index,
-            x
-          })
-          x += path.cols * size + space
+          const props = getProps(path, size, x, 0)
+          arr.push(Object.assign({ index }, props))
+          x += props.w + Math.ceil(size)
         }
-        return chars
+        return arr
       }, [])
     },
     width() {
-      const { chars, size } = this
-      const last = chars[chars.length - 1]
-      return last ? Math.max(last.x + last.cols * size, 0) : 0
+      const last = this.chars[this.chars.length - 1]
+      return last ? Math.max(last.x + last.w, 0) : 0
     },
     height() {
-      return Math.max(this.size * 4, 0)
+      return Math.max(this.size * 8, 0)
     },
     viewBox() {
       return `0 0 ${this.width} ${this.height}`

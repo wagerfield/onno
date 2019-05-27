@@ -6,7 +6,7 @@
         :value="size"
         @input="$emit('update:size', $event)"
         type="number"
-        min="2"
+        min="1"
         step="1"
         :validator="validateSize"
       />
@@ -24,11 +24,10 @@
 </template>
 
 <script>
+import { REGEX } from "~/common/chars"
 import props from "~/common/props"
 import VButton from "./button"
 import VInput from "./input"
-
-const CHARS = /[^\son|+:.-]/
 
 export default {
   props,
@@ -38,10 +37,10 @@ export default {
   },
   methods: {
     validateSize(value) {
-      return value > 1
+      return value >= 1 && value % 0.5 === 0
     },
     validateText(value) {
-      return !CHARS.test(value)
+      return !REGEX.test(value)
     }
   }
 }
