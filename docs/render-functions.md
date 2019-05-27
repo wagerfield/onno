@@ -196,12 +196,11 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | transformOrigin   | transformOrigin, tfo   | transformOrigin   | none       | none      |
 | **transformSet**  | _all keys above_       |
 
-## Variant
+## Global
 
 In addition to the `render` functions above, onno provides a `globalSet` which is _composed_ of:
 
-- border
-- borderRadius
+- borderSet
 - boxShadow
 - colorSet
 - spaceSet
@@ -209,7 +208,9 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 - textSet
 - transition
 
-The `globalSet` is used by the `globalStyle` and `buttonStyle` variant functions:
+The `globalSet` render function is used by the `globalStyle` and `buttonStyle` variant functions, allowing you to reference common design tokens within your theme like `colors`, `sizes`, `spaces` and `fontSizes`.
+
+## Variant
 
 | Function Name | Props Keys       | Theme Keys   | Renderers |
 | :------------ | :--------------- | :----------- | :-------- |
