@@ -21,23 +21,24 @@ const MAP = {
   path: "d"
 }
 
-const getProps = (path, scale, x, y) => {
+const getProps = (path, size, x, y) => {
   const tag = isNaN(path[0]) ? "path" : "polygon"
+  const scale = (v) => Math[v < 4 ? "ceil" : "floor"](v * size)
   return path.split(" ").reduce(
-    (props, str, idx, arr) => {
-      const match = str.match(NUM)
+    (props, value, index, array) => {
+      const match = value.match(NUM)
       if (tag === "path" && match) {
-        props.w = Math.max(props.w, match[0] * scale)
-        props.h = Math.max(props.h, match[1] * scale)
-      } else if (tag === "polygon" && idx % 2) {
-        props.w = Math.max(props.w, arr[idx - 1] * scale)
-        props.h = Math.max(props.h, str * scale)
+        props.w = Math.max(props.w, scale(match[0]))
+        props.h = Math.max(props.h, scale(match[1]))
+      } else if (tag === "polygon" && index % 2) {
+        props.w = Math.max(props.w, scale(array[index - 1]))
+        props.h = Math.max(props.h, scale(value))
       }
       return props
     },
     {
       tag,
-      path: path.replace(NUM, (v) => v * scale),
+      path: path.replace(NUM, scale),
       transform: `translate(${x})`,
       w: 0,
       h: 0,
