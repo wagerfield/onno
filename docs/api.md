@@ -38,6 +38,7 @@ In the example above `Box1` uses the `styles` function in a tagged template lite
   - [`styleKeys`](#stylekeys)
   - [`themeKeys`](#themekeys)
   - [`transform`](#transform)
+  - [`renderers`](#renderers)
   - [`defaults`](#defaults)
 - [`variant`](#variant)
 - [`compose`](#compose)
@@ -51,13 +52,14 @@ It expects an `options` object as the first and _only_ argument with the followi
 
 ### `options`
 
-| Key                       | Type            | Required | Description                           |
-| :------------------------ | :-------------- | :------- | :------------------------------------ |
-| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from.        |
-| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to.          |
-| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from.     |
-| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through. |
-| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values.                |
+| Key                       | Type            | Required | Description                                   |
+| :------------------------ | :-------------- | :------- | :-------------------------------------------- |
+| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from.                |
+| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to.                  |
+| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from.             |
+| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through.         |
+| [`renderers`](#renderers) | `Renderer[]`    | `false`  | Render functions to transform styles through. |
+| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values.                        |
 
 ### `propsKeys`
 
@@ -245,6 +247,104 @@ import { when, isUnitless } from "onno"
 const addEm = when(isUnitless)((x) => x + "em")
 ```
 
+### `renderers`
+
+An array of `render` functions to transform styles through. For example:
+
+```jsx
+import styled from "styled-components"
+import { style, margin, padding } from "onno"
+
+const space = style({
+  propsKeys: ["space", "sp"],
+  styleKeys: ["margin", "padding"],
+  renderers: [margin, padding]
+})
+
+const Box = styled.div(space)
+
+// [{ margin: "16px" }, { padding: "16px" }]
+<Box space={4} />
+
+// [{ margin: "2em" }, { padding: "2em" }]
+<Box sp="2em" />
+```
+
+In the example above, the `space` render function maps "space" and "sp" props to "margin" and "padding" style keys. In the absence of a [`transform`](#transform) function being passed as an option, any values passed to "space" or "sp" props would be mapped directly.
+
+However, since the `margin` and `padding` functions have been passed as `renderers` to the `space` function, the style object that would normally be returned will be run through these `renderers` as if they were `props` and transform them accordingly.
+
+This is a _powerful feature_ since it allows you to create [`variant`](#variant) functions that can lookup and transform values referenced elsewhere in a theme. Furthermore, you can use custom properties (like `size` which maps to `width` and `height`) and aliases (like `fs` for `fontSize`). For example:
+
+```jsx
+import styled from "styled-components"
+import { variant, colorSet, sizeSet, textSet } from "onno"
+
+const buttonStyle = variant({
+  propsKeys: ["buttonStyle", "bst"],
+  themeKeys: ["buttonStyles"],
+  renderers: [colorSet, sizeSet, textSet]
+})
+
+const theme = {
+  colors: {
+    white: "#FAFAFA",
+    black: "#202020",
+    grays: ["#444", "#888", "#CCC"],
+    brand: {
+      primary: "tomato",
+      secondary: "olive"
+    }
+  },
+  fontSizes: {
+    sm: 16,
+    md: 20,
+    lg: 32
+  },
+  sizes: {
+    sm: 24,
+    md: 32,
+    lg: 48
+  },
+  buttonStyles: {
+    normal: {
+      width: 0.5,
+      height: "md",
+      fontSize: "sm",
+      background: "grays.2",
+      color: "black"
+    },
+    primary: {
+      w: 1, // "width" prop alias
+      h: "lg", // "height" prop alias
+      fs: "md", // "fontSize" prop alias
+      bg: "brand.primary", // "background" prop alias
+      tc: "white" // "color" prop alias
+    }
+  }
+}
+
+const Box = styled.div(buttonStyle)
+
+// [
+//   { width: "50%" },
+//   { height: "32px" },
+//   { fontSize: "16px" },
+//   { background: "#CCC" },
+//   { color: "#202020" }
+// ]
+<Box theme={theme} buttonStyle="normal" />
+
+// [
+//   { width: "100%" },
+//   { height: "48px" },
+//   { fontSize: "20px" },
+//   { background: "tomato" },
+//   { color: "#FAFAFA" }
+// ]
+<Box theme={theme} bst="primary" />
+```
+
 ### `defaults`
 
 Default lookup array or object to resolve values from. For example:
@@ -322,12 +422,11 @@ This functionality is useful for providing a place in your `theme` for grouping 
 
 ```jsx
 import styled from "styled-components"
-import { style } from "onno"
+import { variant } from "onno"
 
-const buttonStyle = style({
+const buttonStyle = variant({
   propsKeys: ["buttonStyle", "bst"],
-  themeKeys: ["buttonStyles"],
-  styleKeys: null
+  themeKeys: ["buttonStyles"]
 })
 
 const Button = styled.button(buttonStyle)
@@ -351,6 +450,71 @@ const theme = {
 // [{ background: "gray", color: "black" }]
 <Button bst="secondary" theme={theme} />
 ```
+
+One of the major features of the `variant` function is that you can pass an array of `renderers` in the options object. Each key value in the resolved style object will be run through the array of `render` functions to lookup and transform the values accordingly.
+
+This powerful feature was introduced to further establish DRY principles and theme serialization. In practice it allows you to declare your colors, sizes, fonts etc. in your theme and then reference them by alias or index within the variant style objects. For example:
+
+```jsx
+import styled from "styled-components"
+import { variant, color, fontSizes } from "onno"
+
+const textStyle = variant({
+  propsKeys: ["textStyle", "tst"],
+  themeKeys: ["textStyles"],
+  renderers: [color, fontSizes],
+})
+
+const Text = styled.button(textStyle)
+
+const theme = {
+  colors: {
+    black: "#222",
+    brand: "tomato",
+    success: "lime",
+    error: "red",
+    info: "blue"
+  },
+  fontSizes: [
+    { alias: "sm", value: 12 },
+    { alias: "md", value: 16 },
+    { alias: "lg", value: 24 }
+  ],
+  textStyles: {
+    main: {
+      color: "black",
+      fontSize: 1
+    },
+    brand: {
+      color: "brand",
+      fontSize: "lg",
+      fontWeight: "bold"
+    },
+    error: {
+      color: "error",
+      fontSize: "md"
+    },
+    info: {
+      color: "info",
+      fontSize: 0
+    }
+  }
+}
+
+// [{ color: "#222", fontSize: "16px" }]
+<Text textStyle="main" theme={theme} />
+
+// [{ color: "tomato", fontSize: "24px", fontWeight: "bold" }]
+<Text textStyle="brand" theme={theme} />
+
+// [{ color: "red", fontSize: "16px" }]
+<Text tst="error" theme={theme} />
+
+// [{ color: "blue", fontSize: "12px" }]
+<Text tst="info" theme={theme} />
+```
+
+Style objects will be iterated over recursively... `globalStyles`
 
 Onno ships with some common [variant functions](render-functions.md#variant) to get you started.
 
