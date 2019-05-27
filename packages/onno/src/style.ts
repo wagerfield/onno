@@ -153,6 +153,8 @@ export const extend = (a: Partial<T.StyleOptions>) => <
   b: T.StyleOptions
 ) => style<P, S>({ ...a, ...b })
 
-export const variant = <P extends T.ThemeProps, S extends T.Style = any>(
+export function variant<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.VariantOptions
-): T.RenderFunction<P, S> => style<P, S>({ ...options, styleKeys: null })
+): T.RenderFunction<P, S> {
+  return style<P, S>({ ...options, styleKeys: null })
+}
