@@ -39,7 +39,7 @@ export default {
 html {
   font-family: system-ui, sans-serif;
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #24292e;
 }
 body {

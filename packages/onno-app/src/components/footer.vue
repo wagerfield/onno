@@ -20,7 +20,7 @@
       <v-input label="Color" :value="color" @input="$emit('update:color', $event)"/>
       <v-input label="Background" :value="background" @input="$emit('update:background', $event)"/>
     </div>
-    <v-button @click="$emit('download', $event)" tag="a" tabindex="0">Download</v-button>
+    <v-button @click="$emit('download', $event)" tag="a" tabindex="0">Download Logo</v-button>
   </footer>
 </template>
 

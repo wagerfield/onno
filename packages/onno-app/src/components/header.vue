@@ -42,7 +42,7 @@ header p {
   font-family: Monaco, monospace;
   text-align: center;
   min-width: 180px;
-  padding: 1em 0;
+  padding: 12px 0;
 }
 .callouts a {
   color: #fff;
