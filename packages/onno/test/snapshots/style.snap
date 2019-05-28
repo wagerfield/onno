@@ -224,6 +224,39 @@ exports[`prop aliases: {
   "d": 4
 } 1`] = `null`;
 
+exports[`renderers: {
+  "a": 0
+} 1`] = `
+Array [
+  Object {
+    "xxx": 0,
+    "yyy": 0,
+  },
+]
+`;
+
+exports[`renderers: {
+  "b": 2
+} 1`] = `
+Array [
+  Object {
+    "xxx": "20px",
+    "yyy": "20px",
+  },
+]
+`;
+
+exports[`renderers: {
+  "c": -4
+} 1`] = `
+Array [
+  Object {
+    "xxx": "-4px",
+    "yyy": "-4px",
+  },
+]
+`;
+
 exports[`returns style object array: {
   "a": "bar"
 } 1`] = `
