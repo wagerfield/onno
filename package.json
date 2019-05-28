@@ -15,7 +15,7 @@
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
     "copy": "cpx readme.md packages/onno && cpx readme.md packages/onno-app",
-    "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types}'",
+    "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types,.nuxt}'",
     "types": "lerna exec --ignore onno-app -- tsc --emitDeclarationOnly",
     "build": "lerna exec --ignore onno-app -- tsc",
     "setup": "lerna bootstrap",
