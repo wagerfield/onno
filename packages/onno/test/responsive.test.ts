@@ -1,7 +1,8 @@
-import * as O from "./test-utils"
+import * as O from "../src"
+import * as U from "./test-utils"
 
-const baselineFunc = O.style()
-const testBaseline = O.snapshot(baselineFunc)
+const baselineFunc = U.style()
+const testBaseline = U.snapshot(baselineFunc)
 
 test("returns null for unresolved breakpoints", () => {
   expect(baselineFunc({ a: { foo: "foo" } })).toBeNull()
@@ -66,4 +67,9 @@ test("theme breakpoint array aliases", () => {
   }
   testBaseline({ theme, a: [0, 1, 2, 3] })
   testBaseline({ theme, a: { a0: 0, a1: 1, a2: 2, a3: 3 } })
+})
+
+test("composed render functions", () => {
+  const testProps = U.snapshot(O.spaceSet)
+  testProps({ margin: [1, 2], marginX: [3, 4] })
 })

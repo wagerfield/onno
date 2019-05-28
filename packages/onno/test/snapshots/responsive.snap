@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`composed render functions: {
+  "margin": [
+    1,
+    2
+  ],
+  "marginX": [
+    3,
+    4
+  ]
+} 1`] = `
+Array [
+  Object {
+    "@media(min-width: 0)": Object {
+      "margin": "2px",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      "margin": "4px",
+    },
+  },
+  Object {
+    "@media(min-width: 0)": Object {
+      "marginLeft": "8px",
+      "marginRight": "8px",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      "marginLeft": "16px",
+      "marginRight": "16px",
+    },
+  },
+]
+`;
+
 exports[`handles responsive prop arrays: {
   "a": [
     11,
