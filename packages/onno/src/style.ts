@@ -18,6 +18,26 @@ const BREAKPOINTS: T.Breakpoints = ["xs", "sm", "md", "lg", "xl"].map(
 
 const push = Array.prototype.push
 
+export function merge<S extends T.Style>(
+  styles: T.StyleArray<S>
+): T.StyleObject<S> {
+  return styles.reduce((o, s) => Object.assign(o, s), {})
+}
+
+export function unique(
+  renderers: T.AnyRenderFunction[],
+  initial: T.AnyRenderFunction[] = []
+): T.AnyRenderFunction[] {
+  return renderers.reduce((collection, renderer) => {
+    if (renderer.options.renderers) {
+      unique(renderer.options.renderers, initial)
+    } else if (collection.indexOf(renderer) === -1) {
+      collection.push(renderer)
+    }
+    return collection
+  }, initial)
+}
+
 export function renderStyle<S extends T.Style>(
   keys?: T.Keys,
   value?: any
@@ -35,11 +55,19 @@ export function renderStyle<S extends T.Style>(
 export function style<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
-  const { propsKeys, styleKeys, themeKeys, transform, defaults } = options
+  const {
+    propsKeys,
+    styleKeys,
+    themeKeys,
+    transform,
+    renderers,
+    defaults
+  } = options
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+  const render = renderers && compose(renderers)
 
   // Scoped value renderer
-  const renderValue = (value: any, theme?: T.Theme): S | null => {
+  const renderValue = (value: any, theme?: T.Theme): any => {
     if (!isUndefined(resolve(themeKeys, theme))) {
       // Resolve theme value
       const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
@@ -56,7 +84,7 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
 
     // Return raw value or rendered style object
     if (styleKeys === null) {
-      return isObject(value) && !isArray(value) ? (value as S) : null
+      return isObject(value) && !isArray(value) ? value : null
     } else {
       return renderStyle<S>(keys, value)
     }
@@ -74,8 +102,13 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     const { theme } = props
     const styles: T.StyleArray<S> = []
     const pushStyle = (value: any, query?: string) => {
-      const result = renderValue(value, theme)
-      return result && styles.push(query ? { [query]: result } : result)
+      let result = renderValue(value, theme)
+      if (result && render) result = render(result)
+      if (result) {
+        if (render) result = merge(result)
+        if (query) result = { [query]: result }
+        styles.push(result)
+      }
     }
 
     // Handle responsive prop values
@@ -99,20 +132,6 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   renderProps.type = "style" as "style"
   renderProps.options = options
   return renderProps
-}
-
-export function unique(
-  renderers: T.AnyRenderFunction[],
-  initial: T.AnyRenderFunction[] = []
-): T.AnyRenderFunction[] {
-  return renderers.reduce((collection, renderer) => {
-    if (renderer.options.renderers) {
-      unique(renderer.options.renderers, initial)
-    } else if (collection.indexOf(renderer) === -1) {
-      collection.push(renderer)
-    }
-    return collection
-  }, initial)
 }
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
@@ -144,15 +163,17 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
 
   // Create scoped renderProps style function
   const renderProps: T.RenderFunction<P, S> = (props: P) => {
-    const result: S[] = []
-    renderers.forEach((fn) => {
-      const r = fn(props)
-      if (r) push.apply(result, r)
-    })
+    const result: T.StyleArray<S> = renderers.reduce((styles, renderer) => {
+      const output = renderer(props)
+      if (output) push.apply(styles, output)
+      return styles
+    }, [])
+
+    // Return the composed style object
     return result.length ? result : null
   }
 
-  // Return render function
+  // Return renderProps function
   renderProps.type = "compose" as "compose"
   renderProps.options = options
   return renderProps
@@ -169,8 +190,6 @@ export function variant<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
   const renderProps = style<P, S>({ ...options, styleKeys: null })
-
-  // Return render function
   renderProps.type = "variant" as "variant"
   return renderProps
 }
