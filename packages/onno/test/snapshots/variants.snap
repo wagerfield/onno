@@ -7,8 +7,15 @@ exports[`buttonStyle 2`] = `null`;
 exports[`buttonStyle 3`] = `
 Array [
   Object {
-    "background": "red",
-    "color": "white",
+    "background": "#00F",
+    "borderRadius": "4px",
+    "color": "#FFF",
+    "fontFamily": "system-ui, sans-serif",
+    "fontWeight": 700,
+    "paddingBottom": "16px",
+    "paddingLeft": "32px",
+    "paddingRight": "32px",
+    "paddingTop": "16px",
   },
 ]
 `;
@@ -17,14 +24,22 @@ exports[`buttonStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
-      "background": "red",
-      "color": "white",
+      "background": "#00F",
+      "borderRadius": "4px",
+      "color": "#FFF",
+      "fontFamily": "system-ui, sans-serif",
+      "fontWeight": 700,
+      "paddingBottom": "16px",
+      "paddingLeft": "32px",
+      "paddingRight": "32px",
+      "paddingTop": "16px",
     },
   },
   Object {
     "@media(min-width: 360px)": Object {
-      "background": "blue",
-      "color": "black",
+      "backgroundColor": "#AAA",
+      "textTransform": "uppercase",
+      "width": "50%",
     },
   },
 ]
@@ -37,9 +52,10 @@ exports[`colorStyle 2`] = `null`;
 exports[`colorStyle 3`] = `
 Array [
   Object {
-    "backgroundColor": "red",
-    "borderColor": "pink",
-    "color": "white",
+    "background": "#00F",
+    "backgroundColor": "#666",
+    "borderColor": "#AAA",
+    "color": "#222",
   },
 ]
 `;
@@ -48,9 +64,10 @@ exports[`colorStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
-      "backgroundColor": "red",
-      "borderColor": "pink",
-      "color": "white",
+      "background": "#00F",
+      "backgroundColor": "#666",
+      "borderColor": "#AAA",
+      "color": "#222",
     },
   },
   Object {
@@ -74,6 +91,9 @@ exports[`textStyle 2`] = `null`;
 exports[`textStyle 3`] = `
 Array [
   Object {
+    "fontFamily": "system-ui, sans-serif",
+    "fontSize": "16px",
+    "fontWeight": 700,
     "letterSpacing": "1px",
     "textTransform": "uppercase",
   },
@@ -84,12 +104,18 @@ exports[`textStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
+      "fontFamily": "system-ui, sans-serif",
+      "fontSize": "16px",
+      "fontWeight": 700,
       "letterSpacing": "1px",
       "textTransform": "uppercase",
     },
   },
   Object {
     "@media(min-width: 360px)": Object {
+      "fontFamily": "Monaco, monospace",
+      "fontSize": "12px",
+      "fontWeight": 400,
       "letterSpacing": "2px",
       "textTransform": "lowercase",
     },

@@ -4,19 +4,26 @@ import * as U from "./test-utils"
 const theme: O.Theme = {
   buttonStyles: {
     one: {
-      background: "red",
-      color: "white"
+      paddingX: 5,
+      paddingY: 4,
+      borderRadius: 2,
+      fontFamily: "main",
+      fontWeight: "bold",
+      background: "link",
+      color: "#FFF"
     },
     two: {
-      background: "blue",
-      color: "black"
+      backgroundColor: "gray.1",
+      textTransform: "uppercase",
+      width: 0.5
     }
   },
   colorStyles: {
     one: {
-      backgroundColor: "red",
-      borderColor: "pink",
-      color: "white"
+      background: "link",
+      backgroundColor: "gray.2",
+      borderColor: "gray.1",
+      color: "text"
     },
     two: {
       backgroundColor: "blue",
@@ -26,11 +33,17 @@ const theme: O.Theme = {
   },
   textStyles: {
     one: {
-      letterSpacing: "1px",
+      fontSize: 2,
+      fontFamily: "main",
+      fontWeight: "bold",
+      letterSpacing: 1,
       textTransform: "uppercase"
     },
     two: {
-      letterSpacing: "2px",
+      fontSize: 0,
+      fontFamily: "mono",
+      fontWeight: "normal",
+      letterSpacing: 2,
       textTransform: "lowercase"
     }
   },
