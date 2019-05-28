@@ -11,12 +11,12 @@
         :step="sizeStep"
         :validator="validateSize"
       />
-      <v-input
+      <!-- <v-input
         label="Text"
         :value="text"
         @input="$emit('update:text', $event)"
         :validator="validateText"
-      />
+      />-->
       <v-input label="Color" :value="color" @input="$emit('update:color', $event)"/>
       <v-input label="Background" :value="background" @input="$emit('update:background', $event)"/>
     </div>
