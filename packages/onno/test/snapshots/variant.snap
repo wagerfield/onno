@@ -68,10 +68,6 @@ Array [
 ]
 `;
 
-exports[`returns null for unresolved values: {
-  "a": "foo"
-} 1`] = `null`;
-
 exports[`transforms values through renderers: {
   "a": "foo",
   "theme": {
@@ -82,15 +78,15 @@ exports[`transforms values through renderers: {
       },
       "bar": {
         "color": "link",
-        "width": 4
+        "width": 8
       }
     }
   }
 } 1`] = `
 Array [
   Object {
-    "color": "text",
-    "width": 0.5,
+    "color": "#222",
+    "width": "50%",
   },
 ]
 `;
@@ -105,15 +101,15 @@ exports[`transforms values through renderers: {
       },
       "bar": {
         "color": "link",
-        "width": 4
+        "width": 8
       }
     }
   }
 } 1`] = `
 Array [
   Object {
-    "color": "link",
-    "width": 4,
+    "color": "#00F",
+    "width": "256px",
   },
 ]
 `;

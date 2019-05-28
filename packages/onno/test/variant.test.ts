@@ -8,8 +8,7 @@ test("sets styleKeys to null", () => {
 
 test("returns null for unresolved values", () => {
   const styleFunc = O.variant({ propsKeys: ["a"] })
-  const testProps = U.snapshot(styleFunc)
-  testProps({ a: "foo" })
+  expect(styleFunc({ a: "foo" })).toBeNull()
 })
 
 test("renders style object from defaults", () => {
@@ -67,7 +66,7 @@ test("transforms values through renderers", () => {
       },
       bar: {
         color: "link",
-        width: 4
+        width: 8
       }
     }
   }
