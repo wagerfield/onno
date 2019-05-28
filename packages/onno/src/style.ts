@@ -101,13 +101,13 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   return renderProps
 }
 
-export function uniq(
+export function unique(
   renderers: T.AnyRenderFunction[],
   initial: T.AnyRenderFunction[] = []
 ): T.AnyRenderFunction[] {
   return renderers.reduce((collection, renderer) => {
     if (renderer.options.renderers) {
-      uniq(renderer.options.renderers, initial)
+      unique(renderer.options.renderers, initial)
     } else if (collection.indexOf(renderer) === -1) {
       collection.push(renderer)
     }
@@ -126,7 +126,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   ...args: any[]
 ): T.RenderFunction<P, S> {
-  const renderers = uniq(toArray(args))
+  const renderers = unique(toArray(args))
   const options: T.StyleOptions = {
     propsKeys: [],
     styleKeys: [],
