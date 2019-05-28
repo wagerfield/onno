@@ -137,7 +137,7 @@ isFraction("0.1") // false
 
 ### `when`
 
-Branching logic function that takes a `predicate` and calls a `transform` function for any given value when the predicate returns `true` for that value. When the predicate returns `false`, the original value is returned.
+Branching logic function that takes a `predicate` and calls a `transform` function for any given value when the predicate returns `true` for that value. When the predicate returns `false` the original value is returned.
 
 ```js
 // Predicate Function
@@ -241,7 +241,9 @@ get("foo", theme) // undefined
 
 ### `resolve`
 
-Takes an array of `paths` and iterates over them against a `lookup` object to try and resolve a value. Paths are resolved from left to right within the array.
+Takes an array of `paths` and iterates over them against a `lookup` object to try and resolve a value.
+
+Paths are resolved from left to right.
 
 ```js
 const lookup = {
