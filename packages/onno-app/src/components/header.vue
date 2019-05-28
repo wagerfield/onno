@@ -39,10 +39,11 @@ header p {
 }
 .callouts a,
 .callouts code {
+  box-sizing: border-box;
   font-family: Monaco, monospace;
   text-align: center;
   min-width: 180px;
-  padding: 12px 0;
+  padding: 12px;
 }
 .callouts a {
   color: #fff;
