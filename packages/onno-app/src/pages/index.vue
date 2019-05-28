@@ -14,8 +14,8 @@ export default {
     return {
       size: 16,
       text: "onno",
-      color: "ivory",
-      background: "tomato"
+      color: "#fff",
+      background: "plum"
     }
   },
   components: {
@@ -49,8 +49,5 @@ main {
   display: grid;
   min-height: 100vh;
   grid-template-rows: 1fr auto;
-}
-code {
-  font-family: Monaco, monospace;
 }
 </style>

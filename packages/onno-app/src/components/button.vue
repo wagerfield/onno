@@ -26,7 +26,7 @@ export default {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.5);
   color: #24292e;
-  padding: 0 24px;
+  padding: 0 16px;
   cursor: pointer;
   height: 32px;
   border: 0;

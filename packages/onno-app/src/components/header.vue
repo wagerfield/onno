@@ -1,8 +1,11 @@
 <template>
   <header :style="{ background }">
     <v-logo v-bind="$props"/>
-    <p>Responsive style props for building themed design systems.</p>
-    <code>yarn add onno</code>
+    <p>Responsive style props for building themed design systems</p>
+    <div class="callouts">
+      <a href="https://github.com/wagerfield/onno/tree/master/docs">Documentation</a>
+      <code>yarn add onno</code>
+    </div>
   </header>
 </template>
 
@@ -31,8 +34,27 @@ header p {
   max-width: 28ch;
   margin: 2em 0;
 }
-header code {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 1em 2em;
+.callouts {
+  display: flex;
+}
+.callouts a,
+.callouts code {
+  font-family: Monaco, monospace;
+  text-align: center;
+  min-width: 180px;
+  padding: 1em 0;
+}
+.callouts a {
+  color: #fff;
+  background: #24292e;
+  text-decoration: none;
+}
+.callouts a:hover {
+  color: #24292e;
+  background: #fff;
+}
+.callouts code {
+  background: #fff;
+  margin-left: 16px;
 }
 </style>
