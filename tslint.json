@@ -1,6 +1,9 @@
 {
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
+  "linterOptions": {
+    "exclude": ["**/*.vue"]
+  },
   "rules": {
     "array-type": [true, "array"],
     "curly": [true, "ignore-same-line"],
