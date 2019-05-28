@@ -26,10 +26,10 @@ exports[`respects order of style functions: {
 } 1`] = `
 Array [
   Object {
-    "x": 1,
+    "z": 1,
   },
   Object {
-    "y": 1,
+    "a": 1,
   },
 ]
 `;
@@ -39,7 +39,7 @@ exports[`respects order of style functions: {
 } 1`] = `
 Array [
   Object {
-    "x": 2,
+    "z": 2,
   },
 ]
 `;
@@ -49,7 +49,7 @@ exports[`respects order of style functions: {
 } 1`] = `
 Array [
   Object {
-    "y": 3,
+    "a": 3,
   },
 ]
 `;

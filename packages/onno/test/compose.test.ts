@@ -49,8 +49,8 @@ test("supports list of render functions", () => {
 
 test("respects order of style functions", () => {
   const styleSet = O.compose([
-    O.style({ propsKeys: ["a", "b"], styleKeys: ["x"] }),
-    O.style({ propsKeys: ["a", "c"], styleKeys: ["y"] })
+    O.style({ propsKeys: ["a", "b"], styleKeys: ["z"] }),
+    O.style({ propsKeys: ["a", "c"], styleKeys: ["a"] })
   ])
   const testProps = U.snapshot(styleSet)
 
