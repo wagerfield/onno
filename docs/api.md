@@ -52,14 +52,14 @@ It expects an `options` object as the first and _only_ argument with the followi
 
 ### `options`
 
-| Key                       | Type            | Required | Description                                   |
-| :------------------------ | :-------------- | :------- | :-------------------------------------------- |
-| [`propsKeys`](#propskeys) | `String[]`      | `true`   | Props keys to map values from.                |
-| [`styleKeys`](#styleKeys) | `String[]`      | `false`  | Style keys assign values to.                  |
-| [`themeKeys`](#themeKeys) | `String[]`      | `false`  | Theme keys to lookup values from.             |
-| [`transform`](#transform) | `Function`      | `false`  | Function to transform values through.         |
-| [`renderers`](#renderers) | `Renderer[]`    | `false`  | Render functions to transform styles through. |
-| [`defaults`](#defaults)   | `Array\|Object` | `false`  | Default lookup values.                        |
+| Key                       | Type                | Required | Description                                   |
+| :------------------------ | :------------------ | :------- | :-------------------------------------------- |
+| [`propsKeys`](#propskeys) | `String[]`          | `true`   | Props keys to map values from.                |
+| [`styleKeys`](#styleKeys) | `String[]`          | `false`  | Style keys assign values to.                  |
+| [`themeKeys`](#themeKeys) | `String[]`          | `false`  | Theme keys to lookup values from.             |
+| [`transform`](#transform) | `TransformFunction` | `false`  | Function to transform values through.         |
+| [`renderers`](#renderers) | `RenderFunction[]`  | `false`  | Render functions to transform styles through. |
+| [`defaults`](#defaults)   | `Array\|Object`     | `false`  | Default lookup values.                        |
 
 ### `propsKeys`
 
@@ -270,11 +270,24 @@ const Box = styled.div(space)
 <Box sp="2em" />
 ```
 
-In the example above, the `space` render function maps "space" and "sp" props to "margin" and "padding" style keys. In the absence of a [`transform`](#transform) function being passed as an option, any values passed to "space" or "sp" props would be mapped directly.
+In the example above, the `space` render function maps "space" and "sp" props to "margin" and "padding" style keys. In the absence of a [`transform`](#transform) function being passed as an option to the `space` render function, any values provided to "space" or "sp" props would be mapped directly like so:
 
-However, since the `margin` and `padding` functions have been passed as `renderers` to the `space` function, the style object that would normally be returned will be run through these `renderers` as if they were `props` and transform them accordingly.
+```jsx
+const space = style({
+  propsKeys: ["space", "sp"],
+  styleKeys: ["margin", "padding"]
+})
 
-This is a _powerful feature_ since it allows you to create [`variant`](#variant) functions that can lookup and transform values referenced elsewhere in a theme. Furthermore, you can use custom properties (like `size` which maps to `width` and `height`) and aliases (like `fs` for `fontSize`). For example:
+// [{ margin: 4, padding: 4 }]
+space({ space: 4 })
+
+// [{ margin: "2em", padding: "2em" }]
+space({ sp: "2em" })
+```
+
+However, since onno's `margin` and `padding` functions have been passed as `renderers` to the `space` function, the style object that would normally be returned will be run through these `renderers` as if they were `props` and transform them accordingly.
+
+This is a _powerful feature_ since it allows you to create [`variant`](#variant) functions that can lookup and transform values referenced elsewhere in a theme. Furthermore, you can use custom properties (like `size` which maps to `width` and `height`) and aliases (like `fs` for `fontSize`) within your theme variants. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -410,15 +423,15 @@ const theme = {
 <Box w={2} theme={theme} />
 ```
 
-The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is rendered.
+The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is transformed and rendered.
 
 ## `variant`
 
-The `variant` function maps a prop value to a _style object_ in a `theme` or `defaults` lookup. It shares the same function signature as the `style` function by taking an `options` object and returning a `render` function.
+The `variant` function maps a prop value to a _style object_ in a `theme` or `defaults` lookup. It shares the same function signature as the [`style`](#style) function by taking an [`options`](#options) object and returning a `render` function.
 
 The key difference between the `variant` and `style` functions is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
 
-This functionality is useful for providing a place in your `theme` for grouping styles. Common use cases for this would be components and styles that are used in combination with one another like background and foreground colors. For example:
+This functionality is useful for providing a place in your `theme` for grouping styles. Common use cases for this would be components and styles that are used in combination with one another like background and foreground colors, typographic sets or button variant styles. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -451,18 +464,18 @@ const theme = {
 <Button bst="secondary" theme={theme} />
 ```
 
-One of the major features of the `variant` function is that you can pass an array of `renderers` in the options object. Each key value in the resolved style object will be run through the array of `render` functions to lookup and transform the values accordingly.
+One of the major features of the `style` and `variant` functions is that you can pass an array of `renderers` in the options object. Each key value in the resolved style object will be run through the array of `render` functions to lookup and transform the values accordingly.
 
-This powerful feature was introduced to further establish DRY principles and theme serialization. In practice it allows you to declare your colors, sizes, fonts etc. in your theme and then reference them by alias or index within the variant style objects. For example:
+This powerful feature was introduced to further support DRY principles and theme serialization. In practice it allows you to declare your colors, sizes, fonts etc. in your theme and then reference them by alias or index within the variant style objects. For example:
 
 ```jsx
 import styled from "styled-components"
-import { variant, color, fontSizes } from "onno"
+import { variant, color, fontSize } from "onno"
 
 const textStyle = variant({
   propsKeys: ["textStyle", "tst"],
   themeKeys: ["textStyles"],
-  renderers: [color, fontSizes],
+  renderers: [color, fontSize],
 })
 
 const Text = styled.button(textStyle)
@@ -470,7 +483,7 @@ const Text = styled.button(textStyle)
 const theme = {
   colors: {
     black: "#222",
-    brand: "tomato",
+    brand: "plum",
     success: "lime",
     error: "red",
     info: "blue"
@@ -504,7 +517,7 @@ const theme = {
 // [{ color: "#222", fontSize: "16px" }]
 <Text textStyle="main" theme={theme} />
 
-// [{ color: "tomato", fontSize: "24px", fontWeight: "bold" }]
+// [{ color: "plum", fontSize: "24px", fontWeight: "bold" }]
 <Text textStyle="brand" theme={theme} />
 
 // [{ color: "red", fontSize: "16px" }]
