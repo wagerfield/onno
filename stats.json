@@ -1,58 +1,77 @@
 {
   "packages/onno/cjs/index.js": {
-    "bundled": 22108,
-    "minified": 16342,
-    "gzipped": 4472
+    "bundled": 22280,
+    "minified": 16478,
+    "gzipped": 4532
   },
   "packages/onno/esm/index.js": {
-    "bundled": 19350,
-    "minified": 13437,
-    "gzipped": 3827,
+    "bundled": 19522,
+    "minified": 13573,
+    "gzipped": 3885,
     "treeshaked": {
       "rollup": {
-        "code": 8405,
+        "code": 8438,
         "import_statements": 0
       },
       "webpack": {
-        "code": 9363
+        "code": 9474
       }
     }
   },
   "packages/onno-react/cjs/index.js": {
-    "bundled": 22784,
-    "minified": 16877,
-    "gzipped": 4643
+    "bundled": 22956,
+    "minified": 17013,
+    "gzipped": 4703
   },
   "packages/onno-react/esm/index.js": {
-    "bundled": 19892,
-    "minified": 13832,
-    "gzipped": 3974,
+    "bundled": 20064,
+    "minified": 13968,
+    "gzipped": 4033,
     "treeshaked": {
       "rollup": {
-        "code": 8540,
+        "code": 8573,
         "import_statements": 90
       },
       "webpack": {
-        "code": 9552
+        "code": 9667
       }
     }
   },
   "packages/onno-vue/cjs/index.js": {
-    "bundled": 22108,
-    "minified": 16342,
-    "gzipped": 4472
+    "bundled": 22280,
+    "minified": 16478,
+    "gzipped": 4532
   },
   "packages/onno-vue/esm/index.js": {
-    "bundled": 19350,
-    "minified": 13437,
-    "gzipped": 3827,
+    "bundled": 19522,
+    "minified": 13573,
+    "gzipped": 3885,
     "treeshaked": {
       "rollup": {
-        "code": 8405,
+        "code": 8438,
         "import_statements": 0
       },
       "webpack": {
-        "code": 9363
+        "code": 9474
+      }
+    }
+  },
+  "packages/onco/cjs/index.js": {
+    "bundled": 22280,
+    "minified": 16478,
+    "gzipped": 4532
+  },
+  "packages/onco/esm/index.js": {
+    "bundled": 19522,
+    "minified": 13573,
+    "gzipped": 3885,
+    "treeshaked": {
+      "rollup": {
+        "code": 8438,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 9474
       }
     }
   }
