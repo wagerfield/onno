@@ -14,7 +14,7 @@ Responsive style props for building themed design systems.
 - Framework agnostic
 - Zero dependencies
 - First class support for themes and design tokens
-- Compatible with most CSS in JS libraries including [styled-components][styled-components] and [emotion][emotion]
+- Works with any CSS in JS library that supports object styles like [Styled Components][styled-components] and [Emotion][emotion]
 - Written in [TypeScript][typescript] with comprehensive type definitions and interfaces
 - Rigorously tested with [100% code coverage][codecov]
 
