@@ -103,7 +103,7 @@ export interface StyleOptions {
   defaults?: ThemeValue
 }
 
-export type StyleValue = number | string | string[]
+export type StyleValue = number | string | string[] | undefined
 
 export interface Style {
   [key: string]: StyleValue
