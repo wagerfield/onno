@@ -1,22 +1,32 @@
 <template>
-  <component class="button" :is="tag" v-on="$listeners">
+  <component class="button" :is="tag" :style="style(black, white)" v-on="$listeners">
     <slot/>
   </component>
 </template>
 
 <script>
+import props from "~/core/props"
+import style from "~/core/utils"
+
 export default {
   props: {
+    white: props.white,
+    black: props.black,
+    brand: props.brand,
     tag: {
       type: String,
       default: "button"
     }
+  },
+  methods: {
+    style
   }
 }
 </script>
 
 <style>
 .button {
+  opacity: 0.5;
   box-sizing: border-box;
   text-transform: uppercase;
   font-family: Monaco, monospace;
@@ -24,8 +34,6 @@ export default {
   font-weight: bold;
   line-height: 32px;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.5);
-  color: #24292e;
   padding: 0 16px;
   cursor: pointer;
   height: 32px;
@@ -33,7 +41,7 @@ export default {
 }
 .button:hover,
 .button:focus {
-  background: #fff;
+  opacity: 1;
 }
 .button:focus {
   outline: 3px solid #59d;

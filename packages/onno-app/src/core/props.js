@@ -7,11 +7,15 @@ export default {
     type: String,
     required: true
   },
-  color: {
+  white: {
     type: String,
     required: true
   },
-  background: {
+  black: {
+    type: String,
+    required: true
+  },
+  brand: {
     type: String,
     required: true
   }

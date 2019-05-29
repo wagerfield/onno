@@ -14,8 +14,10 @@ export default {
     return {
       size: 16,
       text: "onno",
-      color: "#fff",
-      background: "plum"
+      white: "ivory",
+      black: "#202428",
+      brand: "coral",
+      docs: "https://github.com/wagerfield/onno/tree/master/docs"
     }
   },
   components: {
@@ -49,5 +51,8 @@ main {
   display: grid;
   min-height: 100vh;
   grid-template-rows: 1fr auto;
+}
+a {
+  text-decoration: none;
 }
 </style>

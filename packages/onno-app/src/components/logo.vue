@@ -1,6 +1,6 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" :viewBox="viewBox">
-    <g :fill="color">
+    <g :fill="fill">
       <component
         v-for="char in chars"
         v-if="char.path"
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import chars from "~/common/chars"
+import chars from "~/core/chars"
 
 const NUM = /\d/g
 const MAP = {
@@ -59,7 +59,7 @@ export default {
       type: String,
       default: "onno"
     },
-    color: {
+    fill: {
       type: String,
       default: "#000"
     }

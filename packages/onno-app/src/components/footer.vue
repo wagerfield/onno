@@ -1,32 +1,35 @@
 <template>
-  <footer>
+  <footer :style="style(white, black)">
     <div class="inputs">
       <v-input
-        label="Size"
-        :value="size"
-        @input="$emit('update:size', $event)"
+        v-on="inputEvent('size')"
+        v-bind="inputProps('size')"
         @keydown="setSizeStep"
+        :validator="validateSize"
+        :step="sizeStep"
         type="number"
         min="1"
-        :step="sizeStep"
-        :validator="validateSize"
       />
       <!-- <v-input
-        label="Text"
-        :value="text"
-        @input="$emit('update:text', $event)"
+        v-on="inputEvent('text')"
+        v-bind="inputProps('text')"
         :validator="validateText"
       />-->
-      <v-input label="Color" :value="color" @input="$emit('update:color', $event)"/>
-      <v-input label="Background" :value="background" @input="$emit('update:background', $event)"/>
+      <v-input
+        v-for="color in colorKeys"
+        v-bind="inputProps(color)"
+        v-on="inputEvent(color)"
+        :key="color"
+      />
     </div>
-    <v-button @click="$emit('download', $event)" tag="a" tabindex="0">Download Logo</v-button>
+    <v-button v-bind="colors" @click="$emit('download', $event)" tag="a" tabindex="0">Download Logo</v-button>
   </footer>
 </template>
 
 <script>
-import { REGEX } from "~/common/chars"
-import props from "~/common/props"
+import { REGEX } from "~/core/chars"
+import { colors, style } from "~/core/utils"
+import props from "~/core/props"
 import VButton from "./button"
 import VInput from "./input"
 
@@ -34,6 +37,7 @@ export default {
   props,
   data() {
     return {
+      colorKeys: ["white", "black", "brand"],
       sizeStep: 1
     }
   },
@@ -41,7 +45,24 @@ export default {
     VButton,
     VInput
   },
+  computed: {
+    colors
+  },
   methods: {
+    style,
+    inputProps(key) {
+      return {
+        id: key,
+        label: key,
+        value: this[key],
+        ...this.colors
+      }
+    },
+    inputEvent(key) {
+      const vm = this
+      const event = `update:${key}`
+      return { input: (value) => vm.$emit(event, value) }
+    },
     setSizeStep({ altKey, shiftKey }) {
       this.sizeStep = altKey ? 0.5 : shiftKey ? 10 : 1
     },
@@ -61,13 +82,13 @@ footer {
   user-select: none;
   align-items: flex-end;
   justify-content: space-between;
-  background: #24292e;
   padding: 16px;
 }
 .inputs {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-column-gap: 24px;
+  flex: 1 0 auto;
+  grid-template-columns: repeat(auto-fill, 180px);
+  grid-column-gap: 20px;
   grid-row-gap: 16px;
   margin-right: 16px;
   justify-items: end;

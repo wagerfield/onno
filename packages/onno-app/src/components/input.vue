@@ -1,16 +1,34 @@
 <template>
   <div class="input-group" :class="classes">
-    <label v-text="label"/>
-    <input v-bind="$attrs" v-on="listeners" :value="value" :type="type">
+    <label v-if="label" v-text="label" :for="id" :style="style(white)"/>
+    <input
+      v-bind="$attrs"
+      v-on="listeners"
+      :id="id"
+      :type="type"
+      :value="value"
+      :style="style(black, white)"
+    >
   </div>
 </template>
 
 <script>
+import props from "~/core/props"
+import style from "~/core/utils"
+
 export default {
   inheritAttrs: false,
   props: {
+    white: props.white,
+    black: props.black,
+    brand: props.brand,
     value: {
-      type: [Number, String]
+      type: [Number, String],
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
     },
     label: {
       type: String
@@ -47,31 +65,41 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    style
   }
 }
 </script>
 
 <style>
 .input-group {
+  width: 180px;
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
+}
+label,
+input {
+  padding: 0 12px;
 }
 label {
-  font-family: Monaco, monospace;
+  opacity: 0.5;
+  flex: 1 0 auto;
   font-size: 14px;
-  line-height: 1;
+  font-family: Monaco, monospace;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  line-height: 32px;
+  padding-left: 0;
+  cursor: pointer;
 }
 input {
+  opacity: 0.5;
+  flex: 0 0 auto;
   box-sizing: border-box;
   font-family: Monaco, monospace;
   font-size: 14px;
   line-height: 1;
-  background: rgba(255, 255, 255, 0.5);
-  color: #24292e;
-  margin-left: 12px;
-  padding: 0 12px;
   height: 32px;
   width: 120px;
   border: 0;
@@ -80,12 +108,12 @@ input[type="number"] {
   padding-right: 6px;
 }
 input:focus {
-  background: #fff;
   outline: 3px solid #59d;
   outline-offset: 0;
 }
-input:hover {
-  background: #fff;
+input:hover,
+input:focus {
+  opacity: 1;
 }
 .input-group.valid input:focus {
   outline: 3px solid #4c8;
