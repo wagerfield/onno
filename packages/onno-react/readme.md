@@ -104,7 +104,7 @@ Box.propTypes = {
 [onno]: https://onnojs.com
 [github]: https://github.com/wagerfield
 [license]: https://github.com/wagerfield/onno/blob/master/license
-[bundlephobia]: https://bundlephobia.com/result?p=onno
+[bundlephobia]: https://bundlephobia.com/result?p=onno-react
 [circleci]: https://circleci.com/gh/wagerfield/onno
 [codecov]: https://codecov.io/gh/wagerfield/onno
 [react-prop-types]: https://reactjs.org/docs/typechecking-with-proptypes

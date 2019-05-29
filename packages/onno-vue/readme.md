@@ -24,7 +24,7 @@ Coming soon.
 [onno]: https://onnojs.com
 [github]: https://github.com/wagerfield
 [license]: https://github.com/wagerfield/onno/blob/master/license
-[bundlephobia]: https://bundlephobia.com/result?p=onno
+[bundlephobia]: https://bundlephobia.com/result?p=onno-vue
 [circleci]: https://circleci.com/gh/wagerfield/onno
 [codecov]: https://codecov.io/gh/wagerfield/onno
 [vue-props]: https://vuejs.org/v2/guide/components-props

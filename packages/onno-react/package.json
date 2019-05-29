@@ -13,9 +13,9 @@
     "url": "https://github.com/wagerfield/onno/issues"
   },
   "keywords": [
-    "css-in-js",
-    "styled-system",
-    "react"
+    "onno",
+    "react",
+    "css-in-js"
   ],
   "main": "cjs/index.js",
   "module": "esm/index.js",
