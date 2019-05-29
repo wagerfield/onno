@@ -102,7 +102,8 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     if (!isUndefined(resolve(themeKeys, theme))) {
       // Resolve theme value
       const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
-      const themeValue = resolve(mappedKeys, theme)
+      const lookupKeys = value === "." ? themeKeys : mappedKeys
+      const themeValue = resolve(lookupKeys, theme)
       if (!isNil(themeValue)) value = themeValue
     } else if (defaults) {
       // Resolve defaults value

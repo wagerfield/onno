@@ -99,7 +99,36 @@ Array [
 
 exports[`globalStyle 1`] = `null`;
 
-exports[`globalStyle 2`] = `null`;
+exports[`globalStyle 2`] = `
+Array [
+  Object {
+    "body": Object {
+      "background": "#FAFAFA",
+      "margin": 0,
+    },
+    "code": Object {
+      "fontFamily": "Monaco, monospace",
+    },
+    "h1": Object {
+      "fontSize": "48px",
+    },
+    "h1,h2,h3": Object {
+      "lineHeight": 1.25,
+    },
+    "h2": Object {
+      "fontSize": "32px",
+    },
+    "h3": Object {
+      "fontSize": "24px",
+    },
+    "html": Object {
+      "fontFamily": "system-ui, sans-serif",
+      "fontSize": "16px",
+      "lineHeight": 1.5,
+    },
+  },
+]
+`;
 
 exports[`textStyle 1`] = `null`;
 

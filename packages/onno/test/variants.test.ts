@@ -80,15 +80,15 @@ const theme: O.Theme = {
       fontSize: 4
     },
     "code": {
-      fontFamily: "code"
+      fontFamily: "mono"
     }
   }
 }
 
 test("globalStyle", () => {
   const testProps = U.snapshot(O.globalStyle, false)
-  testProps({ globalStyle: "" })
-  testProps({ gst: "", theme })
+  testProps({ globalStyle: "." })
+  testProps({ gst: ".", theme })
 })
 
 test("buttonStyle", () => {
