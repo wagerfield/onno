@@ -1,0 +1,31 @@
+{
+  "name": "onco",
+  "license": "MIT",
+  "version": "0.0.14",
+  "description": "Onno components",
+  "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onco#readme",
+  "author": "Matthew Wagerfield <matthew@wagerfield.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wagerfield/onno.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wagerfield/onno/issues"
+  },
+  "keywords": [
+    "onno",
+    "components",
+    "css-in-js"
+  ],
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "types"
+  ],
+  "dependencies": {
+    "onno": "0.0.14"
+  }
+}
