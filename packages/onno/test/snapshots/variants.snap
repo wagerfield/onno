@@ -7,14 +7,18 @@ exports[`buttonStyle 2`] = `null`;
 exports[`buttonStyle 3`] = `
 Array [
   Object {
-    ":hover": Object {
-      "background": "#666",
-      "fontFamily": "Monaco, monospace",
+    ":disabled": Object {
+      "foo": "bar",
+      "opacity": 0.5,
     },
-    "background": "#00F",
+    ":hover": Object {
+      "background": "#202428",
+      "foo": "bar",
+    },
+    "background": "coral",
     "borderRadius": "4px",
-    "color": "#FFF",
-    "fontFamily": "system-ui, sans-serif",
+    "color": "#FAFAFA",
+    "fontFamily": "Roboto",
     "fontWeight": 700,
     "foo": "bar",
     "paddingBottom": "16px",
@@ -29,24 +33,6 @@ exports[`buttonStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
-      ":hover": Object {
-        "background": "#666",
-        "fontFamily": "Monaco, monospace",
-      },
-      "background": "#00F",
-      "borderRadius": "4px",
-      "color": "#FFF",
-      "fontFamily": "system-ui, sans-serif",
-      "fontWeight": 700,
-      "foo": "bar",
-      "paddingBottom": "16px",
-      "paddingLeft": "32px",
-      "paddingRight": "32px",
-      "paddingTop": "16px",
-    },
-  },
-  Object {
-    "@media(min-width: 360px)": Object {
       ":active": Object {
         "marginBottom": "-4px",
         "marginTop": "-4px",
@@ -54,9 +40,32 @@ Array [
         "paddingRight": "16px",
         "width": "100%",
       },
-      "backgroundColor": "#AAA",
+      "backgroundColor": "#888",
+      "foo": "bar",
       "textTransform": "uppercase",
       "width": "50%",
+    },
+  },
+  Object {
+    "@media(min-width: 360px)": Object {
+      ":disabled": Object {
+        "foo": "bar",
+        "opacity": 0.5,
+      },
+      ":hover": Object {
+        "background": "#202428",
+        "foo": "bar",
+      },
+      "background": "coral",
+      "borderRadius": "4px",
+      "color": "#FAFAFA",
+      "fontFamily": "Roboto",
+      "fontWeight": 700,
+      "foo": "bar",
+      "paddingBottom": "16px",
+      "paddingLeft": "32px",
+      "paddingRight": "32px",
+      "paddingTop": "16px",
     },
   },
 ]
@@ -69,10 +78,9 @@ exports[`colorStyle 2`] = `null`;
 exports[`colorStyle 3`] = `
 Array [
   Object {
-    "background": "#00F",
-    "backgroundColor": "#666",
-    "borderColor": "#AAA",
-    "color": "#222",
+    "backgroundColor": "coral",
+    "color": "#FAFAFA",
+    "foo": "bar",
   },
 ]
 `;
@@ -80,18 +88,19 @@ Array [
 exports[`colorStyle 4`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "background": "#00F",
-      "backgroundColor": "#666",
-      "borderColor": "#AAA",
-      "color": "#222",
+    "@media(min-width: 360px)": Object {
+      "background": "orange",
+      "backgroundColor": "crimson",
+      "borderColor": "#444",
+      "color": "#202428",
+      "foo": "bar",
     },
   },
   Object {
-    "@media(min-width: 360px)": Object {
-      "backgroundColor": "blue",
-      "borderColor": "aqua",
-      "color": "black",
+    "@media(min-width: 1080px)": Object {
+      "backgroundColor": "coral",
+      "color": "#FAFAFA",
+      "foo": "bar",
     },
   },
 ]
@@ -102,17 +111,34 @@ exports[`globalStyle 1`] = `null`;
 exports[`globalStyle 2`] = `
 Array [
   Object {
+    "fontFamily": "Roboto",
+    "fontSize": "16px",
+    "foo": "bar",
+    "lineHeight": 1.5,
+  },
+]
+`;
+
+exports[`globalStyle 3`] = `
+Array [
+  Object {
+    "a": Object {
+      "color": "coral",
+      "textDecoration": "none",
+    },
     "body": Object {
       "background": "#FAFAFA",
+      "color": "#202428",
       "margin": 0,
     },
     "code": Object {
-      "fontFamily": "Monaco, monospace",
+      "fontFamily": "Roboto Mono",
     },
     "h1": Object {
       "fontSize": "48px",
     },
     "h1,h2,h3": Object {
+      "fontFamily": "Merriweather",
       "lineHeight": 1.25,
     },
     "h2": Object {
@@ -122,8 +148,9 @@ Array [
       "fontSize": "24px",
     },
     "html": Object {
-      "fontFamily": "system-ui, sans-serif",
+      "fontFamily": "Roboto",
       "fontSize": "16px",
+      "foo": "bar",
       "lineHeight": 1.5,
     },
   },
@@ -137,11 +164,11 @@ exports[`textStyle 2`] = `null`;
 exports[`textStyle 3`] = `
 Array [
   Object {
-    "fontFamily": "system-ui, sans-serif",
+    "fontFamily": "Roboto",
     "fontSize": "16px",
-    "fontWeight": 700,
-    "letterSpacing": "1px",
-    "textTransform": "uppercase",
+    "fontWeight": 400,
+    "foo": "bar",
+    "lineHeight": 1.5,
   },
 ]
 `;
@@ -150,20 +177,18 @@ exports[`textStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
-      "fontFamily": "system-ui, sans-serif",
-      "fontSize": "16px",
-      "fontWeight": 700,
-      "letterSpacing": "1px",
-      "textTransform": "uppercase",
+      "fontFamily": "Roboto Mono",
+      "foo": "bar",
     },
   },
   Object {
     "@media(min-width: 360px)": Object {
-      "fontFamily": "Monaco, monospace",
-      "fontSize": "12px",
-      "fontWeight": 400,
+      "fontFamily": "Merriweather",
+      "fontSize": "32px",
+      "fontWeight": 700,
+      "foo": "bar",
       "letterSpacing": "2px",
-      "textTransform": "lowercase",
+      "lineHeight": 1.25,
     },
   },
 ]

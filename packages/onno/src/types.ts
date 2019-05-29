@@ -136,5 +136,6 @@ export interface ComposedRenderFunction<P extends ThemeProps, S extends Style>
 }
 
 export type StyleTransformFunction<S extends Style> = (
-  style: StyleObject<S>
+  style: StyleObject<S>,
+  theme?: Theme
 ) => StyleObject<S>

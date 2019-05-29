@@ -59,8 +59,8 @@ export function transformStyle<S extends T.Style>(
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped style transform function
-  const transform = (styleObject: T.StyleObject<S>) => {
-    const renderedStyle = renderer(styleObject)
+  const transform = (styleObject: T.StyleObject<S>, theme?: T.Theme) => {
+    const renderedStyle = renderer({ theme, ...styleObject })
     const mergedStyle = renderedStyle && merge(renderedStyle)
 
     // Iterate over style keys
@@ -71,7 +71,7 @@ export function transformStyle<S extends T.Style>(
 
       // Transform nested objects
       const value = result[key] as T.StyleObject<S>
-      if (isObject(value)) result[key] = transform(value)
+      if (isObject(value)) result[key] = transform(value, theme)
       return result
     }, Object.assign({}, styleObject, mergedStyle))
   }
@@ -138,7 +138,7 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     const pushStyle = (value: any, query?: string) => {
       let result = renderValue(value, theme)
       if (result) {
-        if (transformer) result = transformer(result)
+        if (transformer) result = transformer(result, theme)
         if (query) result = { [query]: result }
         styles.push(result)
       }

@@ -2,25 +2,46 @@ import * as O from "../src"
 import * as U from "./test-utils"
 
 const theme: O.Theme = {
+  fontFamilies: {
+    heading: "Merriweather",
+    body: "Roboto",
+    code: "Roboto Mono"
+  },
+  colors: {
+    gray: ["#444", "#888", "#CCC"],
+    white: "#FAFAFA",
+    black: "#202428",
+    brand: "coral",
+    status: {
+      info: "dodgerblue",
+      warning: "orange",
+      error: "crimson"
+    }
+  },
   buttonStyles: {
-    one: {
+    primary: {
       "foo": "bar",
       "paddingX": 5,
       "paddingY": 4,
       "borderRadius": 2,
-      "fontFamily": "main",
+      "fontFamily": "body",
       "fontWeight": "bold",
-      "background": "link",
-      "color": "#FFF",
+      "background": "brand",
+      "color": "white",
       ":hover": {
-        fontFamily: "mono",
-        background: "gray.2"
+        foo: "bar",
+        background: "black"
+      },
+      ":disabled": {
+        foo: "bar",
+        opacity: 0.5
       }
     },
-    two: {
-      "backgroundColor": "gray.1",
-      "textTransform": "uppercase",
+    secondary: {
+      "foo": "bar",
       "width": 0.5,
+      "bgc": "gray.1",
+      "tt": "uppercase",
       ":active": {
         my: -2,
         px: 4,
@@ -29,58 +50,71 @@ const theme: O.Theme = {
     }
   },
   colorStyles: {
-    one: {
-      background: "link",
-      backgroundColor: "gray.2",
-      borderColor: "gray.1",
-      color: "text"
+    callout: {
+      foo: "bar",
+      backgroundColor: "brand",
+      color: "white"
     },
-    two: {
-      backgroundColor: "blue",
-      borderColor: "aqua",
+    error: {
+      foo: "bar",
+      background: "status.warning",
+      backgroundColor: "status.error",
+      borderColor: "gray.0",
       color: "black"
     }
   },
   textStyles: {
-    one: {
+    body: {
+      foo: "bar",
       fontSize: 2,
-      fontFamily: "main",
-      fontWeight: "bold",
-      letterSpacing: 1,
-      textTransform: "uppercase"
-    },
-    two: {
-      fontSize: 0,
-      fontFamily: "mono",
+      fontFamily: "body",
       fontWeight: "normal",
-      letterSpacing: 2,
-      textTransform: "lowercase"
+      lineHeight: "normal"
+    },
+    code: {
+      foo: "bar",
+      fontFamily: "code"
+    },
+    heading: {
+      foo: "bar",
+      fontSize: 5,
+      fontFamily: "heading",
+      fontWeight: "bold",
+      lineHeight: "narrow",
+      letterSpacing: 2
     }
   },
   globalStyles: {
     "html": {
-      fontFamily: "main",
+      foo: "bar",
+      fontFamily: "body",
       lineHeight: "normal",
       fontSize: 2
     },
     "body": {
-      background: "#FAFAFA",
+      bg: "white",
+      tc: "black",
       margin: 0
     },
     "h1,h2,h3": {
-      lineHeight: "narrow"
+      ff: "heading",
+      lh: "narrow"
     },
     "h1": {
-      fontSize: 6
+      fs: 6
     },
     "h2": {
-      fontSize: 5
+      fs: 5
     },
     "h3": {
-      fontSize: 4
+      fs: 4
+    },
+    "a": {
+      tc: "brand",
+      td: "none"
     },
     "code": {
-      fontFamily: "mono"
+      ff: "code"
     }
   }
 }
@@ -88,29 +122,30 @@ const theme: O.Theme = {
 test("globalStyle", () => {
   const testProps = U.snapshot(O.globalStyle, false)
   testProps({ globalStyle: "." })
-  testProps({ gst: ".", theme })
+  testProps({ gst: "html", theme })
+  testProps({ theme })
 })
 
 test("buttonStyle", () => {
   const testProps = U.snapshot(O.buttonStyle, false)
-  testProps({ buttonStyle: "one" })
+  testProps({ buttonStyle: "primary" })
   testProps({ bst: "foo", theme })
-  testProps({ bst: "one", theme })
-  testProps({ bst: ["one", "two"], theme })
+  testProps({ bst: "primary", theme })
+  testProps({ bst: ["secondary", "primary"], theme })
 })
 
 test("colorStyle", () => {
   const testProps = U.snapshot(O.colorStyle, false)
-  testProps({ colorStyle: "one" })
+  testProps({ colorStyle: "error" })
   testProps({ cst: "foo", theme })
-  testProps({ cst: "one", theme })
-  testProps({ cst: ["one", "two"], theme })
+  testProps({ cst: "callout", theme })
+  testProps({ cst: { sm: "error", lg: "callout" }, theme })
 })
 
 test("textStyle", () => {
   const testProps = U.snapshot(O.textStyle, false)
-  testProps({ textStyle: "one" })
+  testProps({ textStyle: "body" })
   testProps({ tst: "foo", theme })
-  testProps({ tst: "one", theme })
-  testProps({ tst: ["one", "two"], theme })
+  testProps({ tst: "body", theme })
+  testProps({ tst: ["code", "heading"], theme })
 })
