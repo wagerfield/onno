@@ -4,18 +4,28 @@ import * as U from "./test-utils"
 const theme: O.Theme = {
   buttonStyles: {
     one: {
-      paddingX: 5,
-      paddingY: 4,
-      borderRadius: 2,
-      fontFamily: "main",
-      fontWeight: "bold",
-      background: "link",
-      color: "#FFF"
+      "foo": "bar",
+      "paddingX": 5,
+      "paddingY": 4,
+      "borderRadius": 2,
+      "fontFamily": "main",
+      "fontWeight": "bold",
+      "background": "link",
+      "color": "#FFF",
+      ":hover": {
+        fontFamily: "mono",
+        background: "gray.2"
+      }
     },
     two: {
-      backgroundColor: "gray.1",
-      textTransform: "uppercase",
-      width: 0.5
+      "backgroundColor": "gray.1",
+      "textTransform": "uppercase",
+      "width": 0.5,
+      ":active": {
+        my: -2,
+        px: 4,
+        w: 1
+      }
     }
   },
   colorStyles: {

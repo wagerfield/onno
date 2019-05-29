@@ -7,11 +7,16 @@ exports[`buttonStyle 2`] = `null`;
 exports[`buttonStyle 3`] = `
 Array [
   Object {
+    ":hover": Object {
+      "background": "#666",
+      "fontFamily": "Monaco, monospace",
+    },
     "background": "#00F",
     "borderRadius": "4px",
     "color": "#FFF",
     "fontFamily": "system-ui, sans-serif",
     "fontWeight": 700,
+    "foo": "bar",
     "paddingBottom": "16px",
     "paddingLeft": "32px",
     "paddingRight": "32px",
@@ -24,11 +29,16 @@ exports[`buttonStyle 4`] = `
 Array [
   Object {
     "@media(min-width: 0)": Object {
+      ":hover": Object {
+        "background": "#666",
+        "fontFamily": "Monaco, monospace",
+      },
       "background": "#00F",
       "borderRadius": "4px",
       "color": "#FFF",
       "fontFamily": "system-ui, sans-serif",
       "fontWeight": 700,
+      "foo": "bar",
       "paddingBottom": "16px",
       "paddingLeft": "32px",
       "paddingRight": "32px",
@@ -37,6 +47,13 @@ Array [
   },
   Object {
     "@media(min-width: 360px)": Object {
+      ":active": Object {
+        "marginBottom": "-4px",
+        "marginTop": "-4px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "width": "100%",
+      },
       "backgroundColor": "#AAA",
       "textTransform": "uppercase",
       "width": "50%",

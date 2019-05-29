@@ -52,6 +52,34 @@ export function renderStyle<S extends T.Style>(
   )
 }
 
+export function transformStyle<S extends T.Style>(
+  renderers: T.AnyRenderFunction[]
+): T.StyleTransformFunction<S> {
+  const renderer = compose(renderers)
+  const { propsKeys, styleKeys } = renderer.options
+
+  // Scoped style transform function
+  const transform = (styleObject: T.StyleObject<S>) => {
+    const renderedStyle = renderer(styleObject)
+    const mergedStyle = renderedStyle && merge(renderedStyle)
+
+    // Iterate over style keys
+    return Object.keys(styleObject).reduce((result, key) => {
+      const hasPropsKey = propsKeys!.includes(key)
+      const hasStyleKey = styleKeys!.includes(key)
+      if (hasPropsKey && !hasStyleKey) delete result[key]
+
+      // Transform nested objects
+      const value = result[key] as T.StyleObject<S>
+      if (isObject(value)) result[key] = transform(value)
+      return result
+    }, Object.assign({}, styleObject, mergedStyle))
+  }
+
+  // Return transform function
+  return transform
+}
+
 export function style<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
@@ -63,8 +91,11 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     renderers,
     defaults
   } = options
+  const transformer = isArray(renderers) && transformStyle(renderers)
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-  const render = renderers && compose(renderers)
+
+  // Store resolved style keys
+  options.styleKeys = keys
 
   // Scoped value renderer
   const renderValue = (value: any, theme?: T.Theme): any => {
@@ -82,10 +113,12 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     // Transform value
     if (typeof transform === "function") value = transform(value)
 
-    // Return raw value or rendered style object
+    // Skip rendering
     if (styleKeys === null) {
+      // Return raw style object
       return isObject(value) && !isArray(value) ? value : null
     } else {
+      // Return rendered style object
       return renderStyle<S>(keys, value)
     }
   }
@@ -93,7 +126,7 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   // Scoped props renderer
   const renderProps: T.RenderFunction<P, S> = (props: P) => {
     // Get first propsValue from propsKeys
-    const propsValue = resolve(options.propsKeys, props)
+    const propsValue = resolve(propsKeys, props)
 
     // Return null when value is nil
     if (isNil(propsValue)) return null
@@ -103,9 +136,8 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     const styles: T.StyleArray<S> = []
     const pushStyle = (value: any, query?: string) => {
       let result = renderValue(value, theme)
-      if (result && render) result = render(result)
       if (result) {
-        if (render) result = merge(result)
+        if (transformer) result = transformer(result)
         if (query) result = { [query]: result }
         styles.push(result)
       }

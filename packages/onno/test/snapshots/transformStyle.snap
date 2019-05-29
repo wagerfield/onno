@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns null for undefined keys 1`] = `
+Object {
+  "a": "FOO",
+  "b": "FOO",
+  "baz": "baz",
+  "c": "rab",
+  "d": "rab",
+  "obj": Object {
+    "a": "FOO",
+    "b": "FOO",
+    "baz": "baz",
+    "c": "rab",
+    "d": "rab",
+    "obj": Object {
+      "a": "FOO",
+      "b": "FOO",
+      "baz": "baz",
+      "c": "rab",
+      "d": "rab",
+    },
+  },
+}
+`;

@@ -231,6 +231,7 @@ Array [
   Object {
     "xxx": 0,
     "yyy": 0,
+    "z": 0,
   },
 ]
 `;
@@ -242,6 +243,7 @@ Array [
   Object {
     "xxx": "20px",
     "yyy": "20px",
+    "z": 2,
   },
 ]
 `;
@@ -253,6 +255,7 @@ Array [
   Object {
     "xxx": "-4px",
     "yyy": "-4px",
+    "z": -4,
   },
 ]
 `;

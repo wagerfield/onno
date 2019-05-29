@@ -90,7 +90,7 @@ export interface ThemeProps {
   theme?: Theme
 }
 
-export type TransformFunction = (value: any) => any
+export type ValueTransformFunction = (value: any) => any
 
 export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
 
@@ -98,20 +98,20 @@ export interface StyleOptions {
   propsKeys: Keys
   styleKeys?: Keys | null
   themeKeys?: Keys
-  transform?: TransformFunction
+  transform?: ValueTransformFunction
   renderers?: AnyRenderFunction[]
   defaults?: ThemeValue
 }
 
+export type StyleValue = number | string | string[]
+
 export interface Style {
-  [key: string]: number | string | string[] | undefined
+  [key: string]: StyleValue
 }
 
-export interface NestedStyle<S extends Style> {
-  [key: string]: S
+export interface StyleObject<S extends Style> {
+  [key: string]: StyleObject<S> | StyleValue
 }
-
-export type StyleObject<S extends Style> = S | NestedStyle<S>
 
 export type StyleArray<S extends Style> = StyleObject<S>[]
 
@@ -124,3 +124,7 @@ export interface RenderFunction<P extends ThemeProps, S extends Style> {
 }
 
 export type AnyRenderFunction = RenderFunction<any, any>
+
+export type StyleTransformFunction<S extends Style> = (
+  style: StyleObject<S>
+) => StyleObject<S>
