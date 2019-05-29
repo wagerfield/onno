@@ -37,7 +37,7 @@ export default {
   props,
   data() {
     return {
-      colorKeys: ["white", "black", "brand"],
+      colorKeys: ["black", "white", "brand"],
       sizeStep: 1
     }
   },
