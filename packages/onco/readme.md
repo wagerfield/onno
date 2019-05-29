@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4C8&style=flat-square)][circleci]
 [![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
 
-Composed render functions for `onno` components
+Component style render functions
 
     yarn add onco
 
