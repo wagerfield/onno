@@ -65,8 +65,8 @@ export function transformStyle<S extends T.Style>(
 
     // Iterate over style keys
     return Object.keys(styleObject).reduce((result, key) => {
-      const hasPropsKey = propsKeys!.includes(key)
-      const hasStyleKey = styleKeys!.includes(key)
+      const hasPropsKey = propsKeys.includes(key)
+      const hasStyleKey = styleKeys.includes(key)
       if (hasPropsKey && !hasStyleKey) delete result[key]
 
       // Transform nested objects
@@ -169,17 +169,17 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   renderers: T.AnyRenderFunction[]
-): T.RenderFunction<P, S>
+): T.ComposedRenderFunction<P, S>
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   ...renderers: T.AnyRenderFunction[]
-): T.RenderFunction<P, S>
+): T.ComposedRenderFunction<P, S>
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
   ...args: any[]
-): T.RenderFunction<P, S> {
+): T.ComposedRenderFunction<P, S> {
   const renderers = unique(toArray(args))
-  const options: T.StyleOptions = {
+  const options: T.ComposedStyleOptions = {
     propsKeys: [],
     styleKeys: [],
     themeKeys: [],
@@ -195,7 +195,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   )
 
   // Create scoped renderProps style function
-  const renderProps: T.RenderFunction<P, S> = (props: P) => {
+  const renderProps: T.ComposedRenderFunction<P, S> = (props: P) => {
     const result: T.StyleArray<S> = renderers.reduce((styles, renderer) => {
       const output = renderer(props)
       if (output) push.apply(styles, output)

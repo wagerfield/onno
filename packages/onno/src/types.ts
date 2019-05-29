@@ -50,9 +50,7 @@ export interface Theme {
   borders?: ThemeValue
   borderStyles?: ThemeValue
   borderWidths?: ThemeValue
-  // Radii
   borderRadii?: ThemeValue
-  radii?: ThemeValue
   // Color
   colors?: ThemeValue
   // Display
@@ -124,6 +122,18 @@ export interface RenderFunction<P extends ThemeProps, S extends Style> {
 }
 
 export type AnyRenderFunction = RenderFunction<any, any>
+
+export interface ComposedStyleOptions extends StyleOptions {
+  propsKeys: Keys
+  styleKeys: Keys
+  themeKeys: Keys
+  renderers: AnyRenderFunction[]
+}
+
+export interface ComposedRenderFunction<P extends ThemeProps, S extends Style>
+  extends RenderFunction<P, S> {
+  options: ComposedStyleOptions
+}
 
 export type StyleTransformFunction<S extends Style> = (
   style: StyleObject<S>
