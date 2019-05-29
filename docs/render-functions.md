@@ -210,8 +210,6 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 - textSet
 - transition
 
-The `globalSet` render function is used by the `globalStyle` and `buttonStyle` variant functions, allowing you to reference common design tokens within your theme like `colors`, `sizes`, `spaces` and `fontSizes`.
-
 ## Variant
 
 | Function Name | Props Keys       | Theme Keys   | Renderers |
@@ -220,3 +218,44 @@ The `globalSet` render function is used by the `globalStyle` and `buttonStyle` v
 | buttonStyle   | buttonStyle, bst | buttonStyles | globalSet |
 | colorStyle    | colorStyle, cst  | colorStyles  | colorSet  |
 | textStyle     | textStyle, tst   | textStyles   | textSet   |
+
+### globalStyle
+
+The `globalStyle` variant function defaults the `gst` prop to `"."`
+
+Setting the `gst` or `globalStyle` prop to "." (a special root `path`) will result in the entire `globalStyles` theme object being transformed and returned.
+
+This makes it very easy to add global styles from your `theme` using Styled Components' [`createGlobalStyle`][styled-components-global-styles] function or Emotion's [`Global`][emotion-global-styles] component:
+
+```jsx
+import { globalStyle } from "onno"
+import theme from "./theme"
+
+// Styled Components
+import { createGlobalStyle } from "styled-components"
+const Global = createGlobalStyle(globalStyle)
+<Global theme={theme} />
+
+// Emotion
+import { Global } from "@emotion/core"
+<Global style={globalStyle({ theme })} />
+```
+
+In the example above, the imported `theme` is being passed as a prop to Styled Component's `Global` component and within in a `props` object to Emotion's `Global` component `styles`
+
+In practice, you will likely use the `ThemeProvider` for each respective library to pass the `theme` down to the `Global` component:
+
+```jsx
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { globalStyle } from "onno"
+import theme from "./theme"
+
+const Global = createGlobalStyle(globalStyle)
+
+<ThemeProvider theme={theme}>
+  <Global />
+</ThemeProvider>
+```
+
+[styled-components-global-styles]: https://www.styled-components.com/docs/api#createglobalstyle
+[emotion-global-styles]: https://emotion.sh/docs/globals
