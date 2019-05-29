@@ -13,11 +13,17 @@ export interface GlobalStyleProps extends T.ThemeProps {
   gst?: VariantProp
 }
 
-export const globalStyle = variant<GlobalStyleProps>({
+const gst = variant<GlobalStyleProps>({
   propsKeys: ["globalStyle", "gst"],
   themeKeys: ["globalStyles"],
   renderers: [globalSet]
 })
+
+export const globalStyle: T.RenderFunction<GlobalStyleProps, any> = (props) =>
+  gst({ gst: ".", ...props })
+
+globalStyle.options = gst.options
+globalStyle.type = gst.type
 
 // Button Variant
 
