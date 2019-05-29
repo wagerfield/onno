@@ -483,7 +483,7 @@ const Text = styled.button(textStyle)
 const theme = {
   colors: {
     black: "#222",
-    brand: "plum",
+    brand: "coral",
     success: "lime",
     error: "red",
     info: "blue"
