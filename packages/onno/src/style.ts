@@ -94,8 +94,8 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   const transformer = isArray(renderers) && transformStyle(renderers)
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
 
-  // Store resolved style keys
-  options.styleKeys = keys
+  // Reassign resolved style keys to options
+  if (isUndefined(styleKeys)) options.styleKeys = keys
 
   // Scoped value renderer
   const renderValue = (value: any, theme?: T.Theme): any => {
@@ -211,15 +211,15 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   return renderProps
 }
 
-export function extend(a: Partial<T.StyleOptions>) {
-  return <P extends T.ThemeProps, S extends T.Style>(b: T.StyleOptions) =>
-    style<P, S>({ ...a, ...b })
-}
-
 export function variant<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
   const renderProps = style<P, S>({ ...options, styleKeys: null })
   renderProps.type = "variant" as "variant"
   return renderProps
+}
+
+export function extend(a: Partial<T.StyleOptions>) {
+  return <P extends T.ThemeProps, S extends T.Style>(b: T.StyleOptions) =>
+    style<P, S>({ ...a, ...b })
 }

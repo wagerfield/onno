@@ -1,6 +1,11 @@
 import * as O from "../src"
 import * as U from "./test-utils"
 
+test("sets styleKeys to null", () => {
+  const styleFunc = O.variant({ propsKeys: ["a"] })
+  expect(styleFunc.options.styleKeys).toBeNull()
+})
+
 test("returns null for unresolved values", () => {
   const styleFunc = O.variant({ propsKeys: ["a"] })
   expect(styleFunc({ a: "foo" })).toBeNull()
