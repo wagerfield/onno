@@ -211,12 +211,10 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   return renderProps
 }
 
-export const extend = (a: Partial<T.StyleOptions>) => <
-  P extends T.ThemeProps,
-  S extends T.Style
->(
-  b: T.StyleOptions
-) => style<P, S>({ ...a, ...b })
+export function extend(a: Partial<T.StyleOptions>) {
+  return <P extends T.ThemeProps, S extends T.Style>(b: T.StyleOptions) =>
+    style<P, S>({ ...a, ...b })
+}
 
 export function variant<P extends T.ThemeProps, S extends T.Style = any>(
   options: T.StyleOptions
