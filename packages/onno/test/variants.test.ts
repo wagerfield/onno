@@ -109,22 +109,37 @@ const theme: O.Theme = {
     "h3": {
       fs: 4
     },
+    // "padding" should be transformed
+    "padding": 1,
+    // "py" should be mapped to "paddingTop"
+    // and "paddingBottom" then deleted
+    "py": 2,
+    // "p" is shorthand for "padding" but
+    // should not be deleted since it is
+    // assigned to an object
+    "p": {
+      m: 3
+    },
     "a": {
       tc: "brand",
       td: "none"
     },
-    "code": {
-      ff: "code"
+    "pre,code": {
+      // merge code textStyle
+      tst: "code",
+      // set fontSize
+      fontSize: 1
+    },
+    "button": {
+      // merge secondary buttonStyle
+      bst: "secondary",
+      // merge error colorStyle
+      cst: "error",
+      // set borderColor
+      borderColor: "gray.2"
     }
   }
 }
-
-test("globalStyle", () => {
-  const testProps = U.snapshot(O.globalStyle, false)
-  testProps({ globalStyle: "." })
-  testProps({ gst: "html", theme })
-  testProps({ theme })
-})
 
 test("buttonStyle", () => {
   const testProps = U.snapshot(O.buttonStyle, false)
@@ -148,4 +163,11 @@ test("textStyle", () => {
   testProps({ tst: "foo", theme })
   testProps({ tst: "body", theme })
   testProps({ tst: ["code", "heading"], theme })
+})
+
+test("globalStyle", () => {
+  const testProps = U.snapshot(O.globalStyle, false)
+  testProps({ globalStyle: "." })
+  testProps({ gst: "html", theme })
+  testProps({ theme })
 })

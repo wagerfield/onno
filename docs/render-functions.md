@@ -212,18 +212,16 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 
 ## Variant
 
-| Function Name | Props Keys       | Theme Keys   | Renderers |
-| :------------ | :--------------- | :----------- | :-------- |
-| globalStyle   | globalStyle, gst | globalStyles | globalSet |
-| buttonStyle   | buttonStyle, bst | buttonStyles | globalSet |
-| colorStyle    | colorStyle, cst  | colorStyles  | colorSet  |
-| textStyle     | textStyle, tst   | textStyles   | textSet   |
+| Function Name | Props Keys       | Theme Keys   | Renderers                                     |
+| :------------ | :--------------- | :----------- | :-------------------------------------------- |
+| colorStyle    | colorStyle, cst  | colorStyles  | colorSet                                      |
+| textStyle     | textStyle, tst   | textStyles   | textSet                                       |
+| buttonStyle   | buttonStyle, bst | buttonStyles | globalSet, colorStyle, textStyle              |
+| globalStyle   | globalStyle, gst | globalStyles | globalSet, buttonStyle, colorStyle, textStyle |
 
 ### globalStyle
 
-The `globalStyle` variant function defaults the `gst` prop to `"."`
-
-Setting the `gst` or `globalStyle` prop to "." (a special root `path`) will result in the entire `globalStyles` theme object being transformed and returned.
+The `globalStyle` variant function defaults the `gst` prop to "." (a special root `path` string). Passing "." to the `gst` (or `globalStyle`) prop will result in the entire `globalStyles` theme object being transformed and returned.
 
 This makes it very easy to add global styles from your `theme` using Styled Components' [`createGlobalStyle`][styled-components-global-styles] function or Emotion's [`Global`][emotion-global-styles] component:
 
@@ -255,6 +253,65 @@ const Global = createGlobalStyle(globalStyle)
 <ThemeProvider theme={theme}>
   <Global />
 </ThemeProvider>
+```
+
+The `globalStyle` variant function is the most sophisticated render function provided by onno. It is composed of numerous _standard_, _composed_ and _variant_ render functions as outlined in `renderers` column in the [table above](#variant). This allows you to reference design tokens such as `colors`, `fontFamilies` and `spaces` as well as other variant styles like `colorStyles` and `buttonStyles`. For example:
+
+```jsx
+const theme = {
+  // Design Tokens
+  colors: {
+    gray: ["#444", "#888", "#CCC"],
+    black: "#222",
+    white: "ivory",
+    brand: "coral"
+  },
+  fontFamilies: {
+    main: "system-ui",
+    code: "Monaco"
+  },
+  // Variant Styles
+  textStyles: {
+    caps: {
+      fontWeight: "bold", // fontWeights.bold > default: 700
+      textTransform: "uppercase"
+    },
+    code: {
+      fontFamily: "code", // fontFamilies.code > "Monaco"
+      fontSize: "85%"
+    }
+  },
+  buttonStyles: {
+    primary: {
+      background: "brand", // colors.brand > "coral"
+      color: "white", // colors.white > "ivory"
+      textStyle: "caps" // textStyles.caps > { fontWeight: 700, textTransform: "uppercase" }
+    },
+    secondary: {
+      // prop aliases
+      bg: "gray.2", // colors.gray[2] > "#CCC"
+      tc: "black", // colors.black > "#222",
+      px: 4 // spaces[4] > default: "16px"
+    }
+  },
+  globalStyles: {
+    html: {
+      fontSize: 2, // fontSizes[2] > default: "16px"
+      fontFamily: "main", // fontFamilies.main > "system-ui"
+      color: "black" // colors.black > "#222"
+    },
+    body: {
+      bg: "white", // colors.white > "ivory"
+      m: 0 // spaces[0] > default: 0
+    },
+    code: {
+      textStyle: "code" // textStyles.code > { fontFamily: "Monaco", fontSize: "85%" }
+    },
+    button: {
+      bst: "primary" // buttonStyles.primary > { background: "coral" ... }
+    }
+  }
+}
 ```
 
 [styled-components-global-styles]: https://www.styled-components.com/docs/api#createglobalstyle

@@ -65,13 +65,14 @@ export function transformStyle<S extends T.Style>(
 
     // Iterate over style keys
     return Object.keys(styleObject).reduce((result, key) => {
-      const hasPropsKey = propsKeys.includes(key)
-      const hasStyleKey = styleKeys.includes(key)
-      if (hasPropsKey && !hasStyleKey) delete result[key]
-
-      // Transform nested objects
       const value = result[key] as T.StyleObject<S>
-      if (isObject(value)) result[key] = transform(value, theme)
+      if (isObject(value)) {
+        result[key] = transform(value, theme)
+      } else {
+        const hasPropsKey = propsKeys.includes(key)
+        const hasStyleKey = styleKeys.includes(key)
+        if (hasPropsKey && !hasStyleKey) delete result[key]
+      }
       return result
     }, Object.assign({}, styleObject, mergedStyle))
   }

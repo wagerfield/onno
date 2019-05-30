@@ -131,8 +131,10 @@ Array [
       "color": "#202428",
       "margin": 0,
     },
-    "code": Object {
-      "fontFamily": "Roboto Mono",
+    "button": Object {
+      "borderColor": "#CCC",
+      "bst": "secondary",
+      "cst": "error",
     },
     "h1": Object {
       "fontSize": "48px",
@@ -152,6 +154,16 @@ Array [
       "fontSize": "16px",
       "foo": "bar",
       "lineHeight": 1.5,
+    },
+    "p": Object {
+      "margin": "8px",
+    },
+    "padding": "2px",
+    "paddingBottom": "4px",
+    "paddingTop": "4px",
+    "pre,code": Object {
+      "fontSize": "14px",
+      "tst": "code",
     },
   },
 ]
