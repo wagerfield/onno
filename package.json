@@ -70,7 +70,7 @@
     "rollup-plugin-typescript": "1.0.1",
     "ts-jest": "24.0.2",
     "tslib": "1.9.3",
-    "tslint": "5.16.0",
+    "tslint": "5.17.0",
     "typescript": "3.4.5"
   }
 }
