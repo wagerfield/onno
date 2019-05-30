@@ -36,6 +36,7 @@ export const toPath = (x: any) => (isString(x) ? x.split(".") : [x])
 
 export function get(path?: any, lookup?: any) {
   if (isNil(path) || isNil(lookup)) return undefined
+  if ((isArray(path) ? path[0] : path) === ".") return lookup
   const keys = isArray(path) ? path.concat() : toPath(path)
   const head = keys[0]
   const isKey = isString(head)

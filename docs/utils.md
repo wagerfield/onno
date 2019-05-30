@@ -213,7 +213,9 @@ addPcOrPx("50vw") // "50vw"
 
 ### `get`
 
-Resolves a value at a given `path` within a `lookup` object or array. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Resolved values can be inverted by prefixing the `path` with a negative sign eg. `-2` or `"-foo.bar.1"`. Lookup arrays can contain alias objects.
+Resolves a value at a given `path` within a `lookup` object or array. Path values can be in string format using dot syntax like `"foo.bar.1"` or an array of path keys like `["foo", "bar", 1]`. Passing `"."` or `["."]` will return the lookup object or array.
+
+Resolved values can be inverted by prefixing the `path` with a negative sign eg. `-2` or `"-foo.bar.1"`. Lookup arrays can contain alias objects.
 
 ```js
 const theme = {
@@ -247,6 +249,12 @@ get("-spaces.2", theme) // -4
 get(["spaces", 3], theme) // 8
 get(["-spaces", 4], theme) // -16
 get(["spaces", 10], theme) // undefined
+
+get("spaces", theme) // theme.spaces array
+get(["spaces"], theme) // theme.spaces array
+
+get(".", theme) // theme object
+get(["."], theme) // theme object
 
 get("foo", theme) // undefined
 ```

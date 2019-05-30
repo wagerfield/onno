@@ -159,6 +159,10 @@ test("get", () => {
   expect(O.get("zoo", U.OBJ)).toBeUndefined()
   expect(O.get("foo.a", U.OBJ)).toBeUndefined()
 
+  // Identity
+  expect(O.get(".", U.OBJ)).toBe(U.OBJ)
+  expect(O.get(["."], U.OBJ)).toBe(U.OBJ)
+
   // Indexes
   expect(O.get(1, [1, 2, 3])).toBe(2)
   expect(O.get(-2, [1, 2, 3])).toBe(-3)
@@ -205,12 +209,16 @@ test("get", () => {
 })
 
 test("resolve", () => {
-  // Null
+  // Undefined
   expect(O.resolve()).toBeUndefined()
   expect(O.resolve([])).toBeUndefined()
   expect(O.resolve([], U.OBJ)).toBeUndefined()
   expect(O.resolve(["zoo"], U.OBJ)).toBeUndefined()
   expect(O.resolve(["foo.a"], U.OBJ)).toBeUndefined()
+
+  // Identity
+  expect(O.resolve(["."], U.OBJ)).toBe(U.OBJ)
+  expect(O.resolve(["zoo", "."], U.OBJ)).toBe(U.OBJ)
 
   // Resolve
   expect(O.resolve(["boo"], U.OBJ)).toBeNull()
