@@ -231,7 +231,7 @@ In the example above, the `margin` render function uses onno's `addPx` transform
 
 Since the second `Box` passes a value with "em" units, the `addPx` transform function ignores this value.
 
-In addition to `addPx`, onno also provides an `addPc` transform function for converting decimal values between -1 and 1 to percentages eg. "0.1" becomes "10%" and "-0.5" becomes "-50%". There is also a `addPcOrPx` transform function which will first attempt to convert decimal values between -1 and 1 to percent and then convert unitless values to "px".
+In addition to `addPx`, onno also provides [`addPc`](utils.md#addPc), [`addRem`](utils.md#addRem) and [`addPcOrPx`](utils.md#addPcOrPx) transform functions.
 
 You can also write your own `transform` functions. Transform functions simply take a value and return a value. For example:
 
@@ -239,7 +239,7 @@ You can also write your own `transform` functions. Transform functions simply ta
 const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
 ```
 
-Alternatively you can use onno's `when` and `isUnitless` [util functions](utils.md) to the same effect:
+Alternatively you can use onno's [`when`](utils.md#when) and [`isUnitless`](utils.md#isUnitless) util functions to the same effect:
 
 ```js
 import { when, isUnitless } from "onno"

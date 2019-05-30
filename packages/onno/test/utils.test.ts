@@ -107,6 +107,13 @@ test("addPc", () => {
   expect(O.addPc("2em")).toBe("2em")
 })
 
+test("addRem", () => {
+  expect(O.addRem(0)).toBe(0)
+  expect(O.addRem(1.5)).toBe("1.5rem")
+  expect(O.addRem(-2)).toBe("-2rem")
+  expect(O.addRem("2px")).toBe("2px")
+})
+
 test("addPcOrPx", () => {
   expect(O.addPcOrPx(0)).toBe(0)
 

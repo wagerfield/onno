@@ -24,6 +24,8 @@ export const addPx = when(isUnitless)((x) => x + "px")
 
 export const addPc = when(isFraction)((x) => x * 100 + "%")
 
+export const addRem = when(isUnitless)((x) => x + "rem")
+
 export const addPcOrPx = (x: any) => addPx(addPc(x))
 
 export const mq = (x: any) => `@media(min-width: ${addPx(x)})`

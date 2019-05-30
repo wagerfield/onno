@@ -18,6 +18,7 @@ These functions can be useful for when you create your own transform functions o
 - [`when`](#when)
 - [`addPx`](#addpx)
 - [`addPc`](#addpc)
+- [`addRem`](#addrem)
 - [`addPcOrPx`](#addpcorpx)
 - [`get`](#get)
 - [`resolve`](#resolve)
@@ -184,6 +185,17 @@ addPx(1 / 4) // "25%"
 addPx(-0.5) // "-50%"
 addPx(0) // 0
 addPx("4ch") // "4ch"
+```
+
+### `addRem`
+
+[Transform](api.md#transform) function that adds "rem" to [unitless values](#isunitless).
+
+```js
+addRem(1.5) // "1.5rem"
+addRem(3 / 4) // "0.75rem"
+addRem(0) // 0
+addRem("2px") // "2px"
 ```
 
 ### `addPcOrPx`
