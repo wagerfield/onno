@@ -3,19 +3,49 @@ import * as U from "./test-utils"
 
 const theme: O.Theme = {
   fontFamilies: {
-    heading: "Merriweather",
-    body: "Roboto",
+    main: "Roboto",
     code: "Roboto Mono"
   },
   colors: {
     gray: ["#444", "#888", "#CCC"],
-    white: "#FAFAFA",
     black: "#202428",
+    white: "ivory",
     brand: "coral",
     status: {
       info: "dodgerblue",
-      warning: "orange",
       error: "crimson"
+    }
+  },
+  colorStyles: {
+    brand: {
+      foo: "bar",
+      backgroundColor: "brand",
+      color: "white"
+    },
+    error: {
+      foo: "bar",
+      background: "peach",
+      bgc: "status.error",
+      bdc: "gray.0",
+      tc: "black"
+    }
+  },
+  textStyles: {
+    main: {
+      foo: "bar",
+      fontSize: 2,
+      fontFamily: "main",
+      fontWeight: "normal",
+      lineHeight: "normal"
+    },
+    code: {
+      foo: "bar",
+      ff: "code"
+    },
+    caps: {
+      foo: "bar",
+      fw: "bold",
+      tt: "uppercase"
     }
   },
   buttonStyles: {
@@ -24,72 +54,28 @@ const theme: O.Theme = {
       "paddingX": 5,
       "paddingY": 4,
       "borderRadius": 2,
-      "fontFamily": "body",
-      "fontWeight": "bold",
-      "background": "brand",
-      "color": "white",
+      "colorStyle": "brand",
+      "textStyle": "main",
       ":hover": {
-        foo: "bar",
-        background: "black"
+        background: "white",
+        color: "brand"
       },
       ":disabled": {
         foo: "bar",
-        opacity: 0.5
+        px: 50,
+        w: 0.5,
+        o: 0.5
       }
     },
     secondary: {
-      "foo": "bar",
-      "width": 0.5,
-      "bgc": "gray.1",
-      "tt": "uppercase",
-      ":active": {
-        my: -2,
-        px: 4,
-        w: 1
-      }
-    }
-  },
-  colorStyles: {
-    callout: {
-      foo: "bar",
-      backgroundColor: "brand",
-      color: "white"
-    },
-    error: {
-      foo: "bar",
-      background: "status.warning",
-      backgroundColor: "status.error",
-      borderColor: "gray.0",
-      color: "black"
-    }
-  },
-  textStyles: {
-    body: {
-      foo: "bar",
-      fontSize: 2,
-      fontFamily: "body",
-      fontWeight: "normal",
-      lineHeight: "normal"
-    },
-    code: {
-      foo: "bar",
-      fontFamily: "code"
-    },
-    heading: {
-      foo: "bar",
-      fontSize: 5,
-      fontFamily: "heading",
-      fontWeight: "bold",
-      lineHeight: "narrow",
-      letterSpacing: 2
+      bgc: "gray.1",
+      tc: "black"
     }
   },
   globalStyles: {
     "html": {
       foo: "bar",
-      fontFamily: "body",
-      lineHeight: "normal",
-      fontSize: 2
+      textStyle: "main"
     },
     "body": {
       bg: "white",
@@ -97,7 +83,6 @@ const theme: O.Theme = {
       margin: 0
     },
     "h1,h2,h3": {
-      ff: "heading",
       lh: "narrow"
     },
     "h1": {
@@ -127,16 +112,16 @@ const theme: O.Theme = {
     "pre,code": {
       // merge code textStyle
       tst: "code",
-      // set fontSize
+      // override fontSize
       fontSize: 1
     },
     "button": {
       // merge secondary buttonStyle
-      bst: "secondary",
+      bst: "primary",
       // merge error colorStyle
       cst: "error",
       // set borderColor
-      borderColor: "gray.2"
+      borderColor: "status.info"
     }
   }
 }
@@ -153,16 +138,16 @@ test("colorStyle", () => {
   const testProps = U.snapshot(O.colorStyle, false)
   testProps({ colorStyle: "error" })
   testProps({ cst: "foo", theme })
-  testProps({ cst: "callout", theme })
-  testProps({ cst: { sm: "error", lg: "callout" }, theme })
+  testProps({ cst: "brand", theme })
+  testProps({ cst: { sm: "error", lg: "brand" }, theme })
 })
 
 test("textStyle", () => {
   const testProps = U.snapshot(O.textStyle, false)
-  testProps({ textStyle: "body" })
+  testProps({ textStyle: "main" })
   testProps({ tst: "foo", theme })
-  testProps({ tst: "body", theme })
-  testProps({ tst: ["code", "heading"], theme })
+  testProps({ tst: "main", theme })
+  testProps({ tst: ["code", "caps"], theme })
 })
 
 test("globalStyle", () => {
