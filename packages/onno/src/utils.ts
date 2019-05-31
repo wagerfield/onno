@@ -1,5 +1,7 @@
 import { Func, Pred } from "./types"
 
+const IGNORE = /\s|\d+\.\d+/
+
 export const isArray = Array.isArray
 
 export const isNil = (x: any): x is void => x == null
@@ -32,7 +34,8 @@ export const mq = (x: any) => `@media(min-width: ${addPx(x)})`
 
 export const toArray = <T>(args: T[]) => (isArray(args[0]) ? args[0] : args)
 
-export const toPath = (x: any) => (isString(x) ? x.split(".") : [x])
+export const toPath = (x: any) =>
+  isString(x) && !IGNORE.test(x) ? x.split(".") : [x]
 
 export function get(path?: any, lookup?: any) {
   if (isNil(path) || isNil(lookup)) return undefined

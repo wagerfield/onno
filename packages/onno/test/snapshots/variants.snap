@@ -151,6 +151,7 @@ Array [
     "paddingTop": "4px",
     "pre,code": Object {
       "fontSize": "14px",
+      "padding": "0.2em 0.4em",
       "tst": "code",
     },
   },

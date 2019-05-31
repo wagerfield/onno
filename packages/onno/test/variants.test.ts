@@ -113,7 +113,9 @@ const theme: O.Theme = {
       // merge code textStyle
       tst: "code",
       // override fontSize
-      fontSize: 1
+      fontSize: 1,
+      // value is not split
+      padding: "0.2em 0.4em"
     },
     "button": {
       // merge secondary buttonStyle

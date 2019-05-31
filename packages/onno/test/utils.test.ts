@@ -150,6 +150,11 @@ test("toPath", () => {
   expect(O.toPath("a")).toEqual(["a"])
   expect(O.toPath("a.b")).toEqual(["a", "b"])
   expect(O.toPath("a.1")).toEqual(["a", "1"])
+  expect(O.toPath("0.2")).toEqual(["0.2"])
+  expect(O.toPath("1.25")).toEqual(["1.25"])
+  expect(O.toPath("2.5em")).toEqual(["2.5em"])
+  expect(O.toPath("-1.4rem")).toEqual(["-1.4rem"])
+  expect(O.toPath("2px 4.5rem")).toEqual(["2px 4.5rem"])
 })
 
 test("get", () => {
