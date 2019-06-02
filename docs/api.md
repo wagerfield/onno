@@ -533,9 +533,14 @@ Onno ships with some common [variant functions](render-functions.md#variant) to 
 
 ## `compose`
 
-The `compose` function takes an array of `render` functions and returns a _composed_ `render` function.
+The `compose` function takes an `options` object containing an array of `renderers` and returns a _composed_ `render` function.
 
-When the _composed_ `render` function is called with some `props` it iterates over the array of `render` functions that were passed to it and calls them each in turn with the provided `props`.
+| Key                       | Type               | Required | Description                                   |
+| :------------------------ | :----------------- | :------- | :-------------------------------------------- |
+| `name`                    | `String`           | `true`   | Name of the composed render function.         |
+| [`renderers`](#renderers) | `RenderFunction[]` | `true`   | Render functions to transform styles through. |
+
+When the _composed_ `render` function is called with some `props` it iterates over the array of `renderers` and calls them each in turn with the provided `props`.
 
 The arrays of style objects returned from each `render` function are then merged and returned.
 
@@ -557,39 +562,31 @@ const fontSize = style({
   propsKeys: ["fontSize", "fs"]
 })
 
-const fontSet = compose([
-  fontFamily,
-  fontWeight,
-  fontSize
-])
+const fontSet = compose({
+  name: "font",
+  renderers: [
+    fontFamily,
+    fontWeight,
+    fontSize
+  ]
+})
 
 const Text = styled.div(fontSet)
 
 // [{ fontFamily: "Roboto" }, { fontWeight: "bold" }, { fontSize: "16px" }]
 <Text fontFamily="Roboto" fontWeight="bold" fontSize="16px" />
 
-// [{ fontFamily: "Lobster" }, { fontWeight: "300" }, { fontSize: "24px" }]
-<Text ff="Lobster" fw="300" fs="24px" />
+// [{ fontFamily: "Lobster" }, { fontWeight: 300 }, { fontSize: "24px" }]
+<Text ff="Lobster" fw={300} fs="24px" />
 ```
 
-The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to your _composed_ functions to help distinguish them from _standard_ render functions.
+The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function.
 
-Render functions can be passed to `compose` as an array _or_ list of arguments:
+It is recommended that you follow the naming convention of appending `Set` to the variable names of your _composed_ functions to help distinguish them from _standard_ render functions.
 
-```js
-import { compose, display, padding } from "onno"
+The `name` option will automatically have "Set" appended to it when omitted. In the example above, the `name` option of "font" will get converted to "fontSet" so that `fontSet.name === "fontSet"`
 
-// Array of render functions
-const set1 = compose([display, padding])
-
-// List of render functions
-const set2 = compose(
-  display,
-  padding
-)
-```
-
-It is worth noting that _composed_ render functions can be recomposed into other render functions ad infinitum.
+It is worth noting that _composed_ render functions can be composed into other render functions ad infinitum.
 
 Onno ships with an extensive suite of _standard_ and _composed_ `render` functions which can be [found here](render-functions.md).
 

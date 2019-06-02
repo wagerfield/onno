@@ -64,7 +64,10 @@ import styled from "styled-components"
 import { display, padding, compose, propTypes } from "onno-react"
 
 const styles = [display, padding]
-const boxSet = compose(styles)
+const boxSet = compose({
+  name: "box",
+  renderers: styles
+})
 
 // Spread the styles array
 const Box1 = styled.div(...styles)
