@@ -35,8 +35,8 @@ const Box = styled.div(colorSet, spaceSet)
 // [{ marginLeft: "8px", marginRight: "8px" }, { paddingBottom: "4px" }]
 <Box mx={3} pb={2} />
 
-// [{ backgroundColor: "tomato" }, { color: "ivory" }]
-<Box backgroundColor="tomato" color="ivory" />
+// [{ backgroundColor: "coral" }, { color: "ivory" }]
+<Box backgroundColor="coral" color="ivory" />
 
 // [{ background: "url(onno.png) center" }]
 <Box bg="url(onno.png) center" />
