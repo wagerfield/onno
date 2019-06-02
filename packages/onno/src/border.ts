@@ -173,14 +173,17 @@ export type BorderSetStyle = BorderStyle &
   BorderWidthStyle &
   BorderRadiusStyle
 
-export const borderSet = compose<BorderSetProps, BorderSetStyle>([
-  border,
-  borderTop,
-  borderRight,
-  borderBottom,
-  borderLeft,
-  borderColor,
-  borderStyle,
-  borderWidth,
-  borderRadius
-])
+export const borderSet = compose<BorderSetProps, BorderSetStyle>({
+  name: "border",
+  renderers: [
+    border,
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
+    borderColor,
+    borderStyle,
+    borderWidth,
+    borderRadius
+  ]
+})

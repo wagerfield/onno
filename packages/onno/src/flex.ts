@@ -179,16 +179,19 @@ export type FlexParentSetStyle = DisplayStyle &
   FlexDirectionStyle &
   FlexWrapStyle
 
-export const flexParentSet = compose<FlexParentSetProps, FlexParentSetStyle>([
-  display,
-  alignItems,
-  alignContent,
-  justifyItems,
-  justifyContent,
-  flexFlow,
-  flexDirection,
-  flexWrap
-])
+export const flexParentSet = compose<FlexParentSetProps, FlexParentSetStyle>({
+  name: "flexParent",
+  renderers: [
+    display,
+    alignItems,
+    alignContent,
+    justifyItems,
+    justifyContent,
+    flexFlow,
+    flexDirection,
+    flexWrap
+  ]
+})
 
 // Flex Child Set
 
@@ -208,15 +211,18 @@ export type FlexChildSetStyle = AlignSelfStyle &
   FlexGrowStyle &
   FlexShrinkStyle
 
-export const flexChildSet = compose<FlexChildSetProps, FlexChildSetStyle>([
-  alignSelf,
-  justifySelf,
-  order,
-  flex,
-  flexBasis,
-  flexGrow,
-  flexShrink
-])
+export const flexChildSet = compose<FlexChildSetProps, FlexChildSetStyle>({
+  name: "flexChild",
+  renderers: [
+    alignSelf,
+    justifySelf,
+    order,
+    flex,
+    flexBasis,
+    flexGrow,
+    flexShrink
+  ]
+})
 
 // Flex Set
 
@@ -224,7 +230,7 @@ export type FlexSetProps = FlexParentSetProps & FlexChildSetProps
 
 export type FlexSetStyle = FlexParentSetStyle & FlexChildSetStyle
 
-export const flexSet = compose<FlexSetProps, FlexSetStyle>([
-  flexParentSet,
-  flexChildSet
-])
+export const flexSet = compose<FlexSetProps, FlexSetStyle>({
+  name: "flex",
+  renderers: [flexParentSet, flexChildSet]
+})

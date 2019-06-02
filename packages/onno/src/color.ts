@@ -99,9 +99,7 @@ export type ColorSetStyle = BackgroundStyle &
   BorderColorStyle &
   ColorStyle
 
-export const colorSet = compose<ColorSetProps, ColorSetStyle>([
-  background,
-  backgroundColor,
-  borderColor,
-  color
-])
+export const colorSet = compose<ColorSetProps, ColorSetStyle>({
+  name: "color",
+  renderers: [background, backgroundColor, borderColor, color]
+})

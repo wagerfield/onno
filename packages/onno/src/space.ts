@@ -268,15 +268,18 @@ export type MarginSetStyle = MarginStyle &
   MarginBottomStyle &
   MarginLeftStyle
 
-export const marginSet = compose<MarginSetProps, MarginSetStyle>([
-  margin,
-  marginX,
-  marginY,
-  marginTop,
-  marginRight,
-  marginBottom,
-  marginLeft
-])
+export const marginSet = compose<MarginSetProps, MarginSetStyle>({
+  name: "margin",
+  renderers: [
+    margin,
+    marginX,
+    marginY,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft
+  ]
+})
 
 // Padding Set
 
@@ -296,15 +299,18 @@ export type PaddingSetStyle = PaddingStyle &
   PaddingBottomStyle &
   PaddingLeftStyle
 
-export const paddingSet = compose<PaddingSetProps, PaddingSetStyle>([
-  padding,
-  paddingX,
-  paddingY,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft
-])
+export const paddingSet = compose<PaddingSetProps, PaddingSetStyle>({
+  name: "padding",
+  renderers: [
+    padding,
+    paddingX,
+    paddingY,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft
+  ]
+})
 
 // Space Set
 
@@ -312,7 +318,7 @@ export type SpaceSetProps = MarginSetProps & PaddingSetProps
 
 export type SpaceSetStyle = MarginSetStyle & PaddingSetStyle
 
-export const spaceSet = compose<SpaceSetProps, SpaceSetStyle>([
-  marginSet,
-  paddingSet
-])
+export const spaceSet = compose<SpaceSetProps, SpaceSetStyle>({
+  name: "space",
+  renderers: [marginSet, paddingSet]
+})

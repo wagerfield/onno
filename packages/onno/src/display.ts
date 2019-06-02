@@ -123,11 +123,10 @@ export type OverflowSetProps = OverflowProps & OverflowXProps & OverflowYProps
 
 export type OverflowSetStyle = OverflowStyle & OverflowXStyle & OverflowYStyle
 
-export const overflowSet = compose<OverflowSetProps, OverflowSetStyle>([
-  overflow,
-  overflowX,
-  overflowY
-])
+export const overflowSet = compose<OverflowSetProps, OverflowSetStyle>({
+  name: "overflow",
+  renderers: [overflow, overflowX, overflowY]
+})
 
 // Display Set
 
@@ -141,9 +140,7 @@ export type DisplaySetStyle = DisplayStyle &
   OverflowSetStyle &
   VisibilityStyle
 
-export const displaySet = compose<DisplaySetProps, DisplaySetStyle>([
-  display,
-  opacity,
-  overflowSet,
-  visibility
-])
+export const displaySet = compose<DisplaySetProps, DisplaySetStyle>({
+  name: "display",
+  renderers: [display, opacity, overflowSet, visibility]
+})

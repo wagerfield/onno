@@ -96,9 +96,7 @@ export type TransformSetStyle = PerspectiveStyle &
   TransformStyle &
   TransformOriginStyle
 
-export const transformSet = compose<TransformSetProps, TransformSetStyle>([
-  perspective,
-  perspectiveOrigin,
-  transform,
-  transformOrigin
-])
+export const transformSet = compose<TransformSetProps, TransformSetStyle>({
+  name: "transform",
+  renderers: [perspective, perspectiveOrigin, transform, transformOrigin]
+})

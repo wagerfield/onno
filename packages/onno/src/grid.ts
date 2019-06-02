@@ -437,26 +437,29 @@ export type GridParentSetStyle = DisplayStyle &
   GridAutoColumnsStyle &
   GridAutoFlowStyle
 
-export const gridParentSet = compose<GridParentSetProps, GridParentSetStyle>([
-  display,
-  placeItems,
-  placeContent,
-  alignItems,
-  alignContent,
-  justifyItems,
-  justifyContent,
-  grid,
-  gridTemplate,
-  gridTemplateRows,
-  gridTemplateColumns,
-  gridTemplateAreas,
-  gridGap,
-  gridRowGap,
-  gridColumnGap,
-  gridAutoRows,
-  gridAutoColumns,
-  gridAutoFlow
-])
+export const gridParentSet = compose<GridParentSetProps, GridParentSetStyle>({
+  name: "gridParent",
+  renderers: [
+    display,
+    placeItems,
+    placeContent,
+    alignItems,
+    alignContent,
+    justifyItems,
+    justifyContent,
+    grid,
+    gridTemplate,
+    gridTemplateRows,
+    gridTemplateColumns,
+    gridTemplateAreas,
+    gridGap,
+    gridRowGap,
+    gridColumnGap,
+    gridAutoRows,
+    gridAutoColumns,
+    gridAutoFlow
+  ]
+})
 
 // Grid Child Set
 
@@ -482,18 +485,21 @@ export type GridChildSetStyle = PlaceSelfStyle &
   GridColumnStartStyle &
   GridColumnEndStyle
 
-export const gridChildSet = compose<GridChildSetProps, GridChildSetStyle>([
-  placeSelf,
-  alignSelf,
-  justifySelf,
-  gridArea,
-  gridRow,
-  gridRowStart,
-  gridRowEnd,
-  gridColumn,
-  gridColumnStart,
-  gridColumnEnd
-])
+export const gridChildSet = compose<GridChildSetProps, GridChildSetStyle>({
+  name: "gridChild",
+  renderers: [
+    placeSelf,
+    alignSelf,
+    justifySelf,
+    gridArea,
+    gridRow,
+    gridRowStart,
+    gridRowEnd,
+    gridColumn,
+    gridColumnStart,
+    gridColumnEnd
+  ]
+})
 
 // Grid Set
 
@@ -501,7 +507,7 @@ export type GridSetProps = GridParentSetProps & GridChildSetProps
 
 export type GridSetStyle = GridParentSetStyle & GridChildSetStyle
 
-export const gridSet = compose<GridSetProps, GridSetStyle>([
-  gridParentSet,
-  gridChildSet
-])
+export const gridSet = compose<GridSetProps, GridSetStyle>({
+  name: "grid",
+  renderers: [gridParentSet, gridChildSet]
+})

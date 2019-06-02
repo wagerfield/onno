@@ -3,7 +3,6 @@ import {
   mq,
   get,
   resolve,
-  toArray,
   isArray,
   isNil,
   isObject,
@@ -55,7 +54,7 @@ export function renderStyle<S extends T.Style>(
 export function transformStyle<S extends T.Style>(
   renderers: T.AnyRenderFunction[]
 ): T.StyleTransformFunction<S> {
-  const renderer = compose(renderers)
+  const renderer = compose({ name: "foo", renderers })
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped style transform function
@@ -92,19 +91,28 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     renderers,
     defaults
   } = options
-  const transformer = isArray(renderers) && transformStyle(renderers)
+
+  // Validate propsKeys
+  if (!isArray(propsKeys) || propsKeys.length < 1) {
+    throw Error("propsKeys must be an array containing at least one key")
+  }
+
+  // Resolve style transform and keys
+  const name = propsKeys[0] // Renderer function name
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
+  const transformer = isArray(renderers) && transformStyle(renderers)
 
   // Reassign resolved style keys to options
   if (isUndefined(styleKeys)) options.styleKeys = keys
 
   // Scoped value renderer
   const renderValue = (value: any, theme?: T.Theme): any => {
-    if (!isUndefined(resolve(themeKeys, theme))) {
-      // Resolve theme value
-      const mappedKeys = themeKeys!.map((k) => `${k}.${value}`)
-      const lookupKeys = value === "." ? themeKeys : mappedKeys
-      const themeValue = resolve(lookupKeys, theme)
+    // Resolve theme value
+    let themeValue = resolve(themeKeys, theme)
+    if (!isUndefined(themeValue)) {
+      if (value !== ".") {
+        themeValue = resolve(themeKeys!.map((k) => `${k}.${value}`), theme)
+      }
       if (!isNil(themeValue)) value = themeValue
     } else if (defaults) {
       // Resolve defaults value
@@ -162,25 +170,22 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
     return styles.length ? styles : null
   }
 
-  // Return renderProps function
-  renderProps.type = "style" as "style"
+  // Define renderProps function properties
   renderProps.options = options
+  renderProps.type = "style" as "style"
+  Object.defineProperty(renderProps, "name", { value: name })
+
+  // Return renderProps function
   return renderProps
 }
 
 export function compose<P extends T.ThemeProps, S extends T.Style>(
-  renderers: T.AnyRenderFunction[]
-): T.ComposedRenderFunction<P, S>
-
-export function compose<P extends T.ThemeProps, S extends T.Style>(
-  ...renderers: T.AnyRenderFunction[]
-): T.ComposedRenderFunction<P, S>
-
-export function compose<P extends T.ThemeProps, S extends T.Style>(
-  ...args: any[]
+  options: T.ComposeOptions
 ): T.ComposedRenderFunction<P, S> {
-  const renderers = unique(toArray(args))
-  const options: T.ComposedStyleOptions = {
+  let { name } = options
+  if (!/Set$/.test(name)) name += "Set"
+  const renderers = unique(options.renderers)
+  const composedOptions: T.ComposedRenderOptions = {
     propsKeys: [],
     styleKeys: [],
     themeKeys: [],
@@ -191,7 +196,7 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   renderers.forEach((fn) =>
     KEYS.forEach((key) => {
       const keys = fn.options[key]
-      if (keys) push.apply(options[key], keys)
+      if (keys) push.apply(composedOptions[key], keys)
     })
   )
 
@@ -207,9 +212,12 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
     return result.length ? result : null
   }
 
-  // Return renderProps function
+  // Define renderProps function properties
+  renderProps.options = composedOptions
   renderProps.type = "compose" as "compose"
-  renderProps.options = options
+  Object.defineProperty(renderProps, "name", { value: name })
+
+  // Return renderProps function
   return renderProps
 }
 

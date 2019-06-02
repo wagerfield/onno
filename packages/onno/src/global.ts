@@ -37,14 +37,17 @@ export type GlobalSetStyle = BorderStyle &
   TextSetStyle &
   TransitionStyle
 
-export const globalSet = compose<GlobalSetProps, GlobalSetStyle>([
-  border,
-  borderRadius,
-  boxShadow,
-  colorSet,
-  opacity,
-  spaceSet,
-  sizeSet,
-  textSet,
-  transition
-])
+export const globalSet = compose<GlobalSetProps, GlobalSetStyle>({
+  name: "global",
+  renderers: [
+    border,
+    borderRadius,
+    boxShadow,
+    colorSet,
+    opacity,
+    spaceSet,
+    sizeSet,
+    textSet,
+    transition
+  ]
+})

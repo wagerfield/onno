@@ -117,11 +117,14 @@ export type BackgroundSetStyle = BackgroundStyle &
   BackgroundRepeatStyle &
   BackgroundSizeStyle
 
-export const backgroundSet = compose<BackgroundSetProps, BackgroundSetStyle>([
-  background,
-  backgroundColor,
-  backgroundImage,
-  backgroundPosition,
-  backgroundRepeat,
-  backgroundSize
-])
+export const backgroundSet = compose<BackgroundSetProps, BackgroundSetStyle>({
+  name: "background",
+  renderers: [
+    background,
+    backgroundColor,
+    backgroundImage,
+    backgroundPosition,
+    backgroundRepeat,
+    backgroundSize
+  ]
+})

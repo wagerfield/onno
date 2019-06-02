@@ -101,6 +101,11 @@ export interface StyleOptions {
   defaults?: ThemeValue
 }
 
+export interface ComposeOptions {
+  renderers: AnyRenderFunction[]
+  name: string
+}
+
 export type StyleValue = number | string | string[] | undefined
 
 export interface Style {
@@ -117,13 +122,13 @@ export type RenderFunctionType = "style" | "compose" | "variant"
 
 export interface RenderFunction<P extends ThemeProps, S extends Style> {
   (props: P): StyleArray<S> | null
-  type: RenderFunctionType
   options: StyleOptions
+  type: RenderFunctionType
 }
 
 export type AnyRenderFunction = RenderFunction<any, any>
 
-export interface ComposedStyleOptions extends StyleOptions {
+export interface ComposedRenderOptions {
   propsKeys: Keys
   styleKeys: Keys
   themeKeys: Keys
@@ -132,7 +137,7 @@ export interface ComposedStyleOptions extends StyleOptions {
 
 export interface ComposedRenderFunction<P extends ThemeProps, S extends Style>
   extends RenderFunction<P, S> {
-  options: ComposedStyleOptions
+  options: ComposedRenderOptions
 }
 
 export type StyleTransformFunction<S extends Style> = (

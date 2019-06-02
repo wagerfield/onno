@@ -294,14 +294,10 @@ export type PositionSetStyle = PositionStyle &
   BottomStyle &
   LeftStyle
 
-export const positionSet = compose<PositionSetProps, PositionSetStyle>([
-  position,
-  zIndex,
-  top,
-  right,
-  bottom,
-  left
-])
+export const positionSet = compose<PositionSetProps, PositionSetStyle>({
+  name: "position",
+  renderers: [position, zIndex, top, right, bottom, left]
+})
 
 // Size Set
 
@@ -321,15 +317,10 @@ export type SizeSetStyle = SizeStyle &
   MinHeightStyle &
   MaxHeightStyle
 
-export const sizeSet = compose<SizeSetProps, SizeSetStyle>([
-  size,
-  width,
-  minWidth,
-  maxWidth,
-  height,
-  minHeight,
-  maxHeight
-])
+export const sizeSet = compose<SizeSetProps, SizeSetStyle>({
+  name: "size",
+  renderers: [size, width, minWidth, maxWidth, height, minHeight, maxHeight]
+})
 
 // Layout Set
 
@@ -343,9 +334,7 @@ export type LayoutSetStyle = DisplayStyle &
   PositionSetStyle &
   SizeSetStyle
 
-export const layoutSet = compose<LayoutSetProps, LayoutSetStyle>([
-  display,
-  verticalAlign,
-  positionSet,
-  sizeSet
-])
+export const layoutSet = compose<LayoutSetProps, LayoutSetStyle>({
+  name: "layout",
+  renderers: [display, verticalAlign, positionSet, sizeSet]
+})

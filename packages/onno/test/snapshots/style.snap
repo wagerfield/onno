@@ -328,6 +328,10 @@ Array [
 ]
 `;
 
+exports[`throws an error for invalid propsKeys 1`] = `"propsKeys must be an array containing at least one key"`;
+
+exports[`throws an error for invalid propsKeys 2`] = `"propsKeys must be an array containing at least one key"`;
+
 exports[`transform functions: [addPc] {
   "a": "2em"
 } 1`] = `

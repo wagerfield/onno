@@ -4,6 +4,18 @@ import * as U from "./test-utils"
 const baselineFunc = U.style()
 const testBaseline = U.snapshot(baselineFunc)
 
+test("throws an error for invalid propsKeys", () => {
+  expect(() => {
+    O.style({ propsKeys: null as any })
+  }).toThrowErrorMatchingSnapshot()
+  expect(() => {
+    O.style({ propsKeys: [] })
+  }).toThrowErrorMatchingSnapshot()
+  expect(() => {
+    O.style({ propsKeys: ["foo"] })
+  }).not.toThrow()
+})
+
 test("returns style function", () => {
   expect(baselineFunc).toEqual(expect.any(Function))
   expect(baselineFunc).toHaveLength(1)

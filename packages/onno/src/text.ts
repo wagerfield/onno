@@ -220,15 +220,18 @@ export type TextSetStyle = FontFamilyStyle &
   TextTransformStyle &
   ColorStyle
 
-export const textSet = compose<TextSetProps, TextSetStyle>([
-  fontFamily,
-  fontSize,
-  fontStyle,
-  fontWeight,
-  lineHeight,
-  letterSpacing,
-  textAlign,
-  textDecoration,
-  textTransform,
-  color
-])
+export const textSet = compose<TextSetProps, TextSetStyle>({
+  name: "text",
+  renderers: [
+    fontFamily,
+    fontSize,
+    fontStyle,
+    fontWeight,
+    lineHeight,
+    letterSpacing,
+    textAlign,
+    textDecoration,
+    textTransform,
+    color
+  ]
+})
