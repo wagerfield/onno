@@ -160,7 +160,7 @@ Since both `maxWidths` and `sizes` are specified as arrays of values within the 
 
 The first `Box` passes an index of `1` which resolves to "256px" from the `maxWidths` theme array. The second `Box` passes an index of `2` which falls outside of the `maxWidths` array, so the resolver moves onto the next theme key (`sizes`) where it is able to resolve the value of "32px" at this location. The third `Box` passes an index of `3` which falls outside the `sizes` theme array and therefore the raw value of `3` is rendered.
 
-Both `props` and `themeKeys` support dot syntax string values to allow you to nest parts of your `theme` or `defaults`. For example:
+Both `props` and `themeKeys` support dot syntax string values to allow you to nest parts of your `theme` or `defaults`.
 
 ```jsx
 import styled from "styled-components"
@@ -233,7 +233,7 @@ Since the second `Box` passes a value with "em" units, the `addPx` transform fun
 
 In addition to `addPx`, onno also provides [`addPc`](utils.md#addPc), [`addRem`](utils.md#addRem) and [`addPcOrPx`](utils.md#addPcOrPx) transform functions.
 
-You can also write your own `transform` functions. Transform functions simply take a value and return a value. For example:
+You can also write your own `transform` functions. Transform functions simply take a value and return a value:
 
 ```js
 const addEm = (x) => (typeof x === "number" && x !== 0 ? x + "em" : x)
@@ -257,35 +257,35 @@ import { style, margin, padding } from "onno"
 
 const space = style({
   propsKeys: ["space", "sp"],
-  styleKeys: ["margin", "padding"],
+  styleKeys: ["margin", "padding", "foo"],
   renderers: [margin, padding]
 })
 
 const Box = styled.div(space)
 
-// [{ margin: "16px" }, { padding: "16px" }]
+// [{ margin: "16px", padding: "16px", foo: 4 }]
 <Box space={4} />
 
-// [{ margin: "2em" }, { padding: "2em" }]
+// [{ margin: "2em", padding: "2em", foo: 4 }]
 <Box sp="2em" />
 ```
 
-In the example above, the `space` render function maps "space" and "sp" props to "margin" and "padding" style keys. In the absence of a [`transform`](#transform) function being passed as an option to the `space` render function, any values provided to "space" or "sp" props would be mapped directly like so:
+In the example above, the `space` render function maps "space" and "sp" props to "margin", "padding" and "foo" style keys. In the absence of a [`transform`](#transform) function being passed as an option to the `space` render function, any values provided to "space" or "sp" props would be mapped directly like so:
 
 ```jsx
 const space = style({
   propsKeys: ["space", "sp"],
-  styleKeys: ["margin", "padding"]
+  styleKeys: ["margin", "padding", "foo"]
 })
 
-// [{ margin: 4, padding: 4 }]
+// [{ margin: 4, padding: 4, foo: 4 }]
 space({ space: 4 })
 
-// [{ margin: "2em", padding: "2em" }]
+// [{ margin: "2em", padding: "2em", foo: 4 }]
 space({ sp: "2em" })
 ```
 
-However, since onno's `margin` and `padding` functions have been passed as `renderers` to the `space` function, the style object that would normally be returned will be run through these `renderers` as if they were `props` and transform them accordingly.
+However, since onno's `margin` and `padding` functions have been passed as `renderers` to the `space` function, the style object that would normally be returned will be run through these `renderers` as if they were `props` and transformed accordingly.
 
 This is a _powerful feature_ since it allows you to create [`variant`](#variant) functions that can lookup and transform values referenced elsewhere in a theme. Furthermore, you can use custom properties (like `size` which maps to `width` and `height`) and aliases (like `fs` for `fontSize`) within your theme variants. For example:
 
@@ -301,11 +301,11 @@ const buttonStyle = variant({
 
 const theme = {
   colors: {
+    gray: ["#444", "#888", "#CCC"],
     white: "#FAFAFA",
     black: "#202020",
-    grays: ["#444", "#888", "#CCC"],
     brand: {
-      primary: "tomato",
+      primary: "coral",
       secondary: "olive"
     }
   },
@@ -324,7 +324,7 @@ const theme = {
       width: 0.5,
       height: "md",
       fontSize: "sm",
-      background: "grays.2",
+      background: "gray.2",
       color: "black"
     },
     primary: {
@@ -352,7 +352,7 @@ const Box = styled.div(buttonStyle)
 //   { width: "100%" },
 //   { height: "48px" },
 //   { fontSize: "20px" },
-//   { background: "tomato" },
+//   { background: "coral" },
 //   { color: "#FAFAFA" }
 // ]
 <Box theme={theme} bst="primary" />
@@ -417,13 +417,13 @@ const theme = {
 <Box width={0} />
 
 // [{ width: "20px" }]
-<Box w={1} theme={theme} />
+<Box theme={theme} w={1} />
 
 // [{ width: "2px" }]
-<Box w={2} theme={theme} />
+<Box theme={theme} w={2} />
 ```
 
-The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is transformed and rendered.
+The first `Box` does not have a `theme` so the value is resolved from the `defaults` array. The second `Box` resolves the value from the theme `widths` array. The third `Box` also finds the `widths` array on the `theme` but the value of "2" falls outside of the array bounds, so the raw value is transformed to pixels and rendered.
 
 ## `variant`
 
@@ -458,10 +458,10 @@ const theme = {
 }
 
 // [{ background: "blue", color: "white" }]
-<Button buttonStyle="primary" theme={theme} />
+<Button theme={theme} buttonStyle="primary" />
 
 // [{ background: "gray", color: "black" }]
-<Button bst="secondary" theme={theme} />
+<Button theme={theme} bst="secondary" />
 ```
 
 One of the major features of the `style` and `variant` functions is that you can pass an array of `renderers` in the options object. Each key value in the resolved style object will be run through the array of `render` functions to lookup and transform the values accordingly.
@@ -515,25 +515,29 @@ const theme = {
 }
 
 // [{ color: "#222", fontSize: "16px" }]
-<Text textStyle="main" theme={theme} />
+<Text theme={theme} textStyle="main" />
 
-// [{ color: "plum", fontSize: "24px", fontWeight: "bold" }]
-<Text textStyle="brand" theme={theme} />
+// [{ color: "coral", fontSize: "24px", fontWeight: "bold" }]
+<Text theme={theme} textStyle="brand" />
 
 // [{ color: "red", fontSize: "16px" }]
-<Text tst="error" theme={theme} />
+<Text theme={theme} tst="error" />
 
 // [{ color: "blue", fontSize: "12px" }]
-<Text tst="info" theme={theme} />
+<Text theme={theme} tst="info" />
 ```
 
-Style objects will be iterated over recursively... `globalStyles`
+Since variant functions are `render` functions themselves, they can be passed to the `renderers` array of other variant (or style) functions. This powerful feature allows you to compose sophisticated render functions like the `buttonStyle` and `globalStyle` [variant functions](render-functions.md#variant) included with onno.
 
-Onno ships with some common [variant functions](render-functions.md#variant) to get you started.
+It is worth noting that rendered style objects are iterated over recursively to allow you to nest style objects within selectors like `:hover` or `> span`. Nested style objects will be transformed through the same `renderers` as the root style object. Read the [`globalStyle`](render-functions.md#globalstyle) docs to understand the potential of this powerful feature in more detail.
+
+`globalStyles`
 
 ## `compose`
 
-The `compose` function takes an `options` object containing an array of `renderers` and returns a _composed_ `render` function.
+The `compose` function takes an `options` object and returns a _composed_ `render` function.
+
+The `options` object must contain an array of `renderers` to compose and a `name` for the returned `render` function:
 
 | Key                       | Type               | Required | Description                                   |
 | :------------------------ | :----------------- | :------- | :-------------------------------------------- |

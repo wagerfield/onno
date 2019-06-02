@@ -241,7 +241,7 @@ import { Global } from "@emotion/core"
 
 In the example above, the imported `theme` is being passed as a prop to Styled Component's `Global` component and within in a `props` object to Emotion's `Global` component `styles`
 
-In practice, you will likely use the `ThemeProvider` for each respective library to pass the `theme` down to the `Global` component:
+In practice, you will likely use the `ThemeProvider` for each library to pass the `theme` down to the `Global` component:
 
 ```jsx
 import { createGlobalStyle, ThemeProvider } from "styled-components"
@@ -294,6 +294,7 @@ const theme = {
       px: 4 // spaces[4] > default: "16px"
     }
   },
+  // Global Styles
   globalStyles: {
     html: {
       fontSize: 2, // fontSizes[2] > default: "16px"
@@ -308,7 +309,7 @@ const theme = {
       textStyle: "code" // textStyles.code > { fontFamily: "Monaco", fontSize: "85%" }
     },
     button: {
-      bst: "primary" // buttonStyles.primary > { background: "coral" ... }
+      bst: "primary" // buttonStyles.primary > { background: "coral", color: "ivory" ... }
     }
   }
 }
