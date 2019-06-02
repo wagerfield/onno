@@ -431,7 +431,7 @@ The `variant` function maps a prop value to a _style object_ in a `theme` or `de
 
 The key difference between the `variant` and `style` functions is that `styleKeys` cannot be passed as an option to the `variant` function. Internally the `variant` function calls the `style` function with the provided `options` while overriding `styleKeys` to `null`.
 
-This functionality is useful for providing a place in your `theme` for grouping styles. Common use cases for this would be components and styles that are used in combination with one another like background and foreground colors, typographic sets or button variant styles. For example:
+This functionality is useful for providing a place in your `theme` for grouping styles. Common use cases for this would be styles that are commonly used in combination with one another like background and foreground colors, typographic compositions or button variant styles. For example:
 
 ```jsx
 import styled from "styled-components"
@@ -531,8 +531,6 @@ Since variant functions are `render` functions themselves, they can be passed to
 
 It is worth noting that rendered style objects are iterated over recursively to allow you to nest style objects within selectors like `:hover` or `> span`. Nested style objects will be transformed through the same `renderers` as the root style object. Read the [`globalStyle`](render-functions.md#globalstyle) docs to understand the potential of this powerful feature in more detail.
 
-`globalStyles`
-
 ## `compose`
 
 The `compose` function takes an `options` object and returns a _composed_ `render` function.
@@ -584,9 +582,7 @@ const Text = styled.div(fontSet)
 <Text ff="Lobster" fw={300} fs="24px" />
 ```
 
-The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function.
-
-It is recommended that you follow the naming convention of appending `Set` to the variable names of your _composed_ functions to help distinguish them from _standard_ render functions.
+The example above composes the `fontFamily`, `fontWeight` and `fontSize` render functions into a single `fontSet` render function. It is recommended that you follow the naming convention of appending `Set` to the variable names of your _composed_ functions to help distinguish them from _standard_ render functions.
 
 The `name` option will automatically have "Set" appended to it when omitted. In the example above, the `name` option of "font" will get converted to "fontSet" so that `fontSet.name === "fontSet"`
 
