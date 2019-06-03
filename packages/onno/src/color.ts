@@ -1,6 +1,7 @@
 import * as C from "csstype"
 import * as T from "./types"
-import { extend, compose } from "./style"
+import { extend } from "./style"
+import { compose } from "./compose"
 
 const ex = extend({
   themeKeys: ["colors"],

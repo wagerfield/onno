@@ -1,3 +1,5 @@
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
 export type Length = number
 
 export type Nil = null | undefined
@@ -26,6 +28,8 @@ export interface Alias<T = Primitive> {
   alias: Key
   value: T
 }
+
+// Theme
 
 export type ThemeArrayValue<T> = Alias<T> | T
 
@@ -88,23 +92,7 @@ export interface ThemeProps {
   theme?: Theme
 }
 
-export type ValueTransformFunction = (value: any) => any
-
-export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
-
-export interface StyleOptions {
-  propsKeys: Keys
-  styleKeys?: Keys | null
-  themeKeys?: Keys
-  transform?: ValueTransformFunction
-  renderers?: AnyRenderFunction[]
-  defaults?: ThemeValue
-}
-
-export interface ComposeOptions {
-  renderers: AnyRenderFunction[]
-  name: string
-}
+// Styles
 
 export type StyleValue = number | string | string[] | undefined
 
@@ -118,15 +106,39 @@ export interface StyleObject<S extends Style> {
 
 export type StyleArray<S extends Style> = StyleObject<S>[]
 
-export type RenderFunctionType = "style" | "compose" | "variant"
+// Transform Functions
 
-export interface RenderFunction<P extends ThemeProps, S extends Style> {
-  (props: P): StyleArray<S> | null
-  options: StyleOptions
-  type: RenderFunctionType
+export type ValueTransformFunction = (value: any) => any
+
+export type StyleTransformFunction<S extends Style> = (
+  style: StyleObject<S>,
+  theme?: Theme
+) => StyleObject<S>
+
+// Options
+
+export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
+
+export interface StyleOptions {
+  propsKeys: Keys
+  styleKeys?: Keys | null
+  themeKeys?: Keys
+  transform?: ValueTransformFunction
+  renderers?: AnyRenderFunction[]
+  defaults?: ThemeValue
 }
 
-export type AnyRenderFunction = RenderFunction<any, any>
+export type VariantOptions = Omit<StyleOptions, "styleKeys">
+
+export interface ComposeOptions {
+  renderers: AnyRenderFunction[]
+  name: string
+}
+
+export interface OmitOptions {
+  propsKeys: Keys
+  renderers: AnyRenderFunction[]
+}
 
 export interface ComposedRenderOptions {
   propsKeys: Keys
@@ -135,12 +147,19 @@ export interface ComposedRenderOptions {
   renderers: AnyRenderFunction[]
 }
 
+// Render Functions
+
+export type RenderFunctionType = "style" | "compose" | "variant"
+
+export interface RenderFunction<P extends ThemeProps, S extends Style> {
+  (props: P): StyleArray<S> | null
+  options: StyleOptions
+  type: RenderFunctionType
+}
+
 export interface ComposedRenderFunction<P extends ThemeProps, S extends Style>
   extends RenderFunction<P, S> {
   options: ComposedRenderOptions
 }
 
-export type StyleTransformFunction<S extends Style> = (
-  style: StyleObject<S>,
-  theme?: Theme
-) => StyleObject<S>
+export type AnyRenderFunction = RenderFunction<any, any>

@@ -1,4 +1,4 @@
-import { compose } from "./style"
+import { compose } from "./compose"
 import {
   border,
   BorderProps,

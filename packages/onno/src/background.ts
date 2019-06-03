@@ -1,7 +1,8 @@
 import * as C from "csstype"
 import * as T from "./types"
 import { addPcOrPx } from "./utils"
-import { compose, extend, style } from "./style"
+import { extend, style } from "./style"
+import { compose } from "./compose"
 import {
   background,
   BackgroundProps,

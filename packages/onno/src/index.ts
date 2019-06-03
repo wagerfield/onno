@@ -2,6 +2,7 @@
 export * from "./types"
 export * from "./constants"
 export * from "./utils"
+export * from "./compose"
 export * from "./style"
 
 // Styles
@@ -19,4 +20,4 @@ export * from "./space"
 export * from "./text"
 export * from "./transform"
 export * from "./global"
-export * from "./variant"
+export * from "./variants"
