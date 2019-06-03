@@ -277,9 +277,7 @@ This allows you to build sophisticated [`variant`](api.md#variant) functions tha
 
 In practice this means you can reference design tokens within a `theme` such as `colors` or `fontSizes` within variant style objects like `buttonStyles` or `globalStyles`.
 
-This circumvents the need for declaring constants and referencing them throughout your theme. As a direct result of this feature, themes can be serialized into JSON if desired.
-
-Declare design tokens once. Reference them everywhere.
+This circumvents the need for declaring constants and referencing them throughout your theme. As a direct result of this feature, themes can be serialized into JSON if so desired.
 
 ```jsx
 import styled from "styled-components"
@@ -293,6 +291,7 @@ const textStyle = variant({
   renderers: [colorSet, textSet]
 })
 
+// Global style variant
 const globalStyle = variant({
   propsKeys: ["globalStyle", "gst"],
   themeKeys: ["globalStyles"],
@@ -302,6 +301,8 @@ const globalStyle = variant({
 })
 
 const Text = styled.div(textStyle)
+
+const Global = styled.div(globalStyle)
 
 const theme = {
   // Design Tokens
@@ -363,6 +364,22 @@ const theme = {
 
 // { fontFamily: "Merriweather, serif", fontSize: "32px", fontWeight: 700, color: "#202428" }
 <Text theme={theme} tst="heading" />
+
+// { fontFamily: "system-ui, sans-serif", fontSize: "16px", color: "#202428" }
+<Global theme={theme} globalStyle="html" />
+
+// {
+//   html: {
+//     fontFamily: "system-ui, sans-serif",
+//     fontSize: "16px",
+//     color: "#202428"
+//   },
+//   body: {
+//     background: "ivory"
+//   },
+//   ...
+// }
+<Global theme={theme} globalStyle="." /> // "." is a special "root" path
 ```
 
 The `globalStyle` variant function that is included with onno is the most sophisticated example of this feature in action. It consumes _standard_ render functions like `border` and `boxShadow`, _composed_ render functions like `colorSet` and `spaceSet`, and other variant functions like `textStyle` and `buttonStyle`.
