@@ -13,10 +13,10 @@ The additional features introduced by onno are presented in detail below.
 - [Prop keys as an array](#prop-keys-as-an-array)
 - [Style keys as an array](#style-keys-as-an-array)
 - [Theme keys as an array](#theme-keys-as-an-array)
-- [Recursive render functions](#recursive-render-functions)
 - [Serializable themes](#serializable-themes)
+- [Recursive render functions](#recursive-render-functions)
 - [Dot syntax and value inversion](#dot-syntax-and-value-inversion)
-- [Simpler transform functions](#simpler-transform-functions)
+- [Simple transform functions](#simple-transform-functions)
 - [More render functions and aliases](#more-render-functions-and-aliases)
 - [Strict naming conventions](#strict-naming-conventions)
 
@@ -96,7 +96,7 @@ To add your own `themeKeys` simply create an interface that extends from `Theme`
 Styled System's [`style`][styled-system-api-style] function allows you to specify both a `prop` key and optional `alias` for the render function to map values from. Onno takes this one step further by consolidating these two options into a `propsKeys` array which allows you to specify as many aliases as you like, while also enforcing an order of precedence for them. For example:
 
 ```jsx
-import styled from "styled-system"
+import styled from "styled-components"
 import { style } from "onno"
 
 const fontFamily = style({
@@ -131,7 +131,7 @@ In some cases you need to map a `prop` value to multiple `style` keys. Examples 
 Onno solves with problem with the `styleKeys` option which supports one-to-one, one-to-many, many-to-one and many-to-many key maps:
 
 ```jsx
-import styled from "styled-system"
+import styled from "styled-components"
 import { style } from "onno"
 
 // many-to-one
@@ -164,7 +164,7 @@ Styled System provides a `key` option for specifying a "lookup" location in a `t
 Onno takes this one step further by upgrading a single theme `key` to an array of `themeKeys`. In doing so, you can create render functions that resolve values from multiple locations in a `theme` by cascading through them in order of precedence. For example:
 
 ```jsx
-import styled from "styled-system"
+import styled from "styled-components"
 import { style } from "onno"
 
 const size = style({
@@ -196,13 +196,9 @@ The second `Box` provides a `width` prop index value of `2` which falls outside 
 
 If the `theme` did not have a `widths` array then the `sizes` array would resolve values for both render functions.
 
-### Recursive render functions
-
-This is one of the _major features_ introduced by onno.
-
 ### Serializable themes
 
-It is good practice to define a `theme` _or facets of a theme_ in a serializable data structure such as JSON or YAML. Doing so facilitates the portability of design tokens between languages, projects and platforms. This is how companies like [GitHub][github-primer-primitives] organise their design tokens and projects like [Theo][salesforce-theo] consume and distribute them.
+It is good practice to define a `theme` _or facets of a theme_ in a serializable data structure such as JSON. Doing so facilitates the portability of design tokens between languages, projects and platforms. This is how companies like [GitHub][github-primer-primitives] organise their design tokens and projects like [Theo][salesforce-theo] consume and distribute them.
 
 When working with arrays of values in a `theme` (Styled System refers to these as "scales") the only way to retrieve values from them is via an index. For large arrays of values, this can make it difficult to keep track of which index you require for a particular value and often leads to counting through the array with your finger (we've all done it). Further problems arise when values are added or removed from the array causing indexes to resolve to different values.
 
@@ -249,7 +245,7 @@ Internally onno uses the `get` method to resolve all `theme` and `defaults` valu
 Declaring `breakpoints` as alias objects allows responsive props to use both array and object value maps:
 
 ```jsx
-import styled from "styled-system"
+import styled from "styled-components"
 import { style } from "onno"
 
 const width = style({
@@ -271,14 +267,116 @@ const Box = styled.div(width)
 <Box width={{ xs: "100%", md: "50%" }} />
 ```
 
+### Recursive render functions
+
+This is one of the _major features_ introduced by onno to support DRY principles and [serializable themes](#serializable-themes).
+
+The [`style`](api.md#style) function provides a `renderers` option for _transforming_ resolved or rendered style objects through.
+
+This allows you to build sophisticated [`variant`](api.md#variant) functions that use other `render` functions (even other `variant` functions) to process and transform key value pairs.
+
+In practice this means you can reference design tokens within a `theme` such as `colors` or `fontSizes` within variant style objects like `buttonStyles` or `globalStyles`.
+
+This circumvents the need for declaring constants and referencing them throughout your theme. As a direct result of this feature, themes can be serialized into JSON if desired.
+
+Declare design tokens once. Reference them everywhere.
+
+```jsx
+import styled from "styled-components"
+import { variant, colorSet, textSet } from "onno"
+
+// Text style variant
+const textStyle = variant({
+  propsKeys: ["textStyle", "tst"],
+  themeKeys: ["textStyles"],
+  // Use colorSet and textSet composed render functions
+  renderers: [colorSet, textSet]
+})
+
+const globalStyle = variant({
+  propsKeys: ["globalStyle", "gst"],
+  themeKeys: ["globalStyles"],
+  // Use colorSet and textSet composed render functions
+  // Also use the textStyle variant render function from above
+  renderers: [colorSet, textSet, textStyle]
+})
+
+const Text = styled.div(textStyle)
+
+const theme = {
+  // Design Tokens
+  colors: {
+    black: "#202428",
+    white: "ivory",
+    brand: "coral"
+  },
+  fontFamilies: {
+    heading: "Merriweather, serif",
+    main: "system-ui, sans-serif",
+    code: "Monaco, monospace"
+  },
+  fontSizes: [
+    { "alias": "sm", "value": 16 },
+    { "alias": "md", "value": 24 },
+    { "alias": "lg", "value": 32 }
+  ],
+  // Text Variants
+  textStyles: {
+    main: {
+      fontFamily: "main", // "system-ui, sans-serif"
+      fontSize: "sm", // "16px"
+      color: "black" // "#202428"
+    },
+    heading: {
+      // You can use prop aliases too!
+      ff: "heading", // "Merriweather, serif"
+      fw: "bold", // 700
+      fs: "lg", // "32px"
+      tc: "black" // "#202428"
+    },
+    code: {
+      fontFamily: "code", // "Monaco, monospace"
+      fontSize: "sm", // "16px"
+      color: "black" // "#202428"
+    }
+  },
+  // Global Styles
+  globalStyles: {
+    html: {
+      textStyle: "main" // { fontFamily: "system-ui, sans-serif", fontSize: "16px" ... }
+    },
+    body: {
+      background: "white" // { background: "ivory" }
+    },
+    h1: {
+      textStyle: "heading" // { fontFamily: "Merriweather, serif", fontSize: "32px" ... }
+    },
+    code: {
+      // You can use prop aliases here too!
+      tst: "code" // { fontFamily: "Monaco, monospace", fontSize: "16px" ... }
+    }
+  }
+}
+
+// { fontFamily: "system-ui, sans-serif", fontSize: "16px", color: "#202428" }
+<Text theme={theme} textStyle="main" />
+
+// { fontFamily: "Merriweather, serif", fontSize: "32px", fontWeight: 700, color: "#202428" }
+<Text theme={theme} tst="heading" />
+```
+
+The `globalStyle` variant function that is included with onno is the most sophisticated example of this feature in action. It consumes _standard_ render functions like `border` and `boxShadow`, _composed_ render functions like `colorSet` and `spaceSet`, and other variant functions like `textStyle` and `buttonStyle`.
+
+Read the [`globalStyle`](render-functions.md#globalstyle) docs to learn about this function in more detail.
+
 ### Dot syntax and value inversion
 
-Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function. Styled System's `space` functions (margin and padding) also support negative lookup values to invert resolved values. This is useful for negative margins.
+Styled System supports dot syntax for both `prop` values and theme `key` options. This allows you to lookup values in nested objects and arrays within a `theme` and the default `scale` of a render function. Styled System's `space` functions (margin and padding) also support negative lookup values to invert resolved values like margins.
 
 Onno also supports dot syntax for `prop` values, `themeKeys` and _alias objects_ within arrays. This flexible interface allows you to structure and nest your `theme` however you like. In addition to this, onno supports inversion of _any_ value simply by prefixing a lookup path or index with a negative sign. For example:
 
 ```jsx
-import styled from "styled-system"
+import styled from "styled-components"
 import { addPx, style } from "onno"
 
 const width = style({
@@ -309,7 +407,7 @@ const Box = styled.div(width, margin)
 <Box w="-ratio.1" m="-0" />
 ```
 
-### Simpler transform functions
+### Simple transform functions
 
 Styled System provides a `transformValue` option for transforming values _before_ they are mapped to CSS properties. This is useful for appending units like "px" to unitless values. Styled System's `transformValue` option expects a function with the signature `(value, scale) => value`. This API was designed to support cases where you might want to invert a value from a scale—such as when working with negative margins or positioning.
 
