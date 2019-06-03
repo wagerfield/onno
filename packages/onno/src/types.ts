@@ -1,5 +1,3 @@
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
 export type Length = number
 
 export type Nil = null | undefined

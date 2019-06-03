@@ -2,17 +2,17 @@ import * as O from "../src"
 import * as U from "./test-utils"
 
 test("sets styleKeys to null", () => {
-  const styleFunc = O.variant({ propsKeys: ["a"] })
+  const styleFunc = O.variant<any, any>({ propsKeys: ["a"] })
   expect(styleFunc.options.styleKeys).toBeNull()
 })
 
 test("returns null for unresolved values", () => {
-  const styleFunc = O.variant({ propsKeys: ["a"] })
+  const styleFunc = O.variant<any, any>({ propsKeys: ["a"] })
   expect(styleFunc({ a: "foo" })).toBeNull()
 })
 
 test("renders style object from defaults", () => {
-  const styleFunc = O.variant({
+  const styleFunc = O.variant<any, any>({
     propsKeys: ["a", "b"],
     defaults: {
       foo: {
@@ -31,7 +31,7 @@ test("renders style object from defaults", () => {
 })
 
 test("renders style object from theme", () => {
-  const styleFunc = O.variant({
+  const styleFunc = O.variant<any, any>({
     propsKeys: ["a", "b"],
     themeKeys: ["testStyles"]
   })
@@ -53,7 +53,7 @@ test("renders style object from theme", () => {
 })
 
 test("transforms values through renderers", () => {
-  const styleFunc = O.variant({
+  const styleFunc = O.variant<any, any>({
     propsKeys: ["a", "b"],
     themeKeys: ["testStyles"],
     renderers: [O.color, O.width]

@@ -8,13 +8,15 @@ test("returns style factory", () => {
 })
 
 test("returns style function", () => {
-  const styleFunc = O.extend({})({ propsKeys: ["a"] })
+  const styleFact = O.extend({})
+  const styleFunc = styleFact<any, any>({ propsKeys: ["a"] })
   expect(styleFunc).toEqual(expect.any(Function))
   expect(styleFunc).toHaveLength(1)
 })
 
 test("returns style object array", () => {
-  const styleFunc = O.extend({})({ propsKeys: ["a", "b"] })
+  const styleFact = O.extend({})
+  const styleFunc = styleFact<any, any>({ propsKeys: ["a", "b"] })
   const testProps = U.snapshot(styleFunc)
   testProps({ a: "foo" })
   testProps({ b: "bar" })
@@ -25,7 +27,7 @@ test("overrides base options", () => {
     propsKeys: ["a", "b"],
     styleKeys: ["x", "y"]
   })
-  const styleFunc = styleFact({
+  const styleFunc = styleFact<any, any>({
     propsKeys: ["c", "d"]
   })
   const testProps = U.snapshot(styleFunc)

@@ -11,7 +11,7 @@ test("returns style function", () => {
 })
 
 test("returns null for empty arrays ", () => {
-  const styleSet = O.compose({
+  const styleSet = O.compose<any, any>({
     name: "test",
     renderers: [O.style({ propsKeys: ["a"] })]
   })
@@ -19,7 +19,7 @@ test("returns null for empty arrays ", () => {
 })
 
 test("returns style object array or null", () => {
-  const styleSet = O.compose({
+  const styleSet = O.compose<any, any>({
     name: "test",
     renderers: [
       O.style({ propsKeys: ["a", "b"] }),
@@ -35,7 +35,7 @@ test("returns style object array or null", () => {
 })
 
 test("supports array of render functions", () => {
-  const styleSet = O.compose({
+  const styleSet = O.compose<any, any>({
     name: "test",
     renderers: [
       O.style({ propsKeys: ["a", "b"] }),
@@ -49,7 +49,7 @@ test("supports array of render functions", () => {
 })
 
 test("supports list of render functions", () => {
-  const styleSet = O.compose({
+  const styleSet = O.compose<any, any>({
     name: "test",
     renderers: [
       O.style({ propsKeys: ["a", "b"] }),
@@ -63,7 +63,7 @@ test("supports list of render functions", () => {
 })
 
 test("respects order of style functions", () => {
-  const styleSet = O.compose({
+  const styleSet = O.compose<any, any>({
     name: "test",
     renderers: [
       O.style({ propsKeys: ["a", "b"], styleKeys: ["z"] }),
@@ -82,15 +82,15 @@ test("deduplicates style functions", () => {
   const styleFunc2 = O.style<any, any>({ propsKeys: ["c", "d"] })
   const styleFunc3 = O.style<any, any>({ propsKeys: ["e", "f"] })
 
-  const styleSet1 = O.compose({
+  const styleSet1 = O.compose<any, any>({
     name: "test1",
     renderers: [styleFunc1, styleFunc2, styleFunc1]
   })
-  const styleSet2 = O.compose({
+  const styleSet2 = O.compose<any, any>({
     name: "test2",
     renderers: [styleFunc2, styleFunc3, styleFunc1]
   })
-  const styleSet3 = O.compose({
+  const styleSet3 = O.compose<any, any>({
     name: "test3",
     renderers: [styleFunc3, styleSet1, styleSet2]
   })

@@ -13,7 +13,7 @@ export interface ColorStyleProps extends T.ThemeProps {
   cst?: VariantProp
 }
 
-export const colorStyle = variant<ColorStyleProps>({
+export const colorStyle = variant<ColorStyleProps, any>({
   propsKeys: ["colorStyle", "cst"],
   themeKeys: ["colorStyles"],
   renderers: [colorSet]
@@ -26,7 +26,7 @@ export interface TextStyleProps extends T.ThemeProps {
   tst?: VariantProp
 }
 
-export const textStyle = variant<TextStyleProps>({
+export const textStyle = variant<TextStyleProps, any>({
   propsKeys: ["textStyle", "tst"],
   themeKeys: ["textStyles"],
   renderers: [textSet]
@@ -39,7 +39,7 @@ export interface ButtonStyleProps extends T.ThemeProps {
   bst?: VariantProp
 }
 
-export const buttonStyle = variant<ButtonStyleProps>({
+export const buttonStyle = variant<ButtonStyleProps, any>({
   propsKeys: ["buttonStyle", "bst"],
   themeKeys: ["buttonStyles"],
   renderers: [globalSet, colorStyle, textStyle]
@@ -52,7 +52,7 @@ export interface GlobalStyleProps extends T.ThemeProps {
   gst?: VariantProp
 }
 
-const gst = variant<GlobalStyleProps>({
+const gst = variant<GlobalStyleProps, any>({
   propsKeys: ["globalStyle", "gst"],
   themeKeys: ["globalStyles"],
   renderers: [globalSet, buttonStyle, colorStyle, textStyle]

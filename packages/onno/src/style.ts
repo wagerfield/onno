@@ -21,7 +21,7 @@ export function merge<S extends T.Style>(
 }
 
 export function renderStyle<S extends T.Style>(
-  keys?: T.Keys,
+  keys?: (keyof S)[],
   value?: any
 ): S | null {
   if (isNil(value) || !isArray(keys) || !keys.length) return null
@@ -63,7 +63,7 @@ export function transformStyle<S extends T.Style>(
   return transform
 }
 
-export function style<P extends T.ThemeProps, S extends T.Style = any>(
+export function style<P extends T.ThemeProps, S extends T.Style>(
   options: T.StyleOptions
 ): T.RenderFunction<P, S> {
   const {
@@ -162,7 +162,7 @@ export function style<P extends T.ThemeProps, S extends T.Style = any>(
   return renderProps
 }
 
-export function variant<P extends T.ThemeProps, S extends T.Style = any>(
+export function variant<P extends T.ThemeProps, S extends T.Style>(
   options: T.VariantOptions
 ): T.RenderFunction<P, S> {
   const renderProps = style<P, S>({ ...options, styleKeys: null })
