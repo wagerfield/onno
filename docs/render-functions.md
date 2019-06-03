@@ -1,6 +1,22 @@
-# Render Functions
+# Render Functions<!-- omit in toc -->
 
 Composed `render` functions follow the naming convention of ending in `Set` and appear in **bold** within the tables.
+
+- [Animation](#animation)
+- [Background](#background)
+- [Border](#border)
+- [Color](#color)
+- [Display](#display)
+- [Flex](#flex)
+- [Grid](#grid)
+- [Layout](#layout)
+- [Shadow](#shadow)
+- [Space](#space)
+- [Text](#text)
+- [Transform](#transform)
+- [Global](#global)
+- [Variants](#variants)
+  - [globalStyle](#globalstyle)
 
 ## Animation
 
@@ -210,7 +226,7 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 - textSet
 - transition
 
-## Variant
+## Variants
 
 | Function Name | Props Keys       | Theme Keys   | Renderers                                     |
 | :------------ | :--------------- | :----------- | :-------------------------------------------- |
@@ -221,7 +237,7 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 
 ### globalStyle
 
-The `globalStyle` variant function defaults the `gst` prop to "." (a special root `path` string). Passing "." to the `gst` (or `globalStyle`) prop will result in the entire `globalStyles` theme object being transformed and returned.
+The `globalStyle` variant function defaults the `gst` prop to `"."` (a special root `path` string). Passing `"."` to the `gst` (or `globalStyle`) prop will result in the entire `globalStyles` theme object being transformed and returned.
 
 This makes it very easy to add global styles from your `theme` using Styled Components' [`createGlobalStyle`][styled-components-global-styles] function or Emotion's [`Global`][emotion-global-styles] component:
 
