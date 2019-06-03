@@ -382,6 +382,10 @@ const theme = {
 <Global theme={theme} globalStyle="." /> // "." is a special "root" path
 ```
 
+In the last example, the `Global` component passes "." to the `globalStyle` prop. This is a special "root" `path` that will return the entire theme lookup object or array rather than a nested value within it. This is useful when defining `globalStyles` where nested keys are generally selectors rather than variants on a style.
+
+Another _powerful_ feature of `renderers` is that style objects will be iterated over recursively and transformed through the same collection of `render` functions. This allows you to nest style objects in selectors like `:hover`, `> span` or `html` as demonstrated in the `globalStyles` example above.
+
 The `globalStyle` variant function that is included with onno is the most sophisticated example of this feature in action. It consumes _standard_ render functions like `border` and `boxShadow`, _composed_ render functions like `colorSet` and `spaceSet`, and other variant functions like `textStyle` and `buttonStyle`.
 
 Read the [`globalStyle`](render-functions.md#globalstyle) docs to learn about this function in more detail.
