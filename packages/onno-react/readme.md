@@ -96,6 +96,58 @@ Box.propTypes = {
 }
 ```
 
+## Sanitizing Props
+
+To sanitize `props` before applying them to a component, you can use onno's [`omit`][onno-omit] function:
+
+```js
+import { omit, display, padding } from "onno-react"
+
+const omitPropsKeys = omit({
+  propsKeys: ["foo", "bar"]
+})
+
+const omitRenderers = omit({
+  renderers: [display, padding]
+})
+
+const omitComposite = omit({
+  propsKeys: ["foo", "bar"],
+  renderers: [display, padding]
+})
+
+const props = {
+  foo: "foo",
+  bar: "bar",
+  baz: "baz",
+  display: "block",
+  d: "inline-block",
+  padding: 4,
+  p: 8
+}
+
+// {
+//   baz: "baz",
+//   display: "block",
+//   d: "inline-block",
+//   padding: 4,
+//   p: 8
+// }
+omitPropsKeys(props)
+
+// {
+//   foo: "foo",
+//   bar: "bar",
+//   baz: "baz"
+// }
+omitRenderers(props)
+
+// {
+//   baz: "baz"
+// }
+omitComposite(props)
+```
+
 ## Author
 
 [Matthew Wagerfield][github]
@@ -105,6 +157,7 @@ Box.propTypes = {
 [MIT][license]
 
 [onno]: https://onnojs.com
+[onno-omit]: https://github.com/wagerfield/onno/blob/master/docs/utils.md#omit
 [github]: https://github.com/wagerfield
 [license]: https://github.com/wagerfield/onno/blob/master/license
 [bundlephobia]: https://bundlephobia.com/result?p=onno-react
