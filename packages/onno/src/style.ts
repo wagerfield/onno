@@ -37,7 +37,7 @@ export function renderStyle<S extends T.Style>(
 export function transformStyle<S extends T.Style>(
   renderers: T.AnyRenderFunction[]
 ): T.StyleTransformFunction<S> {
-  const renderer = compose({ name: "foo", renderers })
+  const renderer = compose({ name: "transform", renderers })
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped style transform function

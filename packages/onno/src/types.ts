@@ -92,6 +92,10 @@ export interface ThemeProps {
   theme?: Theme
 }
 
+export interface Props extends ThemeProps {
+  [key: string]: any
+}
+
 // Styles
 
 export type StyleValue = number | string | string[] | undefined
@@ -115,6 +119,8 @@ export type StyleTransformFunction<S extends Style> = (
   theme?: Theme
 ) => StyleObject<S>
 
+export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
+
 // Options
 
 export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
@@ -136,8 +142,8 @@ export interface ComposeOptions {
 }
 
 export interface OmitOptions {
-  propsKeys: Keys
-  renderers: AnyRenderFunction[]
+  propsKeys?: Keys
+  renderers?: AnyRenderFunction[]
 }
 
 export interface ComposedRenderOptions {

@@ -22,6 +22,7 @@ These functions can be useful for when you create your own transform functions o
 - [`addPcOrPx`](#addpcorpx)
 - [`get`](#get)
 - [`resolve`](#resolve)
+- [`omit`](#omit)
 
 ### `isNil`
 
@@ -277,3 +278,69 @@ resolve(["widths.4", "sizes.4"], lookup) // undefined
 ```
 
 This is the function that onno uses internally to resolve `theme` and `defaults` values. It calls the `get` method for each `path` in turn to try and resolve a value in the `lookup` object.
+
+### `omit`
+
+Takes an `options` object with _optional_ `propsKeys` array and/or `renderers` array and returns a props `filter` function.
+
+When the `filter` function is called with a `props` object, it will return another object with the `propsKeys` removed.
+
+This is useful when working with libraries like [Styled Components][styled-components] where you want to sanitize `props` that are applied to an intrinsic element or component.
+
+```js
+import { style, omit } from "onno"
+
+const margin = style({
+  propsKeys: ["margin", "m"]
+})
+
+const padding = style({
+  propsKeys: ["padding", "p"]
+})
+
+const omitPropsKeys = omit({
+  propsKeys: ["foo", "bar"]
+})
+
+const omitRenderers = omit({
+  renderers: [margin, padding]
+})
+
+const omitBoth = omit({
+  propsKeys: ["foo", "bar"],
+  renderers: [margin, padding]
+})
+
+const props = {
+  foo: "foo",
+  bar: "bar",
+  baz: "baz",
+  margin: 1,
+  m: 2,
+  padding: 3,
+  p: 4
+}
+
+// {
+//   baz: "baz",
+//   margin: 1,
+//   m: 2,
+//   padding: 3,
+//   p: 4
+// }
+omitPropsKeys(props)
+
+// {
+//   foo: "foo",
+//   bar: "bar",
+//   baz: "baz"
+// }
+omitRenderers(props)
+
+// {
+//   baz: "baz"
+// }
+omitBoth(props)
+```
+
+[styled-components]: https://styled-components.com

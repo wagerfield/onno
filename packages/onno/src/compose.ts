@@ -2,7 +2,7 @@ import * as T from "./types"
 
 const KEYS: T.StyleOptionsKeys[] = ["propsKeys", "styleKeys", "themeKeys"]
 
-const push = Array.prototype.push
+export const push = Array.prototype.push
 
 export function unique(
   renderers: T.AnyRenderFunction[],

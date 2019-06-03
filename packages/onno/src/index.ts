@@ -4,6 +4,7 @@ export * from "./constants"
 export * from "./utils"
 export * from "./compose"
 export * from "./style"
+export * from "./omit"
 
 // Styles
 export * from "./align"
