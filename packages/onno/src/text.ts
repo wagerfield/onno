@@ -48,7 +48,7 @@ export const fontSize = style<FontSizeProps, FontSizeStyle>({
   propsKeys: ["fontSize", "fs"],
   themeKeys: ["fontSizes"],
   transform: addPx,
-  defaults: [12, 14, 16, 20, 24, 32, 48, 64]
+  defaults: [12, 14, 16, 20, 24, 32, 40, 48, 56, 64]
 })
 
 // Font Style
