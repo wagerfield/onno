@@ -12,6 +12,8 @@ export const isType = <T>(type: string) => (x: any): x is T => typeof x === type
 
 export const isObject = isType("object")
 
+export const isPlainObject = (x: any) => !!x && isObject(x) && !isArray(x)
+
 export const isNumber = isType<number>("number")
 
 export const isString = isType<string>("string")

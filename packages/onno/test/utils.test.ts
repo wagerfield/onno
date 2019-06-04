@@ -34,6 +34,15 @@ test("isObject", () => {
   expect(O.isObject(undefined)).toBe(false)
 })
 
+test("isPlainObject", () => {
+  expect(O.isPlainObject({})).toBe(true)
+  expect(O.isPlainObject([])).toBe(false)
+  expect(O.isPlainObject(null)).toBe(false)
+  expect(O.isPlainObject(undefined)).toBe(false)
+  expect(O.isPlainObject("0")).toBe(false)
+  expect(O.isPlainObject(0)).toBe(false)
+})
+
 test("isNumber", () => {
   expect(O.isNumber(0)).toBe(true)
   expect(O.isNumber(1)).toBe(true)

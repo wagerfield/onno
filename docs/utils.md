@@ -12,6 +12,7 @@ These functions can be useful for when you create your own transform functions o
 - [`isArray`](#isarray)
 - [`isNumber`](#isnumber)
 - [`isObject`](#isobject)
+- [`isPlainObject`](#isplainobject)
 - [`isString`](#isstring)
 - [`isUnitless`](#isunitless)
 - [`isFraction`](#isfraction)
@@ -99,6 +100,19 @@ isObject(null) // true
 isObject(undefined) // false
 isObject("") // false
 isObject(0) // false
+```
+
+### `isPlainObject`
+
+Returns `true` for `!!value && isObject(value) && !isArray(value)` values, `false` otherwise.
+
+```js
+isPlainObject({}) // true
+isPlainObject([]) // false
+isPlainObject(null) // false
+isPlainObject(undefined) // false
+isPlainObject("") // false
+isPlainObject(0) // false
 ```
 
 ### `isString`
