@@ -7,6 +7,7 @@ import {
   isArray,
   isNil,
   isObject,
+  isPlainObject,
   isUndefined
 } from "./utils"
 
@@ -35,9 +36,8 @@ export function renderStyle<S extends T.Style>(
 }
 
 export function transformStyle<S extends T.Style>(
-  renderers: T.AnyRenderFunction[]
+  renderer: T.ComposedRenderFunction<any, any>
 ): T.StyleTransformFunction<S> {
-  const renderer = compose({ name: "transform", renderers })
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped style transform function
@@ -48,7 +48,7 @@ export function transformStyle<S extends T.Style>(
     // Iterate over style keys
     return Object.keys(styleObject).reduce((result, key) => {
       const value = result[key] as T.StyleObject<S>
-      if (isObject(value)) {
+      if (isPlainObject(value)) {
         result[key] = transform(value, theme)
       } else {
         const hasPropsKey = propsKeys.includes(key)
@@ -83,7 +83,13 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   // Resolve style transform and keys
   const name = propsKeys[0] // Renderer function name
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-  const transformer = isArray(renderers) && transformStyle(renderers)
+
+  // Create style transform from renderers
+  let transformer: T.StyleTransformFunction<S>
+  if (isArray(renderers)) {
+    const renderer = compose({ name: `${name}Renderer`, renderers })
+    transformer = transformStyle(renderer)
+  }
 
   // Reassign resolved style keys to options
   if (isUndefined(styleKeys)) options.styleKeys = keys
@@ -109,7 +115,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     // Skip rendering
     if (styleKeys === null) {
       // Return raw style object
-      return isObject(value) && !isArray(value) ? value : null
+      return isPlainObject(value) ? value : null
     } else {
       // Return rendered style object
       return renderStyle<S>(keys, value)

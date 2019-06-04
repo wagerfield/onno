@@ -15,9 +15,14 @@ const barRenderer = O.style({
   transform: reverse
 })
 
-const transform = O.transformStyle([fooRenderer, barRenderer])
+const renderer = O.compose({
+  name: "renderer",
+  renderers: [fooRenderer, barRenderer]
+})
 
-test("returns null for undefined keys", () => {
+const transform = O.transformStyle(renderer)
+
+test("recursively transforms style objects", () => {
   expect(
     transform({
       foo: "foo",

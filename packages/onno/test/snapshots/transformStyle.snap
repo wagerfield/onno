@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`returns null for undefined keys 1`] = `
+exports[`recursively transforms style objects 1`] = `
 Object {
   "a": "FOO",
   "b": "FOO",

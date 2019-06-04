@@ -49,7 +49,7 @@ test("styleKeys can be nullified", () => {
     a?: any
     b?: any
   }
-  const styleFunc = O.style<Props>({
+  const styleFunc = O.style<Props, any>({
     propsKeys: ["a", "b"],
     styleKeys: null,
     defaults: {
@@ -160,24 +160,4 @@ test("aliased defaults", () => {
 
   testProps({ a: "foo" })
   testProps({ b: "bar" })
-})
-
-test("renderers", () => {
-  const base = O.extend({
-    transform: O.addPx,
-    defaults: [0, 10, 20]
-  })
-  const renderX = base({
-    propsKeys: ["x"],
-    styleKeys: ["xxx"]
-  })
-  const renderY = base({
-    propsKeys: ["y"],
-    styleKeys: ["yyy"]
-  })
-  const styleFunc = U.style({ renderers: [renderX, renderY] })
-  const testProps = U.snapshot(styleFunc)
-  testProps({ a: 0 })
-  testProps({ b: 2 })
-  testProps({ c: -4 })
 })
