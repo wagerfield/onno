@@ -266,7 +266,7 @@ const Box = styled.div(space)
 // [{ margin: "16px", padding: "16px", foo: 4 }]
 <Box space={4} />
 
-// [{ margin: "2em", padding: "2em", foo: 4 }]
+// [{ margin: "2em", padding: "2em", foo: "2em" }]
 <Box sp="2em" />
 ```
 
@@ -281,7 +281,7 @@ const space = style({
 // [{ margin: 4, padding: 4, foo: 4 }]
 space({ space: 4 })
 
-// [{ margin: "2em", padding: "2em", foo: 4 }]
+// [{ margin: "2em", padding: "2em", foo: "2em" }]
 space({ sp: "2em" })
 ```
 
@@ -357,6 +357,10 @@ const Box = styled.div(buttonStyle)
 // ]
 <Box theme={theme} bst="primary" />
 ```
+
+The order of `renderers` matters. Render functions will be applied from left to right. If you have two render functions that transform the same property like `color` then the second render function will overwrite the value set by the first.
+
+This is especially important to understand when creating [`variant`](#variant) functions composed of other `variant` functions. You will typically want to list `variant` functions first followed by _standard_ or _composed_ `render` functions. Thinking in terms of specificity often helps with this. Ordering render functions in this way will allow you to override any properties set by the variant functions in a predictable way.
 
 ### `defaults`
 
