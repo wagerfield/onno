@@ -8,24 +8,31 @@ exports[`buttonStyle 3`] = `
 Array [
   Object {
     ":disabled": Object {
-      "foo": "bar",
-      "opacity": 0.5,
-      "paddingLeft": "50px",
-      "paddingRight": "50px",
-      "width": "50%",
+      "backgroundColor": "coral",
+      "color": "ivory",
+      "fontWeight": 900,
+      "marginLeft": "-16px",
+      "marginRight": "-16px",
+      "minWidth": "25%",
+      "name": "text-style-caps",
+      "textTransform": "uppercase",
     },
     ":hover": Object {
-      "background": "ivory",
-      "color": "coral",
+      "background": "firestone",
+      "backgroundColor": "crimson",
+      "borderColor": "#444",
+      "color": "#202428",
+      "name": "color-style-error",
+      "opacity": 0.8,
     },
+    "backgroundColor": "coral",
     "borderRadius": "4px",
-    "colorStyle": "brand",
-    "foo": "bar",
+    "color": "red",
+    "name": "color-style-brand",
     "paddingBottom": "16px",
     "paddingLeft": "32px",
     "paddingRight": "32px",
     "paddingTop": "16px",
-    "textStyle": "main",
   },
 ]
 `;
@@ -36,29 +43,37 @@ Array [
     "@media(min-width: 0)": Object {
       "backgroundColor": "#888",
       "color": "#202428",
+      "name": "button-style-secondary",
     },
   },
   Object {
     "@media(min-width: 360px)": Object {
       ":disabled": Object {
-        "foo": "bar",
-        "opacity": 0.5,
-        "paddingLeft": "50px",
-        "paddingRight": "50px",
-        "width": "50%",
+        "backgroundColor": "coral",
+        "color": "ivory",
+        "fontWeight": 900,
+        "marginLeft": "-16px",
+        "marginRight": "-16px",
+        "minWidth": "25%",
+        "name": "text-style-caps",
+        "textTransform": "uppercase",
       },
       ":hover": Object {
-        "background": "ivory",
-        "color": "coral",
+        "background": "firestone",
+        "backgroundColor": "crimson",
+        "borderColor": "#444",
+        "color": "#202428",
+        "name": "color-style-error",
+        "opacity": 0.8,
       },
+      "backgroundColor": "coral",
       "borderRadius": "4px",
-      "colorStyle": "brand",
-      "foo": "bar",
+      "color": "red",
+      "name": "color-style-brand",
       "paddingBottom": "16px",
       "paddingLeft": "32px",
       "paddingRight": "32px",
       "paddingTop": "16px",
-      "textStyle": "main",
     },
   },
 ]
@@ -73,7 +88,7 @@ Array [
   Object {
     "backgroundColor": "coral",
     "color": "ivory",
-    "foo": "bar",
+    "name": "color-style-brand",
   },
 ]
 `;
@@ -86,14 +101,14 @@ Array [
       "backgroundColor": "crimson",
       "borderColor": "#444",
       "color": "#202428",
-      "foo": "bar",
+      "name": "color-style-error",
     },
   },
   Object {
     "@media(min-width: 1080px)": Object {
       "backgroundColor": "coral",
       "color": "ivory",
-      "foo": "bar",
+      "name": "color-style-brand",
     },
   },
 ]
@@ -104,8 +119,11 @@ exports[`globalStyle 1`] = `null`;
 exports[`globalStyle 2`] = `
 Array [
   Object {
-    "foo": "bar",
-    "textStyle": "main",
+    "fontFamily": "Roboto",
+    "fontSize": "16px",
+    "fontWeight": 400,
+    "lineHeight": 1.5,
+    "name": "text-style-main",
   },
 ]
 `;
@@ -123,9 +141,34 @@ Array [
       "margin": 0,
     },
     "button": Object {
+      ":disabled": Object {
+        "backgroundColor": "coral",
+        "color": "ivory",
+        "fontWeight": 900,
+        "marginLeft": "-16px",
+        "marginRight": "-16px",
+        "minWidth": "25%",
+        "name": "text-style-caps",
+        "textTransform": "uppercase",
+      },
+      ":hover": Object {
+        "background": "firestone",
+        "backgroundColor": "crimson",
+        "borderColor": "#444",
+        "color": "#202428",
+        "name": "color-style-error",
+        "opacity": 0.8,
+      },
+      "background": "peach",
+      "backgroundColor": "crimson",
       "borderColor": "dodgerblue",
-      "bst": "primary",
-      "cst": "error",
+      "borderRadius": "4px",
+      "color": "#202428",
+      "name": "color-style-error",
+      "paddingBottom": "16px",
+      "paddingLeft": "32px",
+      "paddingRight": "32px",
+      "paddingTop": "16px",
     },
     "h1": Object {
       "fontSize": "48px",
@@ -140,19 +183,24 @@ Array [
       "fontSize": "24px",
     },
     "html": Object {
-      "foo": "bar",
-      "textStyle": "main",
+      "fontFamily": "Roboto",
+      "fontSize": "16px",
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "name": "text-style-main",
     },
     "p": Object {
-      "margin": "8px",
+      "margin": 0,
+      "marginBottom": "8px",
     },
     "padding": "2px",
     "paddingBottom": "4px",
     "paddingTop": "4px",
     "pre,code": Object {
-      "fontSize": "14px",
+      "fontFamily": "Roboto Mono",
+      "fontSize": "1rem",
+      "name": "text-style-code",
       "padding": "0.2em 0.4em",
-      "tst": "code",
     },
   },
 ]
@@ -168,8 +216,8 @@ Array [
     "fontFamily": "Roboto",
     "fontSize": "16px",
     "fontWeight": 400,
-    "foo": "bar",
     "lineHeight": 1.5,
+    "name": "text-style-main",
   },
 ]
 `;
@@ -179,13 +227,14 @@ Array [
   Object {
     "@media(min-width: 0)": Object {
       "fontFamily": "Roboto Mono",
-      "foo": "bar",
+      "fontSize": "12px",
+      "name": "text-style-code",
     },
   },
   Object {
     "@media(min-width: 360px)": Object {
       "fontWeight": 700,
-      "foo": "bar",
+      "name": "text-style-caps",
       "textTransform": "uppercase",
     },
   },

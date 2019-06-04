@@ -42,7 +42,7 @@ export interface ButtonStyleProps extends T.ThemeProps {
 export const buttonStyle = variant<ButtonStyleProps, any>({
   propsKeys: ["buttonStyle", "bst"],
   themeKeys: ["buttonStyles"],
-  renderers: [globalSet, colorStyle, textStyle]
+  renderers: [colorStyle, textStyle, globalSet]
 })
 
 // Global Variant
@@ -55,7 +55,7 @@ export interface GlobalStyleProps extends T.ThemeProps {
 const gst = variant<GlobalStyleProps, any>({
   propsKeys: ["globalStyle", "gst"],
   themeKeys: ["globalStyles"],
-  renderers: [globalSet, buttonStyle, colorStyle, textStyle]
+  renderers: [buttonStyle, colorStyle, textStyle, globalSet]
 })
 
 export const globalStyle: T.RenderFunction<GlobalStyleProps, any> = (props) =>

@@ -232,8 +232,8 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 | :------------ | :--------------- | :----------- | :-------------------------------------------- |
 | colorStyle    | colorStyle, cst  | colorStyles  | colorSet                                      |
 | textStyle     | textStyle, tst   | textStyles   | textSet                                       |
-| buttonStyle   | buttonStyle, bst | buttonStyles | globalSet, colorStyle, textStyle              |
-| globalStyle   | globalStyle, gst | globalStyles | globalSet, buttonStyle, colorStyle, textStyle |
+| buttonStyle   | buttonStyle, bst | buttonStyles | colorStyle, textStyle, globalSet              |
+| globalStyle   | globalStyle, gst | globalStyles | buttonStyle, colorStyle, textStyle, globalSet |
 
 ### globalStyle
 

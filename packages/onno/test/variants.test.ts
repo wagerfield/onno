@@ -18,12 +18,12 @@ const theme: O.Theme = {
   },
   colorStyles: {
     brand: {
-      foo: "bar",
+      name: "color-style-brand",
       backgroundColor: "brand",
       color: "white"
     },
     error: {
-      foo: "bar",
+      name: "color-style-error",
       background: "peach",
       bgc: "status.error",
       bdc: "gray.0",
@@ -32,49 +32,55 @@ const theme: O.Theme = {
   },
   textStyles: {
     main: {
-      foo: "bar",
+      name: "text-style-main",
       fontSize: 2,
       fontFamily: "main",
       fontWeight: "normal",
       lineHeight: "normal"
     },
     code: {
-      foo: "bar",
-      ff: "code"
+      name: "text-style-code",
+      ff: "code",
+      fs: 0
     },
     caps: {
-      foo: "bar",
+      name: "text-style-caps",
       fw: "bold",
       tt: "uppercase"
     }
   },
   buttonStyles: {
     primary: {
-      "foo": "bar",
+      "name": "button-style-primary", // should override to "color-style-brand"
       "paddingX": 5,
       "paddingY": 4,
       "borderRadius": 2,
       "colorStyle": "brand",
-      "textStyle": "main",
+      "color": "red",
       ":hover": {
-        background: "white",
-        color: "brand"
+        name: "button-style-primary:hover", // should override to "color-style-error"
+        colorStyle: "error",
+        background: "firestone", // override error color style
+        opacity: 0.8
       },
       ":disabled": {
-        foo: "bar",
-        px: 50,
-        w: 0.5,
-        o: 0.5
+        name: "button-style-primary:disabled", // should override to "text-style-caps"
+        cst: "brand",
+        tst: "caps",
+        fw: 900, // override caps text style
+        mx: -4,
+        minw: 1 / 4
       }
     },
     secondary: {
+      name: "button-style-secondary",
       bgc: "gray.1",
       tc: "black"
     }
   },
   globalStyles: {
     "html": {
-      foo: "bar",
+      name: "global-style-html",
       textStyle: "main"
     },
     "body": {
@@ -103,19 +109,17 @@ const theme: O.Theme = {
     // should not be deleted since it is
     // assigned to an object
     "p": {
-      m: 3
+      m: 0,
+      mb: 3
     },
     "a": {
       tc: "brand",
       td: "none"
     },
     "pre,code": {
-      // merge code textStyle
-      tst: "code",
-      // override fontSize
-      fontSize: 1,
-      // value is not split
-      padding: "0.2em 0.4em"
+      textStyle: "code", // merge code textStyle
+      fontSize: "1rem", // override fontSize
+      padding: "0.2em 0.4em" // value is not split
     },
     "button": {
       // merge secondary buttonStyle
@@ -128,19 +132,11 @@ const theme: O.Theme = {
   }
 }
 
-test("buttonStyle", () => {
-  const testProps = U.snapshot(O.buttonStyle, false)
-  testProps({ buttonStyle: "primary" })
-  testProps({ bst: "foo", theme })
-  testProps({ bst: "primary", theme })
-  testProps({ bst: ["secondary", "primary"], theme })
-})
-
 test("colorStyle", () => {
   const testProps = U.snapshot(O.colorStyle, false)
   testProps({ colorStyle: "error" })
   testProps({ cst: "foo", theme })
-  testProps({ cst: "brand", theme })
+  testProps({ colorStyle: "brand", theme })
   testProps({ cst: { sm: "error", lg: "brand" }, theme })
 })
 
@@ -148,8 +144,16 @@ test("textStyle", () => {
   const testProps = U.snapshot(O.textStyle, false)
   testProps({ textStyle: "main" })
   testProps({ tst: "foo", theme })
-  testProps({ tst: "main", theme })
+  testProps({ textStyle: "main", theme })
   testProps({ tst: ["code", "caps"], theme })
+})
+
+test("buttonStyle", () => {
+  const testProps = U.snapshot(O.buttonStyle, false)
+  testProps({ buttonStyle: "primary" })
+  testProps({ bst: "foo", theme })
+  testProps({ buttonStyle: "primary", theme })
+  testProps({ bst: ["secondary", "primary"], theme })
 })
 
 test("globalStyle", () => {
