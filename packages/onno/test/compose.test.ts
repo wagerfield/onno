@@ -10,6 +10,13 @@ test("returns style function", () => {
   expect(styleSet).toHaveLength(1)
 })
 
+test("adds Set to function name", () => {
+  const testSet1 = O.compose({ name: "test1", renderers: [] })
+  const testSet2 = O.compose({ name: "test2Set", renderers: [] })
+  expect(testSet1.name).toBe("test1Set")
+  expect(testSet2.name).toBe("test2Set")
+})
+
 test("returns null for empty arrays ", () => {
   const styleSet = O.compose<any, any>({
     name: "test",

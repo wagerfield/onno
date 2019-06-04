@@ -1,4 +1,5 @@
 import * as T from "./types"
+import { isArray } from "./utils"
 
 const KEYS: T.StyleOptionsKeys[] = ["propsKeys", "styleKeys", "themeKeys"]
 
@@ -9,11 +10,11 @@ export function unique(
   initial: T.AnyRenderFunction[] = []
 ): T.AnyRenderFunction[] {
   return renderers.reduce((collection, renderer) => {
-    if (renderer.options.renderers) {
-      unique(renderer.options.renderers, initial)
-    } else if (collection.indexOf(renderer) === -1) {
-      collection.push(renderer)
-    }
+    const isComposed = renderer.type === "compose"
+    const isIncluded = collection.includes(renderer)
+    const { renderers: renderFuncs } = renderer.options
+    if (!isComposed && !isIncluded) collection.push(renderer)
+    if (isArray(renderFuncs)) unique(renderFuncs, initial)
     return collection
   }, initial)
 }

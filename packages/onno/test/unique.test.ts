@@ -35,7 +35,31 @@ test("deduplicates renderers", () => {
 test("flattens renderers", () => {
   expect(O.unique([styleFunc2, styleFunc5])).toEqual([
     styleFunc2,
+    styleFunc5,
     styleFunc3,
+    styleFunc4,
     styleFunc1
+  ])
+})
+
+test("composed renderers are omitted", () => {
+  const compFunc1 = O.compose({
+    name: "comp1",
+    renderers: [styleFunc1, styleFunc2]
+  })
+  const compFunc2 = O.compose({
+    name: "comp2",
+    renderers: [styleFunc3, styleFunc4, styleFunc5]
+  })
+  const compFunc3 = O.compose({
+    name: "comp3",
+    renderers: [compFunc1, compFunc2]
+  })
+  expect(O.unique([styleFunc2, styleFunc4, compFunc3])).toEqual([
+    styleFunc2,
+    styleFunc4,
+    styleFunc1,
+    styleFunc3,
+    styleFunc5
   ])
 })
