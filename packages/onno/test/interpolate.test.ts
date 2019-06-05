@@ -15,14 +15,23 @@ const barRenderer = O.style({
   transform: reverse
 })
 
-const transform = O.interpolate({
+const renderers = [fooRenderer, barRenderer]
+
+const fooBarTransform = O.interpolate({
   name: "test",
-  renderers: [fooRenderer, barRenderer]
+  renderers
+})
+
+test("adds Transform to function name", () => {
+  const testTransform1 = O.interpolate({ name: "test1", renderers })
+  const testTransform2 = O.interpolate({ name: "test2Transform", renderers })
+  expect(testTransform1.name).toBe("test1Transform")
+  expect(testTransform2.name).toBe("test2Transform")
 })
 
 test("recursively transforms style objects", () => {
   expect(
-    transform({
+    fooBarTransform({
       foo: "foo",
       bar: "bar",
       baz: "baz",
