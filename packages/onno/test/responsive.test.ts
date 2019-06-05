@@ -23,7 +23,7 @@ test("handles responsive prop arrays", () => {
 test("handles responsive prop objects", () => {
   testBaseline({
     a: {
-      xs: "XS",
+      all: "ALL",
       md: "MD",
       xl: "XL",
       na: "NA" // Does not exist
@@ -35,7 +35,7 @@ test("style array is sorted in breakpoint order", () => {
   testBaseline({
     a: {
       lg: "LG",
-      xs: "XS",
+      all: "ALL",
       md: "MD",
       na: "NA" // Does not exist
     }

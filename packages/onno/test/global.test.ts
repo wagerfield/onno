@@ -28,7 +28,7 @@ test("globalSet", () => {
     paddingLeft: 6,
     size: 0.5,
     width: {
-      xs: 1,
+      all: 1,
       md: 1 / 2,
       xl: 1 / 4
     },

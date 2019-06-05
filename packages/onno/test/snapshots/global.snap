@@ -25,7 +25,7 @@ exports[`globalSet: {
   "paddingLeft": 6,
   "size": 0.5,
   "width": {
-    "xs": 1,
+    "all": 1,
     "md": 0.5,
     "xl": 0.25
   },
@@ -124,9 +124,7 @@ Array [
     "width": "50%",
   },
   Object {
-    "@media(min-width: 0)": Object {
-      "width": "100%",
-    },
+    "width": "100%",
   },
   Object {
     "@media(min-width: 720px)": Object {
@@ -157,9 +155,7 @@ Array [
     "fontFamily": "system-ui, sans-serif",
   },
   Object {
-    "@media(min-width: 0)": Object {
-      "fontSize": "16px",
-    },
+    "fontSize": "16px",
   },
   Object {
     "@media(min-width: 360px)": Object {

@@ -12,9 +12,7 @@ exports[`composed render functions: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "margin": "2px",
-    },
+    "margin": "2px",
   },
   Object {
     "@media(min-width: 360px)": Object {
@@ -22,10 +20,8 @@ Array [
     },
   },
   Object {
-    "@media(min-width: 0)": Object {
-      "marginLeft": "8px",
-      "marginRight": "8px",
-    },
+    "marginLeft": "8px",
+    "marginRight": "8px",
   },
   Object {
     "@media(min-width: 360px)": Object {
@@ -45,11 +41,9 @@ exports[`handles responsive prop arrays: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": 11,
-      "y": 11,
-      "z": 11,
-    },
+    "x": 11,
+    "y": 11,
+    "z": 11,
   },
   Object {
     "@media(min-width: 360px)": Object {
@@ -70,7 +64,7 @@ Array [
 
 exports[`handles responsive prop objects: {
   "a": {
-    "xs": "XS",
+    "all": "ALL",
     "md": "MD",
     "xl": "XL",
     "na": "NA"
@@ -78,11 +72,9 @@ exports[`handles responsive prop objects: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": "XS",
-      "y": "XS",
-      "z": "XS",
-    },
+    "x": "ALL",
+    "y": "ALL",
+    "z": "ALL",
   },
   Object {
     "@media(min-width: 720px)": Object {
@@ -135,18 +127,16 @@ Array [
 exports[`style array is sorted in breakpoint order: {
   "a": {
     "lg": "LG",
-    "xs": "XS",
+    "all": "ALL",
     "md": "MD",
     "na": "NA"
   }
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": "XS",
-      "y": "XS",
-      "z": "XS",
-    },
+    "x": "ALL",
+    "y": "ALL",
+    "z": "ALL",
   },
   Object {
     "@media(min-width: 720px)": Object {
@@ -191,11 +181,9 @@ exports[`theme breakpoint array aliases: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": 0,
-      "y": 0,
-      "z": 0,
-    },
+    "x": 0,
+    "y": 0,
+    "z": 0,
   },
   Object {
     "@media(min-width: 100px)": Object {
@@ -240,11 +228,9 @@ exports[`theme breakpoint array aliases: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": 0,
-      "y": 0,
-      "z": 0,
-    },
+    "x": 0,
+    "y": 0,
+    "z": 0,
   },
   Object {
     "@media(min-width: 100px)": Object {
@@ -280,11 +266,9 @@ exports[`theme breakpoint arrays: {
 } 1`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "x": 1,
-      "y": 1,
-      "z": 1,
-    },
+    "x": 1,
+    "y": 1,
+    "z": 1,
   },
   Object {
     "@media(min-width: 100px)": Object {

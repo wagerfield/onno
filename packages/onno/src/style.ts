@@ -11,7 +11,7 @@ import {
   isUndefined
 } from "./utils"
 
-const BREAKPOINTS: T.Breakpoints = ["xs", "sm", "md", "lg", "xl"].map(
+const BREAKPOINTS: T.Breakpoints = ["all", "sm", "md", "lg", "xl"].map(
   (alias, index) => ({ alias, value: index * 360 })
 )
 
@@ -133,7 +133,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     // Build styles array
     const { theme } = props
     const styles: T.StyleArray<S> = []
-    const pushStyle = (value: any, query?: string) => {
+    const pushStyle = (value: any, query?: string | null) => {
       let result = renderValue(value, theme)
       if (result) {
         if (transformer) result = transformer(result, theme)
@@ -149,8 +149,10 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
       if (isArray(breakpoints)) {
         breakpoints.forEach((value: any, index) => {
           const breakpoint = get(index, breakpoints)
+          const isZero = parseInt(breakpoint, 10) === 0
+          const query = isZero ? null : mq(breakpoint)
           const styleValue = resolve([index, value.alias], propsValue)
-          if (!isNil(styleValue)) pushStyle(styleValue, mq(breakpoint))
+          if (!isNil(styleValue)) pushStyle(styleValue, query)
         })
       }
     } else pushStyle(propsValue)

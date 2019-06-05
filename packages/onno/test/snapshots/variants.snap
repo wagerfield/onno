@@ -40,11 +40,9 @@ Array [
 exports[`buttonStyle 4`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "backgroundColor": "#888",
-      "color": "#202428",
-      "name": "button-style-secondary",
-    },
+    "backgroundColor": "#888",
+    "color": "#202428",
+    "name": "button-style-secondary",
   },
   Object {
     "@media(min-width: 360px)": Object {
@@ -225,11 +223,9 @@ Array [
 exports[`textStyle 4`] = `
 Array [
   Object {
-    "@media(min-width: 0)": Object {
-      "fontFamily": "Roboto Mono",
-      "fontSize": "12px",
-      "name": "text-style-code",
-    },
+    "fontFamily": "Roboto Mono",
+    "fontSize": "12px",
+    "name": "text-style-code",
   },
   Object {
     "@media(min-width: 360px)": Object {

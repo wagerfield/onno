@@ -78,7 +78,7 @@ import { Theme } from "onno"
 
 export const theme: Theme = {
   breakpoints: [
-    { alias: "xs", value: 0 },
+    { alias: "all", value: 0 },
     { alias: "sm", value: 256 },
     { alias: "md", value: 512 },
     { alias: "lg", value: 768 },
@@ -233,7 +233,7 @@ Internally onno uses the `get` method to resolve all `theme` and `defaults` valu
 ```json
 {
   "breakpoints": [
-    { "alias": "xs", "value": 0 },
+    { "alias": "all", "value": 0 },
     { "alias": "sm", "value": 360 },
     { "alias": "md", "value": 720 },
     { "alias": "lg", "value": 1080 },
@@ -255,16 +255,16 @@ const width = style({
 const Box = styled.div(width)
 
 // [
-//   { "@media(min-width: 0)":     { width: "100%" } },
+//   { width: "100%" },
 //   { "@media(min-width: 720px)": { width: "50%"  } }
 // ]
 <Box width={[ "100%", null, "50%" ]} />
 
 // [
-//   { "@media(min-width: 0)":     { width: "100%" } },
+//   { width: "100%" },
 //   { "@media(min-width: 720px)": { width: "50%"  } }
 // ]
-<Box width={{ xs: "100%", md: "50%" }} />
+<Box width={{ all: "100%", md: "50%" }} />
 ```
 
 ### Recursive render functions

@@ -235,7 +235,7 @@ Resolved values can be inverted by prefixing the `path` with a negative sign eg.
 ```js
 const theme = {
   breakpoints: [
-    { alias: "xs", value: 0 },
+    { alias: "all", value: 0 },
     { alias: "sm", value: 360 },
     { alias: "md", value: 720 },
     { alias: "lg", value: 1080 },
@@ -250,7 +250,7 @@ const theme = {
 }
 
 get("breakpoints.0", theme) // 0
-get("breakpoints.xs", theme) // 0
+get("breakpoints.all", theme) // 0
 get(["breakpoints", 2], theme) // 720
 get(["breakpoints", "lg"], theme) // 1080
 get(["breakpoints", "foo"], theme) // undefined
