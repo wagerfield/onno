@@ -149,7 +149,7 @@ export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
 export type ValueTransformFunction = (value: any) => any
 
 export interface StyleTransformFunction<P extends ThemeProps, S extends Style> {
-  (style: StyleObject<S>, theme?: Theme): StyleObject<S>
+  (style?: StyleObject<S>, theme?: Theme): StyleObject<S> | null
   renderer: ComposedRenderFunction<P, S>
   options: InterpolateOptions
 }

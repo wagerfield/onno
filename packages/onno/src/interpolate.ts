@@ -18,24 +18,25 @@ export function interpolate<P extends T.ThemeProps, S extends T.Style>(
 
   // Scoped transform function
   const transform: T.StyleTransformFunction<P, S> = (
-    styleObject: T.StyleObject<S>,
+    style?: T.StyleObject<S>,
     theme?: T.Theme
   ) => {
-    const renderedStyle = renderer({ theme, ...styleObject })
+    if (!isPlainObject(style)) return null
+    const renderedStyle = renderer({ theme, ...style })
     const mergedStyle = renderedStyle && merge(renderedStyle)
 
     // Iterate over style keys
-    return Object.keys(styleObject).reduce((result, key) => {
+    return Object.keys(style!).reduce((result, key) => {
       const value = result[key] as T.StyleObject<S>
       if (isPlainObject(value)) {
-        result[key] = transform(value, theme)
+        result[key] = transform(value, theme)!
       } else {
         const hasPropsKey = propsKeys.includes(key)
         const hasStyleKey = styleKeys.includes(key)
         if (hasPropsKey && !hasStyleKey) delete result[key]
       }
       return result
-    }, Object.assign({}, styleObject, mergedStyle))
+    }, Object.assign({}, style, mergedStyle))
   }
 
   // Define transform properties

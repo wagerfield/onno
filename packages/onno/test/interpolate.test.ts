@@ -29,6 +29,13 @@ test("adds Transform to function name", () => {
   expect(testTransform2.name).toBe("test2Transform")
 })
 
+test("returns null for invalid style object types", () => {
+  expect(fooBarTransform()).toBeNull()
+  expect(fooBarTransform(null as any)).toBeNull()
+  expect(fooBarTransform(true as any)).toBeNull()
+  expect(fooBarTransform([12] as any)).toBeNull()
+})
+
 test("recursively transforms style objects", () => {
   expect(
     fooBarTransform({
