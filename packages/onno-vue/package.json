@@ -1,7 +1,7 @@
 {
   "name": "onno-vue",
   "license": "MIT",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Onno props for Vue",
   "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-vue#readme",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
@@ -26,6 +26,6 @@
     "types"
   ],
   "dependencies": {
-    "onno": "0.2.1"
+    "onno": "0.2.2"
   }
 }
