@@ -1,7 +1,7 @@
 import * as C from "csstype"
-import * as T from "./types"
-import { style } from "./style"
-import { compose } from "./compose"
+import * as T from "../types"
+import { style } from "../style"
+import { compose } from "../compose"
 import { display, DisplayProps, DisplayStyle } from "./display"
 import {
   alignContent,

@@ -1,5 +1,5 @@
-import * as T from "./types"
-import { variant } from "./style"
+import * as T from "../types"
+import { variant } from "../style"
 import { globalSet } from "./global"
 import { colorSet } from "./color"
 import { textSet } from "./text"

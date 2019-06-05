@@ -1,8 +1,8 @@
 import * as C from "csstype"
-import * as T from "./types"
-import { addPx } from "./utils"
-import { style } from "./style"
-import { compose } from "./compose"
+import * as T from "../types"
+import { addPx } from "../utils"
+import { style } from "../style"
+import { compose } from "../compose"
 import { color, ColorProps, ColorStyle } from "./color"
 
 // Font Family

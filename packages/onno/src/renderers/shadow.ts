@@ -1,6 +1,6 @@
 import * as C from "csstype"
-import * as T from "./types"
-import { style } from "./style"
+import * as T from "../types"
+import { style } from "../style"
 
 // Box Shadow
 

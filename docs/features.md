@@ -438,7 +438,7 @@ Since onno's internal `get` utility supports inversion for _all_ values, passing
 
 Styled System ships with a comprehensive set of render functions. Onno builds on these to provide a more complete set that covers the majority of commonly used CSS properties. More can be added in time with demand, so please [submit a feature request][onno-issues] if you require a render function that is not implemented yet.
 
-[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-src] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate _rapid UI development_ once you become familiar with them. Having said that, aliases should be used at your own discretion since their terse benefits come at the sacrifice of self-documentation and readability for anyone who is not familiar with them.
+[Onno's render functions](render-functions.md) have been organised across a number of [source files][onno-renderers] to facilitate maintenance and include many useful composed render functions. In addition to this, each render function included with onno provides a prop `alias` to facilitate _rapid UI development_ once you become familiar with them. Having said that, aliases should be used at your own discretion since their terse benefits come at the sacrifice of self-documentation and readability for anyone who is not familiar with them.
 
 ### Strict naming conventions
 
@@ -482,7 +482,7 @@ A number of naming conventions have been introduced by onno to help enforce cons
 [angular]: https://angularjs.org
 [typescript]: https://www.typescriptlang.org
 [onno-issues]: https://github.com/wagerfield/onno/issues
-[onno-src]: https://github.com/wagerfield/onno/tree/master/packages/onno/src
+[onno-renderers]: https://github.com/wagerfield/onno/tree/master/packages/onno/src/renderers
 [styled-system]: https://styled-system.com
 [styled-system-table]: https://styled-system.com/table
 [styled-system-comment]: https://github.com/styled-system/styled-system/issues/463#issuecomment-487167817

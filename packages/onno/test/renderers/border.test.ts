@@ -1,5 +1,5 @@
-import * as O from "../src"
-import * as U from "./test-utils"
+import * as O from "../../src"
+import * as U from "../test-utils"
 
 const theme: O.Theme = {
   borders: {

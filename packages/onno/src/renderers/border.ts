@@ -1,9 +1,9 @@
 import * as C from "csstype"
-import * as T from "./types"
-import { PX_SCALE } from "./constants"
-import { addPx, addPcOrPx } from "./utils"
-import { extend, style } from "./style"
-import { compose } from "./compose"
+import * as T from "../types"
+import { PX_SCALE } from "../constants"
+import { compose } from "../compose"
+import { extend, style } from "../style"
+import { addPx, addPcOrPx } from "../utils"
 import { borderColor, BorderColorProps, BorderColorStyle } from "./color"
 
 const ex = extend({
