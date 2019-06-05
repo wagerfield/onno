@@ -6,7 +6,7 @@ export function omit<P extends T.Props>(
   options: T.OmitOptions
 ): T.OmitFunction<P> {
   const { propsKeys, renderers } = options
-  const keys: T.Keys = []
+  const keys: T.Keys = ["theme"]
 
   // Add options propsKeys
   if (isArray(propsKeys)) {

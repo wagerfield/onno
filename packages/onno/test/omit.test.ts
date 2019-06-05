@@ -7,8 +7,16 @@ const props = {
   margin: 1,
   m: 2,
   padding: 3,
-  p: 4
+  p: 4,
+  theme: {
+    spaces: [1, 2, 3]
+  }
 }
+
+test("omits theme", () => {
+  const omitKeys = O.omit({})
+  expect(omitKeys(props)).toMatchSnapshot()
+})
 
 test("omits propsKeys", () => {
   const omitKeys = O.omit({

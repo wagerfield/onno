@@ -295,9 +295,11 @@ This is the function that onno uses internally to resolve `theme` and `defaults`
 
 ### `omit`
 
-Takes an `options` object with _optional_ `propsKeys` array and/or `renderers` array and returns a props `filter` function.
+Takes an `options` object with an _optional_ `propsKeys` array and/or `renderers` array and returns a props `filter` function.
 
 When the `filter` function is called with a `props` object, it will return another object with the `propsKeys` removed.
+
+Note that the `theme` key is removed automatically, so you do not need to pass it to the `propsKeys` array.
 
 This is useful when working with libraries like [Styled Components][styled-components] where you want to sanitize `props` that are applied to an intrinsic element or component.
 
@@ -312,15 +314,21 @@ const padding = style({
   propsKeys: ["padding", "p"]
 })
 
+// omit "theme" key
+const omitNothing = omit({})
+
+// omit "theme", "foo" and "bar" keys
 const omitPropsKeys = omit({
   propsKeys: ["foo", "bar"]
 })
 
+// omit "theme", "margin", "m", "padding" and "p" keys
 const omitRenderers = omit({
   renderers: [margin, padding]
 })
 
-const omitBoth = omit({
+// omit all of the above keys
+const omitEverything = omit({
   propsKeys: ["foo", "bar"],
   renderers: [margin, padding]
 })
@@ -332,8 +340,22 @@ const props = {
   margin: 1,
   m: 2,
   padding: 3,
-  p: 4
+  p: 4,
+  theme: {
+    spaces: [1, 2, 3]
+  }
 }
+
+// {
+//   foo: "foo",
+//   bar: "bar",
+//   baz: "baz",
+//   margin: 1,
+//   m: 2,
+//   padding: 3,
+//   p: 4
+// }
+omitNothing(props)
 
 // {
 //   baz: "baz",
@@ -354,7 +376,7 @@ omitRenderers(props)
 // {
 //   baz: "baz"
 // }
-omitBoth(props)
+omitEverything(props)
 ```
 
 [styled-components]: https://styled-components.com

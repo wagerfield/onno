@@ -25,3 +25,15 @@ Object {
   "foo": "foo",
 }
 `;
+
+exports[`omits theme 1`] = `
+Object {
+  "bar": "bar",
+  "baz": "baz",
+  "foo": "foo",
+  "m": 2,
+  "margin": 1,
+  "p": 4,
+  "padding": 3,
+}
+`;
