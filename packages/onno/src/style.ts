@@ -1,5 +1,7 @@
 import * as T from "./types"
-import { compose } from "./compose"
+import { BREAKPOINTS } from "./constants"
+import { interpolate } from "./interpolate"
+import { render } from "./render"
 import {
   mq,
   get,
@@ -10,58 +12,6 @@ import {
   isPlainObject,
   isUndefined
 } from "./utils"
-
-const BREAKPOINTS: T.Breakpoints = ["all", "sm", "md", "lg", "xl"].map(
-  (alias, index) => ({ alias, value: index * 360 })
-)
-
-export function merge<S extends T.Style>(
-  styles: T.StyleArray<S>
-): T.StyleObject<S> {
-  return styles.reduce((o, s) => Object.assign(o, s), {})
-}
-
-export function renderStyle<S extends T.Style>(
-  keys?: (keyof S)[],
-  value?: any
-): S | null {
-  if (isNil(value) || !isArray(keys) || !keys.length) return null
-  return keys.reduce(
-    (s, k) => {
-      s[k] = value
-      return s
-    },
-    {} as S
-  )
-}
-
-export function transformStyle<S extends T.Style>(
-  renderer: T.ComposedRenderFunction<any, any>
-): T.StyleTransformFunction<S> {
-  const { propsKeys, styleKeys } = renderer.options
-
-  // Scoped style transform function
-  const transform = (styleObject: T.StyleObject<S>, theme?: T.Theme) => {
-    const renderedStyle = renderer({ theme, ...styleObject })
-    const mergedStyle = renderedStyle && merge(renderedStyle)
-
-    // Iterate over style keys
-    return Object.keys(styleObject).reduce((result, key) => {
-      const value = result[key] as T.StyleObject<S>
-      if (isPlainObject(value)) {
-        result[key] = transform(value, theme)
-      } else {
-        const hasPropsKey = propsKeys.includes(key)
-        const hasStyleKey = styleKeys.includes(key)
-        if (hasPropsKey && !hasStyleKey) delete result[key]
-      }
-      return result
-    }, Object.assign({}, styleObject, mergedStyle))
-  }
-
-  // Return transform function
-  return transform
-}
 
 export function style<P extends T.ThemeProps, S extends T.Style>(
   options: T.StyleOptions
@@ -83,13 +33,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   // Resolve style transform and keys
   const name = propsKeys[0] // Renderer function name
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-
-  // Create style transform from renderers
-  let transformer: T.StyleTransformFunction<S>
-  if (isArray(renderers)) {
-    const renderer = compose({ name: `${name}Renderer`, renderers })
-    transformer = transformStyle(renderer)
-  }
+  const transformStyle = isArray(renderers) && interpolate({ name, renderers })
 
   // Reassign resolved style keys to options
   if (isUndefined(styleKeys)) options.styleKeys = keys
@@ -118,7 +62,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
       return isPlainObject(value) ? value : null
     } else {
       // Return rendered style object
-      return renderStyle<S>(keys, value)
+      return render<S>(keys, value)
     }
   }
 
@@ -136,7 +80,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     const pushStyle = (value: any, query?: string | null) => {
       let result = renderValue(value, theme)
       if (result) {
-        if (transformer) result = transformer(result, theme)
+        if (transformStyle) result = transformStyle(result, theme)
         if (query) result = { [query]: result }
         styles.push(result)
       }
@@ -161,7 +105,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     return styles.length ? styles : null
   }
 
-  // Define renderProps function properties
+  // Define renderProps properties
   renderProps.options = options
   renderProps.type = "style" as "style"
   Object.defineProperty(renderProps, "name", { value: name })

@@ -94,7 +94,7 @@ export interface Props extends ThemeProps {
   [key: string]: any
 }
 
-// Styles
+// Style
 
 export type StyleValue = number | string | string[] | undefined
 
@@ -108,17 +108,6 @@ export interface StyleObject<S extends Style> {
 
 export type StyleArray<S extends Style> = StyleObject<S>[]
 
-// Transform Functions
-
-export type ValueTransformFunction = (value: any) => any
-
-export type StyleTransformFunction<S extends Style> = (
-  style: StyleObject<S>,
-  theme?: Theme
-) => StyleObject<S>
-
-export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
-
 // Options
 
 export type StyleOptionsKeys = "propsKeys" | "styleKeys" | "themeKeys"
@@ -131,8 +120,6 @@ export interface StyleOptions {
   renderers?: AnyRenderFunction[]
   defaults?: ThemeValue
 }
-
-export type VariantOptions = Omit<StyleOptions, "styleKeys">
 
 export interface ComposeOptions {
   renderers: AnyRenderFunction[]
@@ -150,6 +137,21 @@ export interface ComposedRenderOptions {
   themeKeys: Keys
   renderers: AnyRenderFunction[]
 }
+
+export type VariantOptions = Omit<StyleOptions, "styleKeys">
+
+export type InterpolateOptions = ComposeOptions
+
+// Transform Functions
+
+export type ValueTransformFunction = (value: any) => any
+
+export type StyleTransformFunction<S extends Style> = (
+  style: StyleObject<S>,
+  theme?: Theme
+) => StyleObject<S>
+
+export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
 
 // Render Functions
 

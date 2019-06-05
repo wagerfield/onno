@@ -15,12 +15,10 @@ const barRenderer = O.style({
   transform: reverse
 })
 
-const renderer = O.compose({
-  name: "renderer",
+const transform = O.interpolate({
+  name: "test",
   renderers: [fooRenderer, barRenderer]
 })
-
-const transform = O.transformStyle(renderer)
 
 test("recursively transforms style objects", () => {
   expect(
