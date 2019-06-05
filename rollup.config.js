@@ -17,7 +17,9 @@ export default sync("packages/!(onno-app)").map((pkg) => ({
     }
   ],
   plugins: [
-    typescript(),
+    typescript({
+      removeComments: true
+    }),
     prettier({
       parser: "babel"
     }),

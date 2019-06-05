@@ -8,7 +8,6 @@
     "module": "es2015",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "removeComments": true,
     "noUnusedLocals": true,
     "noEmitOnError": true,
     "declaration": true,

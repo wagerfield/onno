@@ -2,12 +2,12 @@
   "packages/onno/cjs/index.js": {
     "bundled": 24966,
     "minified": 18162,
-    "gzipped": 4987
+    "gzipped": 4988
   },
   "packages/onno/esm/index.js": {
     "bundled": 22117,
     "minified": 15160,
-    "gzipped": 4323,
+    "gzipped": 4320,
     "treeshaked": {
       "rollup": {
         "code": 9575,
@@ -26,7 +26,7 @@
   "packages/onno-react/esm/index.js": {
     "bundled": 22659,
     "minified": 15561,
-    "gzipped": 4472,
+    "gzipped": 4470,
     "treeshaked": {
       "rollup": {
         "code": 9709,
@@ -40,12 +40,12 @@
   "packages/onno-vue/cjs/index.js": {
     "bundled": 24966,
     "minified": 18162,
-    "gzipped": 4987
+    "gzipped": 4988
   },
   "packages/onno-vue/esm/index.js": {
     "bundled": 22117,
     "minified": 15160,
-    "gzipped": 4323,
+    "gzipped": 4320,
     "treeshaked": {
       "rollup": {
         "code": 9575,
@@ -59,12 +59,12 @@
   "packages/onco/cjs/index.js": {
     "bundled": 24966,
     "minified": 18162,
-    "gzipped": 4987
+    "gzipped": 4988
   },
   "packages/onco/esm/index.js": {
     "bundled": 22117,
     "minified": 15160,
-    "gzipped": 4323,
+    "gzipped": 4320,
     "treeshaked": {
       "rollup": {
         "code": 9575,
