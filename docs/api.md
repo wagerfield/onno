@@ -608,7 +608,7 @@ The `options` object must contain an array of `renderers` and a `name` for the r
 
 When the `transform` function is called with a `style` object, it iterates over the array of `renderers` and calls them each in turn with the provided `style` object.
 
-The arrays of style objects returned from each `render` function are then merged and returned in a _transformed_ `style` object.
+The arrays of style objects returned from each `render` function are then merged and returned.
 
 When calling the `transform` function, you can also pass and an _optional_ `theme` object as the second argument to lookup and resolve values from:
 
