@@ -1,9 +1,7 @@
 import * as T from "./types"
-import { isArray } from "./utils"
+import { isArray, push } from "./utils"
 
 const KEYS: T.StyleOptionsKeys[] = ["propsKeys", "styleKeys", "themeKeys"]
-
-export const push = Array.prototype.push
 
 export function unique(
   renderers: T.AnyRenderFunction[],

@@ -1,6 +1,6 @@
 import * as T from "./types"
-import { isArray } from "./utils"
-import { compose, push } from "./compose"
+import { isArray, push } from "./utils"
+import { compose } from "./compose"
 
 export function omit<P extends T.Props>(
   options: T.OmitOptions

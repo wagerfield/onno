@@ -2,6 +2,8 @@ import { Func, Pred } from "./types"
 
 const IGNORE = /\s|\d+\.\d+/
 
+export const push = Array.prototype.push
+
 export const isArray = Array.isArray
 
 export const isNil = (x: any): x is void => x == null
