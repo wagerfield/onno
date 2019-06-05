@@ -1,77 +1,77 @@
 {
   "packages/onno/cjs/index.js": {
-    "bundled": 24966,
-    "minified": 18162,
-    "gzipped": 4988
+    "bundled": 25028,
+    "minified": 18187,
+    "gzipped": 4997
   },
   "packages/onno/esm/index.js": {
-    "bundled": 22117,
-    "minified": 15160,
-    "gzipped": 4320,
+    "bundled": 22179,
+    "minified": 15185,
+    "gzipped": 4329,
     "treeshaked": {
       "rollup": {
-        "code": 9575,
+        "code": 9600,
         "import_statements": 0
       },
       "webpack": {
-        "code": 10629
+        "code": 10654
       }
     }
   },
   "packages/onno-react/cjs/index.js": {
-    "bundled": 25642,
-    "minified": 18703,
-    "gzipped": 5164
+    "bundled": 25704,
+    "minified": 18728,
+    "gzipped": 5173
   },
   "packages/onno-react/esm/index.js": {
-    "bundled": 22659,
-    "minified": 15561,
-    "gzipped": 4470,
+    "bundled": 22721,
+    "minified": 15586,
+    "gzipped": 4481,
     "treeshaked": {
       "rollup": {
-        "code": 9709,
+        "code": 9734,
         "import_statements": 90
       },
       "webpack": {
-        "code": 10822
+        "code": 10847
       }
     }
   },
   "packages/onno-vue/cjs/index.js": {
-    "bundled": 24966,
-    "minified": 18162,
-    "gzipped": 4988
+    "bundled": 25028,
+    "minified": 18187,
+    "gzipped": 4997
   },
   "packages/onno-vue/esm/index.js": {
-    "bundled": 22117,
-    "minified": 15160,
-    "gzipped": 4320,
+    "bundled": 22179,
+    "minified": 15185,
+    "gzipped": 4329,
     "treeshaked": {
       "rollup": {
-        "code": 9575,
+        "code": 9600,
         "import_statements": 0
       },
       "webpack": {
-        "code": 10629
+        "code": 10654
       }
     }
   },
   "packages/onco/cjs/index.js": {
-    "bundled": 24966,
-    "minified": 18162,
-    "gzipped": 4988
+    "bundled": 25028,
+    "minified": 18187,
+    "gzipped": 4997
   },
   "packages/onco/esm/index.js": {
-    "bundled": 22117,
-    "minified": 15160,
-    "gzipped": 4320,
+    "bundled": 22179,
+    "minified": 15185,
+    "gzipped": 4329,
     "treeshaked": {
       "rollup": {
-        "code": 9575,
+        "code": 9600,
         "import_statements": 0
       },
       "webpack": {
-        "code": 10629
+        "code": 10654
       }
     }
   }
