@@ -144,14 +144,15 @@ export type InterpolateOptions = ComposeOptions
 
 // Transform Functions
 
+export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
+
 export type ValueTransformFunction = (value: any) => any
 
-export type StyleTransformFunction<S extends Style> = (
-  style: StyleObject<S>,
-  theme?: Theme
-) => StyleObject<S>
-
-export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
+export interface StyleTransformFunction<P extends ThemeProps, S extends Style> {
+  (style: StyleObject<S>, theme?: Theme): StyleObject<S>
+  renderer: ComposedRenderFunction<P, S>
+  options: InterpolateOptions
+}
 
 // Render Functions
 

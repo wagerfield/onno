@@ -8,16 +8,16 @@ export function merge<S extends T.Style>(
   return styles.reduce((o, s) => Object.assign(o, s), {})
 }
 
-export function interpolate<S extends T.Style>(
+export function interpolate<P extends T.ThemeProps, S extends T.Style>(
   options: T.InterpolateOptions
-): T.StyleTransformFunction<S> {
+): T.StyleTransformFunction<P, S> {
   let { name, renderers } = options
   if (!/Transform$/.test(name)) name += "Transform"
   const renderer = compose({ name, renderers })
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped transform function
-  const transform: T.StyleTransformFunction<S> = (
+  const transform: T.StyleTransformFunction<P, S> = (
     styleObject: T.StyleObject<S>,
     theme?: T.Theme
   ) => {
@@ -40,6 +40,8 @@ export function interpolate<S extends T.Style>(
 
   // Define transform properties
   Object.defineProperty(transform, "name", { value: name })
+  transform.renderer = renderer
+  transform.options = options
 
   // Return transform function
   return transform
