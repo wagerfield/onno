@@ -192,6 +192,7 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | :------------- | :----------------- | :------------- | :------------- | :-------- |
 | fontFamily     | fontFamily, ff     | fontFamily     | fontFamilies   | none      |
 | fontSize       | fontSize, fs       | fontSize       | fontSizes      | addPx     |
+| fontSmoothing  | fontSmoothing, fsm | fontSmoothing  | none           | none      |
 | fontStyle      | fontStyle, fst     | fontStyle      | none           | none      |
 | fontWeight     | fontWeight, fw     | fontWeight     | fontWeights    | none      |
 | lineHeight     | lineHeight, lh     | lineHeight     | lineHeights    | none      |

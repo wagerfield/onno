@@ -40,6 +40,12 @@ test("fontSize", () => {
   testProps({ fs: "sm", theme })
 })
 
+test("fontSmoothing", () => {
+  const testProps = U.snapshot(O.fontSmoothing)
+  testProps({ fontSmoothing: "antialiased" })
+  testProps({ fsm: "subpixel-antialiased" })
+})
+
 test("fontStyle", () => {
   const testProps = U.snapshot(O.fontStyle)
   testProps({ fontStyle: "oblique" })
@@ -90,6 +96,7 @@ test("textSet", () => {
   testProps({
     fontFamily: "bar",
     fontSize: "lg",
+    fontSmoothing: "antialiased",
     fontStyle: "italic",
     fontWeight: "bold",
     lineHeight: "zero",
@@ -103,6 +110,7 @@ test("textSet", () => {
   testProps({
     ff: "Times New Roman",
     fs: "100px",
+    fsm: "subpixel-antialiased",
     fst: "normal",
     fw: 100,
     lh: 2,

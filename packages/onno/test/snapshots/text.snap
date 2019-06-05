@@ -108,6 +108,26 @@ Array [
 ]
 `;
 
+exports[`fontSmoothing: {
+  "fontSmoothing": "antialiased"
+} 1`] = `
+Array [
+  Object {
+    "WebkitFontSmoothing": "antialiased",
+  },
+]
+`;
+
+exports[`fontSmoothing: {
+  "fsm": "subpixel-antialiased"
+} 1`] = `
+Array [
+  Object {
+    "WebkitFontSmoothing": "subpixel-antialiased",
+  },
+]
+`;
+
 exports[`fontStyle: {
   "fontStyle": "oblique"
 } 1`] = `
@@ -333,6 +353,7 @@ Array [
 exports[`textSet: {
   "ff": "Times New Roman",
   "fs": "100px",
+  "fsm": "subpixel-antialiased",
   "fst": "normal",
   "fw": 100,
   "lh": 2,
@@ -348,6 +369,9 @@ Array [
   },
   Object {
     "fontSize": "100px",
+  },
+  Object {
+    "WebkitFontSmoothing": "subpixel-antialiased",
   },
   Object {
     "fontStyle": "normal",
@@ -379,6 +403,7 @@ Array [
 exports[`textSet: {
   "fontFamily": "bar",
   "fontSize": "lg",
+  "fontSmoothing": "antialiased",
   "fontStyle": "italic",
   "fontWeight": "bold",
   "lineHeight": "zero",
@@ -418,6 +443,9 @@ Array [
   },
   Object {
     "fontSize": "40px",
+  },
+  Object {
+    "WebkitFontSmoothing": "antialiased",
   },
   Object {
     "fontStyle": "italic",

@@ -51,6 +51,31 @@ export const fontSize = style<FontSizeProps, FontSizeStyle>({
   defaults: [12, 14, 16, 20, 24, 32, 40, 48, 56, 64]
 })
 
+// Font Smoothing
+
+export type FontSmoothingValue =
+  | C.Globals
+  | "auto"
+  | "none"
+  | "antialiased"
+  | "subpixel-antialiased"
+
+export type FontSmoothingProp = T.Prop<FontSmoothingValue>
+
+export interface FontSmoothingProps extends T.ThemeProps {
+  fontSmoothing?: FontSmoothingProp
+  fsm?: FontSmoothingProp
+}
+
+export interface FontSmoothingStyle extends T.Style {
+  WebkitFontSmoothing?: FontSmoothingValue
+}
+
+export const fontSmoothing = style<FontSmoothingProps, FontSmoothingStyle>({
+  propsKeys: ["fontSmoothing", "fsm"],
+  styleKeys: ["WebkitFontSmoothing"]
+})
+
 // Font Style
 
 export type FontStyleValue = C.FontStyleProperty
@@ -201,6 +226,7 @@ export const textTransform = style<TextTransformProps, TextTransformStyle>({
 
 export type TextSetProps = FontFamilyProps &
   FontSizeProps &
+  FontSmoothingProps &
   FontStyleProps &
   FontWeightProps &
   LineHeightProps &
@@ -212,6 +238,7 @@ export type TextSetProps = FontFamilyProps &
 
 export type TextSetStyle = FontFamilyStyle &
   FontSizeStyle &
+  FontSmoothingStyle &
   FontStyleStyle &
   FontWeightStyle &
   LineHeightStyle &
@@ -226,6 +253,7 @@ export const textSet = compose<TextSetProps, TextSetStyle>({
   renderers: [
     fontFamily,
     fontSize,
+    fontSmoothing,
     fontStyle,
     fontWeight,
     lineHeight,
