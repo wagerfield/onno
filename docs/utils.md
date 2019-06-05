@@ -295,13 +295,13 @@ This is the function that onno uses internally to resolve `theme` and `defaults`
 
 ### `omit`
 
-Takes an `options` object with an _optional_ `propsKeys` array and/or `renderers` array and returns a props `filter` function.
+Takes an `options` object with _optional_ `propsKeys` and/or `renderers` and returns a props `filter` function.
 
 When the `filter` function is called with a `props` object, it will return another object with the `propsKeys` removed.
 
 Note that the `theme` key is removed automatically, so you do not need to pass it to the `propsKeys` array.
 
-This is useful when working with libraries like [Styled Components][styled-components] where you want to sanitize `props` that are applied to an intrinsic element or component.
+This is useful when working with React where you want to sanitize `props` before spreading them onto an intrinsic element or component.
 
 ```js
 import { style, omit } from "onno"
@@ -378,5 +378,3 @@ omitRenderers(props)
 // }
 omitEverything(props)
 ```
-
-[styled-components]: https://styled-components.com
