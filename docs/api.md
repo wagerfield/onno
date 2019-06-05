@@ -42,6 +42,7 @@ In the example above `Box1` uses the `styles` function in a tagged template lite
   - [`defaults`](#defaults)
 - [`variant`](#variant)
 - [`compose`](#compose)
+- [`interpolate`](#interpolate)
 - [`extend`](#extend)
 
 ## `style`
@@ -593,6 +594,102 @@ The `name` option will automatically have "Set" appended to it when omitted. In 
 It is worth noting that _composed_ render functions can be composed into other render functions ad infinitum.
 
 Onno ships with an extensive suite of _standard_ and _composed_ `render` functions which can be [found here](render-functions.md).
+
+## `interpolate`
+
+The `interpolate` function takes an `options` object and returns a style `transform` function.
+
+The `options` object must contain an array of `renderers` and a `name` for the returned `transform` function:
+
+| Key                       | Type               | Required | Description                                   |
+| :------------------------ | :----------------- | :------- | :-------------------------------------------- |
+| `name`                    | `String`           | `true`   | Name of the transform function.               |
+| [`renderers`](#renderers) | `RenderFunction[]` | `true`   | Render functions to transform styles through. |
+
+When the `transform` function is called with a `style` object, it iterates over the array of `renderers` and calls them each in turn with the provided `style` object.
+
+The arrays of style objects returned from each `render` function are then merged and returned in a _transformed_ `style` object.
+
+When calling the `transform` function, you can also pass and an _optional_ `theme` object as the second argument to lookup and resolve values from:
+
+```js
+import { interpolate, colorSet, spaceSet } from "onno"
+
+const transform = interpolate({
+  name: "colorAndSpace",
+  renderers: [colorSet, spaceSet]
+})
+
+// [{ color: "#00F", padding: "16px" }]
+transform({ color: "link", padding: 4 })
+
+// [{ background: "plum", marginLeft: "-4px", marginRight: "-4px" }]
+transform({ bg: "plum", mx: -2 })
+
+const theme = {
+  colors: {
+    brand: "coral",
+    white: "ivory",
+    black: "#202428"
+  }
+}
+
+// [{ backgroundColor: "coral", color: "#202428" }]
+transform({ backgroundColor: "brand", color: "black" }, theme)
+```
+
+Style objects can contain nested style objects which can contain nested style objects ad infinitum. Nested style objects will be iterated over recursively and transformed through the `renderers` passed to the `interpolate` function. This allows you to use CSS selectors as keys in your style objects:
+
+```js
+import { interpolate, spaceSet } from "onno"
+
+const spaceTransform = interpolate({
+  name: "space",
+  renderers: [spaceSet]
+})
+
+// {
+//   "padding": "16px",
+//   "> span": {
+//     "marginLeft": "-4px",
+//     "marginRight": "-4px",
+//     ":hover": {
+//       "paddingTop": "32px",
+//       "paddingBottom": "32px"
+//     }
+//   }
+// }
+spaceTransform({
+  "padding": 4,
+  "> span": {
+    "marginX": -2,
+    ":hover": {
+      paddingY: 5
+    }
+  }
+})
+```
+
+It is recommended that you follow the naming convention of appending `Transform` to the variable names of your _transform_ functions to help distinguish them from _standard_ and _composed_ `render` functions.
+
+The `name` option will automatically have "Transform" appended to it when omitted:
+
+```js
+import { interpolate, colorSet, spaceSet } from "onno"
+
+const colorTransform = interpolate({
+  name: "color",
+  renderers: [colorSet]
+})
+
+const spaceTransform = interpolate({
+  name: "spaceTransform",
+  renderers: [spaceSet]
+})
+
+console.log(colorTransform.name) // colorTransform
+console.log(spaceTransform.name) // spaceTransform
+```
 
 ## `extend`
 
