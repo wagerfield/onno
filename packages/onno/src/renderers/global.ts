@@ -7,6 +7,14 @@ import {
   BorderRadiusProps,
   BorderRadiusStyle
 } from "./border"
+import {
+  outline,
+  OutlineProps,
+  OutlineStyle,
+  outlineOffset,
+  OutlineOffsetProps,
+  OutlineOffsetStyle
+} from "./outline"
 import { transition, TransitionProps, TransitionStyle } from "./animation"
 import { boxShadow, BoxShadowProps, BoxShadowStyle } from "./shadow"
 import { colorSet, ColorSetProps, ColorSetStyle } from "./color"
@@ -20,21 +28,25 @@ import { textSet, TextSetProps, TextSetStyle } from "./text"
 export type GlobalSetProps = BorderProps &
   BorderRadiusProps &
   BoxShadowProps &
-  ColorSetProps &
   OpacityProps &
+  OutlineProps &
+  OutlineOffsetProps &
   SpaceSetProps &
   SizeSetProps &
   TextSetProps &
+  ColorSetProps &
   TransitionProps
 
 export type GlobalSetStyle = BorderStyle &
   BorderRadiusStyle &
   BoxShadowStyle &
-  ColorSetStyle &
   OpacityStyle &
+  OutlineStyle &
+  OutlineOffsetStyle &
   SpaceSetStyle &
   SizeSetStyle &
   TextSetStyle &
+  ColorSetStyle &
   TransitionStyle
 
 export const globalSet = compose<GlobalSetProps, GlobalSetStyle>({
@@ -43,11 +55,13 @@ export const globalSet = compose<GlobalSetProps, GlobalSetStyle>({
     border,
     borderRadius,
     boxShadow,
-    colorSet,
     opacity,
+    outline,
+    outlineOffset,
     spaceSet,
     sizeSet,
     textSet,
+    colorSet,
     transition
   ]
 })

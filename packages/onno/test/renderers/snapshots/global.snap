@@ -9,6 +9,9 @@ exports[`globalSet: {
   "borderColor": "gray.1",
   "color": "link",
   "opacity": 0.5,
+  "outline": "2px dashed gold",
+  "outlineColor": "khaki",
+  "outlineOffset": -4,
   "margin": 0,
   "marginX": 1,
   "marginY": 2,
@@ -59,19 +62,13 @@ Array [
     "boxShadow": "0 4px 16px rgba(0,0,0,0.5)",
   },
   Object {
-    "background": "red url(onno.png) center no-repeat",
-  },
-  Object {
-    "backgroundColor": "#EEE",
-  },
-  Object {
-    "borderColor": "#AAA",
-  },
-  Object {
-    "color": "#00F",
-  },
-  Object {
     "opacity": 0.5,
+  },
+  Object {
+    "outline": "2px dashed gold",
+  },
+  Object {
+    "outlineOffset": "-4px",
   },
   Object {
     "margin": 0,
@@ -182,6 +179,21 @@ Array [
   },
   Object {
     "textTransform": "uppercase",
+  },
+  Object {
+    "color": "#00F",
+  },
+  Object {
+    "background": "red url(onno.png) center no-repeat",
+  },
+  Object {
+    "backgroundColor": "#EEE",
+  },
+  Object {
+    "borderColor": "#AAA",
+  },
+  Object {
+    "outlineColor": "khaki",
   },
   Object {
     "transition": "all 0.1s ease-out",

@@ -88,19 +88,40 @@ export const color = ex<ColorProps, ColorStyle>({
   propsKeys: ["color", "tc"]
 })
 
+// Outline Color
+
+export type OutlineColorValue = C.OutlineColorProperty
+
+export type OutlineColorProp = T.Prop<OutlineColorValue | number>
+
+export interface OutlineColorProps extends T.ThemeProps {
+  outlineColor?: OutlineColorProp
+  olc?: OutlineColorProp
+}
+
+export interface OutlineColorStyle extends T.Style {
+  outlineColor?: OutlineColorValue
+}
+
+export const outlineColor = ex<OutlineColorProps, OutlineColorStyle>({
+  propsKeys: ["outlineColor", "olc"]
+})
+
 // Color Set
 
 export type ColorSetProps = BackgroundProps &
   BackgroundColorProps &
   BorderColorProps &
-  ColorProps
+  ColorProps &
+  OutlineColorProps
 
 export type ColorSetStyle = BackgroundStyle &
   BackgroundColorStyle &
   BorderColorStyle &
-  ColorStyle
+  ColorStyle &
+  OutlineColorStyle
 
 export const colorSet = compose<ColorSetProps, ColorSetStyle>({
   name: "color",
-  renderers: [background, backgroundColor, borderColor, color]
+  renderers: [background, backgroundColor, borderColor, color, outlineColor]
 })

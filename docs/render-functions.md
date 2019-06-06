@@ -10,6 +10,7 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 - [Flex](#flex)
 - [Grid](#grid)
 - [Layout](#layout)
+- [Outline](#outline)
 - [Shadow](#shadow)
 - [Space](#space)
 - [Text](#text)
@@ -46,7 +47,7 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | borderRight   | borderRight, bdr  | borderRight  | borders            | addPx     |
 | borderBottom  | borderBottom, bdb | borderBottom | borders            | addPx     |
 | borderLeft    | borderLeft, bdl   | borderLeft   | borders            | addPx     |
-| borderColor   | borderColor, bdc  | borderColor  | colors             | addPx     |
+| borderColor   | borderColor, bdc  | borderColor  | colors             | none      |
 | borderStyle   | borderStyle, bds  | borderStyle  | borderStyles       | none      |
 | borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths       | addPx     |
 | borderRadius  | borderRadius, rad | borderRadius | borderRadii, sizes | addPcOrPx |
@@ -60,6 +61,7 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | backgroundColor | backgroundColor, bgc | backgroundColor | colors     | none      |
 | borderColor     | borderColor, bdc     | borderColor     | colors     | none      |
 | color           | color, tc            | color           | colors     | none      |
+| outlineColor    | outlineColor, olc    | outlineColor    | colors     | none      |
 | **colorSet**    | _all keys above_     |
 
 ## Display
@@ -157,6 +159,17 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | maxHeight       | maxHeight, maxh           | maxHeight     | maxHeights, sizes | addPcOrPx |
 | **layoutSet**   | _all keys above_          |
 
+## Outline
+
+| Function Name  | Props Keys         | Style Keys    | Theme Keys                  | Transform |
+| :------------- | :----------------- | :------------ | :-------------------------- | :-------- |
+| outline        | outline, ol        | outline       | outlines, borders           | addPx     |
+| outlineColor   | outlineColor, olc  | outlineColor  | colors                      | none      |
+| outlineOffset  | outlineOffset, olo | outlineOffset | outlineOffsets              | addPx     |
+| outlineStyle   | outlineStyle, ols  | outlineStyle  | outlineStyles, borderStyles | none      |
+| outlineWidth   | outlineWidth, olw  | outlineWidth  | outlineWidths, borderWidths | addPx     |
+| **outlineSet** | _all keys above_   |
+
 ## Shadow
 
 | Function Name | Props Keys      | Style Keys | Theme Keys  | Transform |
@@ -222,6 +235,8 @@ In addition to the `render` functions above, onno provides a `globalSet` which i
 - boxShadow
 - colorSet
 - opacity
+- outline
+- outlineOffset
 - spaceSet
 - sizeSet
 - textSet

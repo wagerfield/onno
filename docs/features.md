@@ -451,6 +451,7 @@ A number of naming conventions have been introduced by onno to help enforce cons
 2. All _standard_ render functions provide `propsKeys` aliases with the following naming conventions:
    - `background` prop aliases _start_ with `bg`
    - `border` prop aliases _start_ with `bd`
+   - `outline` prop aliases _start_ with `ol`
    - `overflow` prop aliases _start_ with `of`
    - `flex` prop aliases _start_ with `fx`
    - `grid` prop aliases _start_ with `g`
@@ -465,7 +466,7 @@ A number of naming conventions have been introduced by onno to help enforce cons
    - `variant` prop aliases _end_ with `st`
 3. All _composed_ render functions follow the convention of ending in "Set" eg. `colorSet` and `spaceSet`
    - This convention creates a distinction between _standard_ and _composed_ render functions while circumventing naming collisions such as `border` (the shorthand CSS property) and `borderSet` (a composition of all the border related render functions)
-   - With reference to point 1, all _color_ related render functions (`color`, `background`, `backgroundColor` and `borderColor`) are composed into a `colorSet` render function. This is similar to Styled System's composed `color` function but with the addition of the `background` and `borderColor` render functions.
+   - With reference to point 1, all _color_ related render functions (`color`, `background`, `backgroundColor`, `borderColor` and `outlineColor`) are composed into a `colorSet` render function. This is similar to Styled System's composed `color` function but with the addition of the `background`, `borderColor` and `outlineColor` render functions.
    - Both `flex` and `grid` render functions are organised into a `ParentSet`, `ChildSet` and complete `Set` which contains all related render functions. For example: `flexParentSet`, `flexChildSet` and `flexSet`
 4. All `theme` keys follow a plural naming convention and use the same name as the _standard_ or _composed_ render functions. The key differences between Styled System and onno's theme keys are:
    - `fonts » fontFamilies`

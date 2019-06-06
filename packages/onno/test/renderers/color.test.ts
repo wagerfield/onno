@@ -37,19 +37,28 @@ test("color", () => {
   testProps({ tc: "r", theme })
 })
 
+test("outlineColor", () => {
+  const testProps = U.snapshot(O.outlineColor)
+  testProps({ outlineColor: "gray.0" })
+  testProps({ olc: "plum" })
+  testProps({ olc: "g", theme })
+})
+
 test("colorSet", () => {
   const testProps = U.snapshot(O.colorSet)
   testProps({
     background: "gray.0",
     backgroundColor: "link",
     borderColor: "lime",
-    color: "blue"
+    color: "blue",
+    outlineColor: "text"
   })
   testProps({
     bg: "purple",
     bgc: "r",
     bdc: "g",
     tc: "b",
+    olc: "coral",
     theme
   })
 })

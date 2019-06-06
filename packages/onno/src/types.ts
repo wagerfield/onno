@@ -50,9 +50,9 @@ export interface Theme {
   transitions?: ThemeValue
   // Border
   borders?: ThemeValue
+  borderRadii?: ThemeValue
   borderStyles?: ThemeValue
   borderWidths?: ThemeValue
-  borderRadii?: ThemeValue
   // Color
   colors?: ThemeValue
   // Display
@@ -66,22 +66,27 @@ export interface Theme {
   minHeights?: ThemeValue
   maxHeights?: ThemeValue
   zIndices?: ThemeValue
+  // Outline
+  outlines?: ThemeValue
+  outlineOffsets?: ThemeValue
+  outlineStyles?: ThemeValue
+  outlineWidths?: ThemeValue
   // Shadow
-  textShadows?: ThemeValue
   boxShadows?: ThemeValue
+  textShadows?: ThemeValue
   // Space
   spaces?: ThemeValue
   // Text
-  fontFamilies?: ThemeValue
   fontSizes?: ThemeValue
+  fontFamilies?: ThemeValue
   fontWeights?: ThemeValue
   lineHeights?: ThemeValue
   letterSpacings?: ThemeValue
-  // Styles
-  globalStyles?: ThemeValue
-  buttonStyles?: ThemeValue
-  colorStyles?: ThemeValue
+  // Variants
   textStyles?: ThemeValue
+  colorStyles?: ThemeValue
+  buttonStyles?: ThemeValue
+  globalStyles?: ThemeValue
   // Components
   components?: ThemeValue
 }
