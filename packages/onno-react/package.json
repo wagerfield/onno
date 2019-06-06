@@ -2,8 +2,8 @@
   "name": "onno-react",
   "license": "MIT",
   "version": "0.2.3",
+  "homepage": "https://onnojs.com",
   "description": "Onno propTypes for React",
-  "homepage": "https://github.com/wagerfield/onno/tree/master/packages/onno-react#readme",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
   "repository": {
     "type": "git",
