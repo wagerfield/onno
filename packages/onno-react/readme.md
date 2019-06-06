@@ -1,4 +1,4 @@
-# [![onno-react](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-react.svg)][onno]
+# [![onno-react](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno-react.svg?sanitize=true)][onno]
 
 [![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno-react.svg?color=4C8&style=flat-square&label=size)][bundlephobia]
