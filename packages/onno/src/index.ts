@@ -4,9 +4,9 @@ export * from "./constants"
 export * from "./utils"
 export * from "./compose"
 export * from "./interpolate"
+export * from "./filter"
 export * from "./render"
 export * from "./style"
-export * from "./omit"
 
 // Renderers
 export * from "./renderers/align"

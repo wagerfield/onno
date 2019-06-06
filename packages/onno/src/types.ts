@@ -131,11 +131,6 @@ export interface ComposeOptions {
   name: string
 }
 
-export interface OmitOptions {
-  propsKeys?: Keys
-  renderers?: AnyRenderFunction[]
-}
-
 export interface ComposedRenderOptions {
   propsKeys: Keys
   styleKeys: Keys
@@ -143,13 +138,38 @@ export interface ComposedRenderOptions {
   renderers: AnyRenderFunction[]
 }
 
+export type FilterInitial<P> = (props: P) => Partial<P>
+
+export type FilterReducer<P> = (
+  acc: Partial<P>,
+  key: keyof P,
+  props: P
+) => Partial<P>
+
+export interface FilterOptions<P> {
+  propsKeys?: Keys
+  renderers?: AnyRenderFunction[]
+  initial: FilterInitial<P>
+  reducer: FilterReducer<P>
+}
+
+export type OmitOptions<P> = Omit<FilterOptions<P>, "initial" | "reducer">
+
+export type PickOptions<P> = Omit<FilterOptions<P>, "initial" | "reducer">
+
 export type VariantOptions = Omit<StyleOptions, "styleKeys">
 
 export type InterpolateOptions = ComposeOptions
 
-// Transform Functions
+// Filter Functions
 
-export type OmitFunction<P extends ThemeProps> = (value: P) => Partial<P>
+export type FilterFunction<P extends ThemeProps> = (value: P) => Partial<P>
+
+export type OmitFunction<P> = FilterFunction<P>
+
+export type PickFunction<P> = FilterFunction<P>
+
+// Transform Functions
 
 export type ValueTransformFunction = (value: any) => any
 

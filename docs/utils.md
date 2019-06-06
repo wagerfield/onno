@@ -24,6 +24,7 @@ These functions can be useful for when you create your own transform functions o
 - [`get`](#get)
 - [`resolve`](#resolve)
 - [`omit`](#omit)
+- [`pick`](#pick)
 
 ### `isNil`
 
@@ -299,7 +300,7 @@ Takes an `options` object with _optional_ `propsKeys` and/or `renderers` and ret
 
 When the `filter` function is called with a `props` object, it will return another object with the `propsKeys` removed.
 
-Note that the `theme` key is removed automatically, so you do not need to pass it to the `propsKeys` array.
+The `theme` key is removed automatically, so you do not need to pass it to the `propsKeys` array.
 
 This is useful when working with React where you want to sanitize `props` before spreading them onto an intrinsic element or component.
 
@@ -377,4 +378,75 @@ omitRenderers(props)
 //   baz: "baz"
 // }
 omitEverything(props)
+```
+
+### `pick`
+
+Takes an `options` object with _optional_ `propsKeys` and/or `renderers` and returns a props `filter` function.
+
+When the `filter` function is called with a `props` object, it will return another object with the picked `propsKeys`.
+
+```js
+import { style, pick } from "onno"
+
+const margin = style({
+  propsKeys: ["margin", "m"]
+})
+
+const padding = style({
+  propsKeys: ["padding", "p"]
+})
+
+// pick "foo" and "bar" keys
+const pickPropsKeys = pick({
+  propsKeys: ["foo", "bar"]
+})
+
+// pick "margin", "m", "padding" and "p" keys
+const pickRenderers = pick({
+  renderers: [margin, padding]
+})
+
+// pick all of the above keys
+const pickEverything = pick({
+  propsKeys: ["foo", "bar"],
+  renderers: [margin, padding]
+})
+
+const props = {
+  foo: "foo",
+  bar: "bar",
+  baz: "baz",
+  margin: 1,
+  m: 2,
+  padding: 3,
+  p: 4,
+  theme: {
+    spaces: [1, 2, 3]
+  }
+}
+
+// {
+//   foo: "foo",
+//   bar: "bar"
+// }
+pickPropsKeys(props)
+
+// {
+//   margin: 1,
+//   m: 2,
+//   padding: 3,
+//   p: 4
+// }
+pickRenderers(props)
+
+// {
+//   foo: "foo",
+//   bar: "bar",
+//   margin: 1,
+//   m: 2,
+//   padding: 3,
+//   p: 4
+// }
+pickEverything(props)
 ```
