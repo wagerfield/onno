@@ -18,7 +18,6 @@
     "clean": "rimraf coverage reports 'packages/**/{cjs,esm,lib,types,.nuxt}'",
     "types": "lerna exec --ignore onno-app -- tsc --emitDeclarationOnly",
     "build": "lerna exec --ignore onno-app -- tsc",
-    "setup": "lerna bootstrap",
     "bundle": "rollup --config",
     "release": "lerna publish",
     "preflight": "yarn clean && yarn types && yarn bundle && yarn format:write",
