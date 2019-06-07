@@ -289,4 +289,6 @@ test("merge", () => {
     c: 3,
     d: 4
   })
+  const array = [{ a: 1 }, [{ a: 2 }, [{ a: 3 }, [{ a: 4 }]]]]
+  expect(O.merge<Test>(array, { b: 2 })).toEqual({ a: 4, b: 2 })
 })
