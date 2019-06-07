@@ -274,6 +274,8 @@ test("merge", () => {
     c?: number
     d?: number
   }
+  expect(O.merge<Test>([])).toEqual({})
+  expect(O.merge<Test | null>([null, { a: 1 }, null])).toEqual({ a: 1 })
   expect(O.merge<Test>([{ a: 1 }, { a: 2 }])).toEqual({ a: 2 })
   expect(O.merge<Test>([{ a: 1 }, { b: 2 }])).toEqual({ a: 1, b: 2 })
   expect(O.merge<Test>([{ a: 1 }, { b: 2 }], { c: 3 })).toEqual({

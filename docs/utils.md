@@ -459,6 +459,10 @@ Takes a multidimensional `array` of objects and merges them into a single object
 ```js
 import { merge } from "onno"
 
+merge([]) // {}
+
+merge([null, { a: 1 }, null]) // { a: 1 }
+
 merge([{ a: 1 }, { a: 2 }]) // { a: 2 }
 
 merge([{ a: 1 }, { b: 2 }]) // { a: 1, b: 2 }

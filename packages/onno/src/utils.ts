@@ -73,10 +73,7 @@ export function resolve(paths?: any[], lookup?: any) {
   }, undefined)
 }
 
-export function merge<T extends {}>(
-  array: NestedArray<T>,
-  initial: T = {} as T
-): T {
+export function merge<T>(array: NestedArray<T>, initial: T = {} as T): T {
   return array.reduce<T>((acc, val) => {
     return isArray(val) ? merge(val, initial) : Object.assign(acc, val)
   }, initial)
