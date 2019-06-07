@@ -25,6 +25,7 @@ These functions can be useful for when you create your own transform functions o
 - [`resolve`](#resolve)
 - [`omit`](#omit)
 - [`pick`](#pick)
+- [`merge`](#merge)
 
 ### `isNil`
 
@@ -449,4 +450,20 @@ pickRenderers(props)
 //   p: 4
 // }
 pickEverything(props)
+```
+
+### `merge`
+
+Takes a multidimensional `array` of objects and merges them into a single object. An optional `initial` object can be passed as the first argument to merge the other objects into.
+
+```js
+import { merge } from "onno"
+
+merge([{ a: 1 }, { a: 2 }]) // { a: 2 }
+
+merge([{ a: 1 }, { b: 2 }]) // { a: 1, b: 2 }
+
+merge([{ a: 1 }, { b: 2 }], { c: 3 }) // { a: 1, b: 2, c: 3 }
+
+merge([{ a: 1 }, [{ b: 2 }, [{ c: 3 }]]], { d: 4 }) // { a: 1, b: 2, c: 3, d: 4 }
 ```

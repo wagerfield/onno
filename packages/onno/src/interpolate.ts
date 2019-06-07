@@ -1,12 +1,6 @@
 import * as T from "./types"
 import { compose } from "./compose"
-import { isPlainObject } from "./utils"
-
-export function merge<S extends T.Style>(
-  styles: T.StyleArray<S>
-): T.StyleObject<S> {
-  return styles.reduce((o, s) => Object.assign(o, s), {})
-}
+import { merge, isPlainObject } from "./utils"
 
 export function interpolate<P extends T.ThemeProps, S extends T.Style>(
   options: T.InterpolateOptions
@@ -23,7 +17,7 @@ export function interpolate<P extends T.ThemeProps, S extends T.Style>(
   ) => {
     if (!isPlainObject(style)) return null
     const renderedStyle = renderer({ theme, ...style })
-    const mergedStyle = renderedStyle && merge(renderedStyle)
+    const mergedStyle = renderedStyle && merge<T.StyleObject<S>>(renderedStyle)
 
     // Iterate over style keys
     return Object.keys(style!).reduce((result, key) => {

@@ -266,3 +266,25 @@ test("resolve", () => {
   expect(O.resolve(["baz.5"], U.OBJ)).toBe(0)
   expect(O.resolve(["baz.A5"], U.OBJ)).toBeUndefined()
 })
+
+test("merge", () => {
+  interface Test {
+    a?: number
+    b?: number
+    c?: number
+    d?: number
+  }
+  expect(O.merge<Test>([{ a: 1 }, { a: 2 }])).toEqual({ a: 2 })
+  expect(O.merge<Test>([{ a: 1 }, { b: 2 }])).toEqual({ a: 1, b: 2 })
+  expect(O.merge<Test>([{ a: 1 }, { b: 2 }], { c: 3 })).toEqual({
+    a: 1,
+    b: 2,
+    c: 3
+  })
+  expect(O.merge<Test>([{ a: 1 }, [{ b: 2 }, [{ c: 3 }]]], { d: 4 })).toEqual({
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4
+  })
+})

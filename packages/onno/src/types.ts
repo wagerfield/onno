@@ -12,6 +12,8 @@ export type Func = (...args: any[]) => any
 
 export type Pred = (...args: any[]) => boolean
 
+export interface NestedArray<T> extends Array<T | NestedArray<T>> {}
+
 export type ResponsivePropArray<T> = T[]
 
 export interface ResponsivePropObject<T> {

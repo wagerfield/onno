@@ -1,4 +1,4 @@
-import { Func, Pred } from "./types"
+import { Func, Pred, NestedArray } from "./types"
 
 const IGNORE = /\s|\d+\.\d+/
 
@@ -71,4 +71,13 @@ export function resolve(paths?: any[], lookup?: any) {
     const r = get(p, lookup)
     return isUndefined(r) ? v : r
   }, undefined)
+}
+
+export function merge<T extends {}>(
+  array: NestedArray<T>,
+  initial: T = {} as T
+): T {
+  return array.reduce<T>((acc, val) => {
+    return isArray(val) ? merge(val, initial) : Object.assign(acc, val)
+  }, initial)
 }
