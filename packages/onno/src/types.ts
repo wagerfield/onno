@@ -103,7 +103,7 @@ export interface Props extends ThemeProps {
 
 // Style
 
-export type StyleValue = number | string | string[] | undefined
+export type StyleValue = number | string | string[] | Nil
 
 export interface Style {
   [key: string]: StyleValue
