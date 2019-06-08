@@ -1,3 +1,7 @@
+import { PropertiesFallback, Pseudos } from "csstype"
+
+// Primitives
+
 export type Length = number
 
 export type Nil = null | undefined
@@ -8,11 +12,23 @@ export type Key = string
 
 export type Keys = Key[]
 
+export interface NestedArray<T> extends Array<T | NestedArray<T>> {}
+
+// Functions
+
 export type Func = (...args: any[]) => any
 
 export type Pred = (...args: any[]) => boolean
 
-export interface NestedArray<T> extends Array<T | NestedArray<T>> {}
+// CSS
+
+export type CSSProperties = PropertiesFallback<Primitive>
+
+export type CSSPseudos<P> = { [K in Pseudos]?: CSSProperties & P }
+
+export type CSSStyleObject<P> = CSSProperties & CSSPseudos<P> & P
+
+// Responsive
 
 export type ResponsivePropArray<T> = T[]
 
