@@ -1,77 +1,77 @@
 {
   "packages/onno/cjs/index.js": {
-    "bundled": 27087,
-    "minified": 19591,
-    "gzipped": 5366
+    "bundled": 27097,
+    "minified": 19600,
+    "gzipped": 5367
   },
   "packages/onno/esm/index.js": {
-    "bundled": 24078,
-    "minified": 16420,
+    "bundled": 24088,
+    "minified": 16429,
     "gzipped": 4650,
     "treeshaked": {
       "rollup": {
-        "code": 10158,
+        "code": 10167,
         "import_statements": 0
       },
       "webpack": {
-        "code": 11212
+        "code": 11221
       }
     }
   },
   "packages/onno-react/cjs/index.js": {
-    "bundled": 27763,
-    "minified": 20132,
+    "bundled": 27773,
+    "minified": 20141,
     "gzipped": 5538
   },
   "packages/onno-react/esm/index.js": {
-    "bundled": 24620,
-    "minified": 16821,
-    "gzipped": 4803,
+    "bundled": 24630,
+    "minified": 16830,
+    "gzipped": 4804,
     "treeshaked": {
       "rollup": {
-        "code": 10299,
+        "code": 10308,
         "import_statements": 90
       },
       "webpack": {
-        "code": 11406
+        "code": 11415
       }
     }
   },
   "packages/onno-vue/cjs/index.js": {
-    "bundled": 27087,
-    "minified": 19591,
-    "gzipped": 5366
+    "bundled": 27097,
+    "minified": 19600,
+    "gzipped": 5367
   },
   "packages/onno-vue/esm/index.js": {
-    "bundled": 24078,
-    "minified": 16420,
+    "bundled": 24088,
+    "minified": 16429,
     "gzipped": 4650,
     "treeshaked": {
       "rollup": {
-        "code": 10158,
+        "code": 10167,
         "import_statements": 0
       },
       "webpack": {
-        "code": 11212
+        "code": 11221
       }
     }
   },
   "packages/onco/cjs/index.js": {
-    "bundled": 27087,
-    "minified": 19591,
-    "gzipped": 5366
+    "bundled": 27097,
+    "minified": 19600,
+    "gzipped": 5367
   },
   "packages/onco/esm/index.js": {
-    "bundled": 24078,
-    "minified": 16420,
+    "bundled": 24088,
+    "minified": 16429,
     "gzipped": 4650,
     "treeshaked": {
       "rollup": {
-        "code": 10158,
+        "code": 10167,
         "import_statements": 0
       },
       "webpack": {
-        "code": 11212
+        "code": 11221
       }
     }
   }
