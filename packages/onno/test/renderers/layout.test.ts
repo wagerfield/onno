@@ -149,7 +149,7 @@ test("sizeSet", () => {
     maxw: "40ch",
     h: 8,
     minh: "50%",
-    maxh: "100"
+    maxh: "100" // Should get converted to pixels
   })
 })
 
@@ -187,6 +187,6 @@ test("layoutSet", () => {
     maxw: "40ch",
     h: 8,
     minh: "50%",
-    maxh: "100"
+    maxh: "100" // Should get converted to pixels
   })
 })

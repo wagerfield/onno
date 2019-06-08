@@ -2,6 +2,8 @@ import { Func, Pred, NestedArray } from "./types"
 
 const IGNORE = /\s|\d+\.\d+/
 
+const NUMBER = /^-?(\d*\.)?\d+$/
+
 export const push = Array.prototype.push
 
 export const isArray = Array.isArray
@@ -16,19 +18,24 @@ export const isObject = isType("object")
 
 export const isPlainObject = (x: any) => !!x && isObject(x) && !isArray(x)
 
-export const isNumber = isType<number>("number")
-
 export const isString = isType<string>("string")
 
-export const isUnitless = (x: any) => isNumber(x) && !!x
+const isTypeNumber = isType<number>("number")
+
+export const isNumber = (x: any): x is number => isTypeNumber(x) && !isNaN(x)
+
+export const isNumberLike = (x: any) =>
+  isNumber(x) || (isString(x) && NUMBER.test(x))
+
+export const isUnitless = (x: any) => isNumberLike(x) && !!+x
 
 export const isFraction = (x: any) => isUnitless(x) && x > -1 && x < 1
 
 export const when = (p: Pred) => (f: Func) => (x: any) => (p(x) ? f(x) : x)
 
-export const addPx = when(isUnitless)((x) => x + "px")
-
 export const addPc = when(isFraction)((x) => x * 100 + "%")
+
+export const addPx = when(isUnitless)((x) => x + "px")
 
 export const addRem = when(isUnitless)((x) => x + "rem")
 

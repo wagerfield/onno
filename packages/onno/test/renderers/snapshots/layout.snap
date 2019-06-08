@@ -136,7 +136,7 @@ Array [
     "minHeight": "50%",
   },
   Object {
-    "maxHeight": "100",
+    "maxHeight": "100px",
   },
 ]
 `;
@@ -632,7 +632,7 @@ Array [
     "minHeight": "50%",
   },
   Object {
-    "maxHeight": "100",
+    "maxHeight": "100px",
   },
 ]
 `;

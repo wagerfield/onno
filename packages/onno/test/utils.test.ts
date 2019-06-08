@@ -43,17 +43,6 @@ test("isPlainObject", () => {
   expect(O.isPlainObject(0)).toBe(false)
 })
 
-test("isNumber", () => {
-  expect(O.isNumber(0)).toBe(true)
-  expect(O.isNumber(1)).toBe(true)
-  expect(O.isNumber(-1)).toBe(true)
-  expect(O.isNumber(undefined)).toBe(false)
-  expect(O.isNumber(null)).toBe(false)
-  expect(O.isNumber({})).toBe(false)
-  expect(O.isNumber([])).toBe(false)
-  expect(O.isNumber("0")).toBe(false)
-})
-
 test("isString", () => {
   expect(O.isString("")).toBe(true)
   expect(O.isString("0")).toBe(true)
@@ -65,12 +54,84 @@ test("isString", () => {
   expect(O.isString(0)).toBe(false)
 })
 
+test("isNumber", () => {
+  expect(O.isNumber(0)).toBe(true)
+  expect(O.isNumber(1)).toBe(true)
+  expect(O.isNumber(-1)).toBe(true)
+  expect(O.isNumber(NaN)).toBe(false)
+  expect(O.isNumber(undefined)).toBe(false)
+  expect(O.isNumber(null)).toBe(false)
+  expect(O.isNumber({})).toBe(false)
+  expect(O.isNumber([])).toBe(false)
+  expect(O.isNumber("0")).toBe(false)
+})
+
+test("isNumberLike", () => {
+  // Truthy
+  expect(O.isNumberLike(0)).toBe(true)
+  expect(O.isNumberLike(0.1)).toBe(true)
+  expect(O.isNumberLike(.1)).toBe(true) // prettier-ignore
+  expect(O.isNumberLike(1)).toBe(true)
+  expect(O.isNumberLike(1.1)).toBe(true)
+  expect(O.isNumberLike(11.1)).toBe(true)
+
+  expect(O.isNumberLike(-0)).toBe(true)
+  expect(O.isNumberLike(-0.1)).toBe(true)
+  expect(O.isNumberLike(-.1)).toBe(true) // prettier-ignore
+  expect(O.isNumberLike(-1)).toBe(true)
+  expect(O.isNumberLike(-1.1)).toBe(true)
+  expect(O.isNumberLike(-11.1)).toBe(true)
+
+  expect(O.isNumberLike("0")).toBe(true)
+  expect(O.isNumberLike("0.1")).toBe(true)
+  expect(O.isNumberLike(".1")).toBe(true)
+  expect(O.isNumberLike("1")).toBe(true)
+  expect(O.isNumberLike("1.1")).toBe(true)
+  expect(O.isNumberLike("11.1")).toBe(true)
+
+  expect(O.isNumberLike("-0")).toBe(true)
+  expect(O.isNumberLike("-0.1")).toBe(true)
+  expect(O.isNumberLike("-.1")).toBe(true)
+  expect(O.isNumberLike("-1")).toBe(true)
+  expect(O.isNumberLike("-1.1")).toBe(true)
+  expect(O.isNumberLike("-11.1")).toBe(true)
+
+  // Falsey
+  expect(O.isNumberLike(NaN)).toBe(false)
+  expect(O.isNumberLike(null)).toBe(false)
+  expect(O.isNumberLike(undefined)).toBe(false)
+
+  expect(O.isNumberLike("")).toBe(false)
+  expect(O.isNumberLike("-")).toBe(false)
+  expect(O.isNumberLike("foo")).toBe(false)
+
+  expect(O.isNumberLike({})).toBe(false)
+  expect(O.isNumberLike([])).toBe(false)
+})
+
 test("isUnitless", () => {
-  expect(O.isUnitless(1)).toBe(true)
-  expect(O.isUnitless(-1)).toBe(true)
-  expect(O.isUnitless(0)).toBe(false)
-  expect(O.isUnitless(null)).toBe(false)
-  expect(O.isUnitless("foo")).toBe(false)
+  // Truthy
+  expect(O.isUnitless("0.1")).toBe(true)
+  expect(O.isUnitless(".1")).toBe(true)
+  expect(O.isUnitless("1")).toBe(true)
+  expect(O.isUnitless("1.1")).toBe(true)
+  expect(O.isUnitless("11.1")).toBe(true)
+
+  expect(O.isUnitless("-0.1")).toBe(true)
+  expect(O.isUnitless("-.1")).toBe(true)
+  expect(O.isUnitless("-1")).toBe(true)
+  expect(O.isUnitless("-1.1")).toBe(true)
+  expect(O.isUnitless("-11.1")).toBe(true)
+
+  // Falsey
+  expect(O.isUnitless("0")).toBe(false)
+  expect(O.isUnitless("-0")).toBe(false)
+
+  expect(O.isUnitless("0px")).toBe(false)
+  expect(O.isUnitless("-0px")).toBe(false)
+
+  expect(O.isUnitless("1px")).toBe(false)
+  expect(O.isUnitless("-1px")).toBe(false)
 })
 
 test("isFraction", () => {
@@ -104,6 +165,9 @@ test("addPx", () => {
   expect(O.addPx(0)).toBe(0)
   expect(O.addPx(1)).toBe("1px")
   expect(O.addPx(-2)).toBe("-2px")
+  expect(O.addPx("0")).toBe("0")
+  expect(O.addPx("1")).toBe("1px")
+  expect(O.addPx("-2")).toBe("-2px")
   expect(O.addPx("2em")).toBe("2em")
 })
 
@@ -113,6 +177,9 @@ test("addPc", () => {
   expect(O.addPc(0.15)).toBe("15%")
   expect(O.addPc(-0.25)).toBe("-25%")
   expect(O.addPc(3 / 4)).toBe("75%")
+  expect(O.addPc("0")).toBe("0")
+  expect(O.addPc("0.5")).toBe("50%")
+  expect(O.addPc("-0.05")).toBe("-5%")
   expect(O.addPc("2em")).toBe("2em")
 })
 

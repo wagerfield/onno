@@ -11,6 +11,7 @@ These functions can be useful for when you create your own transform functions o
 - [`isType`](#istype)
 - [`isArray`](#isarray)
 - [`isNumber`](#isnumber)
+- [`isNumberLike`](#isnumberlike)
 - [`isObject`](#isobject)
 - [`isPlainObject`](#isplainobject)
 - [`isString`](#isstring)
@@ -80,20 +81,41 @@ isArray(1) // false
 
 ### `isNumber`
 
-Returns `true` for `typeof value === "number"` values, `false` otherwise.
+Returns `true` for `typeof x === "number" && !isNaN(x)` values, `false` otherwise.
 
 ```js
-isNumber(1) // true
 isNumber(0) // true
+isNumber(1) // true
 isNumber(-1) // true
+isNumber(NaN) // false
 isNumber(null) // false
-isNumber([]) // false
+isNumber("1") // false
 isNumber("") // false
+isNumber([]) // false
+```
+
+### `isNumberLike`
+
+Returns `true` for _number-like_ values, `false` otherwise.
+
+A _number-like_ value is either a `Number` _or_ `String` containing _only_ digits and an _optional_ negative sign and/or decimal point.
+
+```js
+isNumberLike(0) // true
+isNumberLike(1) // true
+isNumberLike(-1) // true
+isNumberLike("0") // true
+isNumberLike("1") // true
+isNumberLike("-1") // true
+isNumberLike(NaN) // false
+isNumberLike(null) // false
+isNumberLike([]) // false
+isNumberLike("") // false
 ```
 
 ### `isObject`
 
-Returns `true` for `typeof value === "object"` values, `false` otherwise.
+Returns `true` for `typeof x === "object"` values, `false` otherwise.
 
 ```js
 isObject({}) // true
@@ -106,7 +128,7 @@ isObject(0) // false
 
 ### `isPlainObject`
 
-Returns `true` for `!!value && isObject(value) && !isArray(value)` values, `false` otherwise.
+Returns `true` for `!!x && isObject(x) && !isArray(x)` values, `false` otherwise.
 
 ```js
 isPlainObject({}) // true
@@ -119,7 +141,7 @@ isPlainObject(0) // false
 
 ### `isString`
 
-Returns `true` for `typeof value === "string"` values, `false` otherwise.
+Returns `true` for `typeof x === "string"` values, `false` otherwise.
 
 ```js
 isString("") // true
@@ -132,13 +154,16 @@ isString({}) // false
 
 ### `isUnitless`
 
-Returns `true` for `typeof value === "number"` values that are _not_ zero, `false` otherwise.
+Returns `true` for `isNumberLike(x)` values that are _not_ zero, `false` otherwise.
 
 ```js
 isUnitless(1) // true
 isUnitless(-1) // true
+isUnitless("1") // true
 isUnitless(0) // false
-isUnitless("1") // false
+isUnitless("0") // false
+isUnitless("1px") // false
+isUnitless("-5%") // false
 isUnitless({}) // false
 ```
 
