@@ -40,18 +40,18 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 
 ## Border
 
-| Function Name | Props Keys        | Style Keys   | Theme Keys         | Transform |
-| :------------ | :---------------- | :----------- | :----------------- | :-------- |
-| border        | border, bd        | border       | borders            | addPx     |
-| borderTop     | borderTop, bdt    | borderTop    | borders            | addPx     |
-| borderRight   | borderRight, bdr  | borderRight  | borders            | addPx     |
-| borderBottom  | borderBottom, bdb | borderBottom | borders            | addPx     |
-| borderLeft    | borderLeft, bdl   | borderLeft   | borders            | addPx     |
-| borderColor   | borderColor, bdc  | borderColor  | colors             | none      |
-| borderStyle   | borderStyle, bds  | borderStyle  | borderStyles       | none      |
-| borderWidth   | borderWidth, bdw  | borderWidth  | borderWidths       | addPx     |
-| borderRadius  | borderRadius, rad | borderRadius | borderRadii, sizes | addPcOrPx |
-| **borderSet** | _all keys above_  |
+| Function Name | Props Keys                | Style Keys   | Theme Keys         | Transform |
+| :------------ | :------------------------ | :----------- | :----------------- | :-------- |
+| border        | border, bd                | border       | borders            | addPx     |
+| borderTop     | borderTop, bdt            | borderTop    | borders            | addPx     |
+| borderRight   | borderRight, bdr          | borderRight  | borders            | addPx     |
+| borderBottom  | borderBottom, bdb         | borderBottom | borders            | addPx     |
+| borderLeft    | borderLeft, bdl           | borderLeft   | borders            | addPx     |
+| borderColor   | borderColor, bdc          | borderColor  | colors             | none      |
+| borderStyle   | borderStyle, bds          | borderStyle  | borderStyles       | none      |
+| borderWidth   | borderWidth, bdw          | borderWidth  | borderWidths       | addPx     |
+| borderRadius  | borderRadius, radius, rad | borderRadius | borderRadii, sizes | addPcOrPx |
+| **borderSet** | _all keys above_          |
 
 ## Color
 

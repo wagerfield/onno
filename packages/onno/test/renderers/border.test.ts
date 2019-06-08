@@ -63,6 +63,8 @@ test("borderRadius", () => {
   const testProps = U.snapshot(O.borderRadius)
   testProps({ borderRadius: 10, theme })
   testProps({ borderRadius: 4, theme })
+  testProps({ radius: 2, theme })
+  testProps({ radius: 8, theme })
   testProps({ rad: 0.5, theme })
   testProps({ rad: 0, theme })
   testProps({ rad: 1, theme })

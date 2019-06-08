@@ -254,6 +254,62 @@ Array [
 ]
 `;
 
+exports[`borderRadius: {
+  "radius": 2,
+  "theme": {
+    "borders": {
+      "one": "1px solid gold",
+      "two": "2px dashed red"
+    },
+    "borderStyles": {
+      "one": "solid",
+      "two": "hidden"
+    },
+    "borderWidths": {
+      "one": 11,
+      "two": 22
+    },
+    "borderRadii": [
+      111,
+      222
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "borderRadius": "2px",
+  },
+]
+`;
+
+exports[`borderRadius: {
+  "radius": 8,
+  "theme": {
+    "borders": {
+      "one": "1px solid gold",
+      "two": "2px dashed red"
+    },
+    "borderStyles": {
+      "one": "solid",
+      "two": "hidden"
+    },
+    "borderWidths": {
+      "one": 11,
+      "two": 22
+    },
+    "borderRadii": [
+      111,
+      222
+    ]
+  }
+} 1`] = `
+Array [
+  Object {
+    "borderRadius": "8px",
+  },
+]
+`;
+
 exports[`borderRight: {
   "bdr": "one",
   "theme": {

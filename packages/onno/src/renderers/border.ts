@@ -138,6 +138,7 @@ export type BorderRadiusProp = T.Prop<BorderRadiusValue>
 
 export interface BorderRadiusProps extends T.ThemeProps {
   borderRadius?: BorderRadiusProp
+  radius?: BorderRadiusProp
   rad?: BorderRadiusProp
 }
 
@@ -146,7 +147,7 @@ export interface BorderRadiusStyle extends T.Style {
 }
 
 export const borderRadius = ex<BorderRadiusProps, BorderRadiusStyle>({
-  propsKeys: ["borderRadius", "rad"],
+  propsKeys: ["borderRadius", "radius", "rad"],
   themeKeys: ["borderRadii", "sizes"],
   transform: addPcOrPx,
   defaults: PX_SCALE
