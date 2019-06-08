@@ -31,10 +31,15 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   }
 
   // Build options keys
-  renderers.forEach((fn) =>
-    KEYS.forEach((key) => {
-      const keys = fn.options[key]
-      if (keys) push.apply(composedOptions[key], keys)
+  renderers.forEach((renderer) =>
+    KEYS.forEach((optionsKey) => {
+      const composedKeys = composedOptions[optionsKey]
+      const rendererKeys = renderer.options[optionsKey]
+      if (rendererKeys) {
+        rendererKeys.forEach((key) => {
+          if (!composedKeys.includes(key)) composedKeys.push(key)
+        })
+      }
     })
   )
 
