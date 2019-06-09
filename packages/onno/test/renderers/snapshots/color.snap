@@ -153,6 +153,7 @@ exports[`colorSet: {
   "backgroundColor": "link",
   "borderColor": "lime",
   "color": "blue",
+  "fill": "orange",
   "outlineColor": "text"
 } 1`] = `
 Array [
@@ -169,6 +170,9 @@ Array [
     "color": "blue",
   },
   Object {
+    "fill": "orange",
+  },
+  Object {
     "outlineColor": "#222",
   },
 ]
@@ -179,6 +183,7 @@ exports[`colorSet: {
   "bgc": "r",
   "bdc": "g",
   "tc": "b",
+  "fc": "sage",
   "olc": "coral",
   "theme": {
     "colors": {
@@ -202,7 +207,47 @@ Array [
     "color": "#00F",
   },
   Object {
+    "fill": "sage",
+  },
+  Object {
     "outlineColor": "coral",
+  },
+]
+`;
+
+exports[`fill: {
+  "fc": "black",
+  "theme": {
+    "colors": {
+      "r": "#F00",
+      "g": "#0F0",
+      "b": "#00F"
+    }
+  }
+} 1`] = `
+Array [
+  Object {
+    "fill": "black",
+  },
+]
+`;
+
+exports[`fill: {
+  "fc": "crimson"
+} 1`] = `
+Array [
+  Object {
+    "fill": "crimson",
+  },
+]
+`;
+
+exports[`fill: {
+  "fill": "link"
+} 1`] = `
+Array [
+  Object {
+    "fill": "#00F",
   },
 ]
 `;

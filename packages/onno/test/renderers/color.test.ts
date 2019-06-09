@@ -37,6 +37,13 @@ test("color", () => {
   testProps({ tc: "r", theme })
 })
 
+test("fill", () => {
+  const testProps = U.snapshot(O.fill)
+  testProps({ fill: "link" })
+  testProps({ fc: "crimson" })
+  testProps({ fc: "black", theme })
+})
+
 test("outlineColor", () => {
   const testProps = U.snapshot(O.outlineColor)
   testProps({ outlineColor: "gray.0" })
@@ -51,6 +58,7 @@ test("colorSet", () => {
     backgroundColor: "link",
     borderColor: "lime",
     color: "blue",
+    fill: "orange",
     outlineColor: "text"
   })
   testProps({
@@ -58,6 +66,7 @@ test("colorSet", () => {
     bgc: "r",
     bdc: "g",
     tc: "b",
+    fc: "sage",
     olc: "coral",
     theme
   })

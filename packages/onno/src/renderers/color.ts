@@ -88,6 +88,25 @@ export const color = ex<ColorProps, ColorStyle>({
   propsKeys: ["color", "tc"]
 })
 
+// Fill
+
+export type FillValue = C.FillProperty
+
+export type FillProp = T.Prop<FillValue>
+
+export interface FillProps extends T.ThemeProps {
+  fill?: FillProp
+  fc?: FillProp
+}
+
+export interface FillStyle extends T.Style {
+  fill?: FillValue
+}
+
+export const fill = ex<FillProps, FillStyle>({
+  propsKeys: ["fill", "fc"]
+})
+
 // Outline Color
 
 export type OutlineColorValue = C.OutlineColorProperty
@@ -113,15 +132,24 @@ export type ColorSetProps = BackgroundProps &
   BackgroundColorProps &
   BorderColorProps &
   ColorProps &
+  FillProps &
   OutlineColorProps
 
 export type ColorSetStyle = BackgroundStyle &
   BackgroundColorStyle &
   BorderColorStyle &
   ColorStyle &
+  FillStyle &
   OutlineColorStyle
 
 export const colorSet = compose<ColorSetProps, ColorSetStyle>({
   name: "color",
-  renderers: [background, backgroundColor, borderColor, color, outlineColor]
+  renderers: [
+    background,
+    backgroundColor,
+    borderColor,
+    color,
+    fill,
+    outlineColor
+  ]
 })

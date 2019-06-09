@@ -61,6 +61,7 @@ Composed `render` functions follow the naming convention of ending in `Set` and 
 | backgroundColor | backgroundColor, bgc | backgroundColor | colors     | none      |
 | borderColor     | borderColor, bdc     | borderColor     | colors     | none      |
 | color           | color, tc            | color           | colors     | none      |
+| fill            | fill, fc             | fill            | colors     | none      |
 | outlineColor    | outlineColor, olc    | outlineColor    | colors     | none      |
 | **colorSet**    | _all keys above_     |
 
