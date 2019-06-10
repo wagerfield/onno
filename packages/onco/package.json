@@ -1,7 +1,7 @@
 {
   "name": "onco",
   "license": "MIT",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "homepage": "https://onnojs.com",
   "description": "Component style render functions",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
@@ -26,6 +26,6 @@
     "types"
   ],
   "dependencies": {
-    "onno": "0.4.7"
+    "onno": "0.4.8"
   }
 }
