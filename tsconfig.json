@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "packages",
     "paths": {
+      "onco": ["onco/src"],
       "onno": ["onno/src"]
     },
     "target": "es2015",
