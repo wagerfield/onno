@@ -1,6 +1,15 @@
 import * as O from "../src"
 import * as U from "./test-utils"
 
+test("sets the transformer property", () => {
+  const styleFunc1 = U.style({})
+  const styleFunc2 = U.style({ renderers: [] })
+  const styleFunc3 = U.style({ renderers: [O.color] })
+  expect(styleFunc1.transformer).toBeUndefined()
+  expect(styleFunc2.transformer).toBeUndefined()
+  expect(styleFunc3.transformer).toBeDefined()
+})
+
 test("transforms style through renderers", () => {
   const base = O.extend({
     transform: O.addPx,

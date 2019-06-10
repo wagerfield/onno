@@ -203,8 +203,9 @@ export type RenderFunctionType = "style" | "compose" | "variant"
 
 export interface RenderFunction<P extends ThemeProps, S extends Style> {
   (props: P): StyleArray<S> | null
-  options: StyleOptions
   type: RenderFunctionType
+  options: StyleOptions
+  transformer?: StyleTransformFunction<P, S>
 }
 
 export interface ComposedRenderFunction<P extends ThemeProps, S extends Style>

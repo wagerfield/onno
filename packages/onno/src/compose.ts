@@ -56,9 +56,9 @@ export function compose<P extends T.ThemeProps, S extends T.Style>(
   }
 
   // Define renderProps function properties
-  renderProps.options = composedOptions
-  renderProps.type = "compose" as "compose"
   Object.defineProperty(renderProps, "name", { value: name })
+  renderProps.type = "compose" as "compose"
+  renderProps.options = composedOptions
 
   // Return renderProps function
   return renderProps

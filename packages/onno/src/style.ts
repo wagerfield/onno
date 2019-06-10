@@ -33,7 +33,10 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   // Resolve style transform and keys
   const name = propsKeys[0] // Renderer function name
   const keys = isArray(styleKeys) ? styleKeys : propsKeys.slice(0, 1)
-  const transformStyle = isArray(renderers) && interpolate({ name, renderers })
+  const transformer =
+    isArray(renderers) &&
+    renderers.length > 0 &&
+    interpolate<P, S>({ name, renderers })
 
   // Reassign resolved style keys to options
   if (isUndefined(styleKeys)) options.styleKeys = keys
@@ -80,7 +83,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     const pushStyle = (value: any, query?: string | null) => {
       let result = renderValue(value, theme)
       if (result) {
-        if (transformStyle) result = transformStyle(result, theme)
+        if (transformer) result = transformer(result, theme)
         if (query) result = { [query]: result }
         styles.push(result)
       }
@@ -106,9 +109,10 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
   }
 
   // Define renderProps properties
-  renderProps.options = options
-  renderProps.type = "style" as "style"
   Object.defineProperty(renderProps, "name", { value: name })
+  renderProps.type = "style" as "style"
+  renderProps.options = options
+  if (transformer) renderProps.transformer = transformer
 
   // Return renderProps function
   return renderProps

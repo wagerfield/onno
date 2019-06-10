@@ -7,7 +7,7 @@ export function interpolate<P extends T.ThemeProps, S extends T.Style>(
 ): T.StyleTransformFunction<P, S> {
   let { name, renderers } = options
   if (!/Transform$/.test(name)) name += "Transform"
-  const renderer = compose({ name, renderers })
+  const renderer = compose<P, S>({ name, renderers })
   const { propsKeys, styleKeys } = renderer.options
 
   // Scoped transform function
@@ -16,7 +16,7 @@ export function interpolate<P extends T.ThemeProps, S extends T.Style>(
     theme?: T.Theme
   ) => {
     if (!isPlainObject(style)) return null
-    const renderedStyle = renderer({ theme, ...style })
+    const renderedStyle = renderer({ theme, ...style } as P)
     const mergedStyle = renderedStyle && merge<T.StyleObject<S>>(renderedStyle)
 
     // Iterate over style keys
