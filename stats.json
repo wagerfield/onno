@@ -74,5 +74,43 @@
         "code": 11290
       }
     }
+  },
+  "packages/onco-react/cjs/index.js": {
+    "bundled": 27284,
+    "minified": 19691,
+    "gzipped": 5398
+  },
+  "packages/onco-react/esm/index.js": {
+    "bundled": 24263,
+    "minified": 16507,
+    "gzipped": 4678,
+    "treeshaked": {
+      "rollup": {
+        "code": 10235,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 11290
+      }
+    }
+  },
+  "packages/onco-vue/cjs/index.js": {
+    "bundled": 27284,
+    "minified": 19691,
+    "gzipped": 5398
+  },
+  "packages/onco-vue/esm/index.js": {
+    "bundled": 24263,
+    "minified": 16507,
+    "gzipped": 4678,
+    "treeshaked": {
+      "rollup": {
+        "code": 10235,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 11290
+      }
+    }
   }
 }
