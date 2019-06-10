@@ -61,5 +61,6 @@ const gst = variant<GlobalStyleProps, any>({
 export const globalStyle: T.RenderFunction<GlobalStyleProps, any> = (props) =>
   gst({ gst: ".", ...props })
 
+globalStyle.transformer = gst.transformer
 globalStyle.options = gst.options
 globalStyle.type = gst.type
