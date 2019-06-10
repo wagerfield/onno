@@ -1,7 +1,7 @@
 {
   "name": "onno",
   "license": "MIT",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "homepage": "https://onnojs.com",
   "description": "Responsive style props for building themed design systems",
   "author": "Matthew Wagerfield <matthew@wagerfield.com>",
