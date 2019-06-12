@@ -40,9 +40,13 @@ export type ResponsiveProp<T> = ResponsivePropArray<T> | ResponsivePropObject<T>
 
 export type Prop<T> = T | ResponsiveProp<T> | Nil
 
+export interface AliasObject<T> {
+  [key: string]: AliasObject<T> | T
+}
+
 export interface Alias<T = Primitive> {
   alias: Key
-  value: T
+  value: AliasObject<T> | T
 }
 
 // Theme
@@ -59,54 +63,54 @@ export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | Nil
 
 export type Breakpoints<T = Primitive> = ThemeArray<T> | Nil
 
-export interface Theme<T = Primitive> {
-  [key: string]: ThemeValue<T>
+export interface Theme {
+  [key: string]: ThemeValue
   // Breakpoints
-  breakpoints?: Breakpoints<T>
+  breakpoints?: Breakpoints
   // Animation
-  animations?: ThemeValue<T>
-  transitions?: ThemeValue<T>
+  animations?: ThemeValue
+  transitions?: ThemeValue
   // Border
-  borders?: ThemeValue<T>
-  borderRadii?: ThemeValue<T>
-  borderStyles?: ThemeValue<T>
-  borderWidths?: ThemeValue<T>
+  borders?: ThemeValue
+  borderRadii?: ThemeValue
+  borderStyles?: ThemeValue
+  borderWidths?: ThemeValue
   // Color
-  colors?: ThemeValue<T>
+  colors?: ThemeValue
   // Display
-  opacities?: ThemeValue<T>
+  opacities?: ThemeValue
   // Layout
-  sizes?: ThemeValue<T>
-  widths?: ThemeValue<T>
-  minWidths?: ThemeValue<T>
-  maxWidths?: ThemeValue<T>
-  heights?: ThemeValue<T>
-  minHeights?: ThemeValue<T>
-  maxHeights?: ThemeValue<T>
-  zIndices?: ThemeValue<T>
+  sizes?: ThemeValue
+  widths?: ThemeValue
+  minWidths?: ThemeValue
+  maxWidths?: ThemeValue
+  heights?: ThemeValue
+  minHeights?: ThemeValue
+  maxHeights?: ThemeValue
+  zIndices?: ThemeValue
   // Outline
-  outlines?: ThemeValue<T>
-  outlineOffsets?: ThemeValue<T>
-  outlineStyles?: ThemeValue<T>
-  outlineWidths?: ThemeValue<T>
+  outlines?: ThemeValue
+  outlineOffsets?: ThemeValue
+  outlineStyles?: ThemeValue
+  outlineWidths?: ThemeValue
   // Shadow
-  boxShadows?: ThemeValue<T>
-  textShadows?: ThemeValue<T>
+  boxShadows?: ThemeValue
+  textShadows?: ThemeValue
   // Space
-  spaces?: ThemeValue<T>
+  spaces?: ThemeValue
   // Text
-  fontSizes?: ThemeValue<T>
-  fontFamilies?: ThemeValue<T>
-  fontWeights?: ThemeValue<T>
-  lineHeights?: ThemeValue<T>
-  letterSpacings?: ThemeValue<T>
+  fontSizes?: ThemeValue
+  fontFamilies?: ThemeValue
+  fontWeights?: ThemeValue
+  lineHeights?: ThemeValue
+  letterSpacings?: ThemeValue
   // Variants
-  textStyles?: ThemeValue<T>
-  colorStyles?: ThemeValue<T>
-  buttonStyles?: ThemeValue<T>
-  globalStyles?: ThemeValue<T>
+  textStyles?: ThemeValue
+  colorStyles?: ThemeValue
+  buttonStyles?: ThemeValue
+  globalStyles?: ThemeValue
   // Components
-  components?: ThemeValue<T>
+  components?: ThemeValue
 }
 
 export interface ThemeProps {
