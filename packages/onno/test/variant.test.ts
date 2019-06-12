@@ -71,6 +71,7 @@ test("transforms values through renderers", () => {
     }
   }
   const testProps = U.snapshot(styleFunc)
+  expect(styleFunc.transformer).toBeDefined()
   testProps({ a: "foo", theme })
   testProps({ b: "bar", theme })
 })

@@ -158,6 +158,7 @@ test("buttonStyle", () => {
 
 test("globalStyle", () => {
   const testProps = U.snapshot(O.globalStyle, false)
+  expect(O.globalStyle.transformer).toBeDefined()
   testProps({ globalStyle: "." })
   testProps({ gst: "html", theme })
   testProps({ theme })
