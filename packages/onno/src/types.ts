@@ -59,54 +59,54 @@ export type ThemeValue<T = Primitive> = ThemeArray<T> | ThemeObject<T> | Nil
 
 export type Breakpoints<T = Primitive> = ThemeArray<T> | Nil
 
-export interface Theme {
-  [key: string]: ThemeValue
+export interface Theme<T = Primitive> {
+  [key: string]: ThemeValue<T>
   // Breakpoints
-  breakpoints?: Breakpoints
+  breakpoints?: Breakpoints<T>
   // Animation
-  animations?: ThemeValue
-  transitions?: ThemeValue
+  animations?: ThemeValue<T>
+  transitions?: ThemeValue<T>
   // Border
-  borders?: ThemeValue
-  borderRadii?: ThemeValue
-  borderStyles?: ThemeValue
-  borderWidths?: ThemeValue
+  borders?: ThemeValue<T>
+  borderRadii?: ThemeValue<T>
+  borderStyles?: ThemeValue<T>
+  borderWidths?: ThemeValue<T>
   // Color
-  colors?: ThemeValue
+  colors?: ThemeValue<T>
   // Display
-  opacities?: ThemeValue
+  opacities?: ThemeValue<T>
   // Layout
-  sizes?: ThemeValue
-  widths?: ThemeValue
-  minWidths?: ThemeValue
-  maxWidths?: ThemeValue
-  heights?: ThemeValue
-  minHeights?: ThemeValue
-  maxHeights?: ThemeValue
-  zIndices?: ThemeValue
+  sizes?: ThemeValue<T>
+  widths?: ThemeValue<T>
+  minWidths?: ThemeValue<T>
+  maxWidths?: ThemeValue<T>
+  heights?: ThemeValue<T>
+  minHeights?: ThemeValue<T>
+  maxHeights?: ThemeValue<T>
+  zIndices?: ThemeValue<T>
   // Outline
-  outlines?: ThemeValue
-  outlineOffsets?: ThemeValue
-  outlineStyles?: ThemeValue
-  outlineWidths?: ThemeValue
+  outlines?: ThemeValue<T>
+  outlineOffsets?: ThemeValue<T>
+  outlineStyles?: ThemeValue<T>
+  outlineWidths?: ThemeValue<T>
   // Shadow
-  boxShadows?: ThemeValue
-  textShadows?: ThemeValue
+  boxShadows?: ThemeValue<T>
+  textShadows?: ThemeValue<T>
   // Space
-  spaces?: ThemeValue
+  spaces?: ThemeValue<T>
   // Text
-  fontSizes?: ThemeValue
-  fontFamilies?: ThemeValue
-  fontWeights?: ThemeValue
-  lineHeights?: ThemeValue
-  letterSpacings?: ThemeValue
+  fontSizes?: ThemeValue<T>
+  fontFamilies?: ThemeValue<T>
+  fontWeights?: ThemeValue<T>
+  lineHeights?: ThemeValue<T>
+  letterSpacings?: ThemeValue<T>
   // Variants
-  textStyles?: ThemeValue
-  colorStyles?: ThemeValue
-  buttonStyles?: ThemeValue
-  globalStyles?: ThemeValue
+  textStyles?: ThemeValue<T>
+  colorStyles?: ThemeValue<T>
+  buttonStyles?: ThemeValue<T>
+  globalStyles?: ThemeValue<T>
   // Components
-  components?: ThemeValue
+  components?: ThemeValue<T>
 }
 
 export interface ThemeProps {
