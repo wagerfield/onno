@@ -14,6 +14,8 @@ export const isUndefined = (x: any) => x === undefined
 
 export const isType = <T>(type: string) => (x: any): x is T => typeof x === type
 
+export const isFunction = isType<Func>("function")
+
 export const isObject = isType("object")
 
 export const isPlainObject = (x: any) => !!x && isObject(x) && !isArray(x)

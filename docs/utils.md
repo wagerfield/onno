@@ -10,6 +10,7 @@ These functions can be useful for when you create your own transform functions o
 - [`isUndefined`](#isundefined)
 - [`isType`](#istype)
 - [`isArray`](#isarray)
+- [`isFunction`](#isfunction)
 - [`isNumber`](#isnumber)
 - [`isNumberLike`](#isnumberlike)
 - [`isObject`](#isobject)
@@ -77,6 +78,23 @@ isArray([1, 2, 3]) // true
 isArray([]) // true
 isArray({}) // false
 isArray(1) // false
+```
+
+### `isFunction`
+
+Returns `true` for `typeof x === "function"` values, `false` otherwise.
+
+```js
+function regular() {
+  return null
+}
+const arrow = () => {
+  return null
+}
+isFunction(regular) // true
+isFunction(arrow) // true
+isFunction({}) // false
+isFunction(1) // false
 ```
 
 ### `isNumber`

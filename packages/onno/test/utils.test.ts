@@ -25,6 +25,23 @@ test("isType", () => {
   expect(isBoolean(1)).toBe(false)
 })
 
+test("isFunction", () => {
+  function regular() {
+    return null
+  }
+  const arrow = () => {
+    return null
+  }
+  expect(O.isFunction(regular)).toBe(true)
+  expect(O.isFunction(arrow)).toBe(true)
+  expect(O.isFunction({})).toBe(false)
+  expect(O.isFunction([])).toBe(false)
+  expect(O.isFunction(0)).toBe(false)
+  expect(O.isFunction("0")).toBe(false)
+  expect(O.isFunction(null)).toBe(false)
+  expect(O.isFunction(undefined)).toBe(false)
+})
+
 test("isObject", () => {
   expect(O.isObject(null)).toBe(true)
   expect(O.isObject({})).toBe(true)

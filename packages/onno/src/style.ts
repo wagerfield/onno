@@ -8,6 +8,7 @@ import {
   resolve,
   isArray,
   isNil,
+  isFunction,
   isObject,
   isPlainObject,
   isUndefined
@@ -57,7 +58,7 @@ export function style<P extends T.ThemeProps, S extends T.Style>(
     }
 
     // Transform value
-    if (typeof transform === "function") value = transform(value)
+    if (isFunction(transform)) value = transform(value)
 
     // Skip rendering
     if (styleKeys === null) {
