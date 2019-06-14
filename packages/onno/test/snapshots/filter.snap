@@ -23,18 +23,13 @@ Object {
   "bar": "bar",
   "baz": "baz",
   "foo": "foo",
-}
-`;
-
-exports[`omit omits theme 1`] = `
-Object {
-  "bar": "bar",
-  "baz": "baz",
-  "foo": "foo",
-  "m": 2,
-  "margin": 1,
-  "p": 4,
-  "padding": 3,
+  "theme": Object {
+    "spaces": Array [
+      1,
+      2,
+      3,
+    ],
+  },
 }
 `;
 

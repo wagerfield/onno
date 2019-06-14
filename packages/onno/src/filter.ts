@@ -33,10 +33,8 @@ export function filter<P extends T.Props>(
 export function omit<P extends T.Props>(
   options: T.OmitOptions<P>
 ): T.OmitFunction<P> {
-  const propsKeys = options.propsKeys || ["theme"]
-  if (!propsKeys.includes("theme")) propsKeys.push("theme")
   return filter({
-    propsKeys,
+    propsKeys: options.propsKeys,
     renderers: options.renderers,
     initial: (props) => Object.assign({}, props),
     reducer: (acc, key) => {

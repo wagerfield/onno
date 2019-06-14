@@ -14,14 +14,9 @@ const props = {
 }
 
 describe("omit", () => {
-  test("omits theme", () => {
-    const omitKeys = O.omit({})
-    expect(omitKeys(props)).toMatchSnapshot()
-  })
-
   test("omits propsKeys", () => {
     const omitKeys = O.omit({
-      propsKeys: ["foo", "bar"]
+      propsKeys: ["theme", "foo", "bar"]
     })
     expect(omitKeys(props)).toMatchSnapshot()
   })
@@ -35,7 +30,7 @@ describe("omit", () => {
 
   test("omits propsKeys and renderers", () => {
     const omitKeys = O.omit({
-      propsKeys: ["foo", "baz"],
+      propsKeys: ["theme", "foo", "baz"],
       renderers: [O.margin, O.display]
     })
     expect(omitKeys(props)).toMatchSnapshot()
