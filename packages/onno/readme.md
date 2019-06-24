@@ -51,7 +51,7 @@ const Box = styled.div(colorSet, spaceSet)
 
 ## Credits
 
-Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. [Facepaint][emotion-facepaint] also deserves credit for the original idea behind responsive style values.
+Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library.
 
 Onno started life as a rewrite of Styled System in TypeScript following a [discussion on GitHub][styled-system-comment]. However, during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
 
@@ -72,7 +72,6 @@ The additional features introduced by onno are [presented in detail here](https:
 [circleci]: https://circleci.com/gh/wagerfield/onno
 [codecov]: https://codecov.io/gh/wagerfield/onno
 [emotion]: https://emotion.sh
-[emotion-facepaint]: https://github.com/emotion-js/facepaint
 [styled-components]: https://styled-components.com
 [styled-system]: https://styled-system.com
 [styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors

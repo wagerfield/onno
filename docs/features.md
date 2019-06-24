@@ -1,6 +1,6 @@
 # Preface<!-- omit in toc -->
 
-Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library. [Facepaint][emotion-facepaint] also deserves credit for the original idea behind responsive style values.
+Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library.
 
 Onno started life as a rewrite of Styled System in TypeScript following a [discussion on GitHub][styled-system-comment]. However, during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
 
@@ -8,17 +8,17 @@ The additional features introduced by onno are presented in detail below.
 
 ## Features<!-- omit in toc -->
 
-- [Framework agnostic](#framework-agnostic)
-- [TypeScript](#typescript)
-- [Prop keys as an array](#prop-keys-as-an-array)
-- [Style keys as an array](#style-keys-as-an-array)
-- [Theme keys as an array](#theme-keys-as-an-array)
-- [Serializable themes](#serializable-themes)
-- [Recursive render functions](#recursive-render-functions)
-- [Dot syntax and value inversion](#dot-syntax-and-value-inversion)
-- [Simple transform functions](#simple-transform-functions)
-- [More render functions and aliases](#more-render-functions-and-aliases)
-- [Strict naming conventions](#strict-naming-conventions)
+- [Framework agnostic](#Framework-agnostic)
+- [TypeScript](#TypeScript)
+- [Prop keys as an array](#Prop-keys-as-an-array)
+- [Style keys as an array](#Style-keys-as-an-array)
+- [Theme keys as an array](#Theme-keys-as-an-array)
+- [Serializable themes](#Serializable-themes)
+- [Recursive render functions](#Recursive-render-functions)
+- [Dot syntax and value inversion](#Dot-syntax-and-value-inversion)
+- [Simple transform functions](#Simple-transform-functions)
+- [More render functions and aliases](#More-render-functions-and-aliases)
+- [Strict naming conventions](#Strict-naming-conventions)
 
 ### Framework agnostic
 
@@ -492,7 +492,6 @@ A number of naming conventions have been introduced by onno to help enforce cons
 [styled-components]: https://www.styled-components.com
 [emotion-styled-components]: https://emotion.sh/docs/styled
 [emotion-framework-agnostic]: https://emotion.sh/docs/introduction#framework-agnostic
-[emotion-facepaint]: https://github.com/emotion-js/facepaint
 [github-primer-primitives]: https://github.com/primer/primitives
 [salesforce-theo]: https://github.com/salesforce-ux/theo
 [prop-types]: https://www.npmjs.com/package/prop-types
