@@ -22,9 +22,7 @@ The additional features introduced by onno are presented in detail below.
 
 ### Framework agnostic
 
-Styled System is designed to work with [React][react]. It has a dependency on [`prop-types`][prop-types] (a library for defining runtime type checks on React props) and provides `propTypes` for each of its render functions. It works in harmony with [Styled Components][styled-components] (a React-only CSS in JS library) as well as [Emotion's `styled` API][emotion-styled-components] which maintains close parity with Styled Components API.
-
-The key difference between Emotion and Styled Components is that [Emotion's core is framework agnostic][emotion-framework-agnostic]. And it's not alone. Many other popular [CSS in JS][css-in-js] libraries like [JSS][jss], [Aphrodite][aphrodite] and [Fela][fela] can also be used with other popular frameworks like [Vue][vue] and [Angular][angular].
+[Styled Components][styled-components] is the most prominent CSS in JS library out there for styling React components. [Emotion][emotion] is another popular choice. The key difference between Emotion and Styled Components is that [Emotion's core is framework agnostic][emotion-framework-agnostic]—and it's not alone. Many other popular [CSS in JS][css-in-js] libraries like [JSS][jss], [Aphrodite][aphrodite] and [Fela][fela] can also be used with other frameworks like [Vue][vue] and [Angular][angular].
 
 As a developer who works with React and Vue in equal measure, using libraries that are framework agnostic is _desireable_—if not a _requirement_ in some cases. While developing onno, it was _essential_ that it could be used with any framework to facilitate code reuse between component libraries implemented in React, Vue, Angular et al.
 
@@ -490,6 +488,7 @@ A number of naming conventions have been introduced by onno to help enforce cons
 [styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
 [styled-system-api-style]: https://styled-system.com/api/#style
 [styled-components]: https://www.styled-components.com
+[emotion]: https://emotion.sh
 [emotion-styled-components]: https://emotion.sh/docs/styled
 [emotion-framework-agnostic]: https://emotion.sh/docs/introduction#framework-agnostic
 [github-primer-primitives]: https://github.com/primer/primitives
