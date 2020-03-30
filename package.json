@@ -60,7 +60,7 @@
     "jest": "25.2.4",
     "jest-junit": "10.0.0",
     "lerna": "3.20.2",
-    "lint-staged": "10.0.10",
+    "lint-staged": "10.1.0",
     "prettier": "2.0.2",
     "rimraf": "3.0.2",
     "rollup": "2.3.0",
