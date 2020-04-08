@@ -10701,11 +10701,6 @@ prettier@2.0.4:
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.0.4.tgz#2d1bae173e355996ee355ec9830a7a1ee05457ef"
   integrity sha512-SVJIQ51spzFDvh4fIbCLvciiDMCrRhlN3mbZvv/+ycjvmF5E73bKdGfU8QDLNmjYJf+lsGnDBC4UUnvTe5OO0w==
 
-prettier@^1.0.0:
-  version "1.17.1"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
-  integrity sha512-TzGRNvuUSmPgwivDqkZ9tM/qTGW9hqDKWOE9YHiyQdixlKbv7kvEqsmDPrcHJTKwthU774TQwZXVtaQ/mMsvjg==
-
 prettier@^1.18.2:
   version "1.19.1"
   resolved "https://registry.npmjs.org/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -11464,10 +11459,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-prettier@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/rollup-plugin-prettier/-/rollup-plugin-prettier-0.7.0.tgz#4947889e467cb388798e5017e18b6a4047776511"
-  integrity sha512-LGy//t1XJRlhCVV1f7XaAaNumK3HOdq517xQh7G3kY3bGBG8sRUtl+wU8M1r6hEIMz9WBduVPOAB+kHTdDT8yA==
+rollup-plugin-prettier@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/rollup-plugin-prettier/-/rollup-plugin-prettier-1.0.0.tgz#a8d4914c6fe44ce4a51caf666f5bef0468c126b8"
+  integrity sha512-ZZOyCAPvUqzLTXtIUQQxCQnXtZJVQdfuh+pSoxyvcfrAtbj/yN5G8UCP0dryvfPDgl/9Eq7LUH0vripgVmFGnw==
   dependencies:
     diff "4.0.2"
     lodash.hasin "4.5.2"
@@ -11475,7 +11470,6 @@ rollup-plugin-prettier@0.7.0:
     lodash.isnil "4.0.0"
     lodash.omitby "4.6.0"
     magic-string "0.25.7"
-    prettier "^1.0.0"
 
 rollup-plugin-size-snapshot@0.11.0:
   version "0.11.0"
