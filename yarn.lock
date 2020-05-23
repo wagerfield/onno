@@ -11501,10 +11501,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-prettier@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/rollup-plugin-prettier/-/rollup-plugin-prettier-2.0.0.tgz#25384206b14173e6c346c96c5cfb10ca76f5da4b"
-  integrity sha512-aK8fe+QPmxXmu2cvHu73Knw1Z3Xx7Fpsd32poqgQVbMQd6G3vNE5PhObZVYs9k3+yHcZt4UdshhTXFA/lwqhjQ==
+rollup-plugin-prettier@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/rollup-plugin-prettier/-/rollup-plugin-prettier-2.1.0.tgz#06b42169e28cb23163d4648bef412e57ff70acb4"
+  integrity sha512-2uPhHkBMVBZeb4cruQrYrjOTtoqHNvnUB5UIzmMu8JBXCfQ+0/JxDclEmnBd44MjO14VmXvfr0GanQaZjCxSbQ==
   dependencies:
     diff "4.0.2"
     lodash.hasin "4.5.2"
