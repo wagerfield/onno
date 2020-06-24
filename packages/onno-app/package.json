@@ -18,7 +18,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "2.13.0",
+    "nuxt": "2.13.1",
     "onno": "1.0.0"
   }
 }
