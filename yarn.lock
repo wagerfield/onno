@@ -5448,10 +5448,10 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@2.6.6:
-  version "2.6.6"
-  resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.6.tgz#c34f8226a94bbb10c32cc0d714afdf942291fc41"
-  integrity sha512-RpFbQGUE74iyPgvr46U9t1xoQBM8T4BL8SxrN66Le2xYAPSaDJJKeztV3awugusb3g3G9iL8StmkBBXhcbbXhg==
+csstype@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.0.tgz#b5cdbf2af48449e9266f6dff517f793187ef6103"
+  integrity sha512-7PVEkxNUupmIdJflngQ4EHLYIrAiGEeFiR5gcv0QJRLPcPIUY0m353C7i5xwWgZyKytIaqrIMLOOh+OhUs70pw==
 
 cuint@^0.2.2:
   version "0.2.2"
