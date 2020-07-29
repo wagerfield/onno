@@ -28,6 +28,6 @@
     "types"
   ],
   "dependencies": {
-    "csstype": "2.6.6"
+    "csstype": "2.6.13"
   }
 }
