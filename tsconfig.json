@@ -2,6 +2,9 @@
   "include": ["src/**/*.ts"],
   "exclude": ["**/*.spec.ts"],
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "noUnusedLocals": true,
     "noEmitOnError": true,
     "declaration": true,
