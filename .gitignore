@@ -1,21 +1,6 @@
-# folders
 node_modules
 coverage
-reports
-types
-cjs
-esm
-lib
-tmp
+dist
 
-# files
-todo.*
-
-# logs
-*.log
-
-# system
 .DS_Store
-
-# nuxt
-.nuxt
+*.log

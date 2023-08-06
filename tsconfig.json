@@ -1,14 +1,7 @@
 {
+  "include": ["src/**/*.ts"],
+  "exclude": ["**/*.spec.ts"],
   "compilerOptions": {
-    "baseUrl": "packages",
-    "paths": {
-      "onco": ["onco/src"],
-      "onno": ["onno/src"]
-    },
-    "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noEmitOnError": true,
     "declaration": true,

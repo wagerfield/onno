@@ -1,7 +1,5 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnSave": true,
-  "files.exclude": {
-    "**/node_modules": true
-  }
+  "testing.automaticallyOpenPeekView": "never",
+  "typescript.tsdk": "node_modules/typescript/lib",
 }
