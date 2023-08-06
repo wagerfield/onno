@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { onno } from "./onno"
+import { onno, type OnnoProps } from "./onno"
 
 describe("onno(config)", () => {
   it("expects one argument", () => {
@@ -168,5 +168,58 @@ describe("onno(config)", () => {
     expect(fn({ size: "sm", intent: "primary", hidden: true })).toBe(
       "base invisible bold small hide highlight",
     )
+  })
+
+  it("provides expected OnnoProps interface with optional variants", () => {
+    const fn = onno({
+      variants: {
+        hidden: "invisible",
+        intent: {
+          primary: "bold",
+          secondary: "muted",
+        },
+        size: {
+          sm: "small",
+          md: "medium",
+          lg: "large",
+        },
+      },
+    })
+
+    type Props = OnnoProps<typeof fn>
+
+    // Valid props
+    const a: Props = { intent: "primary", size: "sm", hidden: true }
+
+    // @ts-expect-error ts(2322)
+    // Type 'string' is not assignable to type 'boolean | undefined'.
+    const b: Props = { hidden: "yes" }
+
+    // @ts-expect-error ts(2322)
+    // Type '"xs"' is not assignable to type '"sm" | "lg" | "md" | undefined'.
+    const c: Props = { size: "xs" }
+  })
+
+  it("provides expected OnnoProps interface with required variants", () => {
+    const fn = onno({
+      variants: {
+        hidden: "invisible",
+        intent: {
+          primary: "bold",
+          secondary: "muted",
+        },
+        size: {
+          sm: "small",
+          md: "medium",
+          lg: "large",
+        },
+      },
+    })
+
+    type Props = OnnoProps<typeof fn, "intent">
+
+    // @ts-expect-error ts(2322)
+    // Property 'intent' is missing in type '{ size: "md" }'
+    const a: Props = { size: "md" }
   })
 })
