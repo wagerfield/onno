@@ -56,7 +56,7 @@ Todo.
 
 ## TypeScript
 
-Use `OnnoProps` to infer component variant props:
+Use `OnnoProps` to infer variant props from an `OnnoFactory` function:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
@@ -80,7 +80,7 @@ Note that inferred `OnnoProps` include the `className` option alongside the vari
 export type ButtonClassNameType = ButtonProps["className"] // `ClassValue` from `clsx`
 ```
 
-By default *all* variants are *optional*. To require one or more variants, pass a string union of variant keys as the second argument to the `OnnoProps` type:
+By default *all* variants are *optional*. To require one or more variants, pass a string union of required variant keys as the second argument to the `OnnoProps` type:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
@@ -95,9 +95,8 @@ export const button = onno({
 
 export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
 
-const buttonProps: ButtonProps = {
-  intent: "primary"
-}
+// Error: Property 'intent' is missing in type '{ size: "md" }'
+const buttonProps: ButtonProps = { size: "md" }
 ```
 
 ## License
