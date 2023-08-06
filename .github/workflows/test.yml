@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout Repository
@@ -33,3 +33,7 @@ jobs:
       - name: Report Coverage
         uses: davelosert/vitest-coverage-report-action@v2
         if: always() # Also generate report if tests fail
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

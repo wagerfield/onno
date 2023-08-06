@@ -1,9 +1,13 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia-onno]
-[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
+[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][codecov]
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][workflow]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][bundlephobia-onno]
+[![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][license]
 
 Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `clsx`
+
+    pnpm add onno
 
 ## Features
 
@@ -77,7 +81,7 @@ export type ButtonProps = OnnoProps<typeof button>
 export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 ```
 
-Note that the inferred `OnnoProps` includes the `className` option alongside the variant types:
+Note that inferred `OnnoProps` include the `className` option alongside the variant types:
 
 ```ts
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
@@ -114,7 +118,9 @@ const buttonProps: ButtonProps = { size: "md" }
 
 [onno]: https://onnojs.com
 [wagerfield]: https://github.com/wagerfield
+[codecov]: https://codecov.io/gh/wagerfield/onno
 [license]: https://github.com/wagerfield/onno/blob/main/license
+[workflow]: https://github.com/wagerfield/onno/actions/workflows/test.yml
 [bundlephobia-clsx]: https://bundlephobia.com/package/clsx@2.0.0
 [bundlephobia-onno]: https://bundlephobia.com/package/onno@2.0.0
 [typescript]: https://www.typescriptlang.org
