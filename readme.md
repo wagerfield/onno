@@ -1,5 +1,6 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
+[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia-onno]
 [![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
 
@@ -116,6 +117,7 @@ const buttonProps: ButtonProps = { size: "md" }
 
 [onno]: https://onnojs.com
 [wagerfield]: https://github.com/wagerfield
+[codecov]: https://codecov.io/gh/wagerfield/onno
 [license]: https://github.com/wagerfield/onno/blob/main/license
 [bundlephobia-clsx]: https://bundlephobia.com/package/clsx@2.0.0
 [bundlephobia-onno]: https://bundlephobia.com/package/onno@2.0.0
