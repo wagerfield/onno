@@ -12,21 +12,28 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    strategy:
+      matrix:
+        node-version: [lts]
     steps:
-      - run: echo "🔎 ${{ github.repository }} / ${{ github.ref }}"
-      - run: echo "🎉 Job triggered by ${{ github.event_name }} event"
-      - run: echo "🐧 Job running on a ${{ runner.os }} server"
+      - run: echo "${{ github.repository }} / ${{ github.ref }}"
+      - run: echo "Job triggered by ${{ github.event_name }} event"
+      - run: echo "Job running on a ${{ runner.os }} server"
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - run: echo "💡 Repository cloned to the runner"
-      - run: echo "🖥️ Workflow ready to test your code on the runner"
-      - name: "Install Node"
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-      - name: "Install Dependencies"
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install Dependencies
         run: pnpm install
       - name: "Run Unit Tests"
-        run: npx vitest --coverage
-      - name: "Report Coverage"
-        if: always() # Also generate the report if tests are failing
+        run: pnpm test
+      - name: Report Coverage
         uses: davelosert/vitest-coverage-report-action@v2
-      - run: echo "🍏 Job status is ${{ job.status }}"
+        if: always() # Also generate report if tests fail
