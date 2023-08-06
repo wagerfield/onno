@@ -1,80 +1,110 @@
-# [![onno](https://raw.githubusercontent.com/wagerfield/onno/master/assets/onno.svg?sanitize=true)][onno]
+# [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
-[![Code Coverage](https://img.shields.io/codecov/c/github/wagerfield/onno.svg?color=4C8&style=flat-square)][codecov]
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia]
-[![Build Status](https://img.shields.io/circleci/build/github/wagerfield/onno.svg?color=4C8&style=flat-square)][circleci]
-[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
-
-Responsive style props for building themed design systems.
-
-    yarn add onno
+Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
 ## Features
 
 - Framework agnostic
-- Zero dependencies
-- First class support for themes and design tokens
-- Works with any CSS in JS library that supports object styles like [Styled Components][styled-components] and [Emotion][emotion]
-- Written in [TypeScript][typescript] with comprehensive type definitions and interfaces
-- Rigorously tested with [100% code coverage][codecov]
+- Single *tiny* dependency on `clsx` ([330B][bundlephobia-clsx])
+- Written in [TypeScript][typescript] with type safe [definitions](#typescript)
+- Rigorously tested with 100% code coverage
+- Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
 
-```jsx
-import styled from "styled-components"
-import { colorSet, spaceSet } from "onno"
+```js
+const button = onno({
+  variants: {
+    intent: {
+      primary: "bg-blue-600 text-white",
+      secondary: "bg-gray-200 text-black",
+    },
+    size: {
+      sm: "h-8 px-1",
+      md: "h-10 px-2",
+      lg: "h-12 px-3",
+    },
+  },
+})
 
-const Box = styled.div(colorSet, spaceSet)
-
-// [{ padding: "16px" }]
-<Box p={4} />
-
-// [{ margin: "-32px" }]
-<Box m={-5} />
-
-// [{ marginLeft: "8px", marginRight: "8px" }, { paddingBottom: "4px" }]
-<Box mx={3} pb={2} />
-
-// [{ backgroundColor: "coral" }, { color: "ivory" }]
-<Box backgroundColor="coral" color="ivory" />
-
-// [{ background: "url(onno.png) center" }]
-<Box bg="url(onno.png) center" />
+// "bg-blue-600 text-white h-10 px-2"
+const classes = button({
+  intent: "primary",
+  size: "md",
+})
 ```
 
-## Documentation
+### Variants
 
-- [Features](https://github.com/wagerfield/onno/blob/master/docs/features.md)
-- [Render Functions](https://github.com/wagerfield/onno/blob/master/docs/render-functions.md)
-- [API](https://github.com/wagerfield/onno/blob/master/docs/api.md)
-- [Utils](https://github.com/wagerfield/onno/blob/master/docs/utils.md)
+Todo.
 
-## Credits
+### Defaults
 
-Onno is an iteration of [Styled System][styled-system] written in [TypeScript][typescript] from the ground up. The core ideas are indebted to the brilliant work of [Brent Jackson][jxnblk] and the [numerous contributors][styled-system-contributors] to this library.
+Todo.
 
-Onno started life as a rewrite of Styled System in TypeScript following a [discussion on GitHub][styled-system-comment]. However, during the course of this rewrite, a number of new ideas, features and refinements to Styled System's API were introduced that eventually warranted another library.
+### Baseline Classes
 
-The additional features introduced by onno are [presented in detail here](https://github.com/wagerfield/onno/blob/master/docs/features.md#features).
+Todo.
 
-## Author
+### Compound Classes
 
-[Matthew Wagerfield][github]
+Todo.
+
+### Additional Classes
+
+Todo.
+
+## TypeScript
+
+`onno` is written in TypeScript and provides a fully typed interface.
+
+To extract an interface to be used as component props:
+
+```ts
+import { onno, type OnnoProps } from "onno"
+
+export type ButtonProps = OnnoProps<typeof button>
+
+export const button = onno({
+  variants: {
+    intent: { ... },
+    size: { ... },
+  },
+})
+```
+
+Note that `ButtonProps` includes `className` alongside the variant options:
+
+```ts
+type ButtonClassNameType = ButtonProps["className"] // `ClassValue` from `clsx`
+```
+
+By default *all* variants are *optional*.
+
+To require one or more variants, pass a union of variant keys as the second argument to the `OnnoProps` type:
+
+```ts
+import { onno, type OnnoProps } from "onno"
+
+export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
+
+export const button = onno({
+  variants: {
+    disabled: "...",
+    intent: { ... },
+    size: { ... },
+  },
+})
+```
 
 ## License
 
-[MIT][license]
+[MIT][license] © [Matthew Wagerfield][wagerfield]
 
 [onno]: https://onnojs.com
-[github]: https://github.com/wagerfield
-[license]: https://github.com/wagerfield/onno/blob/master/license
-[bundlephobia]: https://bundlephobia.com/result?p=onno
-[circleci]: https://circleci.com/gh/wagerfield/onno
-[codecov]: https://codecov.io/gh/wagerfield/onno
-[emotion]: https://emotion.sh
-[styled-components]: https://styled-components.com
-[styled-system]: https://styled-system.com
-[styled-system-contributors]: https://github.com/styled-system/styled-system/graphs/contributors
-[styled-system-comment]: https://github.com/styled-system/styled-system/issues/463#issuecomment-487167817
+[wagerfield]: https://github.com/wagerfield
+[license]: https://github.com/wagerfield/onno/blob/main/license
+[bundlephobia-clsx]: https://bundlephobia.com/package/clsx@2.0.0
+[bundlephobia-onno]: https://bundlephobia.com/package/onno@2.0.0
 [typescript]: https://www.typescriptlang.org
-[jxnblk]: https://jxnblk.com
+[tailwindcss]: https://tailwindcss.com
