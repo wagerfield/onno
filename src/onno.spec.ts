@@ -4,13 +4,14 @@ import { onno, type OnnoProps } from "./onno"
 describe("onno(config)", () => {
   it("expects one argument", () => {
     expect(onno).toHaveLength(1)
+    expect(onno).toEqual(expect.any(Function))
   })
 
-  it("returns a function", () => {
+  it("returns a factory function", () => {
     const fn = onno({ variants: {} })
 
-    expect(fn).toEqual(expect.any(Function))
     expect(fn).toHaveLength(1)
+    expect(fn).toEqual(expect.any(Function))
   })
 
   it("throws an error for 'className' variant", () => {
