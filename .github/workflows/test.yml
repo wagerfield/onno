@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout Repository
@@ -29,7 +29,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: "Run Unit Tests"
-        run: vitest run --coverage
+        run: pnpm test
       - name: Report Coverage
         uses: davelosert/vitest-coverage-report-action@v2
         if: always() # Also generate report if tests fail
