@@ -5,6 +5,8 @@
 
 Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
+    pnpm add onno
+
 ## Features
 
 - Framework agnostic
@@ -77,7 +79,7 @@ export type ButtonProps = OnnoProps<typeof button>
 export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 ```
 
-Note that the inferred `OnnoProps` includes the `className` option alongside the variant types:
+Note that inferred `OnnoProps` include the `className` option alongside the variant types:
 
 ```ts
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
