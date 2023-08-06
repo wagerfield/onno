@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        node-version: [lts]
+        node-version: [18]
     steps:
       - run: echo "${{ github.repository }} / ${{ github.ref }}"
       - run: echo "Job triggered by ${{ github.event_name }} event"
