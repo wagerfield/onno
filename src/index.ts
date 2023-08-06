@@ -1,9 +1,9 @@
 import { clsx } from "clsx"
 export { clsx } from "clsx"
 
-import type { OnnoFactory, OnnoClassValue } from "./types"
-
 export * from "./types"
+
+import type { OnnoFactory, OnnoClassValue } from "./types"
 
 const matches = (c: any, o: any) => (Array.isArray(c) ? c.includes(o) : c === o)
 
