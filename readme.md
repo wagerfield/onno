@@ -1,5 +1,8 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno.svg?color=4C8&style=flat-square&label=size)][bundlephobia-onno]
+[![License](https://img.shields.io/github/license/wagerfield/onno.svg?color=4C8&style=flat-square)][license]
+
 Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
 ## Features
