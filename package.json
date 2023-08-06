@@ -13,6 +13,9 @@
     "test": "vitest run --coverage",
     "lint": "prettier --write ."
   },
+  "prettier": {
+    "semi": false
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
