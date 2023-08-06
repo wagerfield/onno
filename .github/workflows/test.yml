@@ -1,8 +1,6 @@
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+name: Run Unit Tests
+
+on: [push, pull_request]
 
 jobs:
   test:
@@ -17,8 +15,6 @@ jobs:
         node-version: [18.x, 20.x]
 
     steps:
-      - run: echo ${{ github.repository }} 👉 ${{ github.ref }}
-      - run: echo Triggered by ${{ github.event_name }} event
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Setup PNPM
