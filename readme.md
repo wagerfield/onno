@@ -56,7 +56,7 @@ Todo.
 
 ## TypeScript
 
-Use `OnnoProps` to infer variant props from an `OnnoFactory` function:
+Use `OnnoProps` to infer variant props from an `OnnoFunction`
 
 ```ts
 import { onno, type OnnoProps } from "onno"
