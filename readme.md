@@ -5,8 +5,8 @@ Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `cls
 ## Features
 
 - Framework agnostic
-- Single *tiny* dependency on `clsx` ([330B][bundlephobia-clsx])
-- Written in [TypeScript][typescript] with type safe [definitions](#typescript)
+- Single _tiny_ dependency on `clsx` ([330B][bundlephobia-clsx])
+- Written in [TypeScript][typescript] with lovely [type helpers](#typescript)
 - Rigorously tested with 100% code coverage
 - Perfect companion to [Tailwind CSS][tailwindcss]
 
@@ -80,7 +80,7 @@ Note that inferred `OnnoProps` include the `className` option alongside the vari
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
 ```
 
-By default *all* variants are *optional*. To require one or more variants, pass a union of *required* variant keys as the second argument to the `OnnoProps` type:
+By default _all_ variants are _optional_. To require one or more variants, pass a union of _required_ variant keys as the second argument to the `OnnoProps` type:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
