@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noEmitOnError": true,
-    "declaration": true,
     "strict": true
   }
 }
