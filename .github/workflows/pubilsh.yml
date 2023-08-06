@@ -1,0 +1,30 @@
+name: Publish to NPM
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Build Project
+        run: pnpm build
+      - name: Publish Package to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
