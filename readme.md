@@ -77,19 +77,25 @@ export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 Note that inferred `OnnoProps` include the `className` option alongside the variant types:
 
 ```ts
-export type ButtonClassNameType = ButtonProps["className"] // `ClassValue` from `clsx`
+export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
 ```
 
-By default *all* variants are *optional*. To require one or more variants, pass a string union of required variant keys as the second argument to the `OnnoProps` type:
+By default *all* variants are *optional*. To require one or more variants, pass a union of *required* variant keys as the second argument to the `OnnoProps` type:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
 
 export const button = onno({
   variants: {
-    disabled: "...",
-    intent: { ... },
-    size: { ... },
+    disabled: "not allowed",
+    intent: {
+      primary: "very punchy",
+      secondary: "quite normal",
+    },
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
   },
 })
 
