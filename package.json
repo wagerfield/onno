@@ -12,7 +12,8 @@
     "watch": "tsx watch src/onno.ts",
     "test": "vitest run --coverage",
     "lint": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "release-it"
   },
   "prettier": {
     "semi": false
@@ -41,6 +42,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "3.0.1",
+    "release-it": "16.1.3",
     "tsx": "3.12.7",
     "typescript": "5.1.6",
     "vitest": "0.34.1"
