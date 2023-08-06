@@ -56,37 +56,34 @@ Todo.
 
 ## TypeScript
 
-`onno` is written in TypeScript and provides a fully typed interface.
-
-To extract an interface to be used as component props:
+Use `OnnoProps` to infer component variant props:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
-
-export type ButtonProps = OnnoProps<typeof button>
 
 export const button = onno({
   variants: {
-    intent: { ... },
-    size: { ... },
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
   },
 })
+
+export type ButtonProps = OnnoProps<typeof button>
+export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 ```
 
-Note that `ButtonProps` includes `className` alongside the variant options:
+Note that inferred `OnnoProps` include the `className` option alongside the variant types:
 
 ```ts
-type ButtonClassNameType = ButtonProps["className"] // `ClassValue` from `clsx`
+export type ButtonClassNameType = ButtonProps["className"] // `ClassValue` from `clsx`
 ```
 
-By default *all* variants are *optional*.
-
-To require one or more variants, pass a union of variant keys as the second argument to the `OnnoProps` type:
+By default *all* variants are *optional*. To require one or more variants, pass a string union of variant keys as the second argument to the `OnnoProps` type:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
-
-export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
 
 export const button = onno({
   variants: {
@@ -95,6 +92,12 @@ export const button = onno({
     size: { ... },
   },
 })
+
+export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
+
+const buttonProps: ButtonProps = {
+  intent: "primary"
+}
 ```
 
 ## License
