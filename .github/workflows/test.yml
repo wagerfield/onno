@@ -29,7 +29,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: "Run Unit Tests"
-        run: pnpm test
+        run: vitest run --coverage
       - name: Report Coverage
         uses: davelosert/vitest-coverage-report-action@v2
         if: always() # Also generate report if tests fail
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
