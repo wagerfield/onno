@@ -1,5 +1,3 @@
-name: "Test"
-
 on:
   push:
     branches: [main]
@@ -9,16 +7,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pull-requests: write
+
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [18.x, 20.x]
+
     steps:
-      - run: echo "${{ github.repository }} / ${{ github.ref }}"
-      - run: echo "Job triggered by ${{ github.event_name }} event"
-      - run: echo "Job running on a ${{ runner.os }} server"
+      - run: echo ${{ github.repository }} 👉 ${{ github.ref }}
+      - run: echo Triggered by ${{ github.event_name }} event
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Setup PNPM
