@@ -8,8 +8,8 @@
     "url": "https://matthew.wagerfield.com"
   },
   "scripts": {
-    "build": "tsx",
-    "watch": "tsx watch",
+    "build": "tsx src/onno.ts",
+    "watch": "tsx watch src/onno.ts",
     "test": "vitest run --coverage",
     "lint": "prettier --write ."
   },
