@@ -43,23 +43,23 @@ const classes = button({
 
 ### Variants
 
-Todo.
+Todo
 
 ### Defaults
 
-Todo.
+Todo
 
 ### Baseline Classes
 
-Todo.
+Todo
 
 ### Compound Classes
 
-Todo.
+Todo
 
 ### Additional Classes
 
-Todo.
+Todo
 
 ## TypeScript
 
