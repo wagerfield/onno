@@ -1,11 +1,11 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][bundlephobia-onno]
 [![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][codecov]
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][workflow]
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][bundlephobia-onno]
 [![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][license]
 
-Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `clsx`
+Tiny ([510B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
     pnpm add onno
 
@@ -14,7 +14,7 @@ Tiny ([400B][bundlephobia-onno]) utility for composing class variants using `cls
 - Framework agnostic
 - Single _tiny_ dependency on `clsx` ([330B][bundlephobia-clsx])
 - Written in [TypeScript][typescript] with lovely [type helpers](#typescript)
-- Rigorously tested with 100% code coverage
+- Rigorously tested with [100% code coverage][codecov]
 - Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
