@@ -13,9 +13,10 @@
   },
   "scripts": {
     "build": "pkgroll",
-    "clean": "rm -rf coverage dist",
-    "test": "vitest run --coverage",
     "lint": "prettier --write .",
+    "test": "vitest run --coverage",
+    "clean": "rm -rf coverage dist",
+    "changelog": "pnpm auto-changelog",
     "prepare": "husky install",
     "release": "release-it"
   },
@@ -26,6 +27,11 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "auto-changelog": {
+    "package": true,
+    "output": "changelog.md",
+    "startingVersion": "0.5"
   },
   "lint-staged": {
     "**/*.ts": [

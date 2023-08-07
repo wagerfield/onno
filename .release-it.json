@@ -5,7 +5,7 @@
   },
   "hooks": {
     "before:init": ["git pull", "pnpm lint", "pnpm test"],
-    "after:bump": "pnpm auto-changelog --package"
+    "after:bump": "pnpm changelog"
   },
   "github": {
     "release": true
