@@ -15,7 +15,7 @@ Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `cls
 - :microscope: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
 - :yum: Written in [TypeScript][typescript] with magical [type helpers](#typescript)
 - :100: Rigorously tested with [100% code coverage][onno-codecov]
-- ::confetti_ball:: Perfect companion to [Tailwind CSS][tailwindcss]
+- :confetti_ball: Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
 
