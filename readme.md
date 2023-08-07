@@ -5,7 +5,7 @@
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][onno-workflow]
 [![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][onno-license]
 
-Tiny ([266B][onno-bundlephobia]) utility for composing class variants using `clsx`
+Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `clsx`
 
     pnpm add onno
 
@@ -41,17 +41,17 @@ const classes = button({ size: "md", intent: "primary", disabled: true })
 
 ### Variants
 
-Define variant names and the classes to be applied using the `variants` config option:
+Define variant names and the classes to be applied to them using the `variants` config option:
 
 ```js
-// Name your function whatever you like eg. `getClasses`
+// Name your function whatever you like!
 const button = onno({
   variants: {
     // This is a `boolean` variant applied when `disabled === true`
-    disabled: "access denied", // Class values can be a single `string`
+    disabled: "access denied", // Classes can be defined as a `string`
 
     // This is another `boolean` variant applied when `hidden === true`
-    hidden: ["barely", "visible"], // Class values can also be a `string[]`
+    hidden: ["barely", "visible"], // Classes can also be a `string[]`
 
     // This is a `enum` variant applied when `size === "sm" || "lg"`
     size: {
@@ -68,7 +68,7 @@ button({ disabled: true }) // "access denied"
 button({ hidden: true, size: "lg" }) // "barely visible really large"
 ```
 
-Note that you cannot use `className` as a variant key since it is _reserved_ for applying [addition classes](#additional-classes):
+Note that you cannot use `className` as a variant key since it is _reserved_ for applying [additional classes](#additional-classes):
 
 ```js
 const button = onno({
@@ -105,7 +105,7 @@ button() // "barely visible quite bland"
 button({}) // "barely visible quite bland"
 button({ hidden: false }) // "quite bland"
 button({ intent: "primary" }) // "barely visible super punchy"
-button({ size: "lg" }) // "barely visible quite bland really large"
+button({ size: "sm" }) // "barely visible quite bland pretty small"
 ```
 
 ### Baseline Classes
@@ -125,7 +125,7 @@ const button = onno({
 
 button() // "solid base"
 button({}) // "solid base"
-button({ size: "sm" }) // "solid base pretty small"
+button({ size: "lg" }) // "solid base really large"
 ```
 
 ### Compound Classes
@@ -250,13 +250,13 @@ export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 export type ButtonDisabledType = ButtonProps["disabled"] // boolean | undefined
 ```
 
-Note that inferred `OnnoProps` also include the `className` option alongside the variant types:
+Note that the inferred `OnnoProps` also includes the `className` option alongside the variant types:
 
 ```ts
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
 ```
 
-By default all variants inferred by `OnnoProps` are _optional_. To require one or more variants, pass a union of _required_ variant keys as the second argument to the `OnnoProps` generic:
+By default all variants inferred by `OnnoProps` are _optional_. To require one or more variants, pass a union of _required_ variant keys as the second argument to the `OnnoProps` generic type:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
