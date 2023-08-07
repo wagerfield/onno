@@ -1,20 +1,20 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][bundlephobia-onno]
-[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][codecov]
-[![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][workflow]
-[![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][license]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][onno-bundlephobia]
+[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][onno-codecov]
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][onno-workflow]
+[![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][onno-license]
 
-Tiny ([266B][bundlephobia-onno]) utility for composing class variants using `clsx`
+Tiny ([266B][onno-bundlephobia]) utility for composing class variants using `clsx`
 
     pnpm add onno
 
 ## Features
 
 - Framework agnostic
-- Single _tiny_ dependency on `clsx` ([330B][bundlephobia-clsx])
+- Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
 - Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
-- Rigorously tested with [100% code coverage][codecov]
+- Rigorously tested with [100% code coverage][onno-codecov]
 - Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
@@ -273,19 +273,30 @@ const buttonProps: ButtonProps = { size: "md" }
 
 ## Tailwind CSS
 
-Todo
+If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode] add the following configuration to your workspace `.vscode/settings.json` file:
+
+```json
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["onno\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}
+```
+
+This will trigger Tailwind's autocompletion within the `onno()` function.
 
 ## License
 
-[MIT][license] © [Matthew Wagerfield][github]
+[MIT][onno-license] © [Matthew Wagerfield][wagerfield]
 
+[wagerfield]: https://github.com/wagerfield
 [onno]: https://github.com/wagerfield/onno#readme
+[onno-workflow]: https://github.com/wagerfield/onno/actions/workflows/test.yml
+[onno-license]: https://github.com/wagerfield/onno/blob/main/license
+[onno-codecov]: https://codecov.io/gh/wagerfield/onno
+[clsx-bundlephobia]: https://bundlephobia.com/package/clsx
+[onno-bundlephobia]: https://bundlephobia.com/package/onno
 [clsx]: https://github.com/lukeed/clsx#readme
-[github]: https://github.com/wagerfield
-[codecov]: https://codecov.io/gh/wagerfield/onno
-[license]: https://github.com/wagerfield/onno/blob/main/license
-[workflow]: https://github.com/wagerfield/onno/actions/workflows/test.yml
-[bundlephobia-clsx]: https://bundlephobia.com/package/clsx
-[bundlephobia-onno]: https://bundlephobia.com/package/onno
 [typescript]: https://www.typescriptlang.org
 [tailwindcss]: https://tailwindcss.com
+[tailwindcss-vscode]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
