@@ -5,7 +5,7 @@
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][workflow]
 [![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][license]
 
-Tiny ([596B][bundlephobia-onno]) utility for composing class variants using `clsx`
+Tiny ([266B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
     pnpm add onno
 
@@ -173,7 +173,7 @@ button({ className: "with more" }) // "solid base with more"
 button({ className: "with more", size: "sm" }) // "solid base pretty small with more"
 ```
 
-### Class Order
+### Class Composition
 
 Classes are applied in the following order:
 
@@ -181,6 +181,42 @@ Classes are applied in the following order:
 2. `variants`
 3. `compound`
 4. `className`
+
+Under the hood `onno` uses `clsx` to build the class list.
+
+For convenience `clsx` is exported from `onno` so you can use it to compose classes:
+
+```js
+import { onno, clsx } from "onno"
+
+const button = onno({
+  variants: {
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
+  },
+})
+
+clsx("foo", ["bar", { baz: true }], button({ size: "sm" })) // "foo bar baz pretty small"
+```
+
+Note that onno's `className` option also accepts any `clsx.ClassValue` ([see docs][clsx]) so you can do:
+
+```js
+import { onno, clsx } from "onno"
+
+const button = onno({
+  variants: {
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
+  },
+})
+
+button({ size: "lg", className: ["foo", ["bar"], { baz: true }] }) // "really large foo bar baz"
+```
 
 ## TypeScript
 
@@ -241,10 +277,11 @@ Todo
 
 ## License
 
-[MIT][license] © [Matthew Wagerfield][wagerfield]
+[MIT][license] © [Matthew Wagerfield][github]
 
-[onno]: https://onnojs.com
-[wagerfield]: https://github.com/wagerfield
+[onno]: https://github.com/wagerfield/onno#readme
+[clsx]: https://github.com/lukeed/clsx#readme
+[github]: https://github.com/wagerfield
 [codecov]: https://codecov.io/gh/wagerfield/onno
 [license]: https://github.com/wagerfield/onno/blob/main/license
 [workflow]: https://github.com/wagerfield/onno/actions/workflows/test.yml
