@@ -5,7 +5,7 @@
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][workflow]
 [![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][license]
 
-Tiny ([510B][bundlephobia-onno]) utility for composing class variants using `clsx`
+Tiny ([596B][bundlephobia-onno]) utility for composing class variants using `clsx`
 
     pnpm add onno
 
@@ -13,7 +13,7 @@ Tiny ([510B][bundlephobia-onno]) utility for composing class variants using `cls
 
 - Framework agnostic
 - Single _tiny_ dependency on `clsx` ([330B][bundlephobia-clsx])
-- Written in [TypeScript][typescript] with lovely [type helpers](#typescript)
+- Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
 - Rigorously tested with [100% code coverage][codecov]
 - Perfect companion to [Tailwind CSS][tailwindcss]
 
@@ -121,7 +121,7 @@ const buttonProps: ButtonProps = { size: "md" }
 [codecov]: https://codecov.io/gh/wagerfield/onno
 [license]: https://github.com/wagerfield/onno/blob/main/license
 [workflow]: https://github.com/wagerfield/onno/actions/workflows/test.yml
-[bundlephobia-clsx]: https://bundlephobia.com/package/clsx@2.0.0
-[bundlephobia-onno]: https://bundlephobia.com/package/onno@2.0.0
+[bundlephobia-clsx]: https://bundlephobia.com/package/clsx
+[bundlephobia-onno]: https://bundlephobia.com/package/onno
 [typescript]: https://www.typescriptlang.org
 [tailwindcss]: https://tailwindcss.com
