@@ -11,11 +11,11 @@ Tiny ([266B][onno-bundlephobia]) utility for composing class variants using `cls
 
 ## Features
 
-- Framework agnostic
-- Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
-- Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
-- Rigorously tested with [100% code coverage][onno-codecov]
-- Perfect companion to [Tailwind CSS][tailwindcss]
+- :rocket: Framework agnostic
+- :mouse: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
+- :yum: Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
+- :test_tube: Rigorously tested with [100% code coverage][onno-codecov]
+- :handshake: Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
 
@@ -283,7 +283,7 @@ If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode] add the
 }
 ```
 
-This will trigger Tailwind's class name autocompletion within the `onno()` function.
+This will trigger Tailwind's class name autocompletion within the `onno()` function call.
 
 ## License
 
