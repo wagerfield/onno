@@ -1,10 +1,16 @@
 import { ClassValue } from "clsx"
 
+// Class Types
+
 export type { ClassValue }
 
 export type ClassKey = "className"
 
 export type ClassProps = Partial<Record<ClassKey, ClassValue>>
+
+// Utility Types
+
+export type Flatten<T> = T extends object ? {} & { [P in keyof T]: T[P] } : T
 
 // Onno Class Types
 
@@ -30,8 +36,8 @@ export type OnnoCompound<T extends OnnoVariants> = {
 
 export interface OnnoConfig<T extends OnnoVariants> {
   baseline?: OnnoClassValue
-  compound?: OnnoCompound<T>[]
-  defaults?: OnnoDefaults<T>
+  compound?: Flatten<OnnoCompound<T>>[]
+  defaults?: Flatten<OnnoDefaults<T>>
   variants: T
 }
 
@@ -40,7 +46,7 @@ export type OnnoOptions<T extends OnnoVariants> = OnnoDefaults<T> & ClassProps
 // Onno Function Types
 
 export type OnnoFunction<T extends OnnoVariants> = (
-  options?: OnnoOptions<T>,
+  options?: Flatten<OnnoOptions<T>>,
 ) => string
 
 export type OnnoFactory = <T extends OnnoVariants>(
@@ -49,7 +55,7 @@ export type OnnoFactory = <T extends OnnoVariants>(
 
 // Onno Prop Types
 
-type OnnoVariantProps<F extends OnnoFunction<any>> = Omit<
+export type OnnoVariantProps<F extends OnnoFunction<any>> = Omit<
   Exclude<Parameters<F>[0], undefined>,
   ClassKey
 >
@@ -57,4 +63,6 @@ type OnnoVariantProps<F extends OnnoFunction<any>> = Omit<
 export type OnnoProps<
   F extends OnnoFunction<any>,
   K extends keyof OnnoVariantProps<F> = never,
-> = OnnoVariantProps<F> & Required<Pick<OnnoVariantProps<F>, K>> & ClassProps
+> = Flatten<
+  OnnoVariantProps<F> & Required<Pick<OnnoVariantProps<F>, K>> & ClassProps
+>
