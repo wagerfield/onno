@@ -68,6 +68,16 @@ button({ disabled: true }) // "access denied"
 button({ hidden: true, size: "lg" }) // "barely visible really large"
 ```
 
+Note that you cannot use `className` as a variant key since it is reserved for applying [addition classes](#additional-classes).
+
+```js
+const button = onno({
+  variants: {
+    className: "not allowed", // Error: "className" cannot be used as a variant name
+  },
+})
+```
+
 ### Defaults
 
 Default variants can be set using the `defaults` config option:
