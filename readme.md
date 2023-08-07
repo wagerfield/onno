@@ -50,7 +50,7 @@ const button = onno({
     // This is a `boolean` variant applied when `disabled === true`
     disabled: "access denied", // Class values can be a single `string`
 
-    // This is a `boolean` variant applied when `hidden === true`
+    // This is another `boolean` variant applied when `hidden === true`
     hidden: ["barely", "visible"], // Class values can also be a `string[]`
 
     // This is a `enum` variant applied when `size === "sm" || "lg"`
@@ -135,12 +135,12 @@ const button = onno({
   compound: [
     {
       size: ["sm", "lg"],
-      className: "compound one", // Apply when `size === "sm" || "lg"`
+      className: ["compound", "one"], // Applied when `size === "sm" || "lg"`
     },
     {
       size: "md",
       hidden: true,
-      className: ["compound", "two"], // Apply when `size === "md" && hidden === true`
+      className: "compound two", // Applied when `size === "md" && hidden === true`
     },
   ],
 })
@@ -150,7 +150,7 @@ button({}) // ""
 button({ size: "md" }) // "kinda normal"
 button({ hidden: true }) // "barely visible"
 button({ size: "lg" }) // "really large compound one"
-button({ size: "md", hidden: true }) // "kinda normal compound two"
+button({ size: "md", hidden: true }) // "barely visible kinda normal compound two"
 ```
 
 ### Additional Classes
@@ -182,7 +182,7 @@ Classes are applied in the following order:
 3. `compound`
 4. `className`
 
-Under the hood `onno` uses `clsx` to build the class list.
+Under the hood `onno` uses `clsx` to build the class list ([see `clsx` docs][clsx]).
 
 For convenience `clsx` is exported from `onno` so you can use it to compose classes:
 
@@ -201,7 +201,7 @@ const button = onno({
 clsx("foo", ["bar", { baz: true }], button({ size: "sm" })) // "foo bar baz pretty small"
 ```
 
-Note that onno's `className` option also accepts any `clsx.ClassValue` ([see docs][clsx]) so you can do:
+Note that onno's `className` option also accepts any `clsx.ClassValue` so you can do:
 
 ```js
 import { onno, clsx } from "onno"
@@ -220,7 +220,7 @@ button({ size: "lg", className: ["foo", ["bar"], { baz: true }] }) // "really la
 
 ## TypeScript
 
-Use `OnnoProps` to infer variant props from an `OnnoFunction`
+Use the `OnnoProps` type to infer variant props from an `OnnoFunction`
 
 ```ts
 import { onno, type OnnoProps } from "onno"
@@ -246,7 +246,7 @@ Note that inferred `OnnoProps` also include the `className` option alongside the
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
 ```
 
-By default all variants are _optional_. To require one or more variants, pass a union of _required_ variant keys as the second argument to the `OnnoProps` type:
+By default all variants inferred by `OnnoProps` are _optional_. To require one or more variants, pass a union of _required_ variant keys as the second argument to the `OnnoProps` generic:
 
 ```ts
 import { onno, type OnnoProps } from "onno"
@@ -283,7 +283,7 @@ If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode] add the
 }
 ```
 
-This will trigger Tailwind's autocompletion within the `onno()` function.
+This will trigger Tailwind's class name autocompletion within the `onno()` function.
 
 ## License
 
