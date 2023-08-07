@@ -12,10 +12,10 @@ Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `cls
 ## Features
 
 - :rocket: Framework agnostic
-- :mag: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
-- :sparkles: Written in [TypeScript][typescript] with magical [type helpers](#typescript)
-- :test_tube: Rigorously tested with [100% code coverage][onno-codecov]
-- :gem: Perfect companion to [Tailwind CSS][tailwindcss]
+- :microscope: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
+- :yum: Written in [TypeScript][typescript] with magical [type helpers](#typescript)
+- :100: Rigorously tested with [100% code coverage][onno-codecov]
+- ::confetti_ball:: Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
 
@@ -47,13 +47,13 @@ Define variant names and the classes to be applied to them using the `variants` 
 // Name your function whatever you like!
 const button = onno({
   variants: {
-    // This is a `boolean` variant applied when `disabled === true`
+    // This `boolean` variant is applied when `disabled === true`
     disabled: "access denied", // Classes can be defined as a `string`
 
-    // This is another `boolean` variant applied when `hidden === true`
+    // This `boolean` variant is applied when `hidden === true`
     hidden: ["barely", "visible"], // Classes can also be a `string[]`
 
-    // This is a `enum` variant applied when `size === "sm" || "lg"`
+    // This `enum` variant is applied when `size === "sm" || "lg"`
     size: {
       sm: ["pretty", "small"], // Here we are using a `string[]` class list
       lg: "really large", // ...and here we are using a `string` class list
