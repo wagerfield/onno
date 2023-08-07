@@ -36,17 +36,15 @@ const button = onno({
 })
 
 // "h-10 px-2 bg-blue-600 text-white opacity-50"
-const classes = button({
-  size: "md",
-  intent: "primary",
-  disabled: true,
-})
+const classes = button({ size: "md", intent: "primary", disabled: true })
 ```
 
 ### Variants
 
+Define variant names and the classes to be applied using the `variants` config option:
+
 ```js
-// Name your function however you like eg. `getClasses` or `buttonClasses`
+// Name your function whatever you like eg. `getClasses`
 const button = onno({
   variants: {
     // This is a `boolean` variant applied when `disabled === true`
@@ -102,7 +100,7 @@ button({ size: "lg" }) // "barely visible quite bland really large"
 
 ### Baseline Classes
 
-Baseline classes can be added using the `baseline` config option:
+Common classes can be applied using the `baseline` config option:
 
 ```js
 const button = onno({
@@ -122,7 +120,38 @@ button({ size: "sm" }) // "solid base pretty small"
 
 ### Compound Classes
 
-Todo
+Apply classes when certain variants are combined using the `compound` config option:
+
+```js
+const button = onno({
+  variants: {
+    hidden: "barely visible",
+    size: {
+      sm: "pretty small",
+      md: "kinda normal",
+      lg: "really large",
+    },
+  },
+  compound: [
+    {
+      size: ["sm", "lg"],
+      className: "compound one", // Apply when `size === "sm" || "lg"`
+    },
+    {
+      size: "md",
+      hidden: true,
+      className: ["compound", "two"], // Apply when `size === "md" && hidden === true`
+    },
+  ],
+})
+
+button() // ""
+button({}) // ""
+button({ size: "md" }) // "kinda normal"
+button({ hidden: true }) // "barely visible"
+button({ size: "lg" }) // "really large compound one"
+button({ size: "md", hidden: true }) // "kinda normal compound two"
+```
 
 ### Additional Classes
 
