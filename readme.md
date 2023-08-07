@@ -1,9 +1,9 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][onno-bundlephobia]
-[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][onno-codecov]
-[![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8)][onno-workflow]
-[![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8)][onno-license]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8&cacheSeconds=3600)][onno-bundlephobia]
+[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8&cacheSeconds=3600)][onno-codecov]
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8&cacheSeconds=3600)][onno-workflow]
+[![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8&cacheSeconds=3600)][onno-license]
 
 Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `clsx`
 
@@ -12,10 +12,10 @@ Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `cls
 ## Features
 
 - :rocket: Framework agnostic
-- :mouse: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
-- :yum: Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
+- :mag: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
+- :sparkles: Written in [TypeScript][typescript] with magical [type helpers](#typescript)
 - :test_tube: Rigorously tested with [100% code coverage][onno-codecov]
-- :handshake: Perfect companion to [Tailwind CSS][tailwindcss]
+- :gem: Perfect companion to [Tailwind CSS][tailwindcss]
 
 ## Usage
 
