@@ -3,4 +3,7 @@ coverage
 dist
 
 .DS_Store
+.npmrc
+.env
+
 *.log

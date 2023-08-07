@@ -1,9 +1,5 @@
 import { ClassValue } from "clsx"
 
-export type Func = (...args: any[]) => any
-
-// Base Class Types
-
 export type { ClassValue }
 
 export type ClassKey = "className"
@@ -53,12 +49,12 @@ export type OnnoFactory = <T extends OnnoVariants>(
 
 // Onno Prop Types
 
-type OnnoVariantProps<F extends Func> = Omit<
+type OnnoVariantProps<F extends OnnoFunction<any>> = Omit<
   Exclude<Parameters<F>[0], undefined>,
   ClassKey
 >
 
 export type OnnoProps<
-  F extends Func,
+  F extends OnnoFunction<any>,
   K extends keyof OnnoVariantProps<F> = never,
 > = OnnoVariantProps<F> & Required<Pick<OnnoVariantProps<F>, K>> & ClassProps
