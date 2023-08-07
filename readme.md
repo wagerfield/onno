@@ -68,7 +68,7 @@ button({ disabled: true }) // "access denied"
 button({ hidden: true, size: "lg" }) // "barely visible really large"
 ```
 
-Note that you cannot use `className` as a variant key since it is reserved for applying [addition classes](#additional-classes).
+Note that you cannot use `className` as a variant key since it is _reserved_ for applying [addition classes](#additional-classes):
 
 ```js
 const button = onno({
