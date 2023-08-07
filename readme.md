@@ -22,36 +22,103 @@ Tiny ([596B][bundlephobia-onno]) utility for composing class variants using `cls
 ```js
 const button = onno({
   variants: {
-    intent: {
-      primary: "bg-blue-600 text-white",
-      secondary: "bg-gray-200 text-black",
-    },
     size: {
       sm: "h-8 px-1",
       md: "h-10 px-2",
       lg: "h-12 px-3",
     },
+    intent: {
+      primary: "bg-blue-600 text-white",
+      secondary: "bg-gray-200 text-black",
+    },
+    disabled: "opacity-50",
   },
 })
 
-// "bg-blue-600 text-white h-10 px-2"
+// "h-10 px-2 bg-blue-600 text-white opacity-50"
 const classes = button({
-  intent: "primary",
   size: "md",
+  intent: "primary",
+  disabled: true,
 })
 ```
 
 ### Variants
 
-Todo
+```js
+// Name your function however you like eg. `getClasses` or `buttonClasses`
+const button = onno({
+  variants: {
+    // This is a `boolean` variant applied when `disabled === true`
+    disabled: "access denied", // Class values can be a single `string`
+
+    // This is a `boolean` variant applied when `hidden === true`
+    hidden: ["barely", "visible"], // Class values can also be a `string[]`
+
+    // This is a `enum` variant applied when `size === "sm" || "lg"`
+    size: {
+      sm: ["pretty", "small"], // Here we are using a `string[]` class list
+      lg: "really large", // ...and here we are using a `string` class list
+    },
+  },
+})
+
+button() // ""
+button({}) // ""
+button({ size: "sm" }) // "pretty small"
+button({ disabled: true }) // "access denied"
+button({ hidden: true, size: "lg" }) // "barely visible really large"
+```
 
 ### Defaults
 
-Todo
+Default variants can be set using the `defaults` config option:
+
+```js
+const button = onno({
+  defaults: {
+    hidden: true,
+    intent: "secondary",
+  },
+  variants: {
+    hidden: "barely visible",
+    intent: {
+      primary: "super punchy",
+      secondary: "quite bland",
+    },
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
+  },
+})
+
+button() // "barely visible quite bland"
+button({}) // "barely visible quite bland"
+button({ hidden: false }) // "quite bland"
+button({ intent: "primary" }) // "barely visible super punchy"
+button({ size: "lg" }) // "barely visible quite bland really large"
+```
 
 ### Baseline Classes
 
-Todo
+Baseline classes can be added using the `baseline` config option:
+
+```js
+const button = onno({
+  baseline: "solid base", // Can also use a `string[]` class list
+  variants: {
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
+  },
+})
+
+button() // "solid base"
+button({}) // "solid base"
+button({ size: "sm" }) // "solid base pretty small"
+```
 
 ### Compound Classes
 
@@ -59,7 +126,32 @@ Todo
 
 ### Additional Classes
 
-Todo
+Additional classes can be applied using the `className` option:
+
+```js
+const button = onno({
+  baseline: "solid base",
+  variants: {
+    size: {
+      sm: "pretty small",
+      lg: "really large",
+    },
+  },
+})
+
+button() // "solid base"
+button({ className: "with more" }) // "solid base with more"
+button({ className: "with more", size: "sm" }) // "solid base pretty small with more"
+```
+
+### Class Order
+
+Classes are applied in the following order:
+
+1. `baseline`
+2. `variants`
+3. `compound`
+4. `className`
 
 ## TypeScript
 
@@ -70,6 +162,7 @@ import { onno, type OnnoProps } from "onno"
 
 export const button = onno({
   variants: {
+    disabled: "not allowed",
     size: {
       sm: "pretty small",
       lg: "really large",
@@ -79,9 +172,10 @@ export const button = onno({
 
 export type ButtonProps = OnnoProps<typeof button>
 export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
+export type ButtonDisabledType = ButtonProps["disabled"] // boolean | undefined
 ```
 
-Note that inferred `OnnoProps` include the `className` option alongside the variant types:
+Note that inferred `OnnoProps` also include the `className` option alongside the variant types:
 
 ```ts
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
@@ -96,8 +190,8 @@ export const button = onno({
   variants: {
     disabled: "not allowed",
     intent: {
-      primary: "very punchy",
-      secondary: "quite normal",
+      primary: "super punchy",
+      secondary: "quite bland",
     },
     size: {
       sm: "pretty small",
@@ -111,6 +205,10 @@ export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
 // Error: Property 'intent' is missing in type '{ size: "md" }'
 const buttonProps: ButtonProps = { size: "md" }
 ```
+
+## Tailwind CSS
+
+Todo
 
 ## License
 
