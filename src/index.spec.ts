@@ -46,6 +46,9 @@ describe("onno(config)", () => {
 
     expect(fn({ className: "with className" })).toBe("base with className")
     expect(fn({ className: ["with", "className"] })).toBe("base with className")
+    expect(fn({ className: ["foo", ["bar"], { baz: true }] })).toBe(
+      "base foo bar baz",
+    )
   })
 
   it("supports boolean variants", () => {
