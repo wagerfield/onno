@@ -2,7 +2,7 @@
   "name": "onno",
   "type": "module",
   "license": "MIT",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "homepage": "https://onnojs.com",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
