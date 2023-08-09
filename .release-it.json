@@ -5,6 +5,7 @@
   },
   "hooks": {
     "before:init": ["git pull", "pnpm lint", "pnpm test"],
+    "before:release": ["pnpm clean", "pnpm build"],
     "after:bump": "pnpm changelog"
   },
   "github": {
