@@ -295,9 +295,9 @@ If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode], add th
 }
 ```
 
-This will enable Tailwind's intellisense for both `onno` and `clsx` within your project! :tada:
+This will enable Tailwind's IntelliSense for both `onno` and `clsx` within your project! :tada:
 
-![VSCode Tailwind CSS Intellisense](https://raw.github.com/wagerfield/onno/main/assets/tailwindcss-vscode.png)
+![VSCode Tailwind CSS IntelliSense](https://raw.github.com/wagerfield/onno/main/assets/tailwindcss-vscode.png)
 
 ## License
 
