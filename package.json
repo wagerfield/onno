@@ -7,6 +7,11 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "license",
+    "readme.md"
+  ],
   "author": {
     "name": "Matthew Wagerfield",
     "email": "matthew@wagerfield.com",
