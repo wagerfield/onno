@@ -1,9 +1,23 @@
 {
   "name": "onno",
-  "type": "module",
   "license": "MIT",
   "version": "2.1.1",
   "homepage": "https://onnojs.com",
+  "keywords": [
+    "onno",
+    "clsx",
+    "classes",
+    "classnames",
+    "variants",
+    "tailwind",
+    "tailwindcss"
+  ],
+  "author": {
+    "name": "Matthew Wagerfield",
+    "email": "matthew@wagerfield.com",
+    "url": "https://matthew.wagerfield.com"
+  },
+  "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -12,11 +26,6 @@
     "license",
     "readme.md"
   ],
-  "author": {
-    "name": "Matthew Wagerfield",
-    "email": "matthew@wagerfield.com",
-    "url": "https://matthew.wagerfield.com"
-  },
   "scripts": {
     "build": "pkgroll",
     "lint": "prettier --write .",
