@@ -1,7 +1,7 @@
 # [![onno](https://raw.github.com/wagerfield/onno/main/assets/onno.svg)][onno]
 
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8&cacheSeconds=3600)][onno-bundlephobia]
-[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8&cacheSeconds=3600)][onno-codecov]
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/onno?style=flat-square&logo=npm&logoColor=FFF&label=size&color=4C8)][onno-bundlephobia]
+[![Code Coverage](https://img.shields.io/codecov/c/gh/wagerfield/onno?style=flat-square&logo=codecov&logoColor=FFF&color=4C8)][onno-codecov]
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/wagerfield/onno/test.yml?style=flat-square&logo=github&logoColor=FFF&color=4C8&cacheSeconds=3600)][onno-workflow]
 [![License](https://img.shields.io/github/license/wagerfield/onno?style=flat-square&color=4C8&cacheSeconds=3600)][onno-license]
 
