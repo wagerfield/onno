@@ -13,7 +13,7 @@ Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `cls
 
 - :rocket: Framework agnostic
 - :microscope: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
-- :yum: Written in [TypeScript][typescript] with magical [type helpers](#typescript)
+- :yum: Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
 - :100: Rigorously tested with [100% code coverage][onno-codecov]
 - :confetti_ball: Perfect companion to [Tailwind CSS][tailwindcss]
 
@@ -250,7 +250,7 @@ export type ButtonSizeType = ButtonProps["size"] // "sm" | "lg" | undefined
 export type ButtonDisabledType = ButtonProps["disabled"] // boolean | undefined
 ```
 
-Note that the inferred `OnnoProps` also includes the `className` option alongside the variant types:
+Note that inferred `OnnoProps` also include the `className` option alongside the variants:
 
 ```ts
 export type ButtonClassNameType = ButtonProps["className"] // clsx.ClassValue
@@ -275,6 +275,7 @@ export const button = onno({
   },
 })
 
+// Require both the `intent` and `size` variants
 export type ButtonProps = OnnoProps<typeof button, "intent" | "size">
 
 // Error: Property 'intent' is missing in type '{ size: "md" }'
@@ -283,17 +284,19 @@ const buttonProps: ButtonProps = { size: "md" }
 
 ## Tailwind CSS
 
-If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode] add the following configuration to your workspace `.vscode/settings.json` file:
+If you are using the [Tailwind CSS VSCode extension][tailwindcss-vscode], add the following configuration to your workspace `.vscode/settings.json` file:
 
 ```json
 {
   "tailwindCSS.experimental.classRegex": [
-    ["onno\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["onno|clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"]
   ]
 }
 ```
 
-This will trigger Tailwind's class name autocompletion within the `onno()` function call.
+This will enable Tailwind's intellisense for both `onno` and `clsx` within your project! :tada:
+
+![VSCode Tailwind CSS Intellisense](https://raw.github.com/wagerfield/onno/main/assets/tailwindcss-vscode.png)
 
 ## License
 
