@@ -28,9 +28,9 @@
   ],
   "scripts": {
     "build": "pkgroll",
-    "lint": "prettier --write .",
-    "test": "vitest run --coverage",
     "clean": "rm -rf coverage dist",
+    "lint": "prettier --write --ignore-path .prettierignore .",
+    "test": "vitest run --coverage",
     "changelog": "pnpm auto-changelog",
     "prepare": "husky install",
     "release": "release-it"

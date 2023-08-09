@@ -4,8 +4,13 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks": {
-    "before:init": ["git pull", "pnpm lint", "pnpm test"],
-    "before:release": ["pnpm clean", "pnpm build"],
+    "before:init": [
+      "git pull",
+      "pnpm clean",
+      "pnpm build",
+      "pnpm lint",
+      "pnpm test"
+    ],
     "after:bump": "pnpm changelog"
   },
   "github": {
