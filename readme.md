@@ -15,11 +15,13 @@ Tiny ([596B][onno-bundlephobia]) utility for composing class variants using `cls
 - :microscope: Single _tiny_ dependency on `clsx` ([330B][clsx-bundlephobia])
 - :yum: Written in [TypeScript][typescript] with delicious [type helpers](#typescript)
 - :100: Rigorously tested with [100% code coverage][onno-codecov]
-- :confetti_ball: Perfect companion to [Tailwind CSS][tailwindcss]
+- :confetti_ball: Perfect companion to [Tailwind CSS](#tailwind-css)
 
 ## Usage
 
 ```js
+import { onno } from "onno"
+
 const button = onno({
   variants: {
     size: {
@@ -44,7 +46,6 @@ const classes = button({ size: "md", intent: "primary", disabled: true })
 Define variant names and the classes to be applied to them using the `variants` config option:
 
 ```js
-// Name your function whatever you like!
 const button = onno({
   variants: {
     // This `boolean` variant is applied when `disabled === true`
@@ -192,7 +193,7 @@ Classes are applied in the following order:
 3. `compound`
 4. `className`
 
-Under the hood `onno` uses `clsx` to build the class list ([see `clsx` docs][clsx]).
+Under the hood `onno` uses `clsx` to build the class list (see [`clsx` docs][clsx])
 
 For convenience `clsx` is exported from `onno` so you can use it to compose classes:
 
@@ -311,5 +312,4 @@ This will enable Tailwind's intellisense for both `onno` and `clsx` within your 
 [onno-bundlephobia]: https://bundlephobia.com/package/onno
 [clsx]: https://github.com/lukeed/clsx#readme
 [typescript]: https://www.typescriptlang.org
-[tailwindcss]: https://tailwindcss.com
 [tailwindcss-vscode]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
