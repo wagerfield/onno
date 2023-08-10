@@ -2,8 +2,10 @@ node_modules
 coverage
 dist
 
+.svelte
+.vercel
+
 .DS_Store
-.npmrc
-.env
+.env*
 
 *.log
