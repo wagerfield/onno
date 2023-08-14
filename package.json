@@ -3,6 +3,13 @@
   "license": "MIT",
   "version": "2.2.0",
   "homepage": "https://onnojs.com",
+  "repository": "https://github.com/wagerfield/onno.git",
+  "bugs": "https://github.com/wagerfield/onno/issues",
+  "author": {
+    "name": "Matthew Wagerfield",
+    "email": "matthew@wagerfield.com",
+    "url": "https://matthew.wagerfield.com"
+  },
   "keywords": [
     "onno",
     "clsx",
@@ -12,11 +19,6 @@
     "tailwind",
     "tailwindcss"
   ],
-  "author": {
-    "name": "Matthew Wagerfield",
-    "email": "matthew@wagerfield.com",
-    "url": "https://matthew.wagerfield.com"
-  },
   "type": "module",
   "sideEffects": false,
   "main": "dist/index.cjs",

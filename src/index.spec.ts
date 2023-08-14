@@ -20,18 +20,18 @@ describe("onno(config)", () => {
     expect(fn).toThrow(`"className" cannot be used as a variant name`)
   })
 
-  it("returns baseline string", () => {
+  it("returns base class list string", () => {
     const fn = onno({
-      baseline: "base",
+      base: "base classes",
       variants: {},
     })
 
-    expect(fn()).toBe("base")
+    expect(fn()).toBe("base classes")
   })
 
-  it("returns baseline string array", () => {
+  it("returns base class list string[]", () => {
     const fn = onno({
-      baseline: ["base", "classes"],
+      base: ["base", "classes"],
       variants: {},
     })
 
@@ -40,7 +40,7 @@ describe("onno(config)", () => {
 
   it("adds className from options", () => {
     const fn = onno({
-      baseline: "base",
+      base: "base",
       variants: {},
     })
 
@@ -97,7 +97,7 @@ describe("onno(config)", () => {
 
   it("combines baseline and variant classes", () => {
     const fn = onno({
-      baseline: "base",
+      base: "base",
       variants: {
         hidden: "invisible",
         size: {
@@ -112,7 +112,7 @@ describe("onno(config)", () => {
 
   it("supports default variants", () => {
     const fn = onno({
-      baseline: "base",
+      base: "base",
       defaults: {
         size: "sm",
         jazzy: true,
@@ -136,7 +136,7 @@ describe("onno(config)", () => {
 
   it("supports compound variants", () => {
     const fn = onno({
-      baseline: "base",
+      base: "base",
       defaults: {
         size: "md",
       },
@@ -152,7 +152,7 @@ describe("onno(config)", () => {
           lg: "large",
         },
       },
-      compound: [
+      compounds: [
         {
           size: "sm",
           hidden: true,

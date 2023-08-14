@@ -109,13 +109,13 @@ button({ intent: "primary" }) // "barely visible super punchy"
 button({ size: "sm" }) // "barely visible quite bland pretty small"
 ```
 
-### Baseline Classes
+### Base Classes
 
-Common classes can be applied using the `baseline` config option:
+Base classes can be applied using the `base` config option:
 
 ```js
 const button = onno({
-  baseline: "solid base", // Can also use a `string[]` class list
+  base: "solid base", // Can also use a `string[]` class list
   variants: {
     size: {
       sm: "pretty small",
@@ -131,7 +131,7 @@ button({ size: "lg" }) // "solid base really large"
 
 ### Compound Classes
 
-Apply classes when certain variants are combined using the `compound` config option:
+Apply classes when certain variants are combined using the `compounds` config option:
 
 ```js
 const button = onno({
@@ -143,7 +143,7 @@ const button = onno({
       lg: "really large",
     },
   },
-  compound: [
+  compounds: [
     {
       size: ["sm", "lg"],
       className: ["compound", "one"], // Applied when `size === "sm" || "lg"`
@@ -170,7 +170,7 @@ Additional classes can be applied using the `className` option:
 
 ```js
 const button = onno({
-  baseline: "solid base",
+  base: "solid base",
   variants: {
     size: {
       sm: "pretty small",
@@ -188,9 +188,9 @@ button({ className: "with more", size: "sm" }) // "solid base pretty small with 
 
 Classes are applied in the following order:
 
-1. `baseline`
+1. `base`
 2. `variants`
-3. `compound`
+3. `compounds`
 4. `className`
 
 Under the hood `onno` uses `clsx` to build the class list (see [`clsx` docs][clsx])
