@@ -1,12 +1,8 @@
 {
-  "include": ["src/**/*.ts"],
-  "exclude": ["**/*.spec.ts"],
+  "extends": "./.svelte/tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
     "noUnusedLocals": true,
-    "noEmitOnError": true,
+    "skipLibCheck": true,
     "strict": true
   }
 }

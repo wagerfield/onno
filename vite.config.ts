@@ -1,7 +1,10 @@
 import { defineConfig } from "vitest/config"
+import { sveltekit } from "@sveltejs/kit/vite"
 
 export default defineConfig({
+  plugins: [sveltekit()],
   test: {
+    include: ["src/**/*.spec.ts"],
     coverage: {
       reporter: ["text", "html", "json", "json-summary"],
       statements: 100,
