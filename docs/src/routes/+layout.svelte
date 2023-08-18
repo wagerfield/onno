@@ -12,8 +12,10 @@
 </script>
 
 <Head />
-<Header />
-<main class="p-4" style:background={$theme.light} style:color={$theme.dark}>
-  <slot />
-</main>
-<Footer />
+<!-- <Header /> -->
+<!-- <main class="p-4" style:background={$theme.light} style:color={$theme.dark}> -->
+<!-- <slot /> -->
+<!-- </main> -->
+<!-- <Footer /> -->
+
+<slot />
