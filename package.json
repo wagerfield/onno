@@ -21,21 +21,27 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "license",
-    "readme.md"
+    "dist"
   ],
+  "exports": {
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
   "scripts": {
-    "build": "pkgroll",
+    "pkg": "pkgroll",
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite preview",
+    "sync": "svelte-kit sync",
     "clean": "rm -rf coverage dist",
-    "lint": "prettier --write --ignore-path .prettierignore .",
     "test": "vitest run --coverage",
+    "lint": "prettier --write --ignore-path .prettierignore .",
+    "package": "svelte-package --input src/onno",
+    "prepare": "husky install && pnpm sync",
     "changelog": "pnpm auto-changelog",
-    "prepare": "husky install",
     "release": "release-it"
   },
   "prettier": {
@@ -64,16 +70,35 @@
     "clsx": "2.0.0"
   },
   "devDependencies": {
+    "@codemirror/autocomplete": "6.9.0",
+    "@codemirror/commands": "6.2.4",
+    "@codemirror/lang-javascript": "6.1.9",
+    "@codemirror/language": "6.9.0",
+    "@codemirror/lint": "6.4.0",
+    "@codemirror/search": "6.5.1",
+    "@codemirror/state": "6.2.1",
+    "@codemirror/view": "6.16.0",
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
+    "@fontsource-variable/inter": "5.0.8",
+    "@fontsource-variable/jetbrains-mono": "5.0.9",
+    "@lezer/highlight": "1.1.6",
+    "@sveltejs/adapter-vercel": "3.0.3",
+    "@sveltejs/kit": "1.22.6",
+    "@sveltejs/package": "2.2.1",
     "@vitest/coverage-v8": "0.34.1",
     "auto-changelog": "2.4.0",
+    "autoprefixer": "10.4.15",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "pkgroll": "1.11.0",
+    "postcss": "8.4.28",
     "prettier": "3.0.1",
     "release-it": "16.1.4",
+    "svelte": "4.2.0",
+    "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
+    "vite": "4.4.9",
     "vitest": "0.34.1"
   }
 }

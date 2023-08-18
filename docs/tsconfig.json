@@ -1,8 +1,0 @@
-{
-  "extends": "./.svelte/tsconfig.json",
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true
-  }
-}

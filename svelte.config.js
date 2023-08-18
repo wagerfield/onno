@@ -6,16 +6,18 @@ import vercelAdapter from "@sveltejs/adapter-vercel"
 const config = {
   preprocess: vitePreprocess(),
   vitePlugin: {
-    inspector: true,
+    inspector: false,
   },
   kit: {
     appDir: "app",
     outDir: ".svelte",
     adapter: vercelAdapter({ runtime: "edge" }),
     alias: {
+      $codemirror: "./src/codemirror",
       $components: "./src/components",
       $examples: "./src/examples",
       $stores: "./src/stores",
+      onno: "./src/onno",
     },
   },
 }

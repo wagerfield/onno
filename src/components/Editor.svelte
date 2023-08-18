@@ -1,49 +1,31 @@
 <script lang="ts" context="module">
-  export type VoidString = string | undefined
-
   export interface EditorEvent {
     change: string
   }
 </script>
 
 <script lang="ts">
-  import { basicSetup, EditorView } from "codemirror"
-  import { EditorState, StateEffect, type Extension } from "@codemirror/state"
+  import type { Void } from "$lib/types"
+  import type { Extension } from "@codemirror/state"
+
+  import { EditorView } from "@codemirror/view"
   import { javascript } from "@codemirror/lang-javascript"
   import { createEventDispatcher, onMount } from "svelte"
+  import { getExtensions } from "$codemirror/extensions"
 
-  export let id: VoidString = undefined
-  export let value: VoidString = undefined
-  export let className: VoidString = undefined
+  export let id: Void<string> = undefined
+  export let value: Void<string> = undefined
+  export let className: Void<string> = undefined
+
   export let language = javascript({ typescript: true })
-  export let extensions: Extension[] = []
+  export let extensions: Extension = []
 
   const dispatch = createEventDispatcher<EditorEvent>()
 
   let element: HTMLDivElement
   let view: EditorView
 
-  $: stateExtensions = [basicSetup, language, ...extensions]
-
-  $: if (view) {
-    view.dispatch({
-      effects: StateEffect.reconfigure.of(stateExtensions),
-    })
-  }
-
-  $: if (view && !view.hasFocus) {
-    EditorState.create({
-      extensions: stateExtensions,
-      doc: value,
-    })
-    view.dispatch({
-      changes: {
-        from: 0,
-        to: view.state.doc.length,
-        insert: value,
-      },
-    })
-  }
+  $: stateExtensions = getExtensions([language, extensions])
 
   onMount(() => {
     view = new EditorView({
