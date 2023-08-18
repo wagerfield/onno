@@ -17,6 +17,7 @@ const config = {
       $components: "./src/components",
       $examples: "./src/examples",
       $stores: "./src/stores",
+      onno: "./src/onno",
     },
   },
 }

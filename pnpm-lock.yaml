@@ -888,7 +888,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
@@ -906,7 +906,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       estree-walker: 2.0.2
       magic-string: 0.27.0
       rollup: 2.79.1
@@ -921,12 +921,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-node-resolve@15.1.0(rollup@2.79.1):
-    resolution: {integrity: sha512-xeZHCgsiZ9pzYVgAo9580eCGqwh/XCEUM9q6iQfGNocjgkufHAqC3exA+45URvhiYV8sBF9RlBai650eNs7AsA==}
+  /@rollup/plugin-node-resolve@15.2.0(rollup@2.79.1):
+    resolution: {integrity: sha512-mKur03xNGT8O9ODO6FtT43ITGqHWZbKPdVJHZb+iV9QYcdlhUUB0wgknvA4KCUmC5oHJF6O2W1EgmyOQyVUI4Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0
@@ -934,7 +934,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
@@ -952,7 +952,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       magic-string: 0.27.0
       rollup: 2.79.1
     dev: true
@@ -965,8 +965,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rollup/pluginutils@5.0.2(rollup@2.79.1):
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
+  /@rollup/pluginutils@5.0.3(rollup@2.79.1):
+    resolution: {integrity: sha512-hfllNN4a80rwNQ9QCxhxuHCGHMAvabXqxNdaChUSSadMre7t4iEUI6fFAhBOn/eIYTgYVhBv7vCLsAJ4u3lf3g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0
@@ -4313,9 +4313,9 @@ packages:
       '@rollup/plugin-commonjs': 24.1.0(rollup@2.79.1)
       '@rollup/plugin-inject': 5.0.3(rollup@2.79.1)
       '@rollup/plugin-json': 6.0.0(rollup@2.79.1)
-      '@rollup/plugin-node-resolve': 15.1.0(rollup@2.79.1)
+      '@rollup/plugin-node-resolve': 15.2.0(rollup@2.79.1)
       '@rollup/plugin-replace': 5.0.2(rollup@2.79.1)
-      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      '@rollup/pluginutils': 5.0.3(rollup@2.79.1)
       esbuild: 0.18.20
       magic-string: 0.30.2
       rollup: 2.79.1

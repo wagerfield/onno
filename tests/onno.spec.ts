@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { onno, type OnnoProps } from "./index"
+import { onno, type OnnoProps } from "onno"
 
 describe("onno(config)", () => {
   it("expects one argument", () => {

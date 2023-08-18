@@ -21,30 +21,27 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
   },
   "scripts": {
+    "pkg": "pkgroll",
     "dev": "vite dev",
     "build": "vite build",
     "start": "vite preview",
     "sync": "svelte-kit sync",
-    "pkg": "pkgroll",
-    "clean": "rm -rf .svelte .vercel coverage dist",
-    "lint": "prettier --write --ignore-path .prettierignore .",
+    "clean": "rm -rf coverage dist",
     "test": "vitest run --coverage",
-    "changelog": "pnpm auto-changelog",
-    "package": "svelte-package package",
+    "lint": "prettier --write --ignore-path .prettierignore .",
+    "package": "svelte-package --input src/onno",
     "prepare": "husky install && pnpm sync",
+    "changelog": "pnpm auto-changelog",
     "release": "release-it"
   },
   "prettier": {
