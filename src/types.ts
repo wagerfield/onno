@@ -35,8 +35,8 @@ export type OnnoCompound<T extends OnnoVariants> = {
 } & OnnoClassProps
 
 export interface OnnoConfig<T extends OnnoVariants> {
-  baseline?: OnnoClassValue
-  compound?: Flatten<OnnoCompound<T>>[]
+  base?: OnnoClassValue
+  compounds?: Flatten<OnnoCompound<T>>[]
   defaults?: Flatten<OnnoDefaults<T>>
   variants: T
 }
