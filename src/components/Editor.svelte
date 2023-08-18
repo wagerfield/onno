@@ -10,7 +10,6 @@
 
   import { EditorView } from "@codemirror/view"
   import { javascript } from "@codemirror/lang-javascript"
-  import { Transaction, Annotation } from "@codemirror/state"
   import { createEventDispatcher, onMount } from "svelte"
   import { getExtensions } from "$codemirror/extensions"
 
@@ -22,20 +21,9 @@
   export let extensions: Extension = []
 
   const dispatch = createEventDispatcher<EditorEvent>()
-  const syncAnnotation = Annotation.define<boolean>()
 
   let element: HTMLDivElement
   let view: EditorView
-
-  function syncDispatch(transaction: Transaction, view: EditorView) {
-    view.update([transaction])
-    if (!transaction.changes.empty && !transaction.annotation(syncAnnotation)) {
-      const annotations = [syncAnnotation.of(true)]
-      const userEvent = transaction.annotation(Transaction.userEvent)
-      if (userEvent) annotations.push(Transaction.userEvent.of(userEvent))
-      // other.dispatch({ changes: transaction.changes, annotations })
-    }
-  }
 
   $: stateExtensions = getExtensions([language, extensions])
 
