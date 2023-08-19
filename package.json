@@ -24,10 +24,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/types.d.ts"
   ],
   "exports": {
-    "import": "./dist/index.js",
+    "default": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
   "scripts": {
