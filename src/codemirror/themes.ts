@@ -6,7 +6,7 @@ const baseEditorTheme: EditorTheme = {
   // Typography
   fontFamily: "JetBrains Mono Variable",
   fontSize: "15px",
-  lineHeight: 1.2,
+  lineHeight: "20px",
 
   // Cursor
   cursorWidth: 2,
