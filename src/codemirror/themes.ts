@@ -1,69 +1,57 @@
-import type { Extension } from "@codemirror/state"
+import { createTheme, type EditorTheme } from "./utils"
 
-import { EditorView } from "@codemirror/view"
+const baseEditorTheme: EditorTheme = {
+  focusedOutline: "1px solid #000",
 
-export type StyleSpec = {
-  [key: string]: StyleSpec | string | number | null
-}
-
-export interface CodeMirrorTheme {
-  [selector: string]: StyleSpec
-}
-
-const lightTheme: CodeMirrorTheme = {
-  "&": {
-    background: "#FFF",
-    color: "#000",
-  },
-  ".cm-scroller": {
-    fontFamily: "JetBrains Mono Variable",
-    fontSize: "15px",
-    lineHeight: 1.2,
-  },
-  ".cm-content": {
-    caretColor: "#F00",
-    padding: "8px 0",
-  },
-
-  // Gutter
-  ".cm-gutters": {
-    background: "#FFF",
-    color: "#BBB",
-    border: "none",
-  },
-  ".cm-lineNumbers .cm-gutterElement": {
-    padding: "0 16px",
-  },
-
-  // Lines
-  ".cm-line": {
-    padding: 0,
-  },
-  ".cm-activeLine": {
-    background: "#00000010",
-  },
-  ".cm-activeLineGutter": {
-    background: "none",
-    color: "#000",
-  },
+  // Typography
+  fontFamily: "JetBrains Mono Variable",
+  fontSize: "15px",
+  lineHeight: 1.2,
 
   // Cursor
-  "&.cm-focused .cm-cursor": {
-    borderLeftColor: "#F00",
-    borderLeftWidth: "2px",
-  },
+  cursorWidth: 2,
 
-  // Selection
-  ".cm-selectionBackground": {
-    background: "#F00",
-  },
-  "&.cm-focused .cm-scroller .cm-selectionLayer .cm-selectionBackground": {
-    background: "#0F0",
-  },
+  // Padding
+  contentPadding: "0.6em 0",
+  gutterPadding: "0 1em",
+  linePadding: "0",
+
+  // Gutter
+  gutterBorder: "none",
+  gutterMinWidth: "0",
+  gutterBackground: "none",
+  activeGutterBackground: "none",
 }
 
-const darkTheme: CodeMirrorTheme = {}
+const themes = {
+  light: createTheme({
+    dark: false,
+    editor: {
+      ...baseEditorTheme,
+      background: "#FFF",
+      textColor: "#000",
+      cursorColor: "#000",
+      gutterTextColor: "#AAA",
+      activeGutterTextColor: "#000",
+      activeLineBackground: "#AAA2",
+      selectionBackground: "#AAA2",
+      focusedSelectionBackground: "#AAA4",
+      matchingBracketBackground: "#AAA6",
 
-export function getTheme(dark: boolean): Extension {
-  return EditorView.theme(dark ? darkTheme : lightTheme, { dark })
+      // hoverGutterTextColor: "#F00",
+      // hoverGutterBackground: "#F00",
+    },
+    syntax: [],
+  }),
+  dark: createTheme({
+    dark: true,
+    editor: {
+      ...baseEditorTheme,
+    },
+    syntax: [],
+  }),
 }
+
+export type CodeMirrorThemeName = keyof typeof themes
+
+export const getTheme = (theme: CodeMirrorThemeName) => themes[theme]

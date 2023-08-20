@@ -25,7 +25,10 @@
   let element: HTMLDivElement
   let view: EditorView
 
-  $: stateExtensions = getExtensions([language, extensions])
+  $: stateExtensions = getExtensions({
+    extensions: [language, extensions],
+    theme: "light",
+  })
 
   onMount(() => {
     view = new EditorView({

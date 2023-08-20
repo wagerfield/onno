@@ -1,4 +1,5 @@
 import { history, historyKeymap, defaultKeymap } from "@codemirror/commands"
+import { indentOnInput, bracketMatching } from "@codemirror/language"
 import { EditorState, type Extension } from "@codemirror/state"
 import { lintKeymap } from "@codemirror/lint"
 import {
@@ -7,11 +8,6 @@ import {
   completionKeymap,
   closeBracketsKeymap,
 } from "@codemirror/autocomplete"
-import {
-  indentOnInput,
-  bracketMatching,
-  syntaxHighlighting,
-} from "@codemirror/language"
 import {
   keymap,
   dropCursor,
@@ -23,13 +19,17 @@ import {
   highlightSpecialChars,
   highlightActiveLineGutter,
 } from "@codemirror/view"
-import { getTheme } from "./themes"
-import { getHighlighting } from "./highlights"
+import { getTheme, type CodeMirrorThemeName } from "./themes"
 
-export const getExtensions = (
-  extensions: Extension,
-  dark = false,
-): Extension => [
+export interface ExtensionOptions {
+  extensions?: Extension
+  theme?: CodeMirrorThemeName
+}
+
+export const getExtensions = ({
+  extensions = [],
+  theme = "light",
+}: ExtensionOptions = {}): Extension => [
   autocompletion(),
   indentOnInput(),
   lineNumbers(),
@@ -38,7 +38,6 @@ export const getExtensions = (
   // Language
   closeBrackets(),
   bracketMatching(),
-  syntaxHighlighting(getHighlighting(dark), { fallback: true }),
 
   // Cursor
   dropCursor(),
@@ -55,7 +54,7 @@ export const getExtensions = (
   highlightActiveLine(),
 
   // Theme
-  getTheme(dark),
+  getTheme(theme),
 
   // Keymap
   keymap.of([
