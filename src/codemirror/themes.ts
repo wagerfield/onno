@@ -1,3 +1,5 @@
+import { tags } from "@lezer/highlight"
+import { oneDark } from "@codemirror/theme-one-dark"
 import { createTheme, type EditorTheme } from "./utils"
 
 const baseEditorTheme: EditorTheme = {
@@ -12,15 +14,13 @@ const baseEditorTheme: EditorTheme = {
   cursorWidth: 2,
 
   // Padding
-  contentPadding: "0.6em 0",
-  gutterPadding: "0 1em",
+  contentPadding: "0.5em 0",
+  gutterPadding: "0 2em",
   linePadding: "0",
 
   // Gutter
   gutterBorder: "none",
   gutterMinWidth: "0",
-  gutterBackground: "none",
-  activeGutterBackground: "none",
 }
 
 const themes = {
@@ -28,28 +28,37 @@ const themes = {
     dark: false,
     editor: {
       ...baseEditorTheme,
-      background: "#FFF",
-      textColor: "#000",
-      cursorColor: "#000",
-      gutterTextColor: "#AAA",
-      activeGutterTextColor: "#000",
-      activeLineBackground: "#AAA2",
-      selectionBackground: "#AAA2",
-      focusedSelectionBackground: "#AAA4",
-      matchingBracketBackground: "#AAA6",
-
-      // hoverGutterTextColor: "#F00",
-      // hoverGutterBackground: "#F00",
+      background: "#fff",
+      textColor: "#111827",
+      cursorColor: "#111827",
+      gutterBackground: "#fffd",
+      gutterBackdropFilter: "blur(4px)",
+      gutterTextColor: "#9ca3af",
+      activeGutterBackground: "none",
+      activeGutterTextColor: "#111827",
+      activeLineBackground: "#cbd5e144",
+      selectionBackground: "#cbd5e144",
+      focusedSelectionBackground: "#cbd5e144",
+      matchingBracketBackground: "#cbd5e1aa",
+      hoverGutterTextColor: "#111827",
     },
-    syntax: [],
+    syntax: [
+      { tag: tags.comment, color: "#9ca3af" },
+      { tag: tags.keyword, color: "#e11d48" },
+      { tag: tags.variableName, color: "#7c3aed" },
+      { tag: tags.string, color: "#2563eb" },
+      { tag: tags.bool, color: "#10b981" },
+      { tag: tags.function(tags.variableName), color: "#f97316" },
+    ],
   }),
-  dark: createTheme({
-    dark: true,
-    editor: {
-      ...baseEditorTheme,
-    },
-    syntax: [],
-  }),
+  dark: [
+    oneDark,
+    createTheme({
+      dark: true,
+      editor: { ...baseEditorTheme, cursorColor: "#528bff" },
+      syntax: [],
+    }),
+  ],
 }
 
 export type CodeMirrorThemeName = keyof typeof themes

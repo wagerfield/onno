@@ -7,16 +7,19 @@
 <script lang="ts">
   import type { Void } from "$lib/types"
   import type { Extension } from "@codemirror/state"
+  import type { CodeMirrorThemeName } from "$codemirror/themes"
 
   import { EditorView } from "@codemirror/view"
   import { javascript } from "@codemirror/lang-javascript"
   import { createEventDispatcher, onMount } from "svelte"
   import { getExtensions } from "$codemirror/extensions"
+  import { clsx } from "onno"
 
   export let id: Void<string> = undefined
   export let value: Void<string> = undefined
   export let className: Void<string> = undefined
 
+  export let theme: CodeMirrorThemeName = "light"
   export let language = javascript({ typescript: true })
   export let extensions: Extension = []
 
@@ -25,9 +28,10 @@
   let element: HTMLDivElement
   let view: EditorView
 
+  $: classes = clsx("overflow-hidden", className)
   $: stateExtensions = getExtensions({
     extensions: [language, extensions],
-    theme: "light",
+    theme: theme,
   })
 
   onMount(() => {
@@ -50,4 +54,4 @@
   })
 </script>
 
-<div {id} bind:this={element} class={className} />
+<div {id} bind:this={element} class={classes} />

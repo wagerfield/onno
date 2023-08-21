@@ -31,6 +31,7 @@ export interface EditorTheme {
   gutterMinWidth?: string
   gutterTextColor?: string
   gutterBackground?: string
+  gutterBackdropFilter?: string
   hoverGutterTextColor?: string
   hoverGutterBackground?: string
   activeGutterTextColor?: string
@@ -83,6 +84,7 @@ export const createEditorTheme = ({
 
   // Gutter
   ".cm-gutters": {
+    backdropFilter: theme.gutterBackdropFilter ?? null,
     background: theme.gutterBackground ?? null,
     borderRight: theme.gutterBorder ?? null,
     color: theme.gutterTextColor ?? null,
@@ -90,6 +92,7 @@ export const createEditorTheme = ({
   ".cm-lineNumbers .cm-gutterElement": {
     minWidth: theme.gutterMinWidth ?? null,
     padding: theme.gutterPadding ?? null,
+    cursor: "pointer",
   },
   ".cm-gutterElement:hover": {
     background: theme.hoverGutterBackground ?? null,
@@ -115,6 +118,9 @@ export const createEditorTheme = ({
   },
 
   // Selection
+  ".cm-selectionMatch": {
+    backgroundColor: "#f00", // TODO: Make this configurable
+  },
   ".cm-selectionBackground": {
     background: theme.selectionBackground ?? null,
   },
@@ -131,5 +137,5 @@ export const createEditorTheme = ({
 
 export const createTheme = (theme: CodeMirrorTheme): Extension => [
   EditorView.theme(createEditorTheme(theme.editor), { dark: theme.dark }),
-  syntaxHighlighting(HighlightStyle.define(theme.syntax)),
+  syntaxHighlighting(HighlightStyle.define(theme.syntax), { fallback: true }),
 ]
